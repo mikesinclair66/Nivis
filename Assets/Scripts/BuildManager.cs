@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // TODO: Attach to game master object
@@ -11,9 +8,8 @@ public class BuildManager : MonoBehaviour
 
     // TODO: add turret prefab
     public GameObject standardTurretPrefab;
-    private GameObject turretToBuild;
-
-    private void Awake()
+    public GameObject missileLauncherPrefab;
+    void Awake ()
     {
         if (instance != null)
         {
@@ -23,19 +19,29 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
 
-    public GameObject GetTurretToBuild()
+    private TurretBlueprint turretToBuild;
+    
+    public bool CanBuild { get { return turretToBuild != null;  } }
+
+    public void BuildTurretOn (Node node)
     {
-        return turretToBuild;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        if (PlayerStats.Money < turretToBuild.cost )
+        {
+            Debug.Log("Not enough money to build that!");
+            return;
+        }
+
+        PlayerStats.Money -= turretToBuild.cost;
+
+       GameObject turret = Instantiate(turretToBuild.prefab, node.GetBuildPosition(),Quaternion.identity);
+       node.turret = turret;
+
+        Debug.Log("Turret build! Money left: " + PlayerStats.Money);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SelectTurretToBuild (TurretBlueprint turret)
     {
-        
+        turretToBuild = turret;
     }
+
 }
