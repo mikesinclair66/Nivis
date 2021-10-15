@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 
     private GameObject generator;
     private int damageValue = 10;
+    private int totalHealth = 100;
 
     void Start()
     {
@@ -38,5 +39,21 @@ public class Enemy : MonoBehaviour
 
         wavepointIndex++;
         target = Waypoints.points[wavepointIndex];
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        if (totalHealth > 0)
+        {
+            totalHealth -= damageAmount;
+            if (totalHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (totalHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

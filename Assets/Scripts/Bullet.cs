@@ -57,11 +57,11 @@ public class Bullet : MonoBehaviour
     // TODO: connect with enemy code
     void Damage (Transform enemy)
     {
-        // Enemy e = enemy.GetComponent<Enemy>();
-        //
-        // if (e != null)
-        // {
-        //     e.TakeDamage(damage);
-        // }
+        Enemy e = enemy.GetComponent<Enemy>();
+        
+        if (e != null)
+        {
+             e.TakeDamage(damage);
+        }
     }
 }

@@ -11,7 +11,7 @@ public class Turret : MonoBehaviour
     [Header("Attributes")]
     
     public float range = 15f;
-    public float fireRate = 1f;
+    public float fireRate = 2f;
     private float fireCountdown = 0f;
 
     // TODO: add bullet prefab and create fire point (e5)
