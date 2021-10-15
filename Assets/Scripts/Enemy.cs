@@ -7,9 +7,13 @@ public class Enemy : MonoBehaviour
     private Transform target;
     private int wavepointIndex = 0;
 
+    private GameObject generator;
+    private int damageValue = 10;
+
     void Start()
     {
         target = Waypoints.points[0];
+        generator = GameObject.Find("END");
     }
 
     void Update()
@@ -28,6 +32,7 @@ public class Enemy : MonoBehaviour
         if (wavepointIndex >= Waypoints.points.Length - 1)
         {
             Destroy(gameObject);
+            generator.GetComponent<Generator>().TakeDamage(damageValue);
             return;
         }
 
