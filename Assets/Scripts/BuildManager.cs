@@ -19,6 +19,7 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
 
+<<<<<<< Updated upstream
     private TurretBlueprint turretToBuild;
     
     public bool CanBuild { get { return turretToBuild != null;  } }
@@ -44,4 +45,10 @@ public class BuildManager : MonoBehaviour
         turretToBuild = turret;
     }
 
+=======
+    public GameObject GetTurretToBuild()
+    {
+        return turretToBuild;
+    }
+>>>>>>> Stashed changes
 }
