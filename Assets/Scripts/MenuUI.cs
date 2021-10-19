@@ -151,7 +151,7 @@ public class MenuUI : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
 
     public void ExitGame()
