@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     [Header("Attributes")]
     public float speed = 70f;
     public int damage = 50;
+    public float explosionRadius = 0f;
     // TODO: add particle effect (e5)
 
     public void Seek(Transform _target)
@@ -40,20 +41,32 @@ public class Bullet : MonoBehaviour
     // TODO: find which video this code is relevant, might remove before alpha build
     void HitTarget ()
     {
-        // GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-        // Destroy(effectIns, 5f);
-        //
-        // if (explosionRadius > 0f)
-        // {
-        //     Explode();
-        // } else
-        // {
-        Damage(target);
-        // }
+        //GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+        //Destroy(effectIns, 5f);
 
+        if (explosionRadius > 0f)
+        {
+            Explode();
+        } else
+        {
+            Damage(target);
+        }
+        
         Destroy(gameObject);
     }
-    
+
+    void Explode()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.tag == "Enemy")
+            {
+                Damage(collider.transform);
+            }
+        }
+    }
+
     // TODO: connect with enemy code
     void Damage (Transform enemy)
     {
