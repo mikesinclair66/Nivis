@@ -27,12 +27,10 @@ public class Generator : MonoBehaviour
             Debug.Log("HP: " + totalHealth);
             if (totalHealth <= 0)
             {
-                Debug.Log("You Lose!");
                 SceneManager.LoadScene("EndScene");
             }
         }else if (totalHealth <= 0)
         {
-            Debug.Log("You Lose!");
             SceneManager.LoadScene("EndScene");
         }
     }

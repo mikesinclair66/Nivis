@@ -27,7 +27,7 @@ public class Drill : MonoBehaviour
     void Update()
     {
         currentMoney += moneyRate * Time.deltaTime;
-        totalMoneyText.text = currentMoney.ToString("0");
+        totalMoneyText.text = "$"+currentMoney.ToString("0") + "\nDrill Level: " + upgradeTier;
     }
 
     public void Upgrade()
@@ -39,7 +39,6 @@ public class Drill : MonoBehaviour
                 currentMoney -= upgradeCost;
                 upgradeTier++;
                 moneyRate++;
-                Debug.Log("Drill tier: " + upgradeTier);
                 if (generator.GetComponent<Generator>().totalHealth > 30)
                 {
                     generator.GetComponent<Generator>().totalHealth -= 30;
