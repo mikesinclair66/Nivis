@@ -111,7 +111,7 @@ public class MenuUI : MonoBehaviour
                         ebFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, tRatio);
                         break;
                 }
-                Debug.Log("tRatio: " + tRatio + ", 1 - tRatio: " + (1.0f - tRatio));
+                //Debug.Log("tRatio: " + tRatio + ", 1 - tRatio: " + (1.0f - tRatio));
 
                 posX = posXStart + tRatio * ((posXStart <= posXDest) ? 1 : -1) * Math.Abs(posXDest - posXStart);
                 posZ = posZStart + tRatio * ((posZStart <= posZDest) ? 1 : -1) * Math.Abs(posZDest - posZStart);

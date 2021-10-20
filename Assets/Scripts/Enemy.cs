@@ -8,12 +8,13 @@ public class Enemy : MonoBehaviour
     private int wavepointIndex = 0;
 
     private GameObject generator;
-    private int damageValue = 10;
-    private int totalHealth = 100;
-    private int healthScaling = 10;
+    private int damageValue, totalHealth, healthScaling;
 
     void Start()
     {
+        damageValue = 10;
+        totalHealth = 100;
+        healthScaling = 10;
         target = Waypoints.points[0];
         generator = GameObject.Find("END");
     }
@@ -39,8 +40,10 @@ public class Enemy : MonoBehaviour
         }
 
         wavepointIndex++;
-        Debug.Log(wavepointIndex);
-        totalHealth = 100 + healthScaling * (wavepointIndex-1);
+        if (wavepointIndex % 2 == 0)
+        {
+            totalHealth = (100 + (healthScaling * (wavepointIndex - 1)));
+        }
         target = Waypoints.points[wavepointIndex];
     }
 
