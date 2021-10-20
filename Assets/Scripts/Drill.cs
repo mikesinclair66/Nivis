@@ -7,17 +7,17 @@ public class Drill : MonoBehaviour
 {
     public float currentMoney;
     public float moneyRate;
-    public int upgradeTier;
+    public int drillLvl;
     public float upgradeCost;
 
     private GameObject generator;
 
-    public Text totalMoneyText;
+    public Text totalMoneyText, upgradeTier;
 
     void Start()
     {
         currentMoney = 100f;
-        upgradeTier = 1;
+        drillLvl = 1;
         moneyRate = 5f;
         upgradeCost = 100f;
 
@@ -27,17 +27,18 @@ public class Drill : MonoBehaviour
     void Update()
     {
         currentMoney += moneyRate * Time.deltaTime;
-        totalMoneyText.text = "$"+currentMoney.ToString("0") + "\nDrill Level: " + upgradeTier;
+        totalMoneyText.text = "$"+currentMoney.ToString("0");
+        upgradeTier.text = "Lvl: " + drillLvl.ToString();
     }
 
     public void Upgrade()
     {
-        if (upgradeTier < 4)
+        if (drillLvl < 4)
         {
             if (currentMoney > upgradeCost)
             {
                 currentMoney -= upgradeCost;
-                upgradeTier++;
+                drillLvl++;
                 moneyRate++;
                 if (generator.GetComponent<Generator>().totalHealth > 30)
                 {
