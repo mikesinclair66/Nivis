@@ -13,13 +13,13 @@ public class HotbarUI : MonoBehaviour
 
     void Start()
     {
-        towerButton = GameObject.Find("Canvas/Hotbar/TowerButton");
-        tbHotbar = GameObject.Find("Canvas/Hotbar/TBHotbar");
-        tb1 = GameObject.Find("Canvas/Hotbar/TBHotbar/TB1");
-        tb2 = GameObject.Find("Canvas/Hotbar/TBHotbar/TB2");
-        tb3 = GameObject.Find("Canvas/Hotbar/TBHotbar/TB3");
-        tb2Lock = GameObject.Find("Canvas/Hotbar/TBHotbar/TB2/Lock");
-        tb3Lock = GameObject.Find("Canvas/Hotbar/TBHotbar/TB3/Lock");
+        towerButton = GameObject.Find("GUI/Panel/TowerButton");
+        tbHotbar = GameObject.Find("GUI/TBHotbar");
+        tb1 = GameObject.Find("GUI/TBHotbar/TB1");
+        tb2 = GameObject.Find("GUI/TBHotbar/TB2");
+        tb3 = GameObject.Find("GUI/TBHotbar/TB3");
+        tb2Lock = GameObject.Find("GUI/TBHotbar/TB2/Lock");
+        tb3Lock = GameObject.Find("GUI/TBHotbar/TB3/Lock");
 
         ToggleTBHotbar();
     }
@@ -51,10 +51,10 @@ public class HotbarUI : MonoBehaviour
         ToggleTBHotbar();
         if (tbHotbarToggled)
             towerButton.GetComponent<Image>().color =
-                new Color(1.0f, 1.0f, 1.0f, 0.1f);
+                new Color(1.0f, 1.0f, 1.0f, 0.5f);
         else
             towerButton.GetComponent<Image>().color =
-                new Color(1.0f, 1.0f, 1.0f, 0);
+                new Color(1.0f, 1.0f, 1.0f, 1.0f);
     }
 
     public void ClickOther()
