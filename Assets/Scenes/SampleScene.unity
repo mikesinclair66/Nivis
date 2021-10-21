@@ -4294,10 +4294,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standardTurretPrefab: {fileID: 553965129}
-  missileLauncherPrefab: {fileID: 0}
+  missileLauncherPrefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
   turretToBuild:
     prefab: {fileID: 0}
     cost: 0
+  drill: {fileID: 2081272932}
 --- !u!1001 &465209077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10251,10 +10252,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardTurret:
     prefab: {fileID: 4560193758139878433, guid: ba31b6d1970f6d64fb27162921f4614a, type: 3}
-    cost: 0
+    cost: 100
   missileLauncher:
     prefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
-    cost: 0
+    cost: 300
 --- !u!1001 &1158992624
 PrefabInstance:
   m_ObjectHideFlags: 0
