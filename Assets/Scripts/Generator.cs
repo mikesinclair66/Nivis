@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class Generator : MonoBehaviour
 {
     public int totalHealth = 100;
-    public Text totalHealthText;
     public GameObject damageModBar;
     float damageMod = 1.0f;
+    public Text genHealth;
 
     Vector3 origPos, origScale;
 
@@ -30,9 +30,9 @@ public class Generator : MonoBehaviour
 
     void Update()
     {
-        totalHealthText.text = totalHealth.ToString();
         origPos = damageModBar.transform.position;
         origScale = damageModBar.transform.localScale;
+        genHealth.text = damageMod * 100.0f + "%";
     }
 
     public void TakeDamage(int damageAmount)

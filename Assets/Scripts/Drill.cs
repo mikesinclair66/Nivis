@@ -35,15 +35,14 @@ public class Drill : MonoBehaviour
     {
         if (drillLvl < 4)
         {
-            if (currentMoney > upgradeCost)
+            if (currentMoney > upgradeCost &&
+                generator.GetComponent<Generator>().totalHealth > 30)
             {
+                generator.GetComponent<Generator>().TakeDamage(30);
                 currentMoney -= upgradeCost;
                 drillLvl++;
                 moneyRate++;
-                if (generator.GetComponent<Generator>().totalHealth > 30)
-                {
-                    generator.GetComponent<Generator>().totalHealth -= 30;
-                }
+                //generator.GetComponent<Generator>().totalHealth -= 30;
             }
         }
     }
