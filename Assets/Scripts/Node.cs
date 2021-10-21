@@ -27,6 +27,8 @@ public class Node : MonoBehaviour
     
     void OnMouseDown ()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         Debug.Log("Clicked on Node.");
         if (!buildManager.CanBuild)
         {
@@ -44,15 +46,15 @@ public class Node : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
-
         if (!buildManager.CanBuild)
             return;
-
         mRend.enabled = true;
     }
         
     void OnMouseExit ()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         mRend.enabled = false;
     }
 }
