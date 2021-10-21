@@ -2333,7 +2333,7 @@ MeshCollider:
   m_GameObject: {fileID: 264173624}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -2732,7 +2732,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 306742985}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1950292031}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: SelectMissileLauncher
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &306742985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3926,7 +3938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &410368997
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4356,10 +4368,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standardTurretPrefab: {fileID: 553965129}
-  missileLauncherPrefab: {fileID: 0}
+  missileLauncherPrefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
   turretToBuild:
     prefab: {fileID: 0}
     cost: 0
+  drill: {fileID: 2081272932}
 --- !u!1001 &465209077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7809,7 +7822,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 875069093}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1950292031}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: SelectStandardTurret
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &875069093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15974,6 +15999,7 @@ GameObject:
   - component: {fileID: 1950292028}
   - component: {fileID: 1950292030}
   - component: {fileID: 1950292029}
+  - component: {fileID: 1950292031}
   m_Layer: 5
   m_Name: TBHotbar
   m_TagString: Untagged
@@ -16041,6 +16067,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950292027}
   m_CullTransparentMesh: 1
+--- !u!114 &1950292031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950292027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504926bb94d857e42b23028870b2d3fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardTurret:
+    prefab: {fileID: 4560193758139878433, guid: ba31b6d1970f6d64fb27162921f4614a, type: 3}
+    cost: 100
+  missileLauncher:
+    prefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
+    cost: 300
 --- !u!1001 &1951216120
 PrefabInstance:
   m_ObjectHideFlags: 0
