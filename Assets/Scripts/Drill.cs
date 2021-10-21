@@ -16,10 +16,10 @@ public class Drill : MonoBehaviour
 
     void Start()
     {
-        currentMoney = 100f;
+        currentMoney = 300f;
         drillLvl = 1;
         moneyRate = 5f;
-        upgradeCost = 100f;
+        upgradeCost = 800f;
 
         generator = GameObject.Find("END");
     }
