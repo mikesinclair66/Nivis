@@ -11,14 +11,11 @@ public class Node : MonoBehaviour
     public Vector3 positionOffset = new Vector3(0, (float)0.5, 0);
     [Header("Optional")]
     public GameObject turret;
-    private Renderer rend;
-    private Color startColor;
-    BuildManager buildManager;
-    
+    public MeshRenderer mRend;
+    public BuildManager buildManager;    
+
     void Start ()
     {
-        rend = GetComponent<Renderer>();
-        startColor = rend.material.color;
         buildManager = BuildManager.instance;
     }
 
@@ -47,10 +44,10 @@ public class Node : MonoBehaviour
         {
             return;
         }
-        rend.material.color = hoverColor;
+        mRend.enabled = true;
     }
     void OnMouseExit ()
     {
-        rend.material.color = startColor;
+        mRend.enabled = false;
     }
 }
