@@ -18,7 +18,7 @@ public class Drill : MonoBehaviour
     {
         currentMoney = 300f;
         drillLvl = 1;
-        moneyRate = 5f;
+        moneyRate = 5.5f;
         upgradeCost = 400f;
 
         generator = GameObject.Find("END");
@@ -42,8 +42,8 @@ public class Drill : MonoBehaviour
                 generator.GetComponent<Generator>().TakeDamage(30);
                 currentMoney -= upgradeCost;
                 drillLvl++;
-                upgradeCost *= 2;
-                moneyRate *= 2;
+                upgradeCost = drillLvl * 300;
+                moneyRate = drillLvl * 5f;
                 //generator.GetComponent<Generator>().totalHealth -= 30;
             }
         }
