@@ -6028,7 +6028,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $800
+  m_Text: $400
 --- !u!222 &756314762
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15740,6 +15740,7 @@ MonoBehaviour:
   upgradeCost: 0
   totalMoneyText: {fileID: 733027331}
   upgradeTier: {fileID: 1148247608}
+  upgradeCostText: {fileID: 756314761}
 --- !u!65 &2081272933
 BoxCollider:
   m_ObjectHideFlags: 0

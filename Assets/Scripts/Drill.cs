@@ -12,14 +12,14 @@ public class Drill : MonoBehaviour
 
     private GameObject generator;
 
-    public Text totalMoneyText, upgradeTier;
+    public Text totalMoneyText, upgradeTier, upgradeCostText;
 
     void Start()
     {
         currentMoney = 300f;
         drillLvl = 1;
         moneyRate = 5f;
-        upgradeCost = 800f;
+        upgradeCost = 400f;
 
         generator = GameObject.Find("END");
     }
@@ -29,6 +29,7 @@ public class Drill : MonoBehaviour
         currentMoney += moneyRate * Time.deltaTime;
         totalMoneyText.text = "$"+currentMoney.ToString("0");
         upgradeTier.text = "Lvl: " + drillLvl.ToString();
+        upgradeCostText.text = "$" + upgradeCost.ToString();
     }
 
     public void Upgrade()
@@ -41,7 +42,8 @@ public class Drill : MonoBehaviour
                 generator.GetComponent<Generator>().TakeDamage(30);
                 currentMoney -= upgradeCost;
                 drillLvl++;
-                moneyRate++;
+                upgradeCost *= 2;
+                moneyRate *= 2;
                 //generator.GetComponent<Generator>().totalHealth -= 30;
             }
         }
