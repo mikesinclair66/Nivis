@@ -2333,7 +2333,7 @@ MeshCollider:
   m_GameObject: {fileID: 264173624}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -4295,6 +4295,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardTurretPrefab: {fileID: 553965129}
   missileLauncherPrefab: {fileID: 0}
+  turretToBuild:
+    prefab: {fileID: 0}
+    cost: 0
 --- !u!1001 &465209077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5941,7 +5944,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 654411337}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1146964593}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: SelectStandardTurret
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &654411337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10154,6 +10169,7 @@ GameObject:
   - component: {fileID: 1146964590}
   - component: {fileID: 1146964592}
   - component: {fileID: 1146964591}
+  - component: {fileID: 1146964593}
   m_Layer: 5
   m_Name: TBHotbar
   m_TagString: Untagged
@@ -10221,6 +10237,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146964589}
   m_CullTransparentMesh: 1
+--- !u!114 &1146964593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146964589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504926bb94d857e42b23028870b2d3fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardTurret:
+    prefab: {fileID: 4560193758139878433, guid: ba31b6d1970f6d64fb27162921f4614a, type: 3}
+    cost: 0
+  missileLauncher:
+    prefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
+    cost: 0
 --- !u!1001 &1158992624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18318,6 +18352,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 835812078}
     m_Modifications:
+    - target: {fileID: 1724739061611230672, guid: fae6ecafa98be35419bbcff59ce5ea41, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4908801431014855792, guid: fae6ecafa98be35419bbcff59ce5ea41, type: 3}
       propertyPath: m_RootOrder
       value: 0
