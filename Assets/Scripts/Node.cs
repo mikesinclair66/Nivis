@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 // TODO: attach to node
 public class Node : MonoBehaviour
@@ -37,15 +38,19 @@ public class Node : MonoBehaviour
             return;
         }
         buildManager.BuildTurretOn(this);
+        buildManager.turretToBuild = null;
     }
     void OnMouseEnter()
     {
-        if (!buildManager.CanBuild)
-        {
+        if (EventSystem.current.IsPointerOverGameObject())
             return;
-        }
+
+        if (!buildManager.CanBuild)
+            return;
+
         mRend.enabled = true;
     }
+        
     void OnMouseExit ()
     {
         mRend.enabled = false;
