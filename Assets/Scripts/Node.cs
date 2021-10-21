@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 // TODO: attach to node
 public class Node : MonoBehaviour
@@ -29,7 +27,8 @@ public class Node : MonoBehaviour
     
     void OnMouseDown ()
     {
-        Debug.Log("Clicked on Node.");
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         if (!buildManager.CanBuild)
         {
             return;
@@ -41,12 +40,14 @@ public class Node : MonoBehaviour
         }
         buildManager.BuildTurretOn(this);
     }
-    void OnMouseEnter()
+    void OnMouseEnter ()
     {
-        if (!buildManager.CanBuild)
-        {
+        if (EventSystem.current.IsPointerOverGameObject())
             return;
-        }
+
+        if (!buildManager.CanBuild)
+            return;
+
         rend.material.color = hoverColor;
     }
     void OnMouseExit ()
