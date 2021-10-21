@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EndScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Text waveText;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        waveText.text = "You survived " + WaveSpawner.lastWave.ToString() + " waves.";
     }
 
     public void Return()
