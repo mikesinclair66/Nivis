@@ -41,7 +41,7 @@ public class Generator : MonoBehaviour
         {
             totalHealth -= damageAmount;
             damageMod = (float)totalHealth / 100.0f;
-            damageModBar.transform.localScale = new Vector3(damageMod, origScale.y, origScale.z);
+            damageModBar.transform.localScale = new Vector3(origScale.x * damageMod, origScale.y, origScale.z);
             //damageModBar.transform.position = origPos + new Vector3(-(1.0f - damageMod) * (float)origScale.x, 0, 0);
 
             Debug.Log("HP: " + totalHealth);
