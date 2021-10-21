@@ -31,6 +31,7 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
+        enemy.GetComponent<Enemy>().ScaleHP(waveIndex);
         waveIndex++;
         waveIndexText.text = "Wave: " + waveIndex.ToString();
         for (int i = 0; i < waveIndex; i++)
@@ -43,8 +44,5 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy()
     {
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-        enemy.GetComponent<Enemy>().Scale();
-        Debug.Log("Reach here");
-        
     }
 }
