@@ -6,6 +6,7 @@ public class WaveSpawner : MonoBehaviour
 {
     public Transform enemyPrefab;
     public Transform spawnPoint;
+    public GameObject enemy;
 
     public float timeBetweenWaves = 10f;
     private float countdown = 5f;
@@ -42,5 +43,8 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy()
     {
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        enemy.GetComponent<Enemy>().Scale();
+        Debug.Log("Reach here");
+        
     }
 }
