@@ -29,6 +29,7 @@ public class Node : MonoBehaviour
     
     void OnMouseDown ()
     {
+        Debug.Log("Clicked on Node.");
         if (!buildManager.CanBuild)
         {
             return;
