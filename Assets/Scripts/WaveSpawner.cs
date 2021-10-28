@@ -5,43 +5,49 @@ using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public static int EnemiesAlive = 0;
+
     public Transform enemyPrefab;
     public Transform spawnPoint;
     public GameObject enemy;
 
-    public float timeBetweenWaves = 10f;
+    public float timeBetweenWaves = 5f;
     private float countdown = 5f;
 
     public Text waveCountdownText;
     public Text waveIndexText;
 
     public int waveIndex = 0;
+    public int winningWave = 34;
     public static int lastWave;
 
     void Update()
     {
+        if (EnemiesAlive > 0){return;}
+
         if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
         }
-
         countdown -= Time.deltaTime;
-
+        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
         waveCountdownText.text = Mathf.Round(countdown).ToString();
     }
 
     IEnumerator SpawnWave()
     {
-        if (waveIndex > 34)
+        if (waveIndex > winningWave)
         {
             SceneManager.LoadScene("Victory");
         }
 
         enemy.GetComponent<Enemy>().ScaleHP(waveIndex);
         waveIndex++;
-        lastWave = waveIndex;
+
+        lastWave = waveIndex; //used in EndScript
         waveIndexText.text = "Wave: " + waveIndex.ToString();
+
         for (int i = 0; i < waveIndex; i++)
         {
             SpawnEnemy();
@@ -52,5 +58,6 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy()
     {
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        EnemiesAlive++;
     }
 }

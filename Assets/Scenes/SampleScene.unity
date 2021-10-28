@@ -2465,6 +2465,7 @@ MonoBehaviour:
   waveCountdownText: {fileID: 1818590648}
   waveIndexText: {fileID: 874399978}
   waveIndex: 0
+  winningWave: 34
 --- !u!4 &458077341
 Transform:
   m_ObjectHideFlags: 0
@@ -10929,8 +10930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05310908e6d6c4f40b6916ffe1d08d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 100
-  damageModBar: {fileID: 730210320}
   genHealth: {fileID: 1844664852}
 --- !u!1001 &6561254724787048201
 PrefabInstance:
