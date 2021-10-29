@@ -12,7 +12,7 @@ public class Drill : MonoBehaviour
 
     private GameObject generator;
 
-    public Text totalMoneyText, upgradeTier, upgradeCostText;
+    public Text totalMoneyText, upgradeCostText;
 
     void Start()
     {
@@ -27,8 +27,7 @@ public class Drill : MonoBehaviour
     void Update()
     {
         currentMoney += moneyRate * Time.deltaTime;
-        totalMoneyText.text = "$"+currentMoney.ToString("0");
-        upgradeTier.text = "Lvl: " + drillLvl.ToString();
+        totalMoneyText.text = "$"+currentMoney.ToString("0") + "/Lvl: " + drillLvl.ToString();//sector 3 digits by ,
         upgradeCostText.text = "$" + upgradeCost.ToString();
     }
 

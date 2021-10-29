@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HotbarUI : MonoBehaviour
 {
+    GameObject panel;
     GameObject towerButton;
     GameObject tbHotbar;
     GameObject tb1, tb2, tb3;
@@ -13,6 +14,7 @@ public class HotbarUI : MonoBehaviour
 
     void Start()
     {
+        panel = GameObject.Find("GUI/Panel");
         towerButton = GameObject.Find("GUI/Panel/TowerButton");
         tbHotbar = GameObject.Find("GUI/TBHotbar");
         tb1 = GameObject.Find("GUI/TBHotbar/TB1");
@@ -22,6 +24,7 @@ public class HotbarUI : MonoBehaviour
         tb3Lock = GameObject.Find("GUI/TBHotbar/TB3/Lock");
 
         ToggleTBHotbar();
+        panel.SetActive(false);
     }
 
     void ToggleTBHotbar()
