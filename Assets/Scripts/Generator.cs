@@ -6,17 +6,19 @@ using UnityEngine.UI;
 
 public class Generator : MonoBehaviour
 {
-    public int totalHealth = 100;
-    public GameObject damageModBar;
-    float damageMod = 1.0f;
+    public static int totalHealth = 100;
+
     public Text genHealth;
 
-    Vector3 origPos, origScale;
+    /*GameObject damageModBar;
+    float damageMod = 1.0f;
+    Text genHealth;
+    Vector3 origPos, origScale;*/
 
     void Start()
     {
         Debug.Log("HP: " + totalHealth);
-        origPos = new Vector3(
+        /*origPos = new Vector3(
             damageModBar.transform.position.x,
             damageModBar.transform.position.y,
             damageModBar.transform.position.z
@@ -25,24 +27,20 @@ public class Generator : MonoBehaviour
             damageModBar.transform.localScale.x,
             damageModBar.transform.localScale.y,
             damageModBar.transform.localScale.z
-        );
+        );*/
     }
 
     void Update()
     {
-        origPos = damageModBar.transform.position;
-        origScale = damageModBar.transform.localScale;
-        genHealth.text = damageMod * 100.0f + "%";
+        genHealth.text = totalHealth + "%";
+        //HealthBar();
     }
 
-    public void TakeDamage(int damageAmount)
+    public static void TakeDamage(int damageAmount)
     {
         if (totalHealth > 0)
         {
             totalHealth -= damageAmount;
-            damageMod = (float)totalHealth / 100.0f;
-            damageModBar.transform.localScale = new Vector3(origScale.x * damageMod, origScale.y, origScale.z);
-            //damageModBar.transform.position = origPos + new Vector3(-(1.0f - damageMod) * (float)origScale.x, 0, 0);
 
             Debug.Log("HP: " + totalHealth);
             if (totalHealth <= 0)
@@ -54,5 +52,19 @@ public class Generator : MonoBehaviour
             SceneManager.LoadScene("EndScene");
         }
     }
-    
+
+/*  
+    void HealthBar()
+    {
+        origPos = damageModBar.transform.position;
+        origScale = damageModBar.transform.localScale;
+        genHealth.text = damageMod * 100.0f + "%";
+        
+        if (totalHealth > 0)
+        {
+            damageMod = (float)totalHealth / 100.0f;
+            damageModBar.transform.localScale = new Vector3(origScale.x * damageMod, origScale.y, origScale.z);
+        }
+    }
+*/
 }
