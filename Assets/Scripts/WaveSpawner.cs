@@ -41,7 +41,7 @@ public class WaveSpawner : MonoBehaviour
         enemy.GetComponent<Enemy>().ScaleHP(waveIndex);
         waveIndex++;
         lastWave = waveIndex;
-        waveIndexText.text = "Wave: " + waveIndex.ToString();
+        waveIndexText.text = "R" + waveIndex.ToString();
         for (int i = 0; i < waveIndex; i++)
         {
             SpawnEnemy();
