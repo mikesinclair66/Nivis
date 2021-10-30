@@ -47,7 +47,8 @@ public class WaveSpawner : MonoBehaviour
 
         lastWave = waveIndex; //used in EndScript
         waveIndexText.text = "Wave: " + waveIndex.ToString();
-
+        lastWave = waveIndex;
+        waveIndexText.text = "R" + waveIndex.ToString();
         for (int i = 0; i < waveIndex; i++)
         {
             SpawnEnemy();
