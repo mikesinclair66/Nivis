@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class EndScript : MonoBehaviour
 {
     public Text waveText;
+    private int waveSurvived = WaveSpawner.waveIndex - 1;
 
     void Start()
     {
-        waveText.text = "You survived " + WaveSpawner.lastWave.ToString() + " waves.";
+        waveText.text = "You survived " + waveSurvived.ToString() + " waves.";
     }
 
     public void Return()

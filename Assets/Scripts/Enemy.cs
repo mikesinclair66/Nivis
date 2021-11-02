@@ -19,10 +19,10 @@ public class Enemy : MonoBehaviour
         else if (totalHealth <= 0){Die();}
     }
 
-    public void ScaleHP(int waveIndex)
+    public void ScaleHP()
     {
-        if (waveIndex == 0){totalHealth = 100;}
-        else if(waveIndex > 0){totalHealth += healthScaling;}
+        if (WaveSpawner.waveIndex == 0){totalHealth = 100;}
+        else if(WaveSpawner.waveIndex > 0){totalHealth += healthScaling;}
         else{return;} 
     }
 

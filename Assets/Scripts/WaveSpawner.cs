@@ -7,7 +7,7 @@ public class WaveSpawner : MonoBehaviour
 {
     public static int EnemiesAlive = 0;
 
-    public Transform enemyPrefab;
+    public Wave[] waves;
     public Transform spawnPoint;
     public GameObject enemy;
 
@@ -17,9 +17,7 @@ public class WaveSpawner : MonoBehaviour
     public Text waveCountdownText;
     public Text waveIndexText;
 
-    public int waveIndex = 0;
-    public int winningWave = 34;
-    public static int lastWave;
+    public static int waveIndex = 0;
 
     void Update()
     {
@@ -38,28 +36,35 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        if (waveIndex > winningWave)
+        if (waveIndex == waves.Length)
         {
             SceneManager.LoadScene("Victory");
         }
-
-        enemy.GetComponent<Enemy>().ScaleHP(waveIndex);
-        waveIndex++;
-
-        lastWave = waveIndex; //used in EndScript
-        waveIndexText.text = "Wave: " + waveIndex.ToString();
-        lastWave = waveIndex;
-        waveIndexText.text = "R" + waveIndex.ToString();
-        for (int i = 0; i < waveIndex; i++)
+        else
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(0.5f);
+            Wave wave = waves[waveIndex];
+
+            enemy.GetComponent<Enemy>().ScaleHP();
+
+            waveIndexText.text = "Wave: " + waveIndex.ToString();
+            waveIndexText.text = "R" + waveIndex.ToString();
+
+            for (int i = 0; i < wave.count; i++)
+            {
+                SpawnEnemy(wave.enemy);
+                yield return new WaitForSeconds(1f / wave.rate);
+            }
+
+            waveIndex++;
+
+            //Debug.Log("waveIndex: " + waveIndex);
+            //Debug.Log("waves.Length: " + waves.Length);
         }
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy(GameObject enemy)
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
         EnemiesAlive++;
     }
 }
