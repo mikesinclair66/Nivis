@@ -36,9 +36,12 @@ public class BuildManager : MonoBehaviour
             drill.currentMoney -= turretToBuild.cost;
 
             GameObject turret = Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-            node.turret = turret;
 
-            Debug.Log("Turret build! Money left: " + drill.currentMoney);
+            if (turret != null)
+            {
+                node.turret = turret;
+                Debug.Log("Turret build! Money left: " + drill.currentMoney);
+            }
         }  
     }
 
