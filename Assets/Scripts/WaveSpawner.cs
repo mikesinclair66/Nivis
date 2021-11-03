@@ -5,52 +5,66 @@ using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public Transform enemyPrefab;
+    public static int EnemiesAlive = 0;
+
+    public Wave[] waves;
     public Transform spawnPoint;
     public GameObject enemy;
 
-    public float timeBetweenWaves = 10f;
+    public float timeBetweenWaves = 5f;
     private float countdown = 5f;
 
     public Text waveCountdownText;
     public Text waveIndexText;
 
-    public int waveIndex = 0;
-    public static int lastWave;
+    public static int waveIndex = 0;
 
     void Update()
     {
+        if (EnemiesAlive > 0){return;}
+
         if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
+            return;
         }
-
         countdown -= Time.deltaTime;
-
+        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
         waveCountdownText.text = Mathf.Round(countdown).ToString();
     }
 
     IEnumerator SpawnWave()
     {
-        if (waveIndex > 34)
+        if (waveIndex == waves.Length)
         {
             SceneManager.LoadScene("Victory");
         }
-
-        enemy.GetComponent<Enemy>().ScaleHP(waveIndex);
-        waveIndex++;
-        lastWave = waveIndex;
-        waveIndexText.text = "Wave: " + waveIndex.ToString();
-        for (int i = 0; i < waveIndex; i++)
+        else
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(0.5f);
+            Wave wave = waves[waveIndex];
+
+            enemy.GetComponent<Enemy>().ScaleHP();
+
+            waveIndexText.text = "Wave: " + waveIndex.ToString();
+            waveIndexText.text = "R" + waveIndex.ToString();
+
+            for (int i = 0; i < wave.count; i++)
+            {
+                SpawnEnemy(wave.enemy);
+                yield return new WaitForSeconds(1f / wave.rate);
+            }
+
+            waveIndex++;
+
+            //Debug.Log("waveIndex: " + waveIndex);
+            //Debug.Log("waves.Length: " + waves.Length);
         }
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy(GameObject enemy)
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        EnemiesAlive++;
     }
 }
