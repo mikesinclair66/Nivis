@@ -51,6 +51,17 @@ public class Node : MonoBehaviour
         }
     }
     
+    public void SellTurret ()
+    {
+        if (turret != null)
+        {
+            drill.currentMoney += turretBlueprint.sellValue;
+
+            Destroy(turret);
+            turretBlueprint = null;
+        }
+    }
+    
     void OnMouseDown ()
     {
         //if (EventSystem.current.IsPointerOverGameObject())
