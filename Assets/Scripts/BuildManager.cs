@@ -5,10 +5,17 @@ public class BuildManager : MonoBehaviour
 {
     // utilizing singleton pattern since only one build manager is needed for all nodes
     public static BuildManager instance;
+    
+    private TurretBlueprint turretToBuild;
+    private Node selectedNode;
 
     // TODO: add turret prefab
     public GameObject standardTurretPrefab;
     public GameObject missileLauncherPrefab;
+    
+    public NodeUI nodeUI;
+    
+    // TODO: add select/deselect code for the turret UI, optional depending on how we plan to implement this
     void Awake ()
     {
         if (instance != null)
@@ -19,35 +26,33 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
     
-    public TurretBlueprint turretToBuild;
-    public Drill drill;
     public bool CanBuild { get { return turretToBuild != null;  } }
 
-    public void BuildTurretOn (Node node)
+    public void SelectNode (Node node)
     {
-        if (node != null) 
+        if (selectedNode == node)
         {
-            if (drill.currentMoney < turretToBuild.cost)
-            {
-                Debug.Log("Not enough money to build that!");
-                return;
-            }
-
-            drill.currentMoney -= turretToBuild.cost;
-
-            GameObject turret = Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-
-            if (turret != null)
-            {
-                node.turret = turret;
-                Debug.Log("Turret build! Money left: " + drill.currentMoney);
-            }
-        }  
+            DeselectNode();
+            return;
+        }
+        selectedNode = node;
+        turretToBuild = null;
+        nodeUI.SetTarget(node);
     }
-
+    public void DeselectNode()
+    {
+        selectedNode = null;
+        nodeUI.Hide();
+    }
     public void SelectTurretToBuild (TurretBlueprint turret)
     {
         turretToBuild = turret;
+        DeselectNode();
+    }
+    
+    public TurretBlueprint GetTurretToBuild ()
+    {
+        return turretToBuild;
     }
     
 }
