@@ -1,23 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class Inventory
 {
-    GameObject panel;
-    GameObject towerBtn;
-    GameObject damageMod;
+    List<GameObject> turrets;
+    List<int> turretType, upgradeLvl, upgradePrimary;
 
-    void Start()
+    public Inventory()
     {
-        panel = GameObject.Find("Canvas/Hotbar");
-        towerBtn = GameObject.Find("Canvas/Hotbar/TowerButton");
-        damageMod = GameObject.Find("Canvas/Hotbar/Health/HealthMod");
+        turrets = new List<GameObject>();
+        turretType = new List<int>();
+        upgradeLvl = new List<int>();
+        upgradePrimary = new List<int>();
     }
 
-    public void TakeDamage(int totalHealth)
+    public void Add(GameObject turret, int type)
     {
-        damageMod.gameObject.transform.localScale = new Vector3((float)totalHealth / 100.0f, 1, 1);
+        turrets.Add(turret);
+        turretType.Add(type);
+        upgradeLvl.Add(0);
+        upgradePrimary.Add(-1);
     }
 }

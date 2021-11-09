@@ -27,7 +27,7 @@ public class Generator : MonoBehaviour
         if (totalHealth > 0)
         {
             totalHealth -= damageAmount;
-            canvas.GetComponent<Inventory>().TakeDamage(totalHealth);
+            canvas.GetComponent<Hotbar>().TakeDamage(totalHealth);
 
             if (totalHealth <= 0)
             {

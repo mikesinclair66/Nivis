@@ -25,8 +25,8 @@ public class Drill : MonoBehaviour
     void Update()
     {
         currentMoney += moneyRate * Time.deltaTime;
-        /*totalMoneyText.text = "$"+currentMoney.ToString("0") + "/Lvl: " + drillLvl.ToString();//sector 3 digits by ,
-        upgradeCostText.text = "$" + upgradeCost.ToString();*/
+        totalMoneyText.text = "$"+currentMoney.ToString("0") + "/Lvl: " + drillLvl.ToString();//sector 3 digits by ,
+        //upgradeCostText.text = "$" + upgradeCost.ToString();*/
     }
 
     public void Upgrade()
