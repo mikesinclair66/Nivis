@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2524917221274599555}
   m_Layer: 0
   m_Name: MissileNuke
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,4 +145,7 @@ MonoBehaviour:
   fireRate: 0.75
   bulletPrefab: {fileID: 3019212771550414124, guid: 372adabfff72bb5438bb3ba4e38339ba, type: 3}
   firePoint: {fileID: 558292484385865378}
+  disabled: 0
+  mRend: {fileID: 2464897132335091871}
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
   enemyTag: Enemy

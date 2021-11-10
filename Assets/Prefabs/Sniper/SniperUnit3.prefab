@@ -43,9 +43,10 @@ GameObject:
   - component: {fileID: 7729463329173775522}
   - component: {fileID: 7661593304818995610}
   - component: {fileID: 336986666671237212}
+  - component: {fileID: 3937237006111065854}
   m_Layer: 0
   m_Name: SniperUnit3
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,13 +137,36 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5915943776112704666}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fdaf74b8f629ba47b3f725d3278fcbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   range: 3000
-  fireRate: 0.5
-  bulletPrefab: {fileID: 6700399589954572924, guid: 3e6cba64ef1f33e46b8b9cf0fb698078, type: 3}
+  fireRate: 0.1
+  bulletPrefab: {fileID: 5498688916343015907, guid: 5941a311ce2c1794db340d0da3f7bb12, type: 3}
   firePoint: {fileID: 805399094968806349}
+  disabled: 0
+  mRend: {fileID: 7729463329173775522}
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  enemyTag: Enemy
+--- !u!114 &3937237006111065854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5915943776112704666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc6f50a16a949246b18121553e5213f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 300000
+  fireRate: 0.5
+  bulletPrefab: {fileID: 5498688916343015907, guid: 5941a311ce2c1794db340d0da3f7bb12, type: 3}
+  firePoint: {fileID: 805399094968806349}
+  disabled: 0
+  mRend: {fileID: 7729463329173775522}
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
   enemyTag: Enemy

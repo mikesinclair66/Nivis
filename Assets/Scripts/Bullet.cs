@@ -52,11 +52,10 @@ public class Bullet : MonoBehaviour
         {
             Explode();
         }
-        else if (stunShot == true)
-        {
-            Damage(target);
-            
-        }
+        // else if (stunShot == true && sniperUnit == true)
+        // {
+        //     Sniper();
+        // }
         else
         {
             Damage(target);
@@ -78,6 +77,17 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    // void Sniper()
+    // {
+    //     if (isTank == true)
+    //     {
+    //         Damage();
+    //     }
+    //     else {
+    //         Damage(target);
+    //     }
+    // }
+
     
 
     // TODO: connect with enemy code
@@ -88,9 +98,15 @@ public class Bullet : MonoBehaviour
         if (e != null)
         {
             e.TakeDamage(damage);
+            Debug.Log("Reach here");
             if (radiation == true)
             {
                 e.activateRad();
+            }
+            if (stunShot == true)
+            {
+                e.activateStun();
+                Debug.Log("Activate Stun: " + e.stunnedUnit );
             }
         }
         
