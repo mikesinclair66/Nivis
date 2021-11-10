@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damageValue: 10
-  totalHealth: 1000
+  totalHealth: 200
   healthScaling: 5
   radiation: 0
   radPercentage: 10
@@ -122,6 +122,7 @@ MonoBehaviour:
   mRend: {fileID: 6915258751149511079}
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
   radTimer: 3
+  isTank: 0
 --- !u!114 &8174042115733384411
 MonoBehaviour:
   m_ObjectHideFlags: 0
