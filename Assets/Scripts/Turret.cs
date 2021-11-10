@@ -18,10 +18,11 @@ public class Turret : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
 
-    private bool disabled = false;
+    public bool disabled = false;
+    public MeshRenderer mRend;
+    public Color defaultColor;
+    private float disableCountdown = 10f;
 
-    public Renderer turretRenderer;
-    
     [Header("Unity Setup Fields")]
 
     // TODO: set enemy prefab with the enemy tag
@@ -31,16 +32,26 @@ public class Turret : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateClosestTarget", 0f, 0.5f);
+        defaultColor = mRend.material.color;
     }
 
     void Update()
     {
+        if (disabled == true)
+        {
+            disableCountdown -= Time.deltaTime;
+            if (disableCountdown <= 0)
+            {
+                Enable();
+            }
+        }
+
         if (target == null)
         {
             return;
         }
 
-        if (disabled = false) 
+        if (disabled != true)
         {
             if (fireCountdown <= 0)
             {
@@ -89,7 +100,14 @@ public class Turret : MonoBehaviour
     public void Disable()
     {
         disabled = true;
-        turretRenderer.material.SetColor("_Color", Color.red);
+        mRend.material.SetColor("_Color", Color.red);
+    }
+
+    public void Enable()
+    {
+        disabled = false;
+        mRend.material.color = defaultColor;
+        disableCountdown = 10f;
     }
 
     private void OnDrawGizmosSelected()

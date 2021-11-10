@@ -26,7 +26,10 @@ public class EnemyDisabler : MonoBehaviour
             return;
         }
 
-        Shoot();
+        if (target.GetComponent<Turret>().disabled == false) 
+        {
+            Shoot();
+        }
     }
 
     void Shoot()
