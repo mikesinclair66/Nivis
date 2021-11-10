@@ -17,11 +17,12 @@ public class Enemy : MonoBehaviour
         else if (totalHealth <= 0){Die();}
     }
 
+    /**
     public void ScaleHP()
     {
         if(WaveSpawner.waveIndex > 0){totalHealth += healthScaling;}
         else{return;}
-    }
+    }**/
 
     void Die()
     {
