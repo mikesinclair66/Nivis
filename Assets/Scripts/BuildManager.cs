@@ -5,7 +5,7 @@ public class BuildManager : MonoBehaviour
 {
     // utilizing singleton pattern since only one build manager is needed for all nodes
     public static BuildManager instance;
-    public Inventory inventory = new Inventory();
+    public Inventory inventory;
 
     // TODO: add turret prefab
     public GameObject standardTurretPrefab;
@@ -18,6 +18,7 @@ public class BuildManager : MonoBehaviour
             return;
         }
         instance = this;
+        inventory = GameObject.Find("Canvas/ActionUI/InnerEl").GetComponent<Inventory>();
     }
     
     public TurretBlueprint turretToBuild;

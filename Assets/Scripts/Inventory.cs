@@ -1,20 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.SceneManagement;
 
-public class Inventory
+public class Inventory : MonoBehaviour
 {
     List<GameObject> turrets;
     List<int> turretType, upgradeLvl, upgradePrimary, nodeKey;
+    GameObject actionUI;
 
-    public Inventory()
+    void Start()
     {
         turrets = new List<GameObject>();
         turretType = new List<int>();
         upgradeLvl = new List<int>();
         upgradePrimary = new List<int>();
         nodeKey = new List<int>();
+        actionUI = GameObject.Find("Canvas/ActionUI");
     }
+
+    /*
+    void Update()
+    {
+
+    }
+    */
 
     public void Add(GameObject turret, int type, int nodeKey)
     {
@@ -41,6 +51,7 @@ public class Inventory
             return;
         }
 
-        Debug.Log("Tower #" + towerNo + " selected.");
+        //Debug.Log("Tower #" + towerNo + " selected.");
+        actionUI.GetComponent<UIAnimator>().RequestToggle();
     }
 }
