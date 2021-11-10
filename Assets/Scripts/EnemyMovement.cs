@@ -25,6 +25,11 @@ public class EnemyMovement : MonoBehaviour
         {
             GetNextWaypoint();
         }
+
+        Vector3 relativePos = target.position - transform.position;
+
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        transform.rotation = rotation;
     }
 
     void GetNextWaypoint()
