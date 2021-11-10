@@ -7,23 +7,21 @@ public class Enemy : MonoBehaviour
     private float defaultSpeed;
     public int damageValue = 10;
     public int totalHealth;
-    public int healthScaling = 5;
+    //public int healthScaling = 5;
     public bool radiation;
     public int radPercentage;
     public float radDuration;
     public float stunDuration = 2f;
     public bool stunnedUnit;
-    public MeshRenderer mRend;
-    public Color defaultColor;
+    //public SkinnedMeshRenderer mRend;
+    //public Color defaultColor;
     public float radTimer = 3f;
     public bool isTank;
 
 
     void Start()
     {
-        defaultColor = mRend.material.color;
-        defaultSpeed = speed;
-
+        //defaultColor = mRend.material.color;
     }
 
     void Update()
@@ -70,14 +68,14 @@ public class Enemy : MonoBehaviour
     public void activateRad()
     {
         radiation = true;
-        mRend.material.SetColor("_Color", Color.green);
+        //mRend.material.SetColor("_Color", Color.green);
         radTimer = 3f; 
     }
 
     public void radOff()
     {
         radiation = false;
-        mRend.material.color = defaultColor; 
+        //mRend.material.color = defaultColor; 
     }
 
     public void activateStun()
