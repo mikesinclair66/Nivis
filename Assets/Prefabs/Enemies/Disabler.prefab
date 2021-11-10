@@ -56,6 +56,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -115,6 +116,14 @@ MonoBehaviour:
   damageValue: 10
   totalHealth: 100
   healthScaling: 5
+  radiation: 0
+  radPercentage: 0
+  radDuration: 0
+  stunDuration: 0
+  stunnedUnit: 0
+  mRend: {fileID: 6915258751149511079}
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  radTimer: 3
 --- !u!114 &141058601007622880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e9badd0f2e06254daec5e5189082df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
+  damageValue: 10
+  totalHealth: 100
+  healthScaling: 5
   bulletPrefab: {fileID: 4732948899526178628, guid: c6308992319d2254889112fe32268b16, type: 3}
   range: 15
   firePoint: {fileID: 4085839119377503643}
