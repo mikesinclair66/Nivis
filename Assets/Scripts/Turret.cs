@@ -101,13 +101,13 @@ public class Turret : MonoBehaviour
     {
         disabled = true;
         mRend.material.SetColor("_Color", Color.red);
+        disableCountdown = 10f;
     }
 
     public void Enable()
     {
         disabled = false;
         mRend.material.color = defaultColor;
-        disableCountdown = 10f;
     }
 
     private void OnDrawGizmosSelected()
