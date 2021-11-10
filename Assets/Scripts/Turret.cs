@@ -17,6 +17,10 @@ public class Turret : MonoBehaviour
     // TODO: add bullet prefab and create fire point (e5)
     public GameObject bulletPrefab;
     public Transform firePoint;
+
+    private bool disabled = false;
+
+    public Renderer turretRenderer;
     
     [Header("Unity Setup Fields")]
 
@@ -36,13 +40,16 @@ public class Turret : MonoBehaviour
             return;
         }
 
-        if (fireCountdown <= 0)
+        if (disabled = false) 
         {
-            Shoot();
-            fireCountdown = 1f / fireRate;
-        }
+            if (fireCountdown <= 0)
+            {
+                Shoot();
+                fireCountdown = 1f / fireRate;
+            }
 
-        fireCountdown -= Time.deltaTime;
+            fireCountdown -= Time.deltaTime;
+        }
     }
 
     void Shoot()
@@ -78,6 +85,13 @@ public class Turret : MonoBehaviour
             target = null;
         }
     }
+
+    public void Disable()
+    {
+        disabled = true;
+        turretRenderer.material.SetColor("_Color", Color.red);
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

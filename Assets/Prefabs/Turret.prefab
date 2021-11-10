@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4560193758139878435}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +84,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -145,4 +144,5 @@ MonoBehaviour:
   fireRate: 1.5
   bulletPrefab: {fileID: 4717915890182366568, guid: 7ba3c4f1fc74d9a42b39c7fbaa6ebf34, type: 3}
   firePoint: {fileID: 4560193757292590416}
+  turretRenderer: {fileID: 4560193758139878437}
   enemyTag: Enemy
