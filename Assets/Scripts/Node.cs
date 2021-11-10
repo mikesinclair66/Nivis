@@ -13,11 +13,14 @@ public class Node : MonoBehaviour
     [Header("Optional")]
     public GameObject turret;
     public MeshRenderer mRend;
-    public BuildManager buildManager;    
+    public BuildManager buildManager;
+    public int key;
+    static int keyLength = 0;
 
     void Start ()
     {
         buildManager = BuildManager.instance;
+        key = keyLength++;
     }
 
     public Vector3 GetBuildPosition()
@@ -29,9 +32,13 @@ public class Node : MonoBehaviour
     {
         //if (EventSystem.current.IsPointerOverGameObject())
         //    return;
-        Debug.Log("Clicked on Node.");
+        //Debug.Log("Clicked on Node.");
         if (!buildManager.CanBuild)
         {
+            if(turret != null)
+            {
+                buildManager.inventory.SelectTower(key);
+            }
             return;
         }
         if (turret != null)

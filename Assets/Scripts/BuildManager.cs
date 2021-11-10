@@ -5,7 +5,7 @@ public class BuildManager : MonoBehaviour
 {
     // utilizing singleton pattern since only one build manager is needed for all nodes
     public static BuildManager instance;
-    Inventory inventory = new Inventory();
+    public Inventory inventory = new Inventory();
 
     // TODO: add turret prefab
     public GameObject standardTurretPrefab;
@@ -38,7 +38,7 @@ public class BuildManager : MonoBehaviour
             drill.currentMoney -= turretToBuild.cost;
 
             GameObject turret = Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-            inventory.Add(turret, turretToBuildType);
+            inventory.Add(turret, turretToBuildType, node.key);//nodekey
 
             if (turret != null)
             {
