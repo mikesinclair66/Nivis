@@ -49,11 +49,12 @@ public class Enemy : MonoBehaviour
         else if (totalHealth <= 0){Die();}
     }
 
+    /**
     public void ScaleHP()
     {
         if(WaveSpawner.waveIndex > 0){totalHealth += healthScaling;}
-        else{return;} 
-    }
+        else{return;}
+    }**/
 
     public void activateRad()
     {
@@ -65,8 +66,7 @@ public class Enemy : MonoBehaviour
     public void radOff()
     {
         radiation = false;
-        mRend.material.color = defaultColor;
-        
+        mRend.material.color = defaultColor; 
     }
 
     void Die()
