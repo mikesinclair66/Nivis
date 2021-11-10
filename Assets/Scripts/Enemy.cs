@@ -7,8 +7,6 @@ public class Enemy : MonoBehaviour
     public int totalHealth = 100;
     public int healthScaling = 5;
 
-    
-
     public void TakeDamage(int damageAmount)
     {
         if (totalHealth > 0)
@@ -23,7 +21,7 @@ public class Enemy : MonoBehaviour
     {
         if (WaveSpawner.waveIndex == 0){totalHealth = 100;}
         else if(WaveSpawner.waveIndex > 0){totalHealth += healthScaling;}
-        else{return;} 
+        else{return;}
     }
 
     void Die()
