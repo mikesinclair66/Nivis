@@ -80,8 +80,8 @@ public class Sniper : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
-            Debug.Log("ENEMY:", enemy.GetComponent<Enemy>());
-            Debug.Log(enemy.GetComponent<Enemy>().isTank);
+            //Debug.Log("ENEMY:", enemy.GetComponent<Enemy>());
+            //Debug.Log(enemy.GetComponent<Enemy>().isTank);
         
 
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);

@@ -71,7 +71,6 @@ public class TurretLaser : MonoBehaviour
 
     void Laser()
     {
-        Debug.Log("Time"+Time.deltaTime);
         target.GetComponent<Enemy>().TakeDamage(damageOverTime * Time.deltaTime * fireRate);
 
         if (!lineRenderer.enabled)

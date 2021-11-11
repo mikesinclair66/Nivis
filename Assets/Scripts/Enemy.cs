@@ -17,10 +17,16 @@ public class Enemy : MonoBehaviour
     public bool stunnedUnit;
     //public SkinnedMeshRenderer mRend;
     //public Color defaultColor;
+    public bool isTank;
+    public bool meleeSlowedUnit;
+    public float meleeSlowTimer = 0.5f;
+
+    private float defaultSpeed;
 
     void Start()
     {
         //defaultColor = mRend.material.color;
+        defaultSpeed = speed;
     }
 
     void Update()
@@ -30,6 +36,21 @@ public class Enemy : MonoBehaviour
             if (radTimer <= 0)
             {
                 radOff();
+            }
+        }
+
+        if (stunnedUnit == true){
+            //Debug.Log("Unit Stunned");
+            stunDuration -= Time.deltaTime;
+            if (stunDuration <= 0){
+                stunOff();
+            }
+        }
+        if (meleeSlowedUnit == true){
+            //Debug.Log("Unit Slowed");
+            meleeSlowTimer -= Time.deltaTime;
+            if (meleeSlowTimer <= 0){
+                meleeSlowOff();
             }
         }
     }
@@ -50,6 +71,27 @@ public class Enemy : MonoBehaviour
         else if (totalHealth <= 0){Die();}
     }
 
+    public void meleeDamage(int radiatorDamage){
+        Debug.Log("Enemy Found");
+        TakeDamage(radiatorDamage);
+        meleeActivateSlow();
+        //mRend.material.SetColor("_Color", Color.red);
+
+    }
+
+    public void meleeActivateSlow(){
+        meleeSlowedUnit = true;
+        speed = speed / 2;
+        meleeSlowTimer = 0.5f;
+        //meleeSlowOff();
+    }
+
+    public void meleeSlowOff(){
+        meleeSlowedUnit = false;
+        //mRend.material.color = defaultColor; 
+        Debug.Log("DEFAULT SPEED: " + defaultSpeed);
+        speed = defaultSpeed;
+    }
     /**
     public void ScaleHP()
     {
@@ -68,6 +110,22 @@ public class Enemy : MonoBehaviour
     {
         radiation = false;
         //mRend.material.color = defaultColor; 
+    }
+
+    public void activateStun()
+    {
+        stunnedUnit = true;
+        speed = 0f;
+        stunDuration = 1.5f;
+        //mRend.material.SetColor("_Color", Color.blue);
+
+    }
+
+    public void stunOff(){
+        stunnedUnit = false;
+        speed = defaultSpeed;
+        //mRend.material.color = defaultColor; 
+
     }
 
     void Die()

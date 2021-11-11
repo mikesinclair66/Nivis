@@ -14,7 +14,7 @@ public class Drill : MonoBehaviour
 
     void Start()
     {
-        currentMoney = 300f;
+        currentMoney = 3000f;
         drillLvl = 1;
         moneyRate = 5.5f;
         upgradeCost = 400f;
