@@ -34,6 +34,8 @@ public class NodeUI : MonoBehaviour {
         int upgradePath = target.getCurrentUpgradePath();
         UpgradePath path1 = target.turretBlueprint.paths[0];
         UpgradePath path2 = target.turretBlueprint.paths[1];
+        Debug.Log("UPGRADE TIER: "+upgradeTier);
+        Debug.Log("TARGET MAX UT: "+ target.getMaxUpgradeTier());
         if (upgradeTier == target.getMaxUpgradeTier())
         {
             if (upgradePath == 1)
