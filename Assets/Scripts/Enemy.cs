@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Enemy : MonoBehaviour
 {
-    public float speed;
-    private float defaultSpeed;
+    public float speed = 10f;
     public int damageValue = 10;
-    public int totalHealth;
+    public float totalHealth;
     //public int healthScaling = 5;
-    public bool radiation;
+
     public int radPercentage;
+    public float radTimer = 3f;
     public float radDuration;
-    public float stunDuration = 2f;
+    public bool radiation;
+
+    public float stunDuration;
     public bool stunnedUnit;
     //public SkinnedMeshRenderer mRend;
     //public Color defaultColor;
-    public float radTimer = 3f;
-    public bool isTank;
-
 
     void Start()
     {
@@ -33,16 +32,9 @@ public class Enemy : MonoBehaviour
                 radOff();
             }
         }
-        if (stunnedUnit == true){
-            Debug.Log("Unit Stunned");
-            stunDuration -= Time.deltaTime;
-            if (stunDuration <= 0){
-                stunOff();
-            }
-        }
     }
     
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         if (totalHealth > 0)
         {
@@ -76,22 +68,6 @@ public class Enemy : MonoBehaviour
     {
         radiation = false;
         //mRend.material.color = defaultColor; 
-    }
-
-    public void activateStun()
-    {
-        stunnedUnit = true;
-        speed = 0f;
-        stunDuration = 1.5f;
-        mRend.material.SetColor("_Color", Color.blue);
-
-    }
-
-    public void stunOff(){
-        stunnedUnit = false;
-        speed = defaultSpeed;
-        mRend.material.color = defaultColor; 
-
     }
 
     void Die()
