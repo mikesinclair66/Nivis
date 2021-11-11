@@ -8,16 +8,14 @@ public class Node : MonoBehaviour
 {
     public Color hoverColor;
     public Vector3 positionOffset = new Vector3(0, (float)0.5, 0);
-    // TODO: Add drill to node prefab
-    public Drill drill;
     [Header("Optional")]
     public GameObject turret;
     public MeshRenderer mRend;
     public BuildManager buildManager;
     public TurretBlueprint turretBlueprint;
+    private UpgradePath upgradePath;
     private int currentUpgradePath;
     private int currentUpgradeTier;
-    private int maxUpgradeTier = 3;
 
     void Start ()
     {
@@ -39,20 +37,22 @@ public class Node : MonoBehaviour
     }
     public int getMaxUpgradeTier()
     {
-        return maxUpgradeTier;
+        return upgradePath.upgrades.Count;
     }
     
     void BuildTurret(TurretBlueprint blueprint)
     {
         if (blueprint != null)
         {
-            if (drill.currentMoney < blueprint.cost)
+            Debug.Log("drill money: " + buildManager.drill.currentMoney);
+            Debug.Log("blueprint cost: " + blueprint.cost);
+            if (buildManager.drill.currentMoney < blueprint.cost)
             {
                 Debug.Log("Not enough money to build that!");
                 return;
             }
 
-            drill.currentMoney -= blueprint.cost;
+            buildManager.drill.currentMoney -= blueprint.cost;
 
             turretBlueprint = blueprint;
 
@@ -61,8 +61,7 @@ public class Node : MonoBehaviour
             if (_turret != null)
             {
                 turret = _turret;
-                Debug.Log("Turret build! Money left: " + drill.currentMoney);
-                currentUpgradePath = 0;
+                Debug.Log("Turret build! Money left: " + buildManager.drill.currentMoney);
                 currentUpgradeTier = 0;
             }
         }
@@ -72,9 +71,9 @@ public class Node : MonoBehaviour
     {
         if (turret != null)
         {
-            drill.currentMoney += turretBlueprint.sellValue;
+            buildManager.drill.currentMoney += turretBlueprint.sellValue;
 
-            currentUpgradePath = 0;
+            upgradePath = null;
             currentUpgradeTier = 0;
 
             Destroy(turret);
@@ -87,24 +86,24 @@ public class Node : MonoBehaviour
         //if (EventSystem.current.IsPointerOverGameObject())
         //    return;
         Debug.Log("Clicked on Node.");
-        if (!buildManager.CanBuild)
+        if (!buildManager.isTurretSelected && turret == null)
         {
             return;
         }
         if (turret != null)
         {
-            Debug.Log("Can't build there! - TODO: Display on screen.");
+            buildManager.SelectNode(this);
             return;
         }
         BuildTurret(buildManager.GetTurretToBuild());
         // Deselects turret to build in build manager after building a turret
-        buildManager.SelectTurretToBuild(null);
+        // buildManager.SelectTurretToBuild(null);
     }
     void OnMouseEnter()
     {
         //if (EventSystem.current.IsPointerOverGameObject())
         //    return;
-        if (!buildManager.CanBuild)
+        if (!buildManager.isTurretSelected && turret == null)
             return;
         mRend.enabled = true;
     }
@@ -118,20 +117,21 @@ public class Node : MonoBehaviour
 
     public void UpgradeTurret(int path, int tier)
     {
-        List<UpgradeBlueprint> requestedPath = getUpgradeBlueprints(path);
+        UpgradePath requestedPath = getUpgradePath(path);
         if (!canUpgrade(path, tier))
         {
             return;
         }
-        drill.currentMoney -= turretBlueprint.cost;
+        buildManager.drill.currentMoney -= turretBlueprint.cost;
 
         Destroy(turret);
-        GameObject _turret = Instantiate(requestedPath[tier].prefab, GetBuildPosition(), Quaternion.identity);
+        GameObject _turret = Instantiate(requestedPath.upgrades[tier-1].prefab, GetBuildPosition(), Quaternion.identity);
         
         if (_turret != null)
         {
             turret = _turret;
-            Debug.Log("Turret upgraded! Money left: " + drill.currentMoney);
+            Debug.Log("Turret upgraded! Money left: " + buildManager.drill.currentMoney);
+            upgradePath = requestedPath;
             currentUpgradePath = path;
             currentUpgradeTier = tier;
         }
@@ -139,7 +139,7 @@ public class Node : MonoBehaviour
 
     public bool canUpgrade(int path, int tier)
     {
-        List<UpgradeBlueprint> requestedPath = getUpgradeBlueprints(path);
+        UpgradePath requestedPath = getUpgradePath(path);
         
         if (requestedPath == null)
         {
@@ -147,13 +147,13 @@ public class Node : MonoBehaviour
             return false;
         }
 
-        if (!validateRequestedPath(path) || !validateRequestedTier(tier))
+        if (!validateRequestedPath(path) || !validateRequestedTier(requestedPath, tier))
         {
             Debug.Log("Invalid path or tier. Cannot upgrade.");
             return false;
         }
         
-        if (drill.currentMoney < requestedPath[tier].cost)
+        if (buildManager.drill.currentMoney < requestedPath.upgrades[tier-1].cost)
         {
             Debug.Log("Not enough money to upgrade that!");
             return false;
@@ -161,18 +161,10 @@ public class Node : MonoBehaviour
         return true;
     }
 
-    private List<UpgradeBlueprint> getUpgradeBlueprints(int path)
+    private UpgradePath getUpgradePath(int path)
     {
-        List<UpgradeBlueprint> requestedPath;
-        if (path == 1)
-        {
-            requestedPath = turretBlueprint.upgradeBlueprintsPath1;
-        }
-        else if (path == 2)
-        {
-            requestedPath = turretBlueprint.upgradeBlueprintsPath2;
-        }
-        else
+        UpgradePath requestedPath = turretBlueprint.paths[path - 1];
+        if (requestedPath == null)
         {
             Debug.Log("Cannot get upgrade blueprint of requested path");
             return null;
@@ -182,7 +174,7 @@ public class Node : MonoBehaviour
 
     private bool validateRequestedPath(int path)
     {
-        if (currentUpgradePath == 0)
+        if (upgradePath == null)
         {
             return path == 1 || path == 2;
         }
@@ -192,9 +184,9 @@ public class Node : MonoBehaviour
         }
     }
 
-    private bool validateRequestedTier(int tier)
+    private bool validateRequestedTier(UpgradePath path, int tier)
     {
-        if (tier > maxUpgradeTier)
+        if (tier > path.upgrades.Count)
         {
             return false;
         }
@@ -202,5 +194,11 @@ public class Node : MonoBehaviour
         {
             return tier == currentUpgradeTier + 1;
         }
+    }
+
+    // TODO: implement this function
+    private bool hasResearch()
+    {
+        return true;
     }
 }

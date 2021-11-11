@@ -5,8 +5,7 @@ using UnityEngine;
 public class TurretBlueprint
 {
     public GameObject prefab;
-    public List<UpgradeBlueprint> upgradeBlueprintsPath1;
-    public List<UpgradeBlueprint> upgradeBlueprintsPath2;
+    public List<UpgradePath> paths;
     public int cost;
     public int sellValue;
 

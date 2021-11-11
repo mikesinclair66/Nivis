@@ -30,16 +30,16 @@ public class NodeUI : MonoBehaviour {
 
     private void applyUpgradeText()
     {
-        int upgradePath = target.getCurrentUpgradePath();
         int upgradeTier = target.getCurrentUpgradeTier();
-        List<UpgradeBlueprint> path1 = target.turretBlueprint.upgradeBlueprintsPath1;
-        List<UpgradeBlueprint> path2 = target.turretBlueprint.upgradeBlueprintsPath2;
+        int upgradePath = target.getCurrentUpgradePath();
+        UpgradePath path1 = target.turretBlueprint.paths[0];
+        UpgradePath path2 = target.turretBlueprint.paths[1];
         if (upgradeTier == 0)
         {
-            int path1cost = path1[0].cost;
-            int path2cost = path2[0].cost;
+            int path1cost = target.turretBlueprint.paths[0].upgrades[0].cost;
+            int path2cost = target.turretBlueprint.paths[1].upgrades[0].cost;
             upgradeCostPath1.text = "$" + path1cost;
-            upgradeCostPath1.text = "$" + path2cost;
+            upgradeCostPath2.text = "$" + path2cost;
             upgradeButton1.interactable = true;
             upgradeButton2.interactable = true;
         }
@@ -61,14 +61,18 @@ public class NodeUI : MonoBehaviour {
         {
             if (upgradePath == 1)
             {
-                int path1cost = path1[upgradeTier+1].cost;
+                int path1cost = path1.upgrades[upgradeTier].cost;
                 upgradeCostPath1.text = "$" + path1cost;
+                upgradeCostPath2.text = "UNAVAILABLE";
+                upgradeButton2.interactable = false;
             }
 
             if (upgradePath == 2)
             {
-                int path2cost = path2[upgradeTier+1].cost;
-                upgradeCostPath1.text = "$" + path2cost;
+                int path2cost = path2.upgrades[upgradeTier].cost;
+                upgradeCostPath2.text = "$" + path2cost;
+                upgradeCostPath1.text = "UNAVAILABLE";
+                upgradeButton1.interactable = false;
             }
         }
     }
@@ -79,8 +83,9 @@ public class NodeUI : MonoBehaviour {
     }
 
     // TODO: hook upgrade button in turret UI to this upgrade function
-    public void Upgrade (int path, int tier)
+    public void Upgrade (int path)
     {
+        int tier = target.getCurrentUpgradeTier() + 1;
         target.UpgradeTurret(path, tier);
         BuildManager.instance.DeselectNode();
     }

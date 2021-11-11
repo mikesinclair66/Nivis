@@ -12,7 +12,8 @@ public class BuildManager : MonoBehaviour
     // TODO: add turret prefab
     public GameObject standardTurretPrefab;
     public GameObject missileLauncherPrefab;
-    
+
+    public Drill drill;
     public NodeUI nodeUI;
     
     // TODO: add select/deselect code for the turret UI, optional depending on how we plan to implement this
@@ -26,7 +27,7 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
     
-    public bool CanBuild { get { return turretToBuild != null;  } }
+    public bool isTurretSelected { get { return turretToBuild != null;  } }
 
     public void SelectNode (Node node)
     {

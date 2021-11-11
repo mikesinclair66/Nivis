@@ -83,14 +83,14 @@ public class Enemy : MonoBehaviour
         stunnedUnit = true;
         speed = 0f;
         stunDuration = 1.5f;
-        mRend.material.SetColor("_Color", Color.blue);
+        // mRend.material.SetColor("_Color", Color.blue);
 
     }
 
     public void stunOff(){
         stunnedUnit = false;
         speed = defaultSpeed;
-        mRend.material.color = defaultColor; 
+        // mRend.material.color = defaultColor; 
 
     }
 
