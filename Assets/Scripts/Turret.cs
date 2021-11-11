@@ -7,9 +7,9 @@ public class Turret : MonoBehaviour
 {
 
     private Transform target;
+
     
     [Header("Attributes")]
-    
     public float range = 15f;
     public float fireRate = 2f;
     private float fireCountdown = 0f;
@@ -22,12 +22,10 @@ public class Turret : MonoBehaviour
     public MeshRenderer mRend;
     public Color defaultColor;
     private float disableCountdown = 10f;
-
     [Header("Unity Setup Fields")]
 
     // TODO: set enemy prefab with the enemy tag
     public string enemyTag = "Enemy";
-    
     // TODO: logic to rotate the turret when it sees an enemy (e4)
     void Start()
     {
@@ -84,7 +82,7 @@ public class Turret : MonoBehaviour
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
             }
-            
+
         }
 
         if (nearestEnemy != null && shortestDistance <= range)
