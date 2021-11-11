@@ -117,7 +117,7 @@ MonoBehaviour:
   MeleeTurret: 1
   MeleeRange: 15
   meleeDamage: 10
-  fireRate: 1
+  PulseRate: 2
   enemyTag: Enemy
 --- !u!1 &2451574597424519167
 GameObject:

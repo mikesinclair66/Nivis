@@ -119,6 +119,12 @@ MonoBehaviour:
   radiation: 0
   stunDuration: 0
   stunnedUnit: 0
+  isTank: 0
+  meleeSlowedUnit: 0
+  meleeSlowTimer: 0.5
+  burning: 0
+  burnTimer: 5
+  TickDamageTimer: 0.5
 --- !u!114 &8174042115733384411
 MonoBehaviour:
   m_ObjectHideFlags: 0
