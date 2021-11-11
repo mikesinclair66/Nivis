@@ -17,14 +17,14 @@ public class Shop : MonoBehaviour
 
     public void SelectStandardTurret()
     {
-        Debug.Log("Standard Turret Selected");
-        buildManager.SelectTurretToBuild(standardTurret);
+        //Debug.Log("Standard Turret Selected");
+        buildManager.SelectTurretToBuild(standardTurret, 0);
     }
 
     public void SelectMissileLauncher()
     {
-        Debug.Log("Missile Launcher Selected");
-        buildManager.SelectTurretToBuild(missileLauncher);
+        //Debug.Log("Missile Launcher Selected");
+        buildManager.SelectTurretToBuild(missileLauncher, 1);
     }
 
     // Update is called once per frame

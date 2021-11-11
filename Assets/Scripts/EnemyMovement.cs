@@ -9,11 +9,13 @@ public class EnemyMovement : MonoBehaviour
     private int wavepointIndex = 0;
 
     private Enemy enemy;
+    GameObject generator;
 
     void Start()
     {
         enemy = GetComponent<Enemy>();
         target = Waypoints.points[0];
+        generator = GameObject.Find("END");
     }
 
     void Update()
@@ -45,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
 
     void EndPath()
     {
-        Generator.TakeDamage(enemy.damageValue);
+        generator.GetComponent<Generator>().TakeDamage(enemy.damageValue);
         WaveSpawner.EnemiesAlive--;
         Destroy(gameObject);
     }
