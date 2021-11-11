@@ -5,16 +5,18 @@ public class Enemy : MonoBehaviour
 {
     public float speed = 10f;
     public int damageValue = 10;
-    public int totalHealth;
+    public float totalHealth;
     //public int healthScaling = 5;
-    public bool radiation;
+
     public int radPercentage;
+    public float radTimer = 3f;
     public float radDuration;
+    public bool radiation;
+
     public float stunDuration;
     public bool stunnedUnit;
     //public SkinnedMeshRenderer mRend;
     //public Color defaultColor;
-    public float radTimer = 3f;
 
     void Start()
     {
@@ -32,7 +34,7 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         if (totalHealth > 0)
         {
