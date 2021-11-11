@@ -34,16 +34,7 @@ public class NodeUI : MonoBehaviour {
         int upgradePath = target.getCurrentUpgradePath();
         UpgradePath path1 = target.turretBlueprint.paths[0];
         UpgradePath path2 = target.turretBlueprint.paths[1];
-        if (upgradeTier == 0)
-        {
-            int path1cost = target.turretBlueprint.paths[0].upgrades[0].cost;
-            int path2cost = target.turretBlueprint.paths[1].upgrades[0].cost;
-            upgradeCostPath1.text = "$" + path1cost;
-            upgradeCostPath2.text = "$" + path2cost;
-            upgradeButton1.interactable = true;
-            upgradeButton2.interactable = true;
-        }
-        else if (upgradeTier == target.getMaxUpgradeTier())
+        if (upgradeTier == target.getMaxUpgradeTier())
         {
             if (upgradePath == 1)
             {
@@ -56,6 +47,15 @@ public class NodeUI : MonoBehaviour {
                 upgradeCostPath2.text = "DONE";
                 upgradeButton2.interactable = false;
             }
+        }
+        else if (upgradeTier == 0)
+        {
+            int path1cost = target.turretBlueprint.paths[0].upgrades[0].cost;
+            int path2cost = target.turretBlueprint.paths[1].upgrades[0].cost;
+            upgradeCostPath1.text = "$" + path1cost;
+            upgradeCostPath2.text = "$" + path2cost;
+            upgradeButton1.interactable = true;
+            upgradeButton2.interactable = true;
         }
         else
         {
