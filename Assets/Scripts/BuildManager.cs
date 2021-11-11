@@ -12,6 +12,7 @@ public class BuildManager : MonoBehaviour
     // TODO: add turret prefab
     public GameObject standardTurretPrefab;
     public GameObject missileLauncherPrefab;
+    public GameObject MeleeTurretPrefab;
 
     public Drill drill;
     public NodeUI nodeUI;

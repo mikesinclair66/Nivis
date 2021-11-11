@@ -6,14 +6,28 @@ using UnityEngine.UI;
 
 public class Generator : MonoBehaviour
 {
-    public int totalHealth = 100;
+    public static int totalHealth = 100;
 
     public Text genHealth;
-    GameObject canvas;
+
+    /*GameObject damageModBar;
+    float damageMod = 1.0f;
+    Text genHealth;
+    Vector3 origPos, origScale;*/
 
     void Start()
     {
-        canvas = GameObject.Find("Canvas");
+        Debug.Log("HP: " + totalHealth);
+        /*origPos = new Vector3(
+            damageModBar.transform.position.x,
+            damageModBar.transform.position.y,
+            damageModBar.transform.position.z
+        );
+        origScale = new Vector3(
+            damageModBar.transform.localScale.x,
+            damageModBar.transform.localScale.y,
+            damageModBar.transform.localScale.z
+        );*/
     }
 
     void Update()
@@ -22,13 +36,13 @@ public class Generator : MonoBehaviour
         //HealthBar();
     }
 
-    public void TakeDamage(int damageAmount)
+    public static void TakeDamage(int damageAmount)
     {
         if (totalHealth > 0)
         {
             totalHealth -= damageAmount;
-            canvas.GetComponent<Hotbar>().TakeDamage(totalHealth);
 
+            Debug.Log("HP: " + totalHealth);
             if (totalHealth <= 0)
             {
                 SceneManager.LoadScene("EndScene");
