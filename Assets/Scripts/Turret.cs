@@ -14,7 +14,7 @@ public class Turret : MonoBehaviour
     public float fireRate = 2f;
     private float fireCountdown = 0f;
 
-    // TODO: add bullet prefab and create fire point (e5)
+    // TODO: create fire point when adding model (e5)
     public GameObject bulletPrefab;
     public Transform firePoint;
 
@@ -24,7 +24,6 @@ public class Turret : MonoBehaviour
     private float disableCountdown = 10f;
     [Header("Unity Setup Fields")]
 
-    // TODO: set enemy prefab with the enemy tag
     public string enemyTag = "Enemy";
     // TODO: logic to rotate the turret when it sees an enemy (e4)
     void Start()

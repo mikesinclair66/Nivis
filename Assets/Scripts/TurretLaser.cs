@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sniper : MonoBehaviour
+public class TurretLaser : MonoBehaviour
 {
 
     private Transform target;
@@ -11,12 +10,11 @@ public class Sniper : MonoBehaviour
     [Header("Attributes")]
 
     public float range = 15f;
-    public float fireRate = 2f;
-    private float fireCountdown = 0f;
+    public int damageOverTime = 10;
+    public float fireRate = 5f;
 
-    // TODO: add bullet prefab and create fire point (e5)
-    public GameObject bulletPrefab;
     public Transform firePoint;
+    public LineRenderer lineRenderer;
 
     public bool disabled = false;
     public MeshRenderer mRend;
@@ -48,27 +46,40 @@ public class Sniper : MonoBehaviour
 
         if (target == null)
         {
+            if (lineRenderer.enabled)
+            {
+                lineRenderer.enabled = false;
+            }
             return;
         }
 
+        LockOnTarget();
+
         if (disabled != true)
         {
-            if (fireCountdown <= 0)
-            {
-                Shoot();
-                fireCountdown = 1f / fireRate;
-            }
-
-            fireCountdown -= Time.deltaTime;
+            Laser();
         }
     }
 
-    void Shoot()
+    void LockOnTarget()
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
-        if (bullet != null)
-            bullet.Seek(target);
+        Vector3 dir = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        //Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime);
+        //partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+    }
+
+    void Laser()
+    {
+        target.GetComponent<Enemy>().TakeDamage(damageOverTime * Time.deltaTime * fireRate);
+
+        if (!lineRenderer.enabled)
+        {
+            lineRenderer.enabled = true;
+        }
+
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, target.position);
     }
 
     void UpdateClosestTarget()
@@ -76,38 +87,20 @@ public class Sniper : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
-
-
         foreach (GameObject enemy in enemies)
         {
-            //Debug.Log("ENEMY:", enemy.GetComponent<Enemy>());
-            //Debug.Log(enemy.GetComponent<Enemy>().isTank);
-        
-
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             if (distanceToEnemy < shortestDistance)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
-
             }
-            if (enemy.GetComponent<Enemy>().isTank == true)
-            {
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
-            }
-
 
         }
-
-
-
-
 
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
-
         }
         else
         {
@@ -134,3 +127,4 @@ public class Sniper : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);
     }
 }
+

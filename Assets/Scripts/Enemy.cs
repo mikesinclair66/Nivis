@@ -3,27 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Enemy : MonoBehaviour
 {
-    public float speed;
-    private float defaultSpeed;
+    public float speed = 10f;
     public int damageValue = 10;
-    public int totalHealth;
+    public float totalHealth;
     //public int healthScaling = 5;
-    public bool radiation;
+
     public int radPercentage;
-    public float radDuration;
-    public float stunDuration = 2f;
-    public bool stunnedUnit;
-    public SkinnedMeshRenderer mRend;
-    public Color defaultColor;
     public float radTimer = 3f;
+    public float radDuration;
+    public bool radiation;
+
+    public float stunDuration;
+    public bool stunnedUnit;
+    //public SkinnedMeshRenderer mRend;
+    //public Color defaultColor;
     public bool isTank;
     public bool meleeSlowedUnit;
     public float meleeSlowTimer = 0.5f;
 
+    private float defaultSpeed;
 
     void Start()
     {
-        defaultColor = mRend.material.color;
+        //defaultColor = mRend.material.color;
         defaultSpeed = speed;
     }
 
@@ -36,15 +38,16 @@ public class Enemy : MonoBehaviour
                 radOff();
             }
         }
+
         if (stunnedUnit == true){
-            Debug.Log("Unit Stunned");
+            //Debug.Log("Unit Stunned");
             stunDuration -= Time.deltaTime;
             if (stunDuration <= 0){
                 stunOff();
             }
         }
         if (meleeSlowedUnit == true){
-            Debug.Log("Unit Slowed");
+            //Debug.Log("Unit Slowed");
             meleeSlowTimer -= Time.deltaTime;
             if (meleeSlowTimer <= 0){
                 meleeSlowOff();
@@ -52,7 +55,7 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         if (totalHealth > 0)
         {
@@ -72,7 +75,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("Enemy Found");
         TakeDamage(radiatorDamage);
         meleeActivateSlow();
-        mRend.material.SetColor("_Color", Color.red);
+        //mRend.material.SetColor("_Color", Color.red);
 
     }
 
@@ -85,7 +88,7 @@ public class Enemy : MonoBehaviour
 
     public void meleeSlowOff(){
         meleeSlowedUnit = false;
-        mRend.material.color = defaultColor; 
+        //mRend.material.color = defaultColor; 
         Debug.Log("DEFAULT SPEED: " + defaultSpeed);
         speed = defaultSpeed;
     }
