@@ -5,11 +5,15 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Transform target;
-    
+
     [Header("Attributes")]
     public float speed = 70f;
     public int damage = 50;
     public float explosionRadius = 0f;
+    //public int dotDamage = 0;
+    public bool radiation;
+    public bool stunShot;
+
     // TODO: add particle effect (e5)
 
     public void Seek(Transform _target)
@@ -23,7 +27,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
+
         Vector3 dir = target.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
 
@@ -37,9 +41,9 @@ public class Bullet : MonoBehaviour
         transform.LookAt(target);
 
     }
-    
+
     // TODO: find which video this code is relevant, might remove before alpha build
-    void HitTarget ()
+    void HitTarget()
     {
         //GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
         //Destroy(effectIns, 5f);
@@ -47,11 +51,16 @@ public class Bullet : MonoBehaviour
         if (explosionRadius > 0f)
         {
             Explode();
-        } else
+        }
+        // else if (stunShot == true && sniperUnit == true)
+        // {
+        //     Sniper();
+        // }
+        else
         {
             Damage(target);
         }
-        
+
         Destroy(gameObject);
     }
 
@@ -63,18 +72,43 @@ public class Bullet : MonoBehaviour
             if (collider.tag == "Enemy")
             {
                 Damage(collider.transform);
+                
             }
         }
     }
 
+    // void Sniper()
+    // {
+    //     if (isTank == true)
+    //     {
+    //         Damage();
+    //     }
+    //     else {
+    //         Damage(target);
+    //     }
+    // }
+
+    
+
     // TODO: connect with enemy code
-    void Damage (Transform enemy)
+    void Damage(Transform enemy)
     {
         Enemy e = enemy.GetComponent<Enemy>();
-        
+
         if (e != null)
         {
-             e.TakeDamage(damage);
+            e.TakeDamage(damage);
+            Debug.Log("Reach here");
+            if (radiation == true)
+            {
+                e.activateRad();
+            }
+            if (stunShot == true)
+            {
+                e.activateStun();
+                Debug.Log("Activate Stun: " + e.stunnedUnit );
+            }
         }
+        
     }
 }

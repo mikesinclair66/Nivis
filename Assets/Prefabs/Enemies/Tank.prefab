@@ -54,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -113,6 +114,15 @@ MonoBehaviour:
   damageValue: 100
   totalHealth: 1000
   healthScaling: 5
+  radiation: 0
+  radPercentage: 10
+  radDuration: 2
+  stunDuration: 2
+  stunnedUnit: 0
+  mRend: {fileID: 6915258751149511079}
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  radTimer: 3
+  isTank: 1
 --- !u!114 &8174042115733384411
 MonoBehaviour:
   m_ObjectHideFlags: 0

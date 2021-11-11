@@ -44,17 +44,20 @@ public class WaveSpawner : MonoBehaviour
         {
             Wave wave = waves[waveIndex];
 
-            enemy.GetComponent<Enemy>().ScaleHP();
+            //enemy.GetComponent<Enemy>().ScaleHP();
 
             waveIndexText.text = "Wave: " + waveIndex.ToString();
             waveIndexText.text = "R" + waveIndex.ToString();
 
-            for (int i = 0; i < wave.count; i++)
+            foreach (WaveEnemy i in wave.waveEnemies)
             {
-                SpawnEnemy(wave.enemy);
-                yield return new WaitForSeconds(1f / wave.rate);
+                for (int j = 0; j < i.count; j++)
+                {
+                    SpawnEnemy(i.enemy);
+                    yield return new WaitForSeconds(1f / i.rate);
+                }
             }
-
+            
             waveIndex++;
 
             //Debug.Log("waveIndex: " + waveIndex);

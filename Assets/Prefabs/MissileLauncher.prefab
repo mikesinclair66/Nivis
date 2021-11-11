@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7587005419644635306}
   m_Layer: 0
   m_Name: MissileLauncher
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,4 +144,5 @@ MonoBehaviour:
   fireRate: 0.75
   bulletPrefab: {fileID: 4996553150205118966, guid: 47c66f8abda8e754399f33a383dec31d, type: 3}
   firePoint: {fileID: 2826001350383957885}
+  turretRenderer: {fileID: 4750636893543980604}
   enemyTag: Enemy
