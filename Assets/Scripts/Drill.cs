@@ -5,20 +5,12 @@ using UnityEngine.UI;
 
 public class Drill : MonoBehaviour
 {
-    public float currentMoney;
-    public float moneyRate;
-    public int drillLvl;
-    public float upgradeCost;
+    public float currentMoney = 3000f;
+    public float moneyRate = 5.5f;
+    public int drillLvl = 1;
+    public float upgradeCost = 400f;
 
     public Text totalMoneyText, upgradeCostText;
-
-    void Start()
-    {
-        currentMoney = 3000f;
-        drillLvl = 1;
-        moneyRate = 5.5f;
-        upgradeCost = 400f;
-    }
 
     void Update()
     {
