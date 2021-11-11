@@ -3179,7 +3179,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 466912429}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1654597096}
+        m_TargetAssemblyTypeName: NodeUI, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &499462968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5117,26 +5129,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardTurret:
     prefab: {fileID: 4560193758139878433, guid: ba31b6d1970f6d64fb27162921f4614a, type: 3}
-    upgradeBlueprintsPath1:
-    - prefab: {fileID: 4560193758139878433, guid: 395aa4b6169b46d449b6a24a2396c80f, type: 3}
-      cost: 255
-      sellValue: 0
-    - prefab: {fileID: 4560193758139878433, guid: b02b62f6f84abfd47be381461573bbba, type: 3}
-      cost: 405
-      sellValue: 0
-    upgradeBlueprintsPath2:
-    - prefab: {fileID: 4287252505085212748, guid: 59ddb42239132b14792c72068a4afc64, type: 3}
-      cost: 250
-      sellValue: 0
-    - prefab: {fileID: 4287252505085212748, guid: 669c6f0b782bd3c428502e66a4540566, type: 3}
-      cost: 400
-      sellValue: 0
+    paths:
+    - upgrades:
+      - prefab: {fileID: 4560193758139878433, guid: 395aa4b6169b46d449b6a24a2396c80f, type: 3}
+        cost: 255
+        sellValue: 0
+      - prefab: {fileID: 4560193758139878433, guid: b02b62f6f84abfd47be381461573bbba, type: 3}
+        cost: 355
+        sellValue: 0
+    - upgrades:
+      - prefab: {fileID: 4287252505085212748, guid: 59ddb42239132b14792c72068a4afc64, type: 3}
+        cost: 250
+        sellValue: 0
+      - prefab: {fileID: 4287252505085212748, guid: 669c6f0b782bd3c428502e66a4540566, type: 3}
+        cost: 350
+        sellValue: 0
     cost: 200
     sellValue: 0
   missileLauncher:
     prefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
-    upgradeBlueprintsPath1: []
-    upgradeBlueprintsPath2: []
+    paths: []
     cost: 300
     sellValue: 0
 --- !u!1 &835812077
@@ -6199,7 +6211,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 990050604}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1654597096}
+        m_TargetAssemblyTypeName: NodeUI, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &990050604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7670,7 +7694,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1246243537}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1654597096}
+        m_TargetAssemblyTypeName: NodeUI, Assembly-CSharp
+        m_MethodName: Sell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1246243537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10220,7 +10256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1654597096
 MonoBehaviour:
   m_ObjectHideFlags: 0
