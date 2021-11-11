@@ -24,7 +24,7 @@ public class Melee : MonoBehaviour
     public bool MeleeTurret;
     public float MeleeRange;
     public int meleeDamage;
-    public float fireRate;
+    public float PulseRate;
 
     [Header("Unity Setup Fields")]
 
@@ -34,7 +34,7 @@ public class Melee : MonoBehaviour
     // TODO: logic to rotate the turret when it sees an enemy (e4)
     void Start()
     {
-        InvokeRepeating("UpdateClosestTarget", 0f, fireRate);
+        InvokeRepeating("UpdateClosestTarget", 0f, PulseRate);
         defaultColor = mRend.material.color;
     }
 
