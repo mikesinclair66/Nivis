@@ -2982,7 +2982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardTurretPrefab: {fileID: 4560193758139878433, guid: ba31b6d1970f6d64fb27162921f4614a, type: 3}
   missileLauncherPrefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
-  drill: {fileID: 0}
+  drill: {fileID: 482290806}
   nodeUI: {fileID: 1654597096}
 --- !u!1 &459482104
 GameObject:
@@ -3192,6 +3192,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &482290806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
+  m_PrefabInstance: {fileID: 1300318079}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae47ad1b03259c44b72dced2ab6a12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &499462968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5148,7 +5159,24 @@ MonoBehaviour:
     sellValue: 0
   missileLauncher:
     prefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
-    paths: []
+    paths:
+    - upgrades:
+      - prefab: {fileID: 5779901267874478193, guid: 16731d2ebc54a454f90ffcb006563770, type: 3}
+        cost: 1
+        sellValue: 0
+      - prefab: {fileID: 5180636087819770958, guid: f53c7a433eef92f4295053ce07f6fbbc, type: 3}
+        cost: 2
+        sellValue: 0
+      - prefab: {fileID: 4146561551815185065, guid: 326839e16827dcf4fbbece5f505ea0c5, type: 3}
+        cost: 3
+        sellValue: 0
+    - upgrades:
+      - prefab: {fileID: 2537138205400791784, guid: c6edeef2b01bb404c81aac0ad3ebb1b5, type: 3}
+        cost: 1
+        sellValue: 0
+      - prefab: {fileID: 2610595375598393852, guid: 13d4d9f6177a3e141827cc20a1d25adb, type: 3}
+        cost: 2
+        sellValue: 0
     cost: 300
     sellValue: 0
 --- !u!1 &835812077
@@ -7877,6 +7905,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drill
       objectReference: {fileID: 0}
+    - target: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
+      propertyPath: totalMoneyText
+      value: 
+      objectReference: {fileID: 1982901264}
+    - target: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
+      propertyPath: upgradeCostText
+      value: 
+      objectReference: {fileID: 181585244}
     - target: {fileID: 4619690727213847595, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
       propertyPath: m_RootOrder
       value: 11
