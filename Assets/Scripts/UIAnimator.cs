@@ -67,19 +67,14 @@ public class UIAnimator : MonoBehaviour
         secondTransition = false;
         tRatio = 0;
         elapsedTime = 0;
-        if (!firstToggle)
+        //only does animation one for opening UI, every time for closing
+        if (!toggled)
+            animating = true;
+        else if (!firstToggle)
         {
             firstToggle = true;
             animating = true;
         }
-        /*if (toggled)
-        {
-            
-        }
-        else
-        {
-
-        }*/
     }
 
     public void RequestToggle()
