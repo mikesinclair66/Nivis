@@ -115,6 +115,9 @@ MonoBehaviour:
   fireRate: 0.1
   bulletPrefab: {fileID: 6700399589954572924, guid: 3e6cba64ef1f33e46b8b9cf0fb698078, type: 3}
   firePoint: {fileID: 6294592315239249171}
+  disabled: 0
+  mRend: {fileID: 3977568645394725500}
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
   enemyTag: Enemy
 --- !u!1 &8479411016842816442
 GameObject:
