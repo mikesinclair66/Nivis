@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Turret
+  - Melee
   layers:
   - Default
   - TransparentFX

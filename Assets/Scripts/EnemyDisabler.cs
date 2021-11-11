@@ -30,6 +30,7 @@ public class EnemyDisabler : MonoBehaviour
         {
             Shoot();
         }
+        
     }
 
     void Shoot()
