@@ -35,46 +35,59 @@ public class UIAnimator : MonoBehaviour
             else if(!secondTransition)
             {
                 if (toggled)
+                {
                     tRatio = elapsedTime / SPEED1;
+                    gameObject.transform.localScale = new Vector3(tRatio * initScale.x,
+                        0.025f, initScale.z);
+                }
                 else
+                {
                     tRatio = (SPEED1 - elapsedTime) / SPEED1;
-
-                gameObject.transform.localScale = new Vector3(tRatio * initScale.x, 0.05f, initScale.z);
+                    gameObject.transform.localScale = new Vector3(initScale.x,
+                        initScale.y * tRatio, initScale.z);
+                }
             }
 
             if (secondTransition)
             {
                 if (toggled)
+                {
                     tRatio = ((elapsedTime >= SPEED2) ? 1 : elapsedTime / SPEED2);
+                    gameObject.transform.localScale = new Vector3(initScale.x,
+                        tRatio * initScale.y, initScale.z);
+                }
                 else
+                {
                     tRatio = ((elapsedTime >= SPEED2) ? 0 : (SPEED2 - elapsedTime) / SPEED2);
-
-                gameObject.transform.localScale = new Vector3(initScale.x,
-                    tRatio * initScale.y, initScale.z);
+                    gameObject.transform.localScale = new Vector3(tRatio * initScale.x,
+                        0.025f, initScale.z);
+                }
             }
 
             if (elapsedTime >= SPEED1 + SPEED2)
             {
                 animating = false;
-                innerEl.SetActive(true);
+                innerEl.SetActive(toggled);
             }
         }
     }
 
-    void Toggle()
+    public void Toggle()
     {
         toggled = !toggled;
         secondTransition = false;
         tRatio = 0;
         elapsedTime = 0;
-        //only does animation one for opening UI, every time for closing
-        if (!toggled)
-            animating = true;
-        else if (!firstToggle)
+        if (firstToggle && toggled)
+            gameObject.transform.localScale = new Vector3(initScale.x,
+                initScale.y, initScale.z);
+        if (!firstToggle)
         {
-            firstToggle = true;
             animating = true;
+            firstToggle = true;
         }
+        else if (!toggled)
+            animating = true;
     }
 
     public void RequestToggle()

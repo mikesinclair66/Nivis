@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
 {
     List<GameObject> turrets;
     List<int> turretType, upgradeLvl, upgradePrimary, nodeKey;
-    GameObject actionUI, upgradeBtn, upgradeBtn1, upgradeBtn2, upgradeContainer, turretName;
+    GameObject actionUI, upgradeBtn, upgradeBtn1, upgradeBtn2, upgradeContainer, turretName, researchBtn;
     int towerSelected = -1;
 
     int primaryBranch = -1;
@@ -25,6 +25,7 @@ public class Inventory : MonoBehaviour
         upgradeBtn2 = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeContainer/Btn2");
         upgradeContainer = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeContainer");
         turretName = GameObject.Find("Canvas/ActionUI/InnerEl/TurretName");
+        researchBtn = GameObject.Find("Canvas/ResearchStation");
         upgradeBtn.SetActive(false);
     }
 
@@ -37,6 +38,10 @@ public class Inventory : MonoBehaviour
         this.nodeKey.Add(nodeKey);
     }
 
+    /// <summary>
+    /// The onclick for turrets.
+    /// </summary>
+    /// <param name="nodeKey"></param>
     public void SelectTower(int nodeKey)
     {
         int towerNo = -1;
@@ -72,6 +77,10 @@ public class Inventory : MonoBehaviour
         actionUI.GetComponent<UIAnimator>().RequestToggle();
     }
 
+    /// <summary>
+    /// Tower upgrade.
+    /// </summary>
+    /// <param name="primaryBranch"></param>
     public void SelectBranch(bool primaryBranch)
     {
         this.primaryBranch = ((primaryBranch) ? 0 : 1);
