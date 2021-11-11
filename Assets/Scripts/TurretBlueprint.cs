@@ -1,12 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class TurretBlueprint
 {
     public GameObject prefab;
-    public GameObject upgradedPrefab;
+    public List<UpgradeBlueprint> upgradeBlueprintsPath1;
+    public List<UpgradeBlueprint> upgradeBlueprintsPath2;
     public int cost;
-    public int upgradeCost;
     public int sellValue;
 
 }

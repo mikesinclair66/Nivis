@@ -15,7 +15,9 @@ public class Node : MonoBehaviour
     public MeshRenderer mRend;
     public BuildManager buildManager;
     public TurretBlueprint turretBlueprint;
-    public bool isUpgraded = false;
+    private int currentUpgradePath;
+    private int currentUpgradeTier;
+    private int maxUpgradeTier = 3;
 
     void Start ()
     {
@@ -25,6 +27,19 @@ public class Node : MonoBehaviour
     public Vector3 GetBuildPosition()
     {
         return transform.position + positionOffset;
+    }
+
+    public int getCurrentUpgradePath()
+    {
+        return currentUpgradePath;
+    }
+    public int getCurrentUpgradeTier()
+    {
+        return currentUpgradeTier;
+    }
+    public int getMaxUpgradeTier()
+    {
+        return maxUpgradeTier;
     }
     
     void BuildTurret(TurretBlueprint blueprint)
@@ -47,6 +62,8 @@ public class Node : MonoBehaviour
             {
                 turret = _turret;
                 Debug.Log("Turret build! Money left: " + drill.currentMoney);
+                currentUpgradePath = 0;
+                currentUpgradeTier = 0;
             }
         }
     }
@@ -56,6 +73,9 @@ public class Node : MonoBehaviour
         if (turret != null)
         {
             drill.currentMoney += turretBlueprint.sellValue;
+
+            currentUpgradePath = 0;
+            currentUpgradeTier = 0;
 
             Destroy(turret);
             turretBlueprint = null;
@@ -96,24 +116,91 @@ public class Node : MonoBehaviour
         mRend.enabled = false;
     }
 
-    public void UpgradeTurret()
+    public void UpgradeTurret(int path, int tier)
     {
-        if (drill.currentMoney < turretBlueprint.cost)
+        List<UpgradeBlueprint> requestedPath = getUpgradeBlueprints(path);
+        if (!canUpgrade(path, tier))
         {
-            Debug.Log("Not enough money to upgrade that!");
             return;
         }
-
         drill.currentMoney -= turretBlueprint.cost;
 
         Destroy(turret);
-        GameObject _turret = Instantiate(turretBlueprint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
-
+        GameObject _turret = Instantiate(requestedPath[tier].prefab, GetBuildPosition(), Quaternion.identity);
+        
         if (_turret != null)
         {
             turret = _turret;
             Debug.Log("Turret upgraded! Money left: " + drill.currentMoney);
-            isUpgraded = true;
+            currentUpgradePath = path;
+            currentUpgradeTier = tier;
+        }
+    }
+
+    public bool canUpgrade(int path, int tier)
+    {
+        List<UpgradeBlueprint> requestedPath = getUpgradeBlueprints(path);
+        
+        if (requestedPath == null)
+        {
+            Debug.Log("Invalid path requested! Path must be 1 or 2.");
+            return false;
+        }
+
+        if (!validateRequestedPath(path) || !validateRequestedTier(tier))
+        {
+            Debug.Log("Invalid path or tier. Cannot upgrade.");
+            return false;
+        }
+        
+        if (drill.currentMoney < requestedPath[tier].cost)
+        {
+            Debug.Log("Not enough money to upgrade that!");
+            return false;
+        }
+        return true;
+    }
+
+    private List<UpgradeBlueprint> getUpgradeBlueprints(int path)
+    {
+        List<UpgradeBlueprint> requestedPath;
+        if (path == 1)
+        {
+            requestedPath = turretBlueprint.upgradeBlueprintsPath1;
+        }
+        else if (path == 2)
+        {
+            requestedPath = turretBlueprint.upgradeBlueprintsPath2;
+        }
+        else
+        {
+            Debug.Log("Cannot get upgrade blueprint of requested path");
+            return null;
+        }
+        return requestedPath;
+    }
+
+    private bool validateRequestedPath(int path)
+    {
+        if (currentUpgradePath == 0)
+        {
+            return path == 1 || path == 2;
+        }
+        else
+        {
+            return currentUpgradePath == path;
+        }
+    }
+
+    private bool validateRequestedTier(int tier)
+    {
+        if (tier > maxUpgradeTier)
+        {
+            return false;
+        }
+        else
+        {
+            return tier == currentUpgradeTier + 1;
         }
     }
 }
