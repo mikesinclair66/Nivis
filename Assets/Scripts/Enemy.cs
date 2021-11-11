@@ -17,18 +17,15 @@ public class Enemy : MonoBehaviour
     public bool stunnedUnit;
     //public SkinnedMeshRenderer mRend;
     //public Color defaultColor;
-
-    public SkinnedMeshRenderer mRend;
-    public Color defaultColor;
-    public float radTimer = 3f;
     public bool isTank;
     public bool meleeSlowedUnit;
     public float meleeSlowTimer = 0.5f;
 
+    private float defaultSpeed;
 
     void Start()
     {
-        defaultColor = mRend.material.color;
+        //defaultColor = mRend.material.color;
         defaultSpeed = speed;
     }
 
@@ -43,14 +40,14 @@ public class Enemy : MonoBehaviour
         }
 
         if (stunnedUnit == true){
-            Debug.Log("Unit Stunned");
+            //Debug.Log("Unit Stunned");
             stunDuration -= Time.deltaTime;
             if (stunDuration <= 0){
                 stunOff();
             }
         }
         if (meleeSlowedUnit == true){
-            Debug.Log("Unit Slowed");
+            //Debug.Log("Unit Slowed");
             meleeSlowTimer -= Time.deltaTime;
             if (meleeSlowTimer <= 0){
                 meleeSlowOff();
@@ -78,7 +75,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("Enemy Found");
         TakeDamage(radiatorDamage);
         meleeActivateSlow();
-        mRend.material.SetColor("_Color", Color.red);
+        //mRend.material.SetColor("_Color", Color.red);
 
     }
 
@@ -91,7 +88,7 @@ public class Enemy : MonoBehaviour
 
     public void meleeSlowOff(){
         meleeSlowedUnit = false;
-        mRend.material.color = defaultColor; 
+        //mRend.material.color = defaultColor; 
         Debug.Log("DEFAULT SPEED: " + defaultSpeed);
         speed = defaultSpeed;
     }
