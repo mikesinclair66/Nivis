@@ -37,6 +37,10 @@ public class Node : MonoBehaviour
     }
     public int getMaxUpgradeTier()
     {
+        if (upgradePath == null)
+        {
+            return 0;
+        }
         return upgradePath.upgrades.Count;
     }
     
