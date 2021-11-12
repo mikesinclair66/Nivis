@@ -35,13 +35,15 @@ public class Node : MonoBehaviour
     {
         return currentUpgradeTier;
     }
-    public int getMaxUpgradeTier()
+    public List<int> getMaxUpgradeTier()
     {
-        if (upgradePath == null)
+        List<int> maxUpgrades = new List<int>();
+        List<UpgradePath> paths = turretBlueprint.paths;
+        foreach (UpgradePath path in paths)
         {
-            return 0;
+            maxUpgrades.Add(path.upgrades.Count);
         }
-        return upgradePath.upgrades.Count;
+        return maxUpgrades;
     }
     
     void BuildTurret(TurretBlueprint blueprint)
@@ -77,11 +79,11 @@ public class Node : MonoBehaviour
         {
             buildManager.drill.currentMoney += turretBlueprint.sellValue;
 
-            upgradePath = null;
-            currentUpgradeTier = 0;
-
             Destroy(turret);
             turretBlueprint = null;
+            upgradePath = null;
+            currentUpgradePath = 0;
+            currentUpgradeTier = 0;
         }
     }
     

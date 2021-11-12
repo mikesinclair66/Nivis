@@ -16,7 +16,6 @@ public class BuildManager : MonoBehaviour
 
     public Drill drill;
     public NodeUI nodeUI;
-    public UIAnimator animator;
     
     // TODO: add select/deselect code for the turret UI, optional depending on how we plan to implement this
     void Awake ()
@@ -41,7 +40,6 @@ public class BuildManager : MonoBehaviour
         selectedNode = node;
         turretToBuild = null;
         nodeUI.SetTarget(node);
-        animator.Toggle();
     }
     public void DeselectNode()
     {

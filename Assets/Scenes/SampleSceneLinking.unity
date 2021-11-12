@@ -2228,6 +2228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 279314678}
   - component: {fileID: 279314679}
+  - component: {fileID: 279314680}
   m_Layer: 5
   m_Name: InnerEl
   m_TagString: Untagged
@@ -2270,6 +2271,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a7176d644d0924abaee965cf426337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &279314680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279314677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488a5d949a8b42543ba69f8821d7aee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: {fileID: 279314677}
+  upgradeCostPath1: {fileID: 1794099717}
+  upgradeCostPath2: {fileID: 562757584}
+  sellAmount: {fileID: 1769877559}
+  upgradeButton1: {fileID: 739615693}
+  upgradeButton2: {fileID: 1556158984}
 --- !u!1001 &304270598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3540,7 +3559,8 @@ MonoBehaviour:
   missileLauncherPrefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
   MeleeTurretPrefab: {fileID: 2451574595403351592, guid: 7be9c5a22ca3f3c49aae09e60e4a030e, type: 3}
   drill: {fileID: 2081272932}
-  nodeUI: {fileID: 2134051890}
+  nodeUI: {fileID: 279314680}
+  animator: {fileID: 2134051889}
 --- !u!1 &479148020
 GameObject:
   m_ObjectHideFlags: 0
@@ -5193,7 +5213,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2134051890}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NodeUI, Assembly-CSharp
         m_MethodName: Upgrade
         m_Mode: 3
@@ -10483,7 +10503,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2134051890}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NodeUI, Assembly-CSharp
         m_MethodName: Upgrade
         m_Mode: 3
@@ -14029,7 +14049,6 @@ GameObject:
   - component: {fileID: 2134051888}
   - component: {fileID: 2134051887}
   - component: {fileID: 2134051889}
-  - component: {fileID: 2134051890}
   m_Layer: 5
   m_Name: ActionUI
   m_TagString: Untagged
@@ -14108,24 +14127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   innerElName: ActionUI
---- !u!114 &2134051890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134051885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 488a5d949a8b42543ba69f8821d7aee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ui: {fileID: 2134051885}
-  upgradeCostPath1: {fileID: 1794099717}
-  upgradeCostPath2: {fileID: 562757584}
-  sellAmount: {fileID: 1769877559}
-  upgradeButton1: {fileID: 739615693}
-  upgradeButton2: {fileID: 1556158984}
 --- !u!1 &1253571385734004
 GameObject:
   m_ObjectHideFlags: 0

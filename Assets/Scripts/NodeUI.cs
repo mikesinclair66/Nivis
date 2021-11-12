@@ -34,46 +34,54 @@ public class NodeUI : MonoBehaviour {
         int upgradePath = target.getCurrentUpgradePath();
         UpgradePath path1 = target.turretBlueprint.paths[0];
         UpgradePath path2 = target.turretBlueprint.paths[1];
-        if (upgradeTier == target.getMaxUpgradeTier())
-        {
-            if (upgradePath == 1)
-            {
-                upgradeCostPath1.text = "DONE";
-                upgradeButton1.interactable = false;
-            }
+        List<int> maxUpgradeTier = target.getMaxUpgradeTier();
+        
+        int upgradeCode1 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[0], upgradePath, upgradePath != 1);
+        setButton(upgradeButton1, upgradeCostPath1, upgradeCode1, path1, upgradeTier);
+        
+        int upgradeCode2 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[1], upgradePath, upgradePath != 2);
+        setButton(upgradeButton2, upgradeCostPath2, upgradeCode2, path2, upgradeTier);
+    }
 
-            if (upgradePath == 2)
-            {
-                upgradeCostPath2.text = "DONE";
-                upgradeButton2.interactable = false;
-            }
-        }
-        else if (upgradeTier == 0)
+    private int getCanUpgradeForPath(int tier, int maxTier, int currentUpgradePath, bool isOtherPathUpgraded)
+    {
+        // upgrade path is 0 or the other path was chosen and current path is not 0
+        if (maxTier == 0 || (isOtherPathUpgraded && currentUpgradePath != 0))
         {
-            int path1cost = target.turretBlueprint.paths[0].upgrades[0].cost;
-            int path2cost = target.turretBlueprint.paths[1].upgrades[0].cost;
-            upgradeCostPath1.text = "$" + path1cost;
-            upgradeCostPath2.text = "$" + path2cost;
-            upgradeButton1.interactable = true;
-            upgradeButton2.interactable = true;
+            return -1;
         }
-        else
-        {
-            if (upgradePath == 1)
-            {
-                int path1cost = path1.upgrades[upgradeTier].cost;
-                upgradeCostPath1.text = "$" + path1cost;
-                upgradeCostPath2.text = "UNAVAILABLE";
-                upgradeButton2.interactable = false;
-            }
 
-            if (upgradePath == 2)
-            {
-                int path2cost = path2.upgrades[upgradeTier].cost;
-                upgradeCostPath2.text = "$" + path2cost;
-                upgradeCostPath1.text = "UNAVAILABLE";
-                upgradeButton1.interactable = false;
-            }
+        // upgrade path is maxed out
+        if (tier == maxTier)
+        {
+            return 0;
+        }
+
+        // can upgrade
+        return 1;
+    }
+
+    private void setButton(Button button, Text text, int code, UpgradePath path, int tier)
+    {
+        if (code == -1)
+        {
+            text.text = "UNAVAILABLE";
+            button.interactable = false;
+            return;
+        }
+
+        if (code == 0)
+        {
+            text.text = "DONE";
+            button.interactable = false;
+            return;
+        }
+
+        if (code == 1)
+        {
+            int pathcost = path.upgrades[tier].cost;
+            button.interactable = true;
+            text.text = "$" + pathcost;
         }
     }
 
