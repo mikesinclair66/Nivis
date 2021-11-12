@@ -153,6 +153,12 @@ public class Node : MonoBehaviour
             return false;
         }
 
+        if (!hasResearch(path, tier))
+        {
+            Debug.Log("Research for this upgrade has not been acquired.");
+            return false;
+        }
+
         if (!validateRequestedPath(path) || !validateRequestedTier(requestedPath, tier))
         {
             Debug.Log("Invalid path or tier. Cannot upgrade.");
@@ -203,7 +209,7 @@ public class Node : MonoBehaviour
     }
 
     // TODO: implement this function
-    private bool hasResearch()
+    private bool hasResearch(int path, int tier)
     {
         return true;
     }

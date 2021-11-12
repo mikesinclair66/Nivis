@@ -63,6 +63,7 @@ public class NodeUI : MonoBehaviour {
 
     private void setButton(Button button, Text text, int code, UpgradePath path, int tier)
     {
+        // Button should not show and not be clickable
         if (code == -1)
         {
             text.text = "UNAVAILABLE";
@@ -70,6 +71,7 @@ public class NodeUI : MonoBehaviour {
             return;
         }
 
+        // Upgrade path is finished
         if (code == 0)
         {
             text.text = "DONE";
@@ -77,6 +79,7 @@ public class NodeUI : MonoBehaviour {
             return;
         }
 
+        // Able to upgrade. Apply upgrade stuff
         if (code == 1)
         {
             int pathcost = path.upgrades[tier].cost;
