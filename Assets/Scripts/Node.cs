@@ -16,10 +16,13 @@ public class Node : MonoBehaviour
     private UpgradePath upgradePath;
     private int currentUpgradePath;
     private int currentUpgradeTier;
+    public int key;
+    static int keyLength = 0;
 
     void Start ()
     {
         buildManager = BuildManager.instance;
+        key = keyLength++;
     }
 
     public Vector3 GetBuildPosition()
@@ -63,6 +66,7 @@ public class Node : MonoBehaviour
             turretBlueprint = blueprint;
 
             GameObject _turret = Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+            buildManager.inventory.Add(_turret, buildManager.turretToBuildType, key);
 
             if (_turret != null)
             {
@@ -94,11 +98,13 @@ public class Node : MonoBehaviour
         Debug.Log("Clicked on Node.");
         if (!buildManager.isTurretSelected && turret == null)
         {
+            buildManager.inventory.SelectTower(-1);
             return;
         }
         if (turret != null)
         {
             buildManager.SelectNode(this);
+            buildManager.inventory.SelectTower(key);
             return;
         }
         BuildTurret(buildManager.GetTurretToBuild());

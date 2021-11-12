@@ -10,6 +10,13 @@ public class EnemyMovement : MonoBehaviour
 
     private Enemy enemy;
 
+    Generator generator;
+
+    void Awake()
+    {
+        generator = GameObject.Find("END").GetComponent<Generator>();
+    }
+
     void Start()
     {
         enemy = GetComponent<Enemy>();
@@ -45,7 +52,7 @@ public class EnemyMovement : MonoBehaviour
 
     void EndPath()
     {
-        Generator.TakeDamage(enemy.damageValue);
+        generator.TakeDamage(enemy.damageValue);
         WaveSpawner.EnemiesAlive--;
         Destroy(gameObject);
     }

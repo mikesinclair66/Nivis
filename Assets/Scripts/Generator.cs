@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class Generator : MonoBehaviour
 {
-    public static int totalHealth = 100;
+    public int totalHealth = 100;
 
     public Text genHealth;
+    public GameObject canvas;
 
     /*GameObject damageModBar;
     float damageMod = 1.0f;
@@ -36,11 +37,12 @@ public class Generator : MonoBehaviour
         //HealthBar();
     }
 
-    public static void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageAmount)
     {
         if (totalHealth > 0)
         {
             totalHealth -= damageAmount;
+            canvas.GetComponent<Hotbar>().TakeDamage(totalHealth);
 
             Debug.Log("HP: " + totalHealth);
             if (totalHealth <= 0)

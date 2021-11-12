@@ -5,8 +5,10 @@ public class BuildManager : MonoBehaviour
 {
     // utilizing singleton pattern since only one build manager is needed for all nodes
     public static BuildManager instance;
+    public Inventory inventory;
     
     private TurretBlueprint turretToBuild;
+    public int turretToBuildType;
     private Node selectedNode;
 
     // TODO: add turret prefab
@@ -46,9 +48,10 @@ public class BuildManager : MonoBehaviour
         selectedNode = null;
         nodeUI.Hide();
     }
-    public void SelectTurretToBuild (TurretBlueprint turret)
+    public void SelectTurretToBuild (TurretBlueprint turret, int turretToBuildType)
     {
         turretToBuild = turret;
+        this.turretToBuildType = turretToBuildType;
         DeselectNode();
     }
     
