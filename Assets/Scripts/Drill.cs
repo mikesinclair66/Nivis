@@ -11,12 +11,17 @@ public class Drill : MonoBehaviour
     public float upgradeCost = 400f;
 
     public Text totalMoneyText/*, upgradeCostText*/;
-    public GameObject generator;
+    public GameObject generator, drillSelector;
     Generator gen;
 
     void Awake()
     {
         gen = generator.GetComponent<Generator>();
+        drillSelector = GameObject.Find("Canvas/DrillSelector");
+        RectTransform rt = drillSelector.GetComponent<RectTransform>();
+        rt.offsetMin = new Vector2(-gameObject.transform.position.x * Screen.width * 0.01085f, rt.offsetMin.y);
+        rt.offsetMin = new Vector2(rt.offsetMin.x, gameObject.transform.position.y * Screen.height * 0.16f);
+        //rt.offsetMin = new Vector2(rt.offsetMin.x, -offsetY);
     }
 
     void Update()
@@ -41,6 +46,4 @@ public class Drill : MonoBehaviour
             }
         }
     }
-
-
 }
