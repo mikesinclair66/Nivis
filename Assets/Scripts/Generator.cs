@@ -11,24 +11,9 @@ public class Generator : MonoBehaviour
     public Text genHealth;
     public GameObject canvas;
 
-    /*GameObject damageModBar;
-    float damageMod = 1.0f;
-    Text genHealth;
-    Vector3 origPos, origScale;*/
-
     void Start()
     {
         Debug.Log("HP: " + totalHealth);
-        /*origPos = new Vector3(
-            damageModBar.transform.position.x,
-            damageModBar.transform.position.y,
-            damageModBar.transform.position.z
-        );
-        origScale = new Vector3(
-            damageModBar.transform.localScale.x,
-            damageModBar.transform.localScale.y,
-            damageModBar.transform.localScale.z
-        );*/
     }
 
     void Update()

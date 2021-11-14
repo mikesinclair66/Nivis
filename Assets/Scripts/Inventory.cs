@@ -118,12 +118,19 @@ public class Inventory : MonoBehaviour
         {
             upgradePrimary[towerSelected] = branchNo;
             upgradeLvl[towerSelected] = 1;
-            UpdateUpgradeSystem();
             //nodeUI.Upgrade(branchNo + 1);
             nodeUI.GetComponent<NodeUI>().Upgrade(branchNo + 1);
             actionUI.GetComponent<UIAnimator>().CloseUI();
             researchStation.GetComponent<UIAnimator>().CloseUI();
         }
+        UpdateUpgradeSystem();
+    }
+
+    public void Sell()
+    {
+        nodeUI.GetComponent<NodeUI>().Sell();
+        actionUI.GetComponent<UIAnimator>().CloseUI();
+        researchStation.GetComponent<UIAnimator>().CloseUI();
     }
 
     public void Upgrade()
@@ -137,6 +144,7 @@ public class Inventory : MonoBehaviour
             actionUI.GetComponent<UIAnimator>().CloseUI();
             researchStation.GetComponent<UIAnimator>().CloseUI();
         }
+        UpdateUpgradeSystem();
     }
 
     public void UpdateUpgradeSystem()

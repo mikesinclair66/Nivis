@@ -18,9 +18,9 @@ public class BuildManager : MonoBehaviour
 
     public Drill drill;
     public NodeUI nodeUI;
-    
+
     // TODO: add select/deselect code for the turret UI, optional depending on how we plan to implement this
-    void Awake ()
+    void Awake()
     {
         if (instance != null)
         {
@@ -29,10 +29,10 @@ public class BuildManager : MonoBehaviour
         }
         instance = this;
     }
-    
-    public bool isTurretSelected { get { return turretToBuild != null;  } }
 
-    public void SelectNode (Node node)
+    public bool isTurretSelected { get { return turretToBuild != null; } }
+
+    public void SelectNode(Node node)
     {
         if (selectedNode == node)
         {
@@ -54,10 +54,10 @@ public class BuildManager : MonoBehaviour
         this.turretToBuildType = turretToBuildType;
         DeselectNode();
     }
-    
-    public TurretBlueprint GetTurretToBuild ()
+
+    public TurretBlueprint GetTurretToBuild()
     {
         return turretToBuild;
     }
-    
+
 }

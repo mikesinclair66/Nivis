@@ -19,7 +19,7 @@ public class Node : MonoBehaviour
     public int key;
     static int keyLength = 0;
 
-    void Start ()
+    void Start()
     {
         buildManager = BuildManager.instance;
         key = keyLength++;
@@ -48,7 +48,7 @@ public class Node : MonoBehaviour
         }
         return maxUpgrades;
     }
-    
+
     void BuildTurret(TurretBlueprint blueprint)
     {
         if (blueprint != null)
@@ -76,8 +76,8 @@ public class Node : MonoBehaviour
             }
         }
     }
-    
-    public void SellTurret ()
+
+    public void SellTurret()
     {
         if (turret != null)
         {
@@ -90,12 +90,11 @@ public class Node : MonoBehaviour
             currentUpgradeTier = 0;
         }
     }
-    
-    void OnMouseDown ()
+
+    void OnMouseDown()
     {
         //if (EventSystem.current.IsPointerOverGameObject())
         //    return;
-        Debug.Log("Clicked on Node.");
         if (!buildManager.isTurretSelected && turret == null)
         {
             buildManager.inventory.SelectTower(-1);
@@ -119,8 +118,8 @@ public class Node : MonoBehaviour
             return;
         mRend.enabled = true;
     }
-        
-    void OnMouseExit ()
+
+    void OnMouseExit()
     {
         //if (EventSystem.current.IsPointerOverGameObject())
         //    return;
@@ -137,8 +136,8 @@ public class Node : MonoBehaviour
         buildManager.drill.currentMoney -= turretBlueprint.cost;
 
         Destroy(turret);
-        GameObject _turret = Instantiate(requestedPath.upgrades[tier-1].prefab, GetBuildPosition(), Quaternion.identity);
-        
+        GameObject _turret = Instantiate(requestedPath.upgrades[tier - 1].prefab, GetBuildPosition(), Quaternion.identity);
+
         if (_turret != null)
         {
             turret = _turret;
@@ -152,7 +151,7 @@ public class Node : MonoBehaviour
     public bool canUpgrade(int path, int tier)
     {
         UpgradePath requestedPath = getUpgradePath(path);
-        
+
         if (requestedPath == null)
         {
             Debug.Log("Invalid path requested! Path must be 1 or 2.");
@@ -170,8 +169,8 @@ public class Node : MonoBehaviour
             Debug.Log("Invalid path or tier. Cannot upgrade.");
             return false;
         }
-        
-        if (buildManager.drill.currentMoney < requestedPath.upgrades[tier-1].cost)
+
+        if (buildManager.drill.currentMoney < requestedPath.upgrades[tier - 1].cost)
         {
             Debug.Log("Not enough money to upgrade that!");
             return false;
