@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NodeUI : MonoBehaviour {
+public class NodeUI : MonoBehaviour
+{
 
     // TODO: hook up public variables with game objects in editor
     public GameObject ui;
@@ -15,7 +16,7 @@ public class NodeUI : MonoBehaviour {
 
     private Node target;
 
-    public void SetTarget (Node _target)
+    public void SetTarget(Node _target)
     {
         target = _target;
 
@@ -24,7 +25,7 @@ public class NodeUI : MonoBehaviour {
         applyUpgradeText();
 
         sellAmount.text = "$" + target.turretBlueprint.sellValue;
-        
+
         ui.SetActive(true);
     }
 
@@ -34,63 +35,74 @@ public class NodeUI : MonoBehaviour {
         int upgradePath = target.getCurrentUpgradePath();
         UpgradePath path1 = target.turretBlueprint.paths[0];
         UpgradePath path2 = target.turretBlueprint.paths[1];
-        if (upgradeTier == 0)
-        {
-            int path1cost = target.turretBlueprint.paths[0].upgrades[0].cost;
-            int path2cost = target.turretBlueprint.paths[1].upgrades[0].cost;
-            upgradeCostPath1.text = "$" + path1cost;
-            upgradeCostPath2.text = "$" + path2cost;
-            upgradeButton1.interactable = true;
-            upgradeButton2.interactable = true;
-        }
-        else if (upgradeTier == target.getMaxUpgradeTier())
-        {
-            if (upgradePath == 1)
-            {
-                upgradeCostPath1.text = "DONE";
-                upgradeButton1.interactable = false;
-            }
+        List<int> maxUpgradeTier = target.getMaxUpgradeTier();
 
-            if (upgradePath == 2)
-            {
-                upgradeCostPath2.text = "DONE";
-                upgradeButton2.interactable = false;
-            }
-        }
-        else
-        {
-            if (upgradePath == 1)
-            {
-                int path1cost = path1.upgrades[upgradeTier].cost;
-                upgradeCostPath1.text = "$" + path1cost;
-                upgradeCostPath2.text = "UNAVAILABLE";
-                upgradeButton2.interactable = false;
-            }
+        int upgradeCode1 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[0], upgradePath, upgradePath != 1);
+        setButton(upgradeButton1, upgradeCostPath1, upgradeCode1, path1, upgradeTier);
 
-            if (upgradePath == 2)
-            {
-                int path2cost = path2.upgrades[upgradeTier].cost;
-                upgradeCostPath2.text = "$" + path2cost;
-                upgradeCostPath1.text = "UNAVAILABLE";
-                upgradeButton1.interactable = false;
-            }
+        int upgradeCode2 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[1], upgradePath, upgradePath != 2);
+        setButton(upgradeButton2, upgradeCostPath2, upgradeCode2, path2, upgradeTier);
+    }
+
+    private int getCanUpgradeForPath(int tier, int maxTier, int currentUpgradePath, bool isOtherPathUpgraded)
+    {
+        // upgrade path is 0 or the other path was chosen and current path is not 0
+        if (maxTier == 0 || (isOtherPathUpgraded && currentUpgradePath != 0))
+        {
+            return -1;
+        }
+
+        // upgrade path is maxed out
+        if (tier == maxTier)
+        {
+            return 0;
+        }
+
+        // can upgrade
+        return 1;
+    }
+
+    private void setButton(Button button, Text text, int code, UpgradePath path, int tier)
+    {
+        // Button should not show and not be clickable
+        if (code == -1)
+        {
+            text.text = "UNAVAILABLE";
+            button.interactable = false;
+            return;
+        }
+
+        // Upgrade path is finished
+        if (code == 0)
+        {
+            text.text = "DONE";
+            button.interactable = false;
+            return;
+        }
+
+        // Able to upgrade. Apply upgrade stuff
+        if (code == 1)
+        {
+            int pathcost = path.upgrades[tier].cost;
+            button.interactable = true;
+            text.text = "$" + pathcost;
         }
     }
 
-    public void Hide ()
+    public void Hide()
     {
         ui.SetActive(false);
     }
 
     // TODO: hook upgrade button in turret UI to this upgrade function
-    public void Upgrade (int path)
+    public void Upgrade(int path)
     {
         int tier = target.getCurrentUpgradeTier() + 1;
         target.UpgradeTurret(path, tier);
         BuildManager.instance.DeselectNode();
     }
-    
-    public void Sell ()
+
+    public void Sell()
     {
         target.SellTurret();
         BuildManager.instance.DeselectNode();

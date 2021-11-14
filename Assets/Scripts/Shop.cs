@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    
+
     public TurretBlueprint standardTurret;
     public TurretBlueprint missileLauncher;
+    public TurretBlueprint meleeTurret;
 
     BuildManager buildManager;
     // Start is called before the first frame update
@@ -18,18 +19,18 @@ public class Shop : MonoBehaviour
     public void SelectStandardTurret()
     {
         Debug.Log("Standard Turret Selected");
-        buildManager.SelectTurretToBuild(standardTurret);
+        buildManager.SelectTurretToBuild(standardTurret, 0);
     }
 
     public void SelectMissileLauncher()
     {
         Debug.Log("Missile Launcher Selected");
-        buildManager.SelectTurretToBuild(missileLauncher);
+        buildManager.SelectTurretToBuild(missileLauncher, 1);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SelectMeleeTurret()
     {
-        
+        Debug.Log("Melee Turret Selected");
+        buildManager.SelectTurretToBuild(meleeTurret, 2);
     }
 }

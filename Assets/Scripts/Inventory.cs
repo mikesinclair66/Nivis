@@ -1,102 +1,173 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-class Hotbar
-{
-    string hotbarName;
-    GameObject hotbar;
-    GameObject b1, b2, b3;
-    GameObject b2Lock, b3Lock, b2Text, b3Text;
-    bool b2Locked = true, b3Locked = true;
-
-    public Hotbar(string hotbarName)
-    {
-        this.hotbarName = hotbarName;
-        hotbar = GameObject.Find("Canvas/Hotbar/" + hotbarName);
-        b1 = GameObject.Find("Canvas/Hotbar/" + hotbarName + "/B1");
-        b2 = GameObject.Find("Canvas/Hotbar/" + hotbarName + "/B2");
-        b3 = GameObject.Find("Canvas/Hotbar/" + hotbarName + "/B3");
-        b2Lock = GameObject.Find("Canvas/Hotbar/" + hotbarName + "/B2/Lock");
-        b3Lock = GameObject.Find("Canvas/Hotbar/" + hotbarName + "/B3/Lock");
-        b2Text = GameObject.Find("Canvas/Hotbar/" + hotbarName + "/B2/Text");
-        b3Text = GameObject.Find("Canvas/Hotbar/" + hotbarName + "/B3/Text");
-
-        b2Text.SetActive(false);
-        b3Text.SetActive(false);
-    }
-
-    public void SetVisible(bool visible)
-    {
-        hotbar.SetActive(visible);
-    }
-
-    public void SetLocked(int lockNo, bool locked)
-    {
-        switch (lockNo)
-        {
-            case 0:
-                b2Lock.SetActive(locked);
-                b2Text.SetActive(!locked);
-                b2Locked = locked;
-                break;
-            case 1:
-                b3Lock.SetActive(locked);
-                b3Text.SetActive(!locked);
-                b3Locked = locked;
-                break;
-        }
-    }
-}
-
 public class Inventory : MonoBehaviour
 {
-    bool hotbarToggled = true;
+    List<GameObject> turrets;
+    List<int> turretType, upgradeLvl, upgradePrimary, nodeKey;
+    GameObject actionUI, actionUIInner, upgradeBtn, upgradeBtn1, upgradeBtn2,
+        upgradeContainer, turretName, researchBtn, researchStation, researchStationInner;
+    int towerSelected = -1;
+    static bool upgradeBtnScaled = false;
+    public GameObject nodeUI;
 
-    GameObject panel;
-    GameObject towerBtn;
-    Color unselectedColor;
-    Hotbar tbHotbar, unitHotbar;
+    void Awake()
+    {
+        turrets = new List<GameObject>();
+        turretType = new List<int>();
+        upgradeLvl = new List<int>();
+        upgradePrimary = new List<int>();
+        nodeKey = new List<int>();
+        actionUI = GameObject.Find("Canvas/ActionUI");
+        actionUIInner = GameObject.Find("Canvas/ActionUI/InnerEl");
+        upgradeBtn = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeBtn");
+        upgradeBtn1 = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeContainer/Btn1");
+        upgradeBtn2 = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeContainer/Btn2");
+        upgradeContainer = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeContainer");
+        turretName = GameObject.Find("Canvas/ActionUI/InnerEl/TurretName");
+        researchBtn = GameObject.Find("Canvas/ResearchStation");
+        researchStation = GameObject.Find("Canvas/ResearchStation");
+        researchStationInner = GameObject.Find("Canvas/ResearchStation/InnerEl");
+    }
 
     void Start()
     {
-        panel = GameObject.Find("Canvas/Hotbar");
-        towerBtn = GameObject.Find("Canvas/Hotbar/TowerButton");
-        unselectedColor = towerBtn.GetComponent<Image>().color;
-
-        tbHotbar = new Hotbar("TBHotbar");
-        unitHotbar = new Hotbar("UnitHotbar");
-
-        ToggleHotbar();
-        SetLocked(false, 0, 0);
+        upgradeBtn.SetActive(false);
     }
 
-    public void ToggleHotbar()
+    public void Add(GameObject turret, int type, int nodeKey)
     {
-        hotbarToggled = !hotbarToggled;
-        tbHotbar.SetVisible(hotbarToggled);
-        unitHotbar.SetVisible(hotbarToggled);
-
-        Image tb = towerBtn.GetComponent<Image>();
-        if (hotbarToggled)
-            tb.color = Color.white;
-        else
-            tb.color = unselectedColor;
+        turrets.Add(turret);
+        turretType.Add(type);
+        upgradeLvl.Add(0);
+        upgradePrimary.Add(-1);
+        this.nodeKey.Add(nodeKey);
     }
 
     /// <summary>
-    /// locked - bool
-    /// btnNo - the button to toggle the lock on, starting from the second button onwards
-    /// hotbarNo - the hotbar to toggle the lock on
+    /// The onclick for turrets.
     /// </summary>
-    /// <param name="tbNo"></param>
-    /// <param name="btnNo"></param>
-    public void SetLocked(bool locked, int hotbarNo, int lockNo)
+    /// <param name="nodeKey"></param>
+    public void SelectTower(int nodeKey)
     {
-        if (hotbarNo == 0)
-            tbHotbar.SetLocked(lockNo, locked);
-        else if (hotbarNo == 1)
-            unitHotbar.SetLocked(lockNo, locked);
+        int towerNo = -1;
+
+        if (nodeKey == -1)
+        {
+            actionUI.GetComponent<UIAnimator>().CloseUI();
+            researchStation.GetComponent<UIAnimator>().CloseUI();
+            return;
+        }
+
+        for (int i = 0; i < turrets.Count; i++)
+        {
+            if (this.nodeKey[i] == nodeKey)
+                towerNo = i;
+        }
+
+        if (towerNo == -1)
+        {
+            Debug.LogError("No tower was seleced through Inventory.SelectTower(i)");
+            return;
+        }
+
+        towerSelected = towerNo;
+        Text turretName = this.turretName.GetComponent<Text>();
+        switch (turretType[towerSelected])
+        {
+            case 0:
+                turretName.text = "Standard Turret";
+                break;
+            case 1:
+                turretName.text = "Missile Launcher";
+                break;
+            case 2:
+            default:
+                turretName.text = "Melee Unit";
+                break;
+        }
+
+        UpdateUpgradeSystem();
+        actionUI.GetComponent<UIAnimator>().RequestToggle();
+    }
+
+    bool ResearchUnlocked(int branch, int towerLvl)
+    {
+        try
+        {
+            return ResearchStation.researched[turretType[towerSelected], branch, towerLvl];
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log("You must purchase the achievement to upgrade through the research station.");
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// Tower upgrade when selecting branches.
+    /// </summary>
+    /// <param name="primaryBranch"></param>
+    public void SelectBranch(bool primaryBranch)
+    {
+        int branchNo = ((primaryBranch) ? 0 : 1);
+        if (ResearchUnlocked(branchNo, 0))
+        {
+            upgradePrimary[towerSelected] = branchNo;
+            upgradeLvl[towerSelected] = 1;
+            //nodeUI.Upgrade(branchNo + 1);
+            nodeUI.GetComponent<NodeUI>().Upgrade(branchNo + 1);
+            actionUI.GetComponent<UIAnimator>().CloseUI();
+            researchStation.GetComponent<UIAnimator>().CloseUI();
+        }
+        UpdateUpgradeSystem();
+    }
+
+    public void Sell()
+    {
+        nodeUI.GetComponent<NodeUI>().Sell();
+        actionUI.GetComponent<UIAnimator>().CloseUI();
+        researchStation.GetComponent<UIAnimator>().CloseUI();
+    }
+
+    public void Upgrade()
+    {
+        if (ResearchUnlocked(upgradePrimary[towerSelected], upgradeLvl[towerSelected]))
+        {
+            if (upgradeLvl[towerSelected] < 3)
+                upgradeLvl[towerSelected]++;
+            //nodeUI.Upgrade(upgradePrimary[towerSelected] + 1);
+            nodeUI.GetComponent<NodeUI>().Upgrade(upgradePrimary[towerSelected] + 1);
+            actionUI.GetComponent<UIAnimator>().CloseUI();
+            researchStation.GetComponent<UIAnimator>().CloseUI();
+        }
+        UpdateUpgradeSystem();
+    }
+
+    public void UpdateUpgradeSystem()
+    {
+        if (upgradePrimary[towerSelected] == -1)
+        {
+            upgradeBtn1.SetActive(true);
+            upgradeBtn2.SetActive(true);
+            upgradeBtn.SetActive(false);
+            upgradeBtn.gameObject.transform.SetParent(actionUIInner.gameObject.transform);
+        }
+        else
+        {
+            upgradeBtn1.SetActive(false);
+            upgradeBtn2.SetActive(false);
+            upgradeBtn.gameObject.transform.SetParent(upgradeContainer.gameObject.transform);
+            upgradeBtn.SetActive(true);
+            if (!upgradeBtnScaled)
+            {
+                upgradeBtn.gameObject.transform.localScale = upgradeBtn.gameObject.transform.localScale -
+                    new Vector3(0, 0.45f, 0);
+                upgradeBtnScaled = true;
+            }
+        }
     }
 }
