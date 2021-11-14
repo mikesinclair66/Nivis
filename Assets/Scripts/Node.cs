@@ -16,10 +16,13 @@ public class Node : MonoBehaviour
     private UpgradePath upgradePath;
     private int currentUpgradePath;
     private int currentUpgradeTier;
+    public int key;
+    static int keyLength;
 
     void Start ()
     {
         buildManager = BuildManager.instance;
+        key = keyLength++;
     }
 
     public Vector3 GetBuildPosition()
@@ -35,11 +38,17 @@ public class Node : MonoBehaviour
     {
         return currentUpgradeTier;
     }
-    public int getMaxUpgradeTier()
+    public List<int> getMaxUpgradeTier()
     {
-        return upgradePath.upgrades.Count;
+        List<int> maxUpgrades = new List<int>();
+        List<UpgradePath> paths = turretBlueprint.paths;
+        foreach (UpgradePath path in paths)
+        {
+            maxUpgrades.Add(path.upgrades.Count);
+        }
+        return maxUpgrades;
     }
-    
+
     void BuildTurret(TurretBlueprint blueprint)
     {
         if (blueprint != null)
@@ -57,6 +66,7 @@ public class Node : MonoBehaviour
             turretBlueprint = blueprint;
 
             GameObject _turret = Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+            buildManager.inventory.Add(_turret, buildManager.turretToBuildType, key);
 
             if (_turret != null)
             {
@@ -73,11 +83,11 @@ public class Node : MonoBehaviour
         {
             buildManager.drill.currentMoney += turretBlueprint.sellValue;
 
-            upgradePath = null;
-            currentUpgradeTier = 0;
-
             Destroy(turret);
             turretBlueprint = null;
+            upgradePath = null;
+            currentUpgradePath = 0;
+            currentUpgradeTier = 0;
         }
     }
     
@@ -88,14 +98,17 @@ public class Node : MonoBehaviour
         Debug.Log("Clicked on Node.");
         if (!buildManager.isTurretSelected && turret == null)
         {
+            buildManager.inventory.SelectTower(-1);
             return;
         }
         if (turret != null)
         {
             buildManager.SelectNode(this);
+            buildManager.inventory.SelectTower(key);
             return;
         }
         BuildTurret(buildManager.GetTurretToBuild());
+        buildManager.inventory.SelectTower(-1);
         // Deselects turret to build in build manager after building a turret
         // buildManager.SelectTurretToBuild(null);
     }
@@ -140,20 +153,26 @@ public class Node : MonoBehaviour
     public bool canUpgrade(int path, int tier)
     {
         UpgradePath requestedPath = getUpgradePath(path);
-        
+
         if (requestedPath == null)
         {
             Debug.Log("Invalid path requested! Path must be 1 or 2.");
             return false;
         }
 
+        /*if (!hasResearch(path, tier))
+        {
+            Debug.Log("Research for this upgrade has not been acquired.");
+            return false;
+        }*/
+
         if (!validateRequestedPath(path) || !validateRequestedTier(requestedPath, tier))
         {
             Debug.Log("Invalid path or tier. Cannot upgrade.");
             return false;
         }
-        
-        if (buildManager.drill.currentMoney < requestedPath.upgrades[tier-1].cost)
+
+        if (buildManager.drill.currentMoney < requestedPath.upgrades[tier - 1].cost)
         {
             Debug.Log("Not enough money to upgrade that!");
             return false;
@@ -194,11 +213,5 @@ public class Node : MonoBehaviour
         {
             return tier == currentUpgradeTier + 1;
         }
-    }
-
-    // TODO: implement this function
-    private bool hasResearch()
-    {
-        return true;
     }
 }
