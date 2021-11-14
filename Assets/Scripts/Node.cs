@@ -38,9 +38,15 @@ public class Node : MonoBehaviour
     {
         return currentUpgradeTier;
     }
-    public int getMaxUpgradeTier()
+    public List<int> getMaxUpgradeTier()
     {
-        return upgradePath.upgrades.Count;
+        List<int> maxUpgrades = new List<int>();
+        List<UpgradePath> paths = turretBlueprint.paths;
+        foreach (UpgradePath path in paths)
+        {
+            maxUpgrades.Add(path.upgrades.Count);
+        }
+        return maxUpgrades;
     }
     
     void BuildTurret(TurretBlueprint blueprint)
