@@ -18,9 +18,9 @@ public class Drill : MonoBehaviour
     {
         gen = generator.GetComponent<Generator>();
         drillSelector = GameObject.Find("Canvas/DrillSelector");
-        RectTransform rt = drillSelector.GetComponent<RectTransform>();
-        rt.offsetMin = new Vector2(-gameObject.transform.position.x * Screen.width * 0.01085f, rt.offsetMin.y);
-        rt.offsetMin = new Vector2(rt.offsetMin.x, gameObject.transform.position.y * Screen.height * 0.16f);
+        //RectTransform rt = drillSelector.GetComponent<RectTransform>();
+        //rt.offsetMin = new Vector2(-gameObject.transform.position.x * Screen.width * 0.01085f, rt.offsetMin.y);
+        //rt.offsetMin = new Vector2(rt.offsetMin.x, gameObject.transform.position.y * Screen.height * 0.16f);
         //rt.offsetMin = new Vector2(rt.offsetMin.x, -offsetY);
     }
 
