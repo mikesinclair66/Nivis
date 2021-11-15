@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
     List<GameObject> turrets;
     List<int> turretType, upgradeLvl, upgradePrimary, nodeKey;
     GameObject actionUI, actionUIInner, upgradeBtn, upgradeBtn1, upgradeBtn2,
-        upgradeContainer, turretName, researchBtn, researchStation, researchStationInner;
+        upgradeContainer, turretName, researchBtn, researchStation, researchStationInner, sellContainer;
     int towerSelected = -1;
     static bool upgradeBtnScaled = false;
     public GameObject nodeUI;
@@ -31,6 +31,7 @@ public class Inventory : MonoBehaviour
         researchBtn = GameObject.Find("Canvas/ResearchStation");
         researchStation = GameObject.Find("Canvas/ResearchStation");
         researchStationInner = GameObject.Find("Canvas/ResearchStation/InnerEl");
+        sellContainer = GameObject.Find("Canvas/ActionUI/InnerEl/SellContainer");
     }
 
     void Start()
@@ -59,6 +60,7 @@ public class Inventory : MonoBehaviour
         {
             actionUI.GetComponent<UIAnimator>().CloseUI();
             researchStation.GetComponent<UIAnimator>().CloseUI();
+            BuildManager.instance.DeselectNode();
             return;
         }
 
@@ -135,26 +137,41 @@ public class Inventory : MonoBehaviour
 
     public void Upgrade()
     {
+        if (upgradeLvl[towerSelected] == 3)
+            return;
+
         if (ResearchUnlocked(upgradePrimary[towerSelected], upgradeLvl[towerSelected]))
         {
             if (upgradeLvl[towerSelected] < 3)
+            {
                 upgradeLvl[towerSelected]++;
-            //nodeUI.Upgrade(upgradePrimary[towerSelected] + 1);
-            nodeUI.GetComponent<NodeUI>().Upgrade(upgradePrimary[towerSelected] + 1);
-            actionUI.GetComponent<UIAnimator>().CloseUI();
-            researchStation.GetComponent<UIAnimator>().CloseUI();
+                nodeUI.GetComponent<NodeUI>().Upgrade(upgradePrimary[towerSelected] + 1);
+                actionUI.GetComponent<UIAnimator>().CloseUI();
+                researchStation.GetComponent<UIAnimator>().CloseUI();
+            }
         }
         UpdateUpgradeSystem();
     }
 
+    /// <summary>
+    /// Updates the upgrade ui for the turrets (NOT the drill).
+    /// </summary>
     public void UpdateUpgradeSystem()
     {
+        if (upgradeLvl[towerSelected] == 3)
+        {
+            upgradeBtn.GetComponent<Button>().interactable = false;
+            return;
+        }
+        else
+            upgradeBtn.GetComponent<Button>().interactable = true;
+
         if (upgradePrimary[towerSelected] == -1)
         {
             upgradeBtn1.SetActive(true);
             upgradeBtn2.SetActive(true);
             upgradeBtn.SetActive(false);
-            upgradeBtn.gameObject.transform.SetParent(actionUIInner.gameObject.transform);
+            //upgradeBtn.gameObject.transform.SetParent(actionUIInner.gameObject.transform);
         }
         else
         {

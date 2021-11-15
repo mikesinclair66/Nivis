@@ -17,9 +17,9 @@ public class Node : MonoBehaviour
     private int currentUpgradePath;
     private int currentUpgradeTier;
     public int key;
-    static int keyLength = 0;
+    static int keyLength;
 
-    void Start()
+    void Start ()
     {
         buildManager = BuildManager.instance;
         key = keyLength++;
@@ -76,8 +76,8 @@ public class Node : MonoBehaviour
             }
         }
     }
-
-    public void SellTurret()
+    
+    public void SellTurret ()
     {
         if (turret != null)
         {
@@ -90,11 +90,12 @@ public class Node : MonoBehaviour
             currentUpgradeTier = 0;
         }
     }
-
-    void OnMouseDown()
+    
+    void OnMouseDown ()
     {
         //if (EventSystem.current.IsPointerOverGameObject())
         //    return;
+        Debug.Log("Clicked on Node.");
         if (!buildManager.isTurretSelected && turret == null)
         {
             buildManager.inventory.SelectTower(-1);
@@ -107,6 +108,7 @@ public class Node : MonoBehaviour
             return;
         }
         BuildTurret(buildManager.GetTurretToBuild());
+        buildManager.inventory.SelectTower(-1);
         // Deselects turret to build in build manager after building a turret
         // buildManager.SelectTurretToBuild(null);
     }
@@ -118,8 +120,8 @@ public class Node : MonoBehaviour
             return;
         mRend.enabled = true;
     }
-
-    void OnMouseExit()
+        
+    void OnMouseExit ()
     {
         //if (EventSystem.current.IsPointerOverGameObject())
         //    return;
@@ -136,8 +138,8 @@ public class Node : MonoBehaviour
         buildManager.drill.currentMoney -= turretBlueprint.cost;
 
         Destroy(turret);
-        GameObject _turret = Instantiate(requestedPath.upgrades[tier - 1].prefab, GetBuildPosition(), Quaternion.identity);
-
+        GameObject _turret = Instantiate(requestedPath.upgrades[tier-1].prefab, GetBuildPosition(), Quaternion.identity);
+        
         if (_turret != null)
         {
             turret = _turret;
@@ -158,11 +160,11 @@ public class Node : MonoBehaviour
             return false;
         }
 
-        if (!hasResearch(path, tier))
+        /*if (!hasResearch(path, tier))
         {
             Debug.Log("Research for this upgrade has not been acquired.");
             return false;
-        }
+        }*/
 
         if (!validateRequestedPath(path) || !validateRequestedTier(requestedPath, tier))
         {
@@ -211,11 +213,5 @@ public class Node : MonoBehaviour
         {
             return tier == currentUpgradeTier + 1;
         }
-    }
-
-    // TODO: implement this function
-    private bool hasResearch(int path, int tier)
-    {
-        return true;
     }
 }

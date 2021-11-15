@@ -36,10 +36,10 @@ public class NodeUI : MonoBehaviour
         UpgradePath path1 = target.turretBlueprint.paths[0];
         UpgradePath path2 = target.turretBlueprint.paths[1];
         List<int> maxUpgradeTier = target.getMaxUpgradeTier();
-        
+
         int upgradeCode1 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[0], upgradePath, upgradePath != 1);
         setButton(upgradeButton1, upgradeCostPath1, upgradeCode1, path1, upgradeTier);
-        
+
         int upgradeCode2 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[1], upgradePath, upgradePath != 2);
         setButton(upgradeButton2, upgradeCostPath2, upgradeCode2, path2, upgradeTier);
     }
