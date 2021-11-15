@@ -16,7 +16,7 @@ public class BuildManager : MonoBehaviour
     public GameObject missileLauncherPrefab;
 
     public Drill drill;
-    public NodeUI nodeUI;
+    //public NodeUI nodeUI;
     
     // TODO: add select/deselect code for the turret UI, optional depending on how we plan to implement this
     void Awake ()
@@ -40,12 +40,12 @@ public class BuildManager : MonoBehaviour
         }
         selectedNode = node;
         turretToBuild = null;
-        nodeUI.SetTarget(node);
+        inventory.nodeUI.SetTarget(node);
     }
     public void DeselectNode()
     {
         selectedNode = null;
-        nodeUI.Hide();
+        //inventory.nodeUI.Hide();
     }
     public void SelectTurretToBuild (TurretBlueprint turret, int turretToBuildType)
     {

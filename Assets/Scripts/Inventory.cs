@@ -4,6 +4,114 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class NodeUI
+{
+
+    // TODO: hook up public variables with game objects in editor
+    /*public GameObject ui;
+
+    public Text upgradeCostPath1;
+    public Text upgradeCostPath2;
+    public Text sellAmount;
+    public Button upgradeButton1;
+    public Button upgradeButton2;*/
+
+    private Node target;
+
+    public void SetTarget(Node _target)
+    {
+        target = _target;
+
+        //transform.position = target.GetBuildPosition();
+
+        //applyUpgradeText();
+
+        //sellAmount.text = "$" + target.turretBlueprint.sellValue;
+
+        //ui.SetActive(true);
+    }
+
+    /*private void applyUpgradeText()
+    {
+        int upgradeTier = target.getCurrentUpgradeTier();
+        int upgradePath = target.getCurrentUpgradePath();
+        UpgradePath path1 = target.turretBlueprint.paths[0];
+        UpgradePath path2 = target.turretBlueprint.paths[1];
+        List<int> maxUpgradeTier = target.getMaxUpgradeTier();
+
+        int upgradeCode1 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[0], upgradePath, upgradePath != 1);
+        setButton(upgradeButton1, upgradeCostPath1, upgradeCode1, path1, upgradeTier);
+
+        int upgradeCode2 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[1], upgradePath, upgradePath != 2);
+        setButton(upgradeButton2, upgradeCostPath2, upgradeCode2, path2, upgradeTier);
+    }
+
+    private int getCanUpgradeForPath(int tier, int maxTier, int currentUpgradePath, bool isOtherPathUpgraded)
+    {
+        // upgrade path is 0 or the other path was chosen and current path is not 0
+        if (maxTier == 0 || (isOtherPathUpgraded && currentUpgradePath != 0))
+        {
+            return -1;
+        }
+
+        // upgrade path is maxed out
+        if (tier == maxTier)
+        {
+            return 0;
+        }
+
+        // can upgrade
+        return 1;
+    }
+
+    private void setButton(Button button, Text text, int code, UpgradePath path, int tier)
+    {
+        // Button should not show and not be clickable
+        if (code == -1)
+        {
+            text.text = "UNAVAILABLE";
+            button.interactable = false;
+            return;
+        }
+
+        // Upgrade path is finished
+        if (code == 0)
+        {
+            text.text = "DONE";
+            button.interactable = false;
+            return;
+        }
+
+        // Able to upgrade. Apply upgrade stuff
+        if (code == 1)
+        {
+            int pathcost = path.upgrades[tier].cost;
+            button.interactable = true;
+            text.text = "$" + pathcost;
+        }
+    }
+
+    public void Hide()
+    {
+        ui.SetActive(false);
+    }*/
+
+    // TODO: hook upgrade button in turret UI to this upgrade function
+    public void Upgrade(int path)
+    {
+        int tier = target.getCurrentUpgradeTier() + 1;
+        target.UpgradeTurret(path, tier);
+        BuildManager.instance.DeselectNode();
+    }
+
+    public void Sell()
+    {
+        target.SellTurret();
+        BuildManager.instance.DeselectNode();
+    }
+
+}
+
 public class Inventory : MonoBehaviour
 {
     List<GameObject> turrets;
@@ -12,7 +120,10 @@ public class Inventory : MonoBehaviour
         upgradeContainer, turretName, researchBtn, researchStation, researchStationInner, sellContainer;
     int towerSelected = -1;
     static bool upgradeBtnScaled = false;
-    public GameObject nodeUI;
+    public NodeUI nodeUI = new NodeUI();
+    Text upgradeCostText, sellValueText;
+    public int upgradeCost, sellValue;
+    public Drill drill;
 
     void Awake()
     {
@@ -32,11 +143,17 @@ public class Inventory : MonoBehaviour
         researchStation = GameObject.Find("Canvas/ResearchStation");
         researchStationInner = GameObject.Find("Canvas/ResearchStation/InnerEl");
         sellContainer = GameObject.Find("Canvas/ActionUI/InnerEl/SellContainer");
+        upgradeCostText = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeContainer/Cost")
+            .GetComponent<Text>();
+        sellValueText = GameObject.Find("Canvas/ActionUI/InnerEl/SellContainer/Button/Text")
+            .GetComponent<Text>();
     }
 
     void Start()
     {
         upgradeBtn.SetActive(false);
+        upgradeCostText.text = "-$" + upgradeCost.ToString("0");
+        sellValueText.text = "Sell +$" + sellValue.ToString("0");
     }
 
     public void Add(GameObject turret, int type, int nodeKey)
@@ -120,19 +237,22 @@ public class Inventory : MonoBehaviour
         {
             upgradePrimary[towerSelected] = branchNo;
             upgradeLvl[towerSelected] = 1;
+            Debug.Log("Research unlocked. primaryBranch=" + branchNo + ". UpgradeLvl=" + upgradeLvl[towerSelected]);
             //nodeUI.Upgrade(branchNo + 1);
-            nodeUI.GetComponent<NodeUI>().Upgrade(branchNo + 1);
+            nodeUI.Upgrade(branchNo + 1);
             actionUI.GetComponent<UIAnimator>().CloseUI();
             researchStation.GetComponent<UIAnimator>().CloseUI();
+            drill.currentMoney -= upgradeCost;
         }
         UpdateUpgradeSystem();
     }
 
     public void Sell()
     {
-        nodeUI.GetComponent<NodeUI>().Sell();
+        nodeUI.Sell();
         actionUI.GetComponent<UIAnimator>().CloseUI();
         researchStation.GetComponent<UIAnimator>().CloseUI();
+        drill.currentMoney += sellValue;
     }
 
     public void Upgrade()
@@ -145,9 +265,11 @@ public class Inventory : MonoBehaviour
             if (upgradeLvl[towerSelected] < 3)
             {
                 upgradeLvl[towerSelected]++;
-                nodeUI.GetComponent<NodeUI>().Upgrade(upgradePrimary[towerSelected] + 1);
+                Debug.Log("Research unlocked. primaryBranch=" + upgradePrimary[towerSelected] + ". UpgradeLvl=" + upgradeLvl[towerSelected]);
+                nodeUI.Upgrade(upgradePrimary[towerSelected] + 1);
                 actionUI.GetComponent<UIAnimator>().CloseUI();
                 researchStation.GetComponent<UIAnimator>().CloseUI();
+                drill.currentMoney -= upgradeCost;
             }
         }
         UpdateUpgradeSystem();

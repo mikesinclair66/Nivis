@@ -87,6 +87,8 @@ public class Hotbar : MonoBehaviour
     GameObject researchBtn;
     GameObject researchStation;
     GameObject attacks, a1;
+    GameObject[] attackText, towerText;//button cost
+    public int a1Text, a2Text, a3Text;
     GameObject u1, u2, uMain, uContainer;
     GameObject eventSystem;
 
@@ -101,11 +103,27 @@ public class Hotbar : MonoBehaviour
         researchStation = GameObject.Find("Canvas/ResearchStation");
         attacks = GameObject.Find("Canvas/Hotbar/AttackButtons");
         a1 = GameObject.Find("Canvas/Hotbar/AttackButtons/Button");
+        attackText = new GameObject[3];
+        towerText = new GameObject[3];
+        attackText[0] = GameObject.Find("Canvas/Hotbar/AttackButtons/Button/Text");
+        attackText[1] = GameObject.Find("Canvas/Hotbar/AttackButtons/Button2/Text");
+        attackText[2] = GameObject.Find("Canvas/Hotbar/AttackButtons/Button3/Text");
+        towerText[0] = GameObject.Find("Canvas/Hotbar/TowerButtons/Button/Text");
+        towerText[1] = GameObject.Find("Canvas/Hotbar/TowerButtons/Button2/Text");
+        towerText[2] = GameObject.Find("Canvas/Hotbar/TowerButtons/Button3/Text");
         u1 = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeContainer/Btn1");
         u2 = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeContainer/Btn2");
         uMain = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeBtn");
         uContainer = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeContainer");
         eventSystem = GameObject.Find("EventSystem");
+
+        Shop shop = GameObject.Find("Canvas/Hotbar/TowerButtons").GetComponent<Shop>();
+        attackText[0].GetComponent<Text>().text = "1\n\n$" + a1Text;
+        attackText[1].GetComponent<Text>().text = "2\n\n$" + a2Text;
+        attackText[2].GetComponent<Text>().text = "3\n\n$" + a3Text;
+        towerText[0].GetComponent<Text>().text = "1\n\n$" + shop.standardTurret.cost;
+        towerText[1].GetComponent<Text>().text = "2\n\n$" + shop.missileLauncher.cost;
+        towerText[2].GetComponent<Text>().text = "3\n\n$" + shop.meleeTurret.cost;
 
         researchChecker = new HoverChecker(
             researchBtn,
