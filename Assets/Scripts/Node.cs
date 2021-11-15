@@ -17,9 +17,9 @@ public class Node : MonoBehaviour
     private int currentUpgradePath;
     private int currentUpgradeTier;
     public int key;
-    static int keyLength = 0;
+    static int keyLength;
 
-    void Start()
+    void Start ()
     {
         buildManager = BuildManager.instance;
         key = keyLength++;
@@ -48,7 +48,7 @@ public class Node : MonoBehaviour
         }
         return maxUpgrades;
     }
-    
+
     void BuildTurret(TurretBlueprint blueprint)
     {
         if (blueprint != null)
@@ -66,6 +66,7 @@ public class Node : MonoBehaviour
             turretBlueprint = blueprint;
 
             GameObject _turret = Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+            buildManager.inventory.Add(_turret, buildManager.turretToBuildType, key);
 
             if (_turret != null)
             {
@@ -152,26 +153,26 @@ public class Node : MonoBehaviour
     public bool canUpgrade(int path, int tier)
     {
         UpgradePath requestedPath = getUpgradePath(path);
-        
+
         if (requestedPath == null)
         {
             Debug.Log("Invalid path requested! Path must be 1 or 2.");
             return false;
         }
 
-        if (!hasResearch(path, tier))
+        /*if (!hasResearch(path, tier))
         {
             Debug.Log("Research for this upgrade has not been acquired.");
             return false;
-        }
+        }*/
 
         if (!validateRequestedPath(path) || !validateRequestedTier(requestedPath, tier))
         {
             Debug.Log("Invalid path or tier. Cannot upgrade.");
             return false;
         }
-        
-        if (buildManager.drill.currentMoney < requestedPath.upgrades[tier-1].cost)
+
+        if (buildManager.drill.currentMoney < requestedPath.upgrades[tier - 1].cost)
         {
             Debug.Log("Not enough money to upgrade that!");
             return false;
@@ -212,11 +213,5 @@ public class Node : MonoBehaviour
         {
             return tier == currentUpgradeTier + 1;
         }
-    }
-
-    // TODO: implement this function
-    private bool hasResearch(int path, int tier)
-    {
-        return true;
     }
 }

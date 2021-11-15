@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NodeUI : MonoBehaviour {
+public class NodeUI : MonoBehaviour
+{
 
     // TODO: hook up public variables with game objects in editor
     public GameObject ui;
@@ -15,7 +16,7 @@ public class NodeUI : MonoBehaviour {
 
     private Node target;
 
-    public void SetTarget (Node _target)
+    public void SetTarget(Node _target)
     {
         target = _target;
 
@@ -24,7 +25,7 @@ public class NodeUI : MonoBehaviour {
         applyUpgradeText();
 
         sellAmount.text = "$" + target.turretBlueprint.sellValue;
-        
+
         ui.SetActive(true);
     }
 
@@ -38,7 +39,7 @@ public class NodeUI : MonoBehaviour {
 
         int upgradeCode1 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[0], upgradePath, upgradePath != 1);
         setButton(upgradeButton1, upgradeCostPath1, upgradeCode1, path1, upgradeTier);
-        
+
         int upgradeCode2 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[1], upgradePath, upgradePath != 2);
         setButton(upgradeButton2, upgradeCostPath2, upgradeCode2, path2, upgradeTier);
     }
@@ -88,20 +89,20 @@ public class NodeUI : MonoBehaviour {
         }
     }
 
-    public void Hide ()
+    public void Hide()
     {
         ui.SetActive(false);
     }
 
     // TODO: hook upgrade button in turret UI to this upgrade function
-    public void Upgrade (int path)
+    public void Upgrade(int path)
     {
         int tier = target.getCurrentUpgradeTier() + 1;
         target.UpgradeTurret(path, tier);
         BuildManager.instance.DeselectNode();
     }
-    
-    public void Sell ()
+
+    public void Sell()
     {
         target.SellTurret();
         BuildManager.instance.DeselectNode();
