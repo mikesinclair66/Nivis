@@ -82,11 +82,11 @@ public class Node : MonoBehaviour
         {
             buildManager.drill.currentMoney += turretBlueprint.sellValue;
 
-            upgradePath = null;
-            currentUpgradeTier = 0;
-
             Destroy(turret);
             turretBlueprint = null;
+            upgradePath = null;
+            currentUpgradePath = 0;
+            currentUpgradeTier = 0;
         }
     }
     
@@ -97,14 +97,17 @@ public class Node : MonoBehaviour
         Debug.Log("Clicked on Node.");
         if (!buildManager.isTurretSelected && turret == null)
         {
+            buildManager.inventory.SelectTower(-1);
             return;
         }
         if (turret != null)
         {
             buildManager.SelectNode(this);
+            buildManager.inventory.SelectTower(key);
             return;
         }
         BuildTurret(buildManager.GetTurretToBuild());
+        buildManager.inventory.SelectTower(-1);
         // Deselects turret to build in build manager after building a turret
         // buildManager.SelectTurretToBuild(null);
     }
