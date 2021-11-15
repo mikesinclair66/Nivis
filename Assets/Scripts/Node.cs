@@ -19,7 +19,7 @@ public class Node : MonoBehaviour
     public int key;
     static int keyLength;
 
-    void Start ()
+    void Start()
     {
         buildManager = BuildManager.instance;
         key = keyLength++;
@@ -76,12 +76,12 @@ public class Node : MonoBehaviour
             }
         }
     }
-    
-    public void SellTurret ()
+
+    public void SellTurret()
     {
         if (turret != null)
         {
-            buildManager.drill.currentMoney += turretBlueprint.sellValue;
+            //buildManager.drill.currentMoney += turretBlueprint.sellValue;
 
             Destroy(turret);
             turretBlueprint = null;
@@ -90,8 +90,8 @@ public class Node : MonoBehaviour
             currentUpgradeTier = 0;
         }
     }
-    
-    void OnMouseDown ()
+
+    void OnMouseDown()
     {
         //if (EventSystem.current.IsPointerOverGameObject())
         //    return;
@@ -120,8 +120,8 @@ public class Node : MonoBehaviour
             return;
         mRend.enabled = true;
     }
-        
-    void OnMouseExit ()
+
+    void OnMouseExit()
     {
         //if (EventSystem.current.IsPointerOverGameObject())
         //    return;
@@ -135,11 +135,11 @@ public class Node : MonoBehaviour
         {
             return;
         }
-        buildManager.drill.currentMoney -= turretBlueprint.cost;
+        //buildManager.drill.currentMoney -= turretBlueprint.cost;
 
         Destroy(turret);
-        GameObject _turret = Instantiate(requestedPath.upgrades[tier-1].prefab, GetBuildPosition(), Quaternion.identity);
-        
+        GameObject _turret = Instantiate(requestedPath.upgrades[tier - 1].prefab, GetBuildPosition(), Quaternion.identity);
+
         if (_turret != null)
         {
             turret = _turret;

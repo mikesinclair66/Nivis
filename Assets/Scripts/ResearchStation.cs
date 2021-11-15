@@ -8,9 +8,12 @@ public class ResearchStation : MonoBehaviour
     GameObject leftBtn, rightBtn, btn2, btn3;
     GameObject pageName;
     //GameObject b1u1, b1u2, b1u3, b2u1, b2u2, b2u3;
+    GameObject[] b1Img, b2Img;
     GameObject[] b1, b2;
     int page = 0;
     const int LAST_PAGE = 2;
+    Text price1Text, price2Text, price3Text;
+    public int price1, price2, price3;
 
     public static bool[,,] researched;
 
@@ -19,14 +22,29 @@ public class ResearchStation : MonoBehaviour
         leftBtn = GameObject.Find("Canvas/ResearchStation/InnerEl/Row1/Btn1");
         rightBtn = GameObject.Find("Canvas/ResearchStation/InnerEl/Row1/Btn4");
         pageName = GameObject.Find("Canvas/ResearchStation/InnerEl/Row1/PageName");
+        b1Img = new GameObject[3];
+        b2Img = new GameObject[3];
         b1 = new GameObject[3];
         b2 = new GameObject[3];
-        b1[0] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row2/1a/Image");
-        b1[1] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row3/1a/Image");
-        b1[2] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row4/1a/Image");
-        b2[0] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row2/1b/Image");
-        b2[1] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row3/1b/Image");
-        b2[2] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row4/1b/Image");
+        b1Img[0] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row2/1a/Image");
+        b1Img[1] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row3/1a/Image");
+        b1Img[2] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row4/1a/Image");
+        b2Img[0] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row2/1b/Image");
+        b2Img[1] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row3/1b/Image");
+        b2Img[2] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row4/1b/Image");
+        b1[0] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row2/1a");
+        b1[1] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row3/1a");
+        b1[2] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row4/1a");
+        b2[0] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row2/1b");
+        b2[1] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row3/1b");
+        b2[2] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row4/1b");
+        price1Text = GameObject.Find("Canvas/ResearchStation/InnerEl/Row2/Cost").GetComponent<Text>();
+        price2Text = GameObject.Find("Canvas/ResearchStation/InnerEl/Row3/Cost").GetComponent<Text>();
+        price3Text = GameObject.Find("Canvas/ResearchStation/InnerEl/Row4/Cost").GetComponent<Text>();
+
+        price1Text.text = price1.ToString("0");
+        price2Text.text = price2.ToString("0");
+        price3Text.text = price3.ToString("0");
 
         researched = new bool[LAST_PAGE + 1, 2, 3];//page,branch,upgrades
         for (int i = 0; i < LAST_PAGE + 1; i++)
@@ -36,6 +54,15 @@ public class ResearchStation : MonoBehaviour
                 researched[i, 0, j] = false;
                 researched[i, 1, j] = false;
             }
+        }
+
+        for(int i = 0; i < 3; i++)
+        {
+            //change to button objects
+            b1[i].gameObject.transform.position = b1[i].gameObject.transform.position
+                + new Vector3(-1000, 0, 0);
+            b2[i].gameObject.transform.position = b2[i].gameObject.transform.position
+                + new Vector3(-200, 0, 0);
         }
         UpdatePage(page);
     }
@@ -61,14 +88,14 @@ public class ResearchStation : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             if (researched[page, 0, i])
-                b1[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                b1Img[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             else
-                b1[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.25f);
+                b1Img[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.25f);
 
             if (researched[page, 1, i])
-                b2[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                b2Img[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             else
-                b2[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.25f);
+                b2Img[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.25f);
         }
     }
 
