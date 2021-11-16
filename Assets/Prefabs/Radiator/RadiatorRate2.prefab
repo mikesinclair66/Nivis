@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3953289172314985876}
   - component: {fileID: 86574640903343960}
   m_Layer: 0
-  m_Name: Radiator2
+  m_Name: RadiatorRate2
   m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

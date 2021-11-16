@@ -112,6 +112,11 @@ public class Bullet : MonoBehaviour
                 Debug.Log("Activate Stun: " + e.stunnedUnit );
             }
             if (burnShot == true){
+                if(e.frozen == true) {
+                    Debug.Log("Melt Damage Reached");
+                    e.freezeOff();
+                    e.TakeDamage(damage * 2);
+                }
                 e.activateBurn(burnDamage, rank3Burn);
                 Debug.Log("Activate Burn" + e.burning);
             }

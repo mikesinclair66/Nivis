@@ -21,6 +21,8 @@ public class TurretLaser : MonoBehaviour
     public Color defaultColor;
     private float disableCountdown = 10f;
 
+    public bool LaserRank3;
+
     [Header("Unity Setup Fields")]
 
     // TODO: set enemy prefab with the enemy tag
@@ -72,6 +74,11 @@ public class TurretLaser : MonoBehaviour
     void Laser()
     {
         target.GetComponent<Enemy>().TakeDamage(damageOverTime * Time.deltaTime * fireRate);
+
+        if (LaserRank3 == true){
+
+            target.GetComponent<Enemy>().ChanceToFreeze();
+        }
 
         if (!lineRenderer.enabled)
         {

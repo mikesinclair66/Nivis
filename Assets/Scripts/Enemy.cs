@@ -30,6 +30,12 @@ public class Enemy : MonoBehaviour
     private float defaultHealth;
     public bool aoeBurn;
     public float burnRadius = 15f;
+    private float freezeChance = 0.25f;
+    public float freezeDuration = 1.5f;
+    public bool frozen;
+    public float freezeTimer = 1.5f;
+    public float meltDamage = 300f;
+
 
     public int killCountValue = 3, speedKillCountValue = 1, tankKillCountValue = 10;
 
@@ -76,6 +82,15 @@ public class Enemy : MonoBehaviour
             if (burnTimer <= 0)
             {
                 BurnOff();
+            }
+        }
+        if (frozen == true)
+        {
+            freezeTimer -= Time.deltaTime;
+            if (freezeTimer <= 0)
+            {
+                Debug.Log("Timer hit 0" + freezeTimer);
+                freezeOff();
             }
         }
     }
@@ -156,7 +171,7 @@ public class Enemy : MonoBehaviour
         burnDamage = burnDmg;
 
     }
-    
+
     public void aoeBurnDmg(float burnDmg)
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, burnRadius);
@@ -225,10 +240,44 @@ public class Enemy : MonoBehaviour
         {
             return speedKillCountValue;
         }
-        else 
+        else
         {
             return killCountValue;
         }
+    }
+
+    public void ChanceToFreeze()
+    {
+        //Debug.Log("Freeze Reach Here");
+        float randomNumber = UnityEngine.Random.Range(0f, 100f);
+        Debug.Log("Ran Num: " + randomNumber);
+        //Debug.Log("Freeze Percent: " + freezeChance);
+
+        if (randomNumber >= (100 - freezeChance))
+        {
+            Debug.Log("Freeze chance Succeeded");
+            activateFreeze();
+        }
+
+
+
+    }
+
+    public void activateFreeze()
+    {
+        frozen = true;
+        speed = 0f;
+        freezeTimer = 1.5f;
+        Debug.Log("Frozen Unit: " + frozen);
+        //freezeDuration = 1.5f;
+    }
+
+    public void freezeOff()
+    {
+        freezeTimer = 0f;
+        speed = defaultSpeed;
+        frozen = false;
+        Debug.Log("Freeze Deactivated");
     }
 
     void Die()

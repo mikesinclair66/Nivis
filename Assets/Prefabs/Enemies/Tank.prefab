@@ -112,17 +112,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   damageValue: 100
-  totalHealth: 1000
-  healthScaling: 5
-  radiation: 0
+  totalHealth: 10000
   radPercentage: 10
+  radTimer: 3
   radDuration: 2
+  radiation: 0
   stunDuration: 2
   stunnedUnit: 0
-  mRend: {fileID: 6915258751149511079}
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  radTimer: 3
+  slowAmount: 2
   isTank: 1
+  isSpeed: 0
+  meleeSlowedUnit: 0
+  meleeSlowTimer: 0.5
+  burning: 0
+  burnTimer: 5
+  TickDamageTimer: 0.5
+  aoeBurn: 0
+  burnRadius: 15
+  freezeDuration: 1.5
+  frozen: 0
+  freezeTimer: 1.5
+  meltDamage: 300
+  killCountValue: 3
+  speedKillCountValue: 1
+  tankKillCountValue: 10
 --- !u!114 &8174042115733384411
 MonoBehaviour:
   m_ObjectHideFlags: 0
