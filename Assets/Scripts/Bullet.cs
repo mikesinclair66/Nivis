@@ -15,6 +15,7 @@ public class Bullet : MonoBehaviour
     public bool stunShot;
     public bool burnShot;
     public float burnDamage = 5f;
+    public bool rank3Burn;
 
     // TODO: add particle effect (e5)
 
@@ -111,7 +112,7 @@ public class Bullet : MonoBehaviour
                 Debug.Log("Activate Stun: " + e.stunnedUnit );
             }
             if (burnShot == true){
-                e.activateBurn(burnDamage);
+                e.activateBurn(burnDamage, rank3Burn);
                 Debug.Log("Activate Burn" + e.burning);
             }
         }

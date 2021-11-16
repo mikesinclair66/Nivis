@@ -25,6 +25,11 @@ public class Melee : MonoBehaviour
     public float MeleeRange;
     public int meleeDamage;
     public float PulseRate;
+    public Drill drill;
+    public int moneyEarned = 5;
+    public int rngPercentage;
+    public bool rank3Melee;
+    public float percentHealthDmg;
 
     [Header("Unity Setup Fields")]
 
@@ -52,12 +57,29 @@ public class Melee : MonoBehaviour
 
     public void MeleeCheckForEnemies()
     {
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, MeleeRange);
         foreach (Collider c in colliders)
         {
+            float randomNumber = UnityEngine.Random.Range(0, 100);
+
             if (c.GetComponent<Enemy>())
             {
                 c.GetComponent<Enemy>().meleeDamage(meleeDamage);
+                Debug.Log("RANDOM VALUE: " + randomNumber);
+                Debug.Log("Rng Percent: " + (100 - rngPercentage));
+                if (randomNumber >= (100 - rngPercentage))
+                {
+                    Debug.Log("Gave Currency");
+                    drill.currentMoney += moneyEarned;
+
+                }
+                if (rank3Melee == true){
+                    c.GetComponent<Enemy>().percentHealthTaken(percentHealthDmg);
+
+                }
+
+
             }
         }
     }

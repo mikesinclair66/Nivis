@@ -26,11 +26,15 @@ public class Enemy : MonoBehaviour
     public float TickDamageTimer = 0.5f;
     private float defaultSpeed;
     private float burnDamage;
+    private float defaultHealth;
+    public bool aoeBurn;
+    public float burnRadius = 15f;
 
     void Start()
     {
         //defaultColor = mRend.material.color;
         defaultSpeed = speed;
+        defaultHealth = totalHealth;
     }
 
     void Update()
@@ -133,13 +137,35 @@ public class Enemy : MonoBehaviour
         //mRend.material.color = defaultColor; 
     }
 
-    public void activateBurn(float burnDmg)
+    public void activateBurn(float burnDmg, bool rank3Burn)
     {
         burning = true;
+        if (rank3Burn == true)
+        {
+            Debug.Log("RANK 3 BURN ON");
+            aoeBurn = true;
+            Debug.Log("AOEBURN ACTIVE: " + aoeBurn);
+            burnDamage = burnDmg;
+
+        }
         //StartCoroutine(BurnTick());
         burnTimer = 5f;
         burnDamage = burnDmg;
 
+    }
+    
+    public void aoeBurnDmg(float burnDmg)
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, burnRadius);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.tag == "Enemy")
+            {
+                Debug.Log("AOE BURN DMG SPREAD AND ACTIVE");
+                activateBurn(burnDmg, false);
+
+            }
+        }
     }
 
 
@@ -170,9 +196,31 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public void percentHealthTaken(float damageAmount)
+    {
+        Debug.Log("Percent Damage Taken: " + (damageAmount / 100));
+        if (totalHealth > 0)
+        {
+            totalHealth -= defaultHealth * (damageAmount / 100);
+
+
+            if (totalHealth <= 0) { Die(); }
+
+        }
+        else if (totalHealth <= 0) { Die(); }
+    }
+
+
+
     void Die()
     {
         WaveSpawner.EnemiesAlive--;
+        if (aoeBurn == true)
+        {
+            Debug.Log("Burn ON DEATH");
+            aoeBurnDmg(burnDamage);
+
+        }
         Destroy(gameObject);
     }
 }
