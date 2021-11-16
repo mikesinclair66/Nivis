@@ -16,7 +16,7 @@ public class ResearchCostManager : MonoBehaviour
     void Update()
     {
         Text killCountText = GameObject.Find("KillCount").GetComponent<Text>();
-        killCountText.text = "Kill Count: " + killCount;
+        killCountText.text = "Kills: " + killCount;
     }
 
     private static int[,,] getResearchCosts()
