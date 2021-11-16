@@ -14,6 +14,8 @@ public class EnemyDisabler : MonoBehaviour
 
     public string turretTag = "Turret";
 
+    public int disablerKillCountValue = 3;
+
     void Start()
     {
         InvokeRepeating("UpdateClosestTarget", 0f, 0.5f);
@@ -85,6 +87,11 @@ public class EnemyDisabler : MonoBehaviour
         else if (WaveSpawner.waveIndex > 0) { totalHealth += healthScaling; }
         else { return; }
     }**/
+
+    public int getKillCountValue()
+    {
+        return disablerKillCountValue;
+    }
 
     void Die()
     {

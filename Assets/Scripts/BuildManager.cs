@@ -47,6 +47,12 @@ public class BuildManager : MonoBehaviour
         selectedNode = null;
         //inventory.nodeUI.Hide();
     }
+
+    public Node GetSelectedNode()
+    {
+        return selectedNode;
+    }
+
     public void SelectTurretToBuild (TurretBlueprint turret, int turretToBuildType)
     {
         turretToBuild = turret;
