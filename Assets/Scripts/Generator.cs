@@ -30,18 +30,27 @@ public class Generator : MonoBehaviour
             if (shieldHealth > 0)
             {
                 shieldHealth -= damageAmount;
-                Debug.Log("HP: " + totalHealth + " Shield: " + shieldHealth);
+                Debug.Log("Shield: " + shieldHealth);
                 if (shieldHealth < 0)
                 {
                     exceedingDamage = shieldHealth * -1;
+                    shieldHealth = 0;
+                }
+                totalHealth -= exceedingDamage;
+                canvas.GetComponent<Hotbar>().TakeDamage(totalHealth);
+
+                Debug.Log("HP: " + totalHealth + " Shield: " + shieldHealth);
+                if (totalHealth <= 0)
+                {
+                    SceneManager.LoadScene("EndScene");
                 }
             }
             else
             {
-                totalHealth -= (exceedingDamage + damageAmount);
+                totalHealth -= damageAmount;
                 canvas.GetComponent<Hotbar>().TakeDamage(totalHealth);
 
-                Debug.Log("HP: " + totalHealth + " Shield: " + shieldHealth);
+                Debug.Log("HP2: " + totalHealth + " Shield2: " + shieldHealth);
                 if (totalHealth <= 0)
                 {
                     SceneManager.LoadScene("EndScene");

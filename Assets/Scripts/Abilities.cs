@@ -49,9 +49,6 @@ public class Abilities : MonoBehaviour
             if (tempShieldDurationTimeStamp <= Time.time)
             {
                 generator.shieldHealth = 0;
-                Debug.Log("Shield expired! "
-                    + "HP: " + generator.totalHealth
-                    + " Shield: " + generator.shieldHealth);
             }
         }
 
@@ -93,7 +90,6 @@ public class Abilities : MonoBehaviour
 
     public void tempShield()
     {
-        Debug.Log("tempShieldOnCD: " + tempShieldOnCD);
         if(tempShieldOnCD == false)
         {
             generator.shieldHealth = tempShieldHP;
@@ -107,8 +103,7 @@ public class Abilities : MonoBehaviour
         {
             Debug.Log("Ability on CD!");
         }
-    }
-        
+    }        
 
     public void stunArea()
     {
