@@ -30,6 +30,9 @@ public class Melee : MonoBehaviour
     public int rngPercentage;
     public bool rank3Melee;
     public float percentHealthDmg;
+    public bool rank2Melee;
+    public bool instakillMelee;
+    public float meleeRNGPercentage = 10f;
 
     [Header("Unity Setup Fields")]
 
@@ -39,7 +42,7 @@ public class Melee : MonoBehaviour
     // TODO: logic to rotate the turret when it sees an enemy (e4)
     void Start()
     {
-        InvokeRepeating("UpdateClosestTarget", 0f, PulseRate);
+        InvokeRepeating("MeleeCheckForEnemies", 0f, PulseRate);
         defaultColor = mRend.material.color;
     }
 
@@ -50,10 +53,7 @@ public class Melee : MonoBehaviour
             return;
         }
     }
-    void UpdateClosestTarget()
-    {
-        MeleeCheckForEnemies();
-    }
+
 
     public void MeleeCheckForEnemies()
     {
@@ -61,11 +61,16 @@ public class Melee : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, MeleeRange);
         foreach (Collider c in colliders)
         {
-            float randomNumber = UnityEngine.Random.Range(0, 100);
+
 
             if (c.GetComponent<Enemy>())
             {
                 c.GetComponent<Enemy>().meleeDamage(meleeDamage);
+                if (rank2Melee == true)
+                {
+                    c.GetComponent<Enemy>().inRangeofMelee();
+                }
+                float randomNumber = UnityEngine.Random.Range(0f, 100f);
                 Debug.Log("RANDOM VALUE: " + randomNumber);
                 Debug.Log("Rng Percent: " + (100 - rngPercentage));
                 if (randomNumber >= (100 - rngPercentage))
@@ -74,8 +79,20 @@ public class Melee : MonoBehaviour
                     drill.currentMoney += moneyEarned;
 
                 }
-                if (rank3Melee == true){
+                if (rank3Melee == true)
+                {
                     c.GetComponent<Enemy>().percentHealthTaken(percentHealthDmg);
+
+                }
+                if (instakillMelee == true && c.GetComponent<Enemy>().isTank == false)
+                {
+                    float MeleeRandomNumber = UnityEngine.Random.Range(0f, 100f);
+                    if (MeleeRandomNumber >= (100 - meleeRNGPercentage))
+                    {
+                        Debug.Log("Instakill Active");
+                        float instakillDamage = c.GetComponent<Enemy>().totalHealth;
+                        c.GetComponent<Enemy>().TakeDamage(instakillDamage * 2);
+                    }
 
                 }
 

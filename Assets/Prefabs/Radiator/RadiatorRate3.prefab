@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3149694144095646197
+--- !u!1 &3953289172314985877
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2210772223454722187}
-  - component: {fileID: 5102932442849373811}
-  - component: {fileID: 6915258751149511079}
-  - component: {fileID: 6638368304927505612}
-  - component: {fileID: 6846749532719978626}
-  - component: {fileID: 8174042115733384411}
+  - component: {fileID: 3953289172314985873}
+  - component: {fileID: 3953289172314985878}
+  - component: {fileID: 3953289172314985879}
+  - component: {fileID: 3953289172314985876}
+  - component: {fileID: 86574640903343960}
   m_Layer: 0
-  m_Name: Tank
-  m_TagString: Enemy
+  m_Name: RadiatorRate3
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2210772223454722187
+--- !u!4 &3953289172314985873
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3149694144095646197}
+  m_GameObject: {fileID: 3953289172314985877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 70, y: 2, z: 60}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_Children: []
+  m_LocalPosition: {x: 55.80138, y: 23.368385, z: 64.481186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3953289174064563277}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5102932442849373811
+--- !u!33 &3953289172314985878
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3149694144095646197}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6915258751149511079
+  m_GameObject: {fileID: 3953289172314985877}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3953289172314985879
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3149694144095646197}
+  m_GameObject: {fileID: 3953289172314985877}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 015730a0056339743851f7e9c8188bb0, type: 2}
+  - {fileID: 2100000, guid: 50ff08fe3e57d4d4e83a39f3595ef8f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,70 +85,74 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6638368304927505612
-SphereCollider:
+--- !u!136 &3953289172314985876
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3149694144095646197}
+  m_GameObject: {fileID: 3953289172314985877}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6846749532719978626
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &86574640903343960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3149694144095646197}
+  m_GameObject: {fileID: 3953289172314985877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf5df155ebabca4488421da4d0535f9f, type: 3}
+  m_Script: {fileID: 11500000, guid: 173e42f74281bce48a461a78ace4a701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  damageValue: 100
-  totalHealth: 1000
-  radPercentage: 10
-  radTimer: 3
-  radDuration: 2
-  radiation: 0
-  stunDuration: 2
-  stunnedUnit: 0
-  slowAmount: 2
-  mRend: {fileID: 6915258751149511079}
+  firePoint: {fileID: 3953289174064563277}
+  mRend: {fileID: 3953289172314985879}
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  isTank: 1
-  isSpeed: 0
-  meleeSlowedUnit: 0
-  meleeSlowTimer: 0.5
-  burning: 0
-  burnTimer: 5
-  TickDamageTimer: 0.5
-  aoeBurn: 0
-  burnRadius: 15
-  freezeDuration: 1.5
-  frozen: 0
-  freezeTimer: 1.5
-  meltDamage: 300
-  inRangeofRank2Melee: 0
-  rcm: {fileID: 0}
-  killCountValue: 3
-  speedKillCountValue: 1
-  tankKillCountValue: 10
---- !u!114 &8174042115733384411
-MonoBehaviour:
+  MeleeTurret: 1
+  MeleeRange: 15
+  meleeDamage: 10
+  PulseRate: 1
+  drill: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
+  moneyEarned: 5
+  rngPercentage: 0
+  rank3Melee: 0
+  percentHealthDmg: 0
+  rank2Melee: 1
+  instakillMelee: 1
+  enemyTag: Enemy
+--- !u!1 &3953289174064563266
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3149694144095646197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea1a153574446c648b35ed50463839db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3953289174064563277}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3953289174064563277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3953289174064563266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3953289172314985873}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

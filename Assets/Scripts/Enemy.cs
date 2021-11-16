@@ -17,7 +17,8 @@ public class Enemy : MonoBehaviour
     public bool stunnedUnit;
     public int slowAmount = 2;
     //public SkinnedMeshRenderer mRend;
-    //public Color defaultColor;
+    public MeshRenderer mRend;
+    public Color defaultColor;
     public bool isTank;
     public bool isSpeed;
     public bool meleeSlowedUnit;
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour
     public bool frozen;
     public float freezeTimer = 1.5f;
     public float meltDamage = 300f;
+    public bool inRangeofRank2Melee;
 
 
     public ResearchCostManager rcm;
@@ -43,7 +45,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        //defaultColor = mRend.material.color;
+        defaultColor = mRend.material.color;
         defaultSpeed = speed;
         defaultHealth = totalHealth;
         rcm = GameObject.Find("ResearchStation").GetComponent<ResearchCostManager>();
@@ -119,7 +121,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("Enemy Found");
         TakeDamage(radiatorDamage);
         meleeActivateSlow();
-        //mRend.material.SetColor("_Color", Color.red);
+        mRend.material.SetColor("_Color", Color.red);
 
     }
 
@@ -134,9 +136,11 @@ public class Enemy : MonoBehaviour
     public void meleeSlowOff()
     {
         meleeSlowedUnit = false;
-        //mRend.material.color = defaultColor; 
-        Debug.Log("DEFAULT SPEED: " + defaultSpeed);
+        inRangeofRank2Melee = false;
+        mRend.material.color = defaultColor; 
+        //Debug.Log("DEFAULT SPEED: " + defaultSpeed);
         speed = defaultSpeed;
+
     }
     /**
     public void ScaleHP()
@@ -148,14 +152,14 @@ public class Enemy : MonoBehaviour
     public void activateRad()
     {
         radiation = true;
-        //mRend.material.SetColor("_Color", Color.green);
+        mRend.material.SetColor("_Color", Color.green);
         radTimer = 3f;
     }
 
     public void radOff()
     {
         radiation = false;
-        //mRend.material.color = defaultColor; 
+        mRend.material.color = defaultColor; 
     }
 
     public void activateBurn(float burnDmg, bool rank3Burn)
@@ -163,9 +167,9 @@ public class Enemy : MonoBehaviour
         burning = true;
         if (rank3Burn == true)
         {
-            Debug.Log("RANK 3 BURN ON");
+            //Debug.Log("RANK 3 BURN ON");
             aoeBurn = true;
-            Debug.Log("AOEBURN ACTIVE: " + aoeBurn);
+            //Debug.Log("AOEBURN ACTIVE: " + aoeBurn);
             burnDamage = burnDmg;
 
         }
@@ -205,7 +209,7 @@ public class Enemy : MonoBehaviour
         stunnedUnit = true;
         speed = 0f;
         stunDuration = 1.5f;
-        //mRend.material.SetColor("_Color", Color.blue);
+        mRend.material.SetColor("_Color", Color.blue);
 
     }
 
@@ -213,7 +217,7 @@ public class Enemy : MonoBehaviour
     {
         stunnedUnit = false;
         speed = defaultSpeed;
-        //mRend.material.color = defaultColor; 
+        mRend.material.color = defaultColor; 
 
     }
 
@@ -229,6 +233,11 @@ public class Enemy : MonoBehaviour
 
         }
         else if (totalHealth <= 0) { Die(); }
+    }
+
+    public void inRangeofMelee()
+    {
+        inRangeofRank2Melee = true;
     }
 
 
@@ -294,6 +303,14 @@ public class Enemy : MonoBehaviour
         }
         Destroy(gameObject);
         Debug.Log("Kill Count: " + rcm.killCount);
-        rcm.killCount += getKillCountValue();
+        if (inRangeofRank2Melee == true)
+        {
+            rcm.killCount += getKillCountValue() * 2;
+        }
+        else
+        {
+            rcm.killCount += getKillCountValue();
+
+        }
     }
 }

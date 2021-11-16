@@ -119,12 +119,27 @@ MonoBehaviour:
   radiation: 0
   stunDuration: 0
   stunnedUnit: 0
+  slowAmount: 2
+  mRend: {fileID: 6915258751149511079}
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
   isTank: 0
+  isSpeed: 0
   meleeSlowedUnit: 0
   meleeSlowTimer: 0.5
   burning: 0
   burnTimer: 5
   TickDamageTimer: 0.5
+  aoeBurn: 0
+  burnRadius: 15
+  freezeDuration: 1.5
+  frozen: 0
+  freezeTimer: 1.5
+  meltDamage: 300
+  inRangeofRank2Melee: 0
+  rcm: {fileID: 0}
+  killCountValue: 3
+  speedKillCountValue: 1
+  tankKillCountValue: 10
 --- !u!114 &8174042115733384411
 MonoBehaviour:
   m_ObjectHideFlags: 0
