@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class ResearchStation : MonoBehaviour
     public int price1, price2, price3;
 
     public static bool[,,] researched;
+    public ResearchCostManager rcm;
 
     void Start()
     {
@@ -145,10 +147,12 @@ public class ResearchStation : MonoBehaviour
                         return;
                     }
 
-                researched[page, 0, i] = true;
+                rcm.checkIfCanResearch(rcm.researchCost[page, 0, i], page, 0, i);
             }
             else
-                researched[page, 0, 0] = true;
+            {
+                rcm.checkIfCanResearch(rcm.researchCost[page, 0, 0], page, 0, 0);
+            }
         }
         else
         {
@@ -161,10 +165,12 @@ public class ResearchStation : MonoBehaviour
                         return;
                     }
 
-                researched[page, 1, i] = true;
+                rcm.checkIfCanResearch(rcm.researchCost[page, 1, i], page, 1, i);
             }
             else
-                researched[page, 1, 0] = true;
+            {
+                rcm.checkIfCanResearch(rcm.researchCost[page, 1, 0], page, 1, i);
+            }
         }
 
         UpdatePage(page);

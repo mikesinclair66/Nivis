@@ -101,7 +101,7 @@ public class Bullet : MonoBehaviour
         if (e != null)
         {
             e.TakeDamage(damage);
-            Debug.Log("Reach here");
+            //Debug.Log("Reach here");
             if (radiation == true)
             {
                 e.activateRad();
@@ -109,7 +109,7 @@ public class Bullet : MonoBehaviour
             if (stunShot == true)
             {
                 e.activateStun();
-                Debug.Log("Activate Stun: " + e.stunnedUnit );
+                //Debug.Log("Activate Stun: " + e.stunnedUnit );
             }
             if (burnShot == true){
                 if(e.frozen == true) {
