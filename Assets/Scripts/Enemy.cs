@@ -28,12 +28,15 @@ public class Enemy : MonoBehaviour
     private float defaultSpeed;
     private float burnDamage;
 
+    public ResearchCostManager rcm;
+
     public int killCountValue = 3, speedKillCountValue = 1, tankKillCountValue = 10;
 
     void Start()
     {
         //defaultColor = mRend.material.color;
         defaultSpeed = speed;
+        rcm = GameObject.Find("ResearchStation").GetComponent<ResearchCostManager>();
     }
 
     void Update()
@@ -193,5 +196,7 @@ public class Enemy : MonoBehaviour
     {
         WaveSpawner.EnemiesAlive--;
         Destroy(gameObject);
+        Debug.Log("Kill Count: " + rcm.killCount);
+        rcm.killCount += getKillCountValue();
     }
 }
