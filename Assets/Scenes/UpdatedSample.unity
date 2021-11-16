@@ -440,10 +440,14 @@ MonoBehaviour:
     cost: 300
     sellValue: 0
   meleeTurret:
-    prefab: {fileID: 0}
-    paths: []
-    cost: 0
-    sellValue: 0
+    prefab: {fileID: 2451574595403351592, guid: 7be9c5a22ca3f3c49aae09e60e4a030e, type: 3}
+    paths:
+    - upgrades:
+      - prefab: {fileID: 3953289172314985877, guid: 93ec00e36bbbfa94bbf5e34aa84fb20b, type: 3}
+        cost: 123
+        sellValue: 100
+    cost: 100
+    sellValue: 69
 --- !u!114 &62729418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2851,6 +2855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 424659363}
   - component: {fileID: 424659364}
+  - component: {fileID: 424659365}
   m_Layer: 5
   m_Name: AttackButtons
   m_TagString: Untagged
@@ -2907,6 +2912,29 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &424659365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424659362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb3b1eb15154f1448138c4286468a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildManager: {fileID: 458077342}
+  generator: {fileID: 2830543956506485191}
+  reenableTurretCost: 100
+  tempShieldCost: 200
+  stunAreaCost: 250
+  tempShieldDuration: 10
+  tempShieldDurationTimeStamp: 0
+  tempShieldHP: 30
+  reenableTurretCD: 5
+  tempShieldCD: 100
+  stunAreaCD: 100
 --- !u!1 &428812782
 GameObject:
   m_ObjectHideFlags: 0
@@ -3425,7 +3453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveEnemies:
-    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+    - enemy: {fileID: 3149694144095646197, guid: e5d1a758432c8014bb8ad99ecc802132, type: 3}
       count: 3
       rate: 2
   - waveEnemies:
@@ -12282,13 +12310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488a5d949a8b42543ba69f8821d7aee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 1654597095}
-  upgradeCostPath1: {fileID: 215370788}
-  upgradeCostPath2: {fileID: 1327620251}
-  sellAmount: {fileID: 123766179}
-  upgradeButton1: {fileID: 466912431}
-  upgradeButton2: {fileID: 990050603}
-  target: {fileID: 0}
 --- !u!4 &1654597097
 Transform:
   m_ObjectHideFlags: 0
@@ -15375,7 +15396,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1982632858}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 424659365}
+        m_TargetAssemblyTypeName: Abilities, Assembly-CSharp
+        m_MethodName: reenableTurret
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1982632858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15576,7 +15609,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2001208767}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 424659365}
+        m_TargetAssemblyTypeName: Abilities, Assembly-CSharp
+        m_MethodName: tempShield
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2001208767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16964,6 +17009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 100
+  shieldHealth: 0
   genHealth: {fileID: 726290938}
   canvas: {fileID: 1130641603}
 --- !u!1001 &6561254724787048201

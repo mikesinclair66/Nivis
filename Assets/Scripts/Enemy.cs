@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     //public SkinnedMeshRenderer mRend;
     //public Color defaultColor;
     public bool isTank;
+    public bool isSpeed;
     public bool meleeSlowedUnit;
     public float meleeSlowTimer = 0.5f;
     public bool burning;
@@ -26,6 +27,8 @@ public class Enemy : MonoBehaviour
     public float TickDamageTimer = 0.5f;
     private float defaultSpeed;
     private float burnDamage;
+
+    public int killCountValue = 3, speedKillCountValue = 1, tankKillCountValue = 10;
 
     void Start()
     {
@@ -168,6 +171,22 @@ public class Enemy : MonoBehaviour
         speed = defaultSpeed;
         //mRend.material.color = defaultColor; 
 
+    }
+
+    public int getKillCountValue()
+    {
+        if (isTank == true)
+        {
+            return tankKillCountValue;
+        }
+        else if (isSpeed == true)
+        {
+            return speedKillCountValue;
+        }
+        else 
+        {
+            return killCountValue;
+        }
     }
 
     void Die()
