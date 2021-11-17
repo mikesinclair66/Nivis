@@ -19,24 +19,24 @@ public class ResearchCostManager : MonoBehaviour
         killCountText.text = "Kills: " + killCount;
     }
 
-    private static int[,,] getResearchCosts()
+    public static int[,,] getResearchCosts()
     {
         return new int[,,]
         {
             {   // turret 1, path 1, upgrades 1-3
                 {5, 10, 15},
                 // turret 1, path 2, upgrades 1-3
-                {6, 9, 12}
+                {5, 10, 15}
             },
             {   // turret 2, path 1, upgrades 1-3
                 {4, 8, 10},
                 // turret 2, path 2, upgrades 1-3
-                {5, 10, 15}
+                {4, 8, 10}
             },
             {   // turret 3, path 1, upgrades 1-3
                 {1, 2, 3},
                 // turret 3, path 2, upgrades 1-3
-                {4, 5, 6}
+                {1, 2, 3}
             },
         };
     }

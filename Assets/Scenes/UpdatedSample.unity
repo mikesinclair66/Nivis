@@ -416,7 +416,7 @@ MonoBehaviour:
         cost: 350
         sellValue: 0
     cost: 200
-    sellValue: 0
+    sellValue: 50
   missileLauncher:
     prefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
     paths:
@@ -438,7 +438,7 @@ MonoBehaviour:
         cost: 2
         sellValue: 0
     cost: 300
-    sellValue: 0
+    sellValue: 50
   meleeTurret:
     prefab: {fileID: 2451574595403351592, guid: 7be9c5a22ca3f3c49aae09e60e4a030e, type: 3}
     paths:
@@ -447,7 +447,7 @@ MonoBehaviour:
         cost: 123
         sellValue: 100
     cost: 100
-    sellValue: 69
+    sellValue: 50
 --- !u!114 &62729418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,17 +1444,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 35
+    m_Left: 52
     m_Right: 0
     m_Top: 75
     m_Bottom: 25
   m_ChildAlignment: 0
-  m_Spacing: 75
+  m_Spacing: 108
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
+  m_ChildScaleWidth: 0
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!1001 &223329402
@@ -2426,7 +2426,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 175}
+  m_SizeDelta: {x: 109.666664, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &355162242
 MonoBehaviour:
@@ -5615,9 +5615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0537debed995d094f946ac6c7e4e1c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price1: 100
-  price2: 150
-  price3: 200
   rcm: {fileID: 1507358098}
 --- !u!1 &766747599
 GameObject:
@@ -6431,17 +6428,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 35
+    m_Left: 52
     m_Right: 0
     m_Top: 75
     m_Bottom: 25
   m_ChildAlignment: 0
-  m_Spacing: 75
+  m_Spacing: 108
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
+  m_ChildScaleWidth: 0
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!1 &882446791
@@ -6655,7 +6652,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 174}
+  m_SizeDelta: {x: 109.666664, y: 174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &925037985
 MonoBehaviour:
@@ -12284,17 +12281,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 35
+    m_Left: 52
     m_Right: 0
     m_Top: 75
     m_Bottom: 25
   m_ChildAlignment: 0
-  m_Spacing: 75
+  m_Spacing: 108
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
+  m_ChildScaleWidth: 0
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!1 &1654597095
@@ -12502,7 +12499,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 174}
+  m_SizeDelta: {x: 109.666664, y: 174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1713793733
 MonoBehaviour:
@@ -12930,7 +12927,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 175}
+  m_SizeDelta: {x: 109.666664, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1750307122
 MonoBehaviour:
@@ -13195,7 +13192,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 70}
+  m_SizeDelta: {x: 274.66666, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1763193603
 MonoBehaviour:
@@ -13291,8 +13288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2311b724d3659d44c800466f0d4a2287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeCost: 100
-  sellValue: 100
   drill: {fileID: 482290806}
 --- !u!1001 &1775665094
 PrefabInstance:
@@ -13517,7 +13512,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 174}
+  m_SizeDelta: {x: 109.666664, y: 174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1802472366
 MonoBehaviour:
@@ -14435,7 +14430,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 70}
+  m_SizeDelta: {x: 274.66666, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1884400640
 MonoBehaviour:
@@ -15499,7 +15494,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 70}
+  m_SizeDelta: {x: 274.66666, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1998093938
 MonoBehaviour:
@@ -16463,7 +16458,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 174}
+  m_SizeDelta: {x: 109.666664, y: 174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2103682999
 MonoBehaviour:
