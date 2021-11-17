@@ -123,4 +123,32 @@ public class Abilities : MonoBehaviour
     {
 
     }
+
+    public int getReenableTurretCD()
+    {
+        if (reenableTurretOnCD)
+        {
+            return (int) (reenableTurretTimeStamp - Time.time);
+        }
+        return 0;
+    }
+    
+    public int getTempShieldCD()
+    {
+        if (tempShieldOnCD)
+        {
+            return (int) (tempShieldTimeStamp - Time.time);
+        }
+        return 0;
+    }
+    
+    public int getStunAreaCD()
+    {
+        if (stunAreaOnCD)
+        {
+            return (int) (stunAreaTimeStamp - Time.time);
+        }
+        return 0;
+    }
+
 }
