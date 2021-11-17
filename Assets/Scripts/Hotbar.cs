@@ -118,12 +118,12 @@ public class Hotbar : MonoBehaviour
         eventSystem = GameObject.Find("EventSystem");
 
         Shop shop = GameObject.Find("Canvas/Hotbar/TowerButtons").GetComponent<Shop>();
-        attackText[0].GetComponent<Text>().text = "1\n\n$" + a1Text;
-        attackText[1].GetComponent<Text>().text = "2\n\n$" + a2Text;
-        attackText[2].GetComponent<Text>().text = "3\n\n$" + a3Text;
-        towerText[0].GetComponent<Text>().text = "1\n\n$" + shop.standardTurret.cost;
-        towerText[1].GetComponent<Text>().text = "2\n\n$" + shop.missileLauncher.cost;
-        towerText[2].GetComponent<Text>().text = "3\n\n$" + shop.meleeTurret.cost;
+        attackText[0].GetComponent<Text>().text = "Fire\n\n$" + a1Text;
+        attackText[1].GetComponent<Text>().text = "Shield\n\n$" + a2Text;
+        attackText[2].GetComponent<Text>().text = "Stun\n\n$" + a3Text;
+        towerText[0].GetComponent<Text>().text = "Normal\nTurret\n$" + shop.standardTurret.cost;
+        towerText[1].GetComponent<Text>().text = "Missile\nTurret\n$" + shop.missileLauncher.cost;
+        towerText[2].GetComponent<Text>().text = "Radiator\nTower\n$" + shop.meleeTurret.cost;
 
         researchChecker = new HoverChecker(
             researchBtn,

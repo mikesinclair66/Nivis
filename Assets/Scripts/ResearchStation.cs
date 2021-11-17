@@ -103,9 +103,9 @@ public class ResearchStation : MonoBehaviour
         }
 
         int[,,] researchCost = ResearchCostManager.getResearchCosts();
-        price1Text.text = researchCost[page, 0, 0].ToString("0");
-        price2Text.text = researchCost[page, 0, 1].ToString("0");
-        price3Text.text = researchCost[page, 0, 2].ToString("0");
+        price1Text.text = "Kills: " + researchCost[page, 0, 0].ToString("0");
+        price2Text.text = "Kills: " + researchCost[page, 0, 1].ToString("0");
+        price3Text.text = "Kills: " + researchCost[page, 0, 2].ToString("0");
     }
 
     public void NextPage()
