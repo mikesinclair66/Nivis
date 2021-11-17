@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
     public float burnDamage = 5f;
     public bool rank3Burn;
 
+    public GameObject impactEffect;
     // TODO: add particle effect (e5)
 
     public void Seek(Transform _target)
@@ -96,6 +97,12 @@ public class Bullet : MonoBehaviour
     // TODO: connect with enemy code
     void Damage(Transform enemy)
     {
+        if (impactEffect != null)
+        {
+            GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(effectIns, 5f);
+        }
+        
         Enemy e = enemy.GetComponent<Enemy>();
 
         if (e != null)

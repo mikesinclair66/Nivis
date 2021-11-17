@@ -113,3 +113,8 @@ MonoBehaviour:
   damage: 50
   explosionRadius: 0
   radiation: 0
+  stunShot: 0
+  burnShot: 0
+  burnDamage: 5
+  rank3Burn: 0
+  impactEffect: {fileID: 7040492511225032996, guid: 0d08c6c3bcceadb46a7da71e8c3c3f34, type: 3}
