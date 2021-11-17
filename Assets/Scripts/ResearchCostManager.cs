@@ -52,8 +52,15 @@ public class ResearchCostManager : MonoBehaviour
             Debug.Log("Enough kills to research tech");
             if(ResearchStation.researched[turret, path, tier] == false)
             {
-                killCount -= _killCount;
-                ResearchStation.researched[turret, path, tier] = true;
+                if (killCount >= _killCount)
+                {
+                    killCount -= _killCount;
+                    ResearchStation.researched[turret, path, tier] = true;
+                }
+                else
+                {
+                    Debug.Log("Not enough kill counts");
+                }
             }
             else
             {

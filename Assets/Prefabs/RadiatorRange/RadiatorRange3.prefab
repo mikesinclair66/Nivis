@@ -145,14 +145,14 @@ MonoBehaviour:
   mRend: {fileID: 336723985512325641}
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
   MeleeTurret: 1
-  MeleeRange: 30
-  meleeDamage: 400
-  PulseRate: 2
+  MeleeRange: 15
+  meleeDamage: 10
+  PulseCD: 2
   drill: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
-  moneyEarned: 10000
+  moneyEarned: 10
   rngPercentage: 25
   rank3Melee: 1
-  percentHealthDmg: 0
+  percentHealthDmg: 5
   rank2Melee: 0
   instakillMelee: 0
   meleeRNGPercentage: 10

@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  damage: 15
+  damage: 35
   explosionRadius: 10
   radiation: 1
   stunShot: 0
