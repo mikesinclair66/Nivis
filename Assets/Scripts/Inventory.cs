@@ -249,6 +249,27 @@ public class Inventory : MonoBehaviour
         int branchNo = ((primaryBranch) ? 0 : 1);
         if (ResearchUnlocked(branchNo, 0))
         {
+            int cost;
+            switch (turretType[towerSelected])
+            {
+                case 0:
+                    cost = shop.standardTurret.paths[branchNo].upgrades[0].cost;
+                    break;
+                case 1:
+                    cost = shop.missileLauncher.paths[branchNo].upgrades[0].cost;
+                    break;
+                case 2:
+                default:
+                    cost = shop.meleeTurret.paths[branchNo].upgrades[0].cost;
+                    break;
+            }
+            if (drill.currentMoney >= cost)
+                drill.currentMoney -= cost;
+            else
+            {
+                Debug.Log("Your drill doesn't have enough money!");
+                return;
+            }
             upgradePrimary[towerSelected] = branchNo;
             upgradeLvl[towerSelected] = 1;
             Debug.Log("Research unlocked. primaryBranch=" + branchNo + ". UpgradeLvl=" + upgradeLvl[towerSelected]);
@@ -257,6 +278,7 @@ public class Inventory : MonoBehaviour
             actionUI.GetComponent<UIAnimator>().CloseUI();
             researchStation.GetComponent<UIAnimator>().CloseUI();
             //drill.currentMoney -= nodeUI.curPathCost;
+            /*
             switch (turretType[towerSelected])
             {
                 case 0:
@@ -270,6 +292,7 @@ public class Inventory : MonoBehaviour
                     drill.currentMoney -= shop.meleeTurret.paths[branchNo].upgrades[0].cost;
                     break;
             }
+            */
         }
         UpdateUpgradeSystem();
     }
@@ -291,11 +314,36 @@ public class Inventory : MonoBehaviour
         {
             if (upgradeLvl[towerSelected] < 3)
             {
+                int cost;
+                switch (turretType[towerSelected])
+                {
+                    case 0:
+                        cost = shop.standardTurret
+                            .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
+                        break;
+                    case 1:
+                        cost = shop.missileLauncher
+                            .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
+                        break;
+                    case 2:
+                    default:
+                        cost = shop.meleeTurret
+                            .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
+                        break;
+                }
+                if (drill.currentMoney >= cost)
+                    drill.currentMoney -= cost;
+                else
+                {
+                    Debug.Log("Your drill doesn't have enough money!");
+                    return;
+                }
                 Debug.Log("Research unlocked. primaryBranch=" + upgradePrimary[towerSelected] + ". UpgradeLvl=" + upgradeLvl[towerSelected]);
                 nodeUI.Upgrade(upgradePrimary[towerSelected] + 1);
                 actionUI.GetComponent<UIAnimator>().CloseUI();
                 researchStation.GetComponent<UIAnimator>().CloseUI();
                 //drill.currentMoney -= nodeUI.curPathCost;
+                /*
                 switch (turretType[towerSelected])
                 {
                     case 0:
@@ -312,6 +360,7 @@ public class Inventory : MonoBehaviour
                             .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
                         break;
                 }
+                */
                 upgradeLvl[towerSelected]++;
             }
         }
@@ -342,17 +391,17 @@ public class Inventory : MonoBehaviour
             switch (turretType[towerSelected])
             {
                 case 0:
-                    upgradeText1.text = "$" + shop.standardTurret.paths[0].upgrades[0].cost;
-                    upgradeText2.text = "$" + shop.standardTurret.paths[1].upgrades[0].cost;
+                    upgradeText1.text = "Sniper\n$" + shop.standardTurret.paths[0].upgrades[0].cost;
+                    upgradeText2.text = "Laser\n$" + shop.standardTurret.paths[1].upgrades[0].cost;
                     break;
                 case 1:
-                    upgradeText1.text = "$" + shop.missileLauncher.paths[0].upgrades[0].cost;
-                    upgradeText2.text = "$" + shop.missileLauncher.paths[1].upgrades[0].cost;
+                    upgradeText1.text = "Nuke\n$" + shop.missileLauncher.paths[0].upgrades[0].cost;
+                    upgradeText2.text = "Fire\n$" + shop.missileLauncher.paths[1].upgrades[0].cost;
                     break;
                 case 2:
                 default:
-                    upgradeText1.text = "$" + shop.meleeTurret.paths[0].upgrades[0].cost;
-                    upgradeText2.text = "$" + shop.meleeTurret.paths[1].upgrades[0].cost;
+                    upgradeText1.text = "+Fire\nrate\n$" + shop.meleeTurret.paths[0].upgrades[0].cost;
+                    upgradeText2.text = "+Range\n$" + shop.meleeTurret.paths[1].upgrades[0].cost;
                     break;
             }
         }
@@ -371,19 +420,63 @@ public class Inventory : MonoBehaviour
 
             try
             {
+                string descriptor = "";
+
                 switch (turretType[towerSelected])
                 {
                     case 0:
-                        upgradeText.text = "$" + shop.standardTurret.paths[upgradePrimary[towerSelected]]
+                        if (upgradePrimary[towerSelected] == 0)
+                        {
+                            if (upgradeLvl[towerSelected] == 1)
+                                descriptor = "+Damage";
+                            if (upgradeLvl[towerSelected] == 2)
+                                descriptor = "+Stun";
+                        }
+                        else if(upgradePrimary[towerSelected] == 1)
+                        {
+                            if (upgradeLvl[towerSelected] == 1)
+                                descriptor = "+Fire\nRate";
+                            if (upgradeLvl[towerSelected] == 2)
+                                descriptor = "+Freeze %";
+                        }
+                        upgradeText.text = descriptor + "\n$" + shop.standardTurret.paths[upgradePrimary[towerSelected]]
                             .upgrades[upgradeLvl[towerSelected]].cost;
                         break;
                     case 1:
-                        upgradeText.text = "$" + shop.missileLauncher.paths[upgradePrimary[towerSelected]]
+                        if (upgradePrimary[towerSelected] == 0)
+                        {
+                            if (upgradeLvl[towerSelected] == 1)
+                                descriptor = "+Fire\nRate";
+                            if (upgradeLvl[towerSelected] == 2)
+                                descriptor = "Radiation";
+                        }
+                        else if(upgradePrimary[towerSelected] == 1)
+                        {
+                            if (upgradeLvl[towerSelected] == 1)
+                                descriptor = "+Damage";
+                            if (upgradeLvl[towerSelected] == 2)
+                                descriptor = "+Fire\nSpread";
+                        }
+                        upgradeText.text = descriptor + "\n$" + shop.missileLauncher.paths[upgradePrimary[towerSelected]]
                             .upgrades[upgradeLvl[towerSelected]].cost;
                         break;
                     case 2:
                     default:
-                        upgradeText.text = "$" + shop.meleeTurret.paths[upgradePrimary[towerSelected]]
+                        if (upgradePrimary[towerSelected] == 0)
+                        {
+                            if (upgradeLvl[towerSelected] == 1)
+                                descriptor = "2x Kill\nCounts";
+                            if (upgradeLvl[towerSelected] == 2)
+                                descriptor = "+Instant\nKill %";
+                        }
+                        else if(upgradePrimary[towerSelected] == 1)
+                        {
+                            if (upgradeLvl[towerSelected] == 1)
+                                descriptor = "Collect\nEnemy $";
+                            if (upgradeLvl[towerSelected] == 2)
+                                descriptor = "+Damage";
+                        }
+                        upgradeText.text = descriptor + "\n$" + shop.meleeTurret.paths[upgradePrimary[towerSelected]]
                             .upgrades[upgradeLvl[towerSelected]].cost;
                         break;
                 }

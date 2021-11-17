@@ -117,12 +117,12 @@ public class Hotbar : MonoBehaviour
         eventSystem = GameObject.Find("EventSystem");
 
         Shop shop = GameObject.Find("Canvas/Hotbar/TowerButtons").GetComponent<Shop>();
-        attackText[0].GetComponent<Text>().text = "1\n\n$" + attacks.GetComponent<Abilities>().reenableTurretCost;
-        attackText[1].GetComponent<Text>().text = "2\n\n$" + attacks.GetComponent<Abilities>().tempShieldCost;
-        attackText[2].GetComponent<Text>().text = "3\n\n$" + attacks.GetComponent<Abilities>().stunAreaCost;
-        towerText[0].GetComponent<Text>().text = "1\n\n$" + shop.standardTurret.cost;
-        towerText[1].GetComponent<Text>().text = "2\n\n$" + shop.missileLauncher.cost;
-        towerText[2].GetComponent<Text>().text = "3\n\n$" + shop.meleeTurret.cost;
+        attackText[0].GetComponent<Text>().text = "Fire\n\n$" + attacks.GetComponent<Abilities>().reenableTurretCost;
+        attackText[1].GetComponent<Text>().text = "Shield\n\n$" + attacks.GetComponent<Abilities>().tempShieldCost;
+        attackText[2].GetComponent<Text>().text = "Stun\n\n$" + attacks.GetComponent<Abilities>().stunAreaCost;
+        towerText[0].GetComponent<Text>().text = "Normal\nTurret\n$" + shop.standardTurret.cost;
+        towerText[1].GetComponent<Text>().text = "Missile\nTurret\n$" + shop.missileLauncher.cost;
+        towerText[2].GetComponent<Text>().text = "Radiator\nTower\n$" + shop.meleeTurret.cost;
 
         researchChecker = new HoverChecker(
             researchBtn,
