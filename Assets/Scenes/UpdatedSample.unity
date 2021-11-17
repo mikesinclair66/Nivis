@@ -403,17 +403,17 @@ MonoBehaviour:
     paths:
     - upgrades:
       - prefab: {fileID: 4560193758139878433, guid: 395aa4b6169b46d449b6a24a2396c80f, type: 3}
-        cost: 255
+        cost: 100
         sellValue: 0
       - prefab: {fileID: 4560193758139878433, guid: b02b62f6f84abfd47be381461573bbba, type: 3}
-        cost: 355
+        cost: 200
         sellValue: 0
     - upgrades:
       - prefab: {fileID: 4287252505085212748, guid: 59ddb42239132b14792c72068a4afc64, type: 3}
-        cost: 250
+        cost: 500
         sellValue: 0
       - prefab: {fileID: 4287252505085212748, guid: 669c6f0b782bd3c428502e66a4540566, type: 3}
-        cost: 350
+        cost: 1000
         sellValue: 0
     cost: 200
     sellValue: 50
@@ -421,7 +421,7 @@ MonoBehaviour:
     prefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
     paths:
     - upgrades:
-      - prefab: {fileID: 5779901267874478193, guid: 16731d2ebc54a454f90ffcb006563770, type: 3}
+      - prefab: {fileID: 3308752272790389, guid: 16731d2ebc54a454f90ffcb006563770, type: 3}
         cost: 1
         sellValue: 0
       - prefab: {fileID: 5180636087819770958, guid: f53c7a433eef92f4295053ce07f6fbbc, type: 3}
@@ -5648,7 +5648,7 @@ RectTransform:
   m_Children:
   - {fileID: 2077771402}
   m_Father: {fileID: 1014776956}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7539,7 +7539,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.36, z: 1}
   m_Children:
-  - {fileID: 1741413942}
   - {fileID: 1907184317}
   - {fileID: 766747600}
   m_Father: {fileID: 1766955760}
@@ -12811,85 +12810,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736929919}
   m_CullTransparentMesh: 1
---- !u!1 &1741413941
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1741413942}
-  - component: {fileID: 1741413944}
-  - component: {fileID: 1741413943}
-  m_Layer: 5
-  m_Name: Cost
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1741413942
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741413941}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2.25, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1014776956}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1741413943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741413941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.8901961, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 50
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: -$100
---- !u!222 &1741413944
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741413941}
-  m_CullTransparentMesh: 1
 --- !u!1 &1750307120
 GameObject:
   m_ObjectHideFlags: 0
@@ -13289,6 +13209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drill: {fileID: 482290806}
+  shop: {fileID: 62729417}
 --- !u!1001 &1775665094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14687,7 +14608,7 @@ RectTransform:
   m_Children:
   - {fileID: 140711615}
   m_Father: {fileID: 1014776956}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

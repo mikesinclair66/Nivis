@@ -16,6 +16,8 @@ public class NodeUI
     public Button upgradeButton1;
     public Button upgradeButton2;*/
 
+    public int curPathCost;
+    public int curSellValue;
     private Node target;
 
     public void SetTarget(Node _target)
@@ -24,14 +26,20 @@ public class NodeUI
 
         //transform.position = target.GetBuildPosition();
 
-        //applyUpgradeText();
+        applyUpgradeText();
 
         //sellAmount.text = "$" + target.turretBlueprint.sellValue;
+        curSellValue = target.turretBlueprint.sellValue;
 
         //ui.SetActive(true);
     }
 
-    /*private void applyUpgradeText()
+    public Node GetTarget()
+    {
+        return target;
+    }
+
+    private void applyUpgradeText()
     {
         int upgradeTier = target.getCurrentUpgradeTier();
         int upgradePath = target.getCurrentUpgradePath();
@@ -40,10 +48,10 @@ public class NodeUI
         List<int> maxUpgradeTier = target.getMaxUpgradeTier();
 
         int upgradeCode1 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[0], upgradePath, upgradePath != 1);
-        setButton(upgradeButton1, upgradeCostPath1, upgradeCode1, path1, upgradeTier);
+        setButton(/*upgradeButton1, upgradeCostPath1,*/ upgradeCode1, path1, upgradeTier);
 
         int upgradeCode2 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[1], upgradePath, upgradePath != 2);
-        setButton(upgradeButton2, upgradeCostPath2, upgradeCode2, path2, upgradeTier);
+        setButton(/*upgradeButton2, upgradeCostPath2,*/ upgradeCode2, path2, upgradeTier);
     }
 
     private int getCanUpgradeForPath(int tier, int maxTier, int currentUpgradePath, bool isOtherPathUpgraded)
@@ -64,21 +72,21 @@ public class NodeUI
         return 1;
     }
 
-    private void setButton(Button button, Text text, int code, UpgradePath path, int tier)
+    private void setButton(/*Button button, Text text,*/ int code, UpgradePath path, int tier)
     {
         // Button should not show and not be clickable
         if (code == -1)
         {
-            text.text = "UNAVAILABLE";
-            button.interactable = false;
+            //text.text = "UNAVAILABLE";
+            //button.interactable = false;
             return;
         }
 
         // Upgrade path is finished
         if (code == 0)
         {
-            text.text = "DONE";
-            button.interactable = false;
+            //text.text = "DONE";
+            //button.interactable = false;
             return;
         }
 
@@ -86,12 +94,13 @@ public class NodeUI
         if (code == 1)
         {
             int pathcost = path.upgrades[tier].cost;
-            button.interactable = true;
-            text.text = "$" + pathcost;
+            //button.interactable = true;
+            //text.text = "$" + pathcost;
+            curPathCost = pathcost;
         }
     }
 
-    public void Hide()
+    /*public void Hide()
     {
         ui.SetActive(false);
     }*/
@@ -121,9 +130,10 @@ public class Inventory : MonoBehaviour
     int towerSelected = -1;
     static bool upgradeBtnScaled = false;
     public NodeUI nodeUI = new NodeUI();
-    Text upgradeCostText, sellValueText;
+    Text sellValueText, upgradeCostText, upgradeText1, upgradeText2;
     public int upgradeCost, sellValue;
     public Drill drill;
+    public Shop shop;
 
     void Awake()
     {
@@ -152,8 +162,8 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         upgradeBtn.SetActive(false);
-        upgradeCostText.text = "-$" + upgradeCost.ToString("0");
-        sellValueText.text = "Sell +$" + sellValue.ToString("0");
+        /*upgradeCostText.text = "-$" + upgradeCost.ToString("0");
+        sellValueText.text = "Sell +$" + sellValue.ToString("0");*/
     }
 
     public void Add(GameObject turret, int type, int nodeKey)
@@ -209,6 +219,8 @@ public class Inventory : MonoBehaviour
                 break;
         }
 
+        sellValueText.text = "Sell +$" + nodeUI.curSellValue.ToString("0");
+
         UpdateUpgradeSystem();
         actionUI.GetComponent<UIAnimator>().RequestToggle();
     }
@@ -242,13 +254,19 @@ public class Inventory : MonoBehaviour
             nodeUI.Upgrade(branchNo + 1);
             actionUI.GetComponent<UIAnimator>().CloseUI();
             researchStation.GetComponent<UIAnimator>().CloseUI();
-            if (drill.currentMoney >= upgradeCost)
+            //drill.currentMoney -= nodeUI.curPathCost;
+            switch (turretType[towerSelected])
             {
-                drill.currentMoney -= upgradeCost;
-            }
-            else
-            {
-                Debug.Log("YOU POOR!");
+                case 0:
+                    drill.currentMoney -= shop.standardTurret.paths[branchNo].upgrades[0].cost;
+                    break;
+                case 1:
+                    drill.currentMoney -= shop.missileLauncher.paths[branchNo].upgrades[0].cost;
+                    break;
+                case 2:
+                default:
+                    drill.currentMoney -= shop.meleeTurret.paths[branchNo].upgrades[0].cost;
+                    break;
             }
         }
         UpdateUpgradeSystem();
@@ -259,7 +277,7 @@ public class Inventory : MonoBehaviour
         nodeUI.Sell();
         actionUI.GetComponent<UIAnimator>().CloseUI();
         researchStation.GetComponent<UIAnimator>().CloseUI();
-        drill.currentMoney += sellValue;
+        drill.currentMoney += nodeUI.curSellValue;
     }
 
     public void Upgrade()
@@ -276,14 +294,24 @@ public class Inventory : MonoBehaviour
                 nodeUI.Upgrade(upgradePrimary[towerSelected] + 1);
                 actionUI.GetComponent<UIAnimator>().CloseUI();
                 researchStation.GetComponent<UIAnimator>().CloseUI();
-                if (drill.currentMoney >= upgradeCost)
+                //drill.currentMoney -= nodeUI.curPathCost;
+                switch (turretType[towerSelected])
                 {
-                    drill.currentMoney -= upgradeCost;
+                    case 0:
+                        drill.currentMoney -= shop.standardTurret
+                            .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
+                        break;
+                    case 1:
+                        drill.currentMoney -= shop.missileLauncher
+                            .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
+                        break;
+                    case 2:
+                    default:
+                        drill.currentMoney -= shop.meleeTurret
+                            .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
+                        break;
                 }
-                else
-                {
-                    Debug.Log("YOU POOR!");
-                }
+                upgradeLvl[towerSelected]++;
             }
         }
         UpdateUpgradeSystem();
