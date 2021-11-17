@@ -156,11 +156,11 @@ public class ResearchStation : MonoBehaviour
                         return;
                     }
 
-                rcm.checkIfCanResearch(rcm.researchCost[page, 0, i], page, 0, i);
+                rcm.checkIfCanResearch(page, 0, i);
             }
             else
             {
-                rcm.checkIfCanResearch(rcm.researchCost[page, 0, 0], page, 0, 0);
+                rcm.checkIfCanResearch(page, 0, 0);
             }
         }
         else
@@ -174,11 +174,11 @@ public class ResearchStation : MonoBehaviour
                         return;
                     }
 
-                rcm.checkIfCanResearch(rcm.researchCost[page, 1, i], page, 1, i);
+                rcm.checkIfCanResearch(page, 1, i);
             }
             else
             {
-                rcm.checkIfCanResearch(rcm.researchCost[page, 1, 0], page, 1, i);
+                rcm.checkIfCanResearch(page, 1, i);
             }
         }
 

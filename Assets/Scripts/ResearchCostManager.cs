@@ -40,9 +40,9 @@ public class ResearchCostManager : MonoBehaviour
             },
         };
     }
-    public bool checkIfCanResearch(int _killCount, int turret, int path, int tier)
+    public bool checkIfCanResearch(int turret, int path, int tier)
     {
-        if (researchCost[turret, path, tier] > _killCount)
+        if (researchCost[turret, path, tier] > killCount)
         {
             Debug.Log("Not enough kills to research tech");
             return false;
@@ -50,7 +50,7 @@ public class ResearchCostManager : MonoBehaviour
         else
         {
             Debug.Log("Enough kills to research tech");
-            killCount -= _killCount;
+            killCount -= researchCost[turret, path, tier];
             ResearchStation.researched[turret, path, tier] = true;
             return true;
         }
