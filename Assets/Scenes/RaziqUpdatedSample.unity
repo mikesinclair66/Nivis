@@ -3478,8 +3478,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveEnemies:
-    - enemy: {fileID: 3149694144095646197, guid: e5d1a758432c8014bb8ad99ecc802132, type: 3}
-      count: 3
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 5
+      rate: 2
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 10
+      rate: 2
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 15
+      rate: 2
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 10
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 5
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 15
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 10
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 15
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 10
+      rate: 2
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 20
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 15
+      rate: 2
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 25
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 15
+      rate: 2
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 25
+      rate: 3
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 15
+      rate: 3
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 30
+      rate: 3
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 20
+      rate: 3
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 50
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 40
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
       rate: 2
   - waveEnemies:
     - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
@@ -3488,8 +3555,174 @@ MonoBehaviour:
     - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
       count: 3
       rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
   - waveEnemies:
     - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
+      count: 1
+      rate: 1
+  - waveEnemies:
+    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
       count: 3
       rate: 2
     - enemy: {fileID: 3149694144095646197, guid: fe183b9dc5ec0c14d92d22f00dc1c454, type: 3}
@@ -9734,6 +9967,14 @@ PrefabInstance:
       propertyPath: generator
       value: 
       objectReference: {fileID: 969038158353546760}
+    - target: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
+      propertyPath: moneyRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
+      propertyPath: currentMoney
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
       propertyPath: drillSelector
       value: 

@@ -24,19 +24,19 @@ public class ResearchCostManager : MonoBehaviour
         return new int[,,]
         {
             {   // turret 1, path 1, upgrades 1-3
-                {5, 10, 15},
+                {100, 150, 200},
                 // turret 1, path 2, upgrades 1-3
-                {6, 9, 12}
+                {100, 150, 200}
             },
             {   // turret 2, path 1, upgrades 1-3
-                {4, 8, 10},
+                {100, 150, 200},
                 // turret 2, path 2, upgrades 1-3
-                {5, 10, 15}
+                {100, 150, 200}
             },
             {   // turret 3, path 1, upgrades 1-3
-                {1, 2, 3},
+                {100, 150, 200},
                 // turret 3, path 2, upgrades 1-3
-                {4, 5, 6}
+                {100, 150, 200}
             },
         };
     }
@@ -50,8 +50,16 @@ public class ResearchCostManager : MonoBehaviour
         else
         {
             Debug.Log("Enough kills to research tech");
-            killCount -= _killCount;
-            ResearchStation.researched[turret, path, tier] = true;
+            if(ResearchStation.researched[turret, path, tier] == false)
+            {
+                killCount -= _killCount;
+                ResearchStation.researched[turret, path, tier] = true;
+            }
+            else
+            {
+                Debug.Log("Already researched");
+            }
+            
             return true;
         }
     }

@@ -242,7 +242,14 @@ public class Inventory : MonoBehaviour
             nodeUI.Upgrade(branchNo + 1);
             actionUI.GetComponent<UIAnimator>().CloseUI();
             researchStation.GetComponent<UIAnimator>().CloseUI();
-            drill.currentMoney -= upgradeCost;
+            if (drill.currentMoney >= upgradeCost)
+            {
+                drill.currentMoney -= upgradeCost;
+            }
+            else
+            {
+                Debug.Log("YOU POOR!");
+            }
         }
         UpdateUpgradeSystem();
     }
@@ -269,7 +276,14 @@ public class Inventory : MonoBehaviour
                 nodeUI.Upgrade(upgradePrimary[towerSelected] + 1);
                 actionUI.GetComponent<UIAnimator>().CloseUI();
                 researchStation.GetComponent<UIAnimator>().CloseUI();
-                drill.currentMoney -= upgradeCost;
+                if (drill.currentMoney >= upgradeCost)
+                {
+                    drill.currentMoney -= upgradeCost;
+                }
+                else
+                {
+                    Debug.Log("YOU POOR!");
+                }
             }
         }
         UpdateUpgradeSystem();

@@ -71,10 +71,17 @@ public class Abilities : MonoBehaviour
             {
                 if (turret.GetComponent<Turret>().disabled == true)
                 {
-                    turret.GetComponent<Turret>().Enable();
-                    buildManager.drill.currentMoney -= reenableTurretCost;
-                    reenableTurretTimeStamp = Time.time + reenableTurretCD;
-                    reenableTurretOnCD = true;
+                    if (buildManager.drill.currentMoney >= reenableTurretCost)
+                    {
+                        turret.GetComponent<Turret>().Enable();
+                        buildManager.drill.currentMoney -= reenableTurretCost;
+                        reenableTurretTimeStamp = Time.time + reenableTurretCD;
+                        reenableTurretOnCD = true;
+                    }
+                    else
+                    {
+                        Debug.Log("you poor");
+                    }
                 }
                 else
                 {
@@ -91,13 +98,20 @@ public class Abilities : MonoBehaviour
     public void tempShield()
     {
         if(tempShieldOnCD == false)
-        {
-            generator.shieldHealth = tempShieldHP;
-            buildManager.drill.currentMoney -= tempShieldCost;
-            tempShieldDurationTimeStamp = Time.time + tempShieldDuration;
-            tempShieldTimeStamp = Time.time + tempShieldCD;
-            tempShieldOnCD = true;
-            Debug.Log("HP: " + generator.totalHealth + " Shield: " + generator.shieldHealth);
+        { 
+            if (buildManager.drill.currentMoney >= tempShieldCost)
+            {
+                generator.shieldHealth = tempShieldHP;
+                Debug.Log("HP: " + generator.totalHealth + " Shield: " + generator.shieldHealth);
+                buildManager.drill.currentMoney -= tempShieldCost;
+                tempShieldDurationTimeStamp = Time.time + tempShieldDuration;
+                tempShieldTimeStamp = Time.time + tempShieldCD;
+                tempShieldOnCD = true;
+            }
+            else
+            {
+                Debug.Log("you poor");
+            }
         }
         else
         {

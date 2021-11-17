@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 336723985512325643}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 34.03821, y: 44.24518, z: 59.02811}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_Children:
   - {fileID: 336723985371722707}
   m_Father: {fileID: 0}
@@ -152,4 +152,8 @@ MonoBehaviour:
   moneyEarned: 10000
   rngPercentage: 25
   rank3Melee: 1
+  percentHealthDmg: 0
+  rank2Melee: 0
+  instakillMelee: 0
+  meleeRNGPercentage: 10
   enemyTag: Enemy
