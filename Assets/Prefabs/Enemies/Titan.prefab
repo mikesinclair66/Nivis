@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 4069724292796446324}
   - component: {fileID: 245581701675755698}
   - component: {fileID: 6855068293986676199}
+  - component: {fileID: -1100332597820257652}
   m_Layer: 0
   m_Name: Titan
   m_TagString: Enemy
@@ -201,14 +202,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8415560677743472776}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf5df155ebabca4488421da4d0535f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  damageValue: 100
-  totalHealth: 10000
+  damageValue: 1000
+  totalHealth: 100000
   radPercentage: 0
   radTimer: 3
   radDuration: 0
@@ -230,7 +231,7 @@ MonoBehaviour:
   freezeDuration: 1.5
   frozen: 0
   freezeTimer: 1.5
-  meltDamage: 300
+  meltDamage: 100
   inRangeofRank2Melee: 0
   rcm: {fileID: 0}
   killCountValue: 3
@@ -248,6 +249,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1a153574446c648b35ed50463839db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1100332597820257652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415560677743472776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcd1dec068298aa4c8334b24ee3c6980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  damageValue: 1000
+  totalHealth: 100000
+  radPercentage: 0
+  radTimer: 3
+  radDuration: 0
+  radiation: 0
+  stunDuration: 0
+  stunnedUnit: 0
+  slowAmount: 2
+  isTank: 0
+  isSpeed: 0
+  meleeSlowedUnit: 0
+  meleeSlowTimer: 0.5
+  burning: 0
+  burnTimer: 5
+  TickDamageTimer: 0.5
+  aoeBurn: 0
+  burnRadius: 15
+  freezeDuration: 1.5
+  frozen: 0
+  freezeTimer: 1.5
+  meltDamage: 300
+  inRangeofRank2Melee: 0
+  rcm: {fileID: 0}
+  killCountValue: 1000
+  speedKillCountValue: 1
+  tankKillCountValue: 10
 --- !u!1 &8415560677743472778
 GameObject:
   m_ObjectHideFlags: 0

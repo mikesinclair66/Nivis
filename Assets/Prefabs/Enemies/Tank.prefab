@@ -134,7 +134,7 @@ MonoBehaviour:
   freezeDuration: 1.5
   frozen: 0
   freezeTimer: 1.5
-  meltDamage: 300
+  meltDamage: 100
   inRangeofRank2Melee: 0
   rcm: {fileID: 0}
   killCountValue: 3

@@ -21,7 +21,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
-        if (EnemiesAlive > 0){return;}
+        if (EnemiesAlive > 0) { return; }
 
         if (countdown <= 0f)
         {
@@ -36,29 +36,35 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        if (waveIndex == waves.Length)
+        Debug.Log("WAVE INDEX: " + waveIndex);
+        Debug.Log("WAVE LENGTH: " + waves.Length);
+        if (waveIndex > waves.Length)
         {
             SceneManager.LoadScene("Victory");
         }
         else
         {
-            Wave wave = waves[waveIndex];
-
-            //enemy.GetComponent<Enemy>().ScaleHP();
-
-            waveIndexText.text = "Wave: " + waveIndex.ToString();
-            waveIndexText.text = "R" + waveIndex.ToString();
-
-            foreach (WaveEnemy i in wave.waveEnemies)
+            if (waveIndex <= waves.Length)
             {
-                for (int j = 0; j < i.count; j++)
+                Wave wave = waves[waveIndex];
+
+                //enemy.GetComponent<Enemy>().ScaleHP();
+
+                waveIndexText.text = "Wave: " + waveIndex.ToString();
+                waveIndexText.text = "R" + waveIndex.ToString();
+
+                foreach (WaveEnemy i in wave.waveEnemies)
                 {
-                    SpawnEnemy(i.enemy);
-                    yield return new WaitForSeconds(1f / i.rate);
+                    for (int j = 0; j < i.count; j++)
+                    {
+                        SpawnEnemy(i.enemy);
+                        yield return new WaitForSeconds(1f / i.rate);
+                    }
                 }
+
+                waveIndex++;
             }
-            
-            waveIndex++;
+
 
             //Debug.Log("waveIndex: " + waveIndex);
             //Debug.Log("waves.Length: " + waves.Length);

@@ -45,7 +45,7 @@ public class Drill : MonoBehaviour
                 gen.TakeDamage(30);
                 currentMoney -= upgradeCost;
                 drillLvl++;
-                upgradeCost = drillLvl * 300;
+                upgradeCost = drillLvl * upgradeCost * 2f;
                 moneyRate = drillLvl * moneyRate;
                 totalMoneyText.text = "$" + currentMoney.ToString("0") + "/Lvl: " + drillLvl.ToString();//sector 3 digits by ,
                 upgradeCostText.text = "$" + upgradeCost.ToString();
