@@ -115,12 +115,17 @@ MonoBehaviour:
   mRend: {fileID: 8734508182211731903}
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
   MeleeTurret: 1
-  MeleeRange: 30
+  MeleeRange: 15
   meleeDamage: 10
-  PulseRate: 2
+  PulseCD: 2
   drill: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
   moneyEarned: 0
   rngPercentage: 0
+  rank3Melee: 0
+  percentHealthDmg: 0
+  rank2Melee: 0
+  instakillMelee: 0
+  meleeRNGPercentage: 10
   enemyTag: Enemy
 --- !u!1 &8734508183693209706
 GameObject:

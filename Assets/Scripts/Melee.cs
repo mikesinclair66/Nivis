@@ -24,7 +24,7 @@ public class Melee : MonoBehaviour
     public bool MeleeTurret;
     public float MeleeRange;
     public int meleeDamage;
-    public float PulseRate;
+    public float PulseCD;
     public Drill drill;
     public int moneyEarned = 5;
     public int rngPercentage;
@@ -42,7 +42,7 @@ public class Melee : MonoBehaviour
     // TODO: logic to rotate the turret when it sees an enemy (e4)
     void Start()
     {
-        InvokeRepeating("MeleeCheckForEnemies", 0f, PulseRate);
+        InvokeRepeating("MeleeCheckForEnemies", 0f, PulseCD);
         defaultColor = mRend.material.color;
     }
 

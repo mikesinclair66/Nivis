@@ -109,6 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f913d24100d380f4b9fd0c91df0aa5b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 70
-  damage: 50
-  explosionRadius: 20
+  speed: 50
+  damage: 35
+  explosionRadius: 10
+  radiation: 0
+  stunShot: 0
+  burnShot: 0
+  burnDamage: 5
+  rank3Burn: 0

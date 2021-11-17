@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Drill : MonoBehaviour
 {
-    public float currentMoney = 3000f;
+    public float currentMoney = 300f;
     public float moneyRate = 5.5f;
     public int drillLvl = 1;
     public float upgradeCost = 400f;
@@ -45,8 +45,8 @@ public class Drill : MonoBehaviour
                 gen.TakeDamage(30);
                 currentMoney -= upgradeCost;
                 drillLvl++;
-                upgradeCost = drillLvl * 300;
-                moneyRate = drillLvl * 5f;
+                upgradeCost = drillLvl * upgradeCost * 2f;
+                moneyRate = drillLvl * moneyRate;
                 totalMoneyText.text = "$" + currentMoney.ToString("0") + "/Lvl: " + drillLvl.ToString();//sector 3 digits by ,
                 upgradeCostText.text = "$" + upgradeCost.ToString();
             }
