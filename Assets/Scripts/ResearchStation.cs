@@ -14,12 +14,11 @@ public class ResearchStation : MonoBehaviour
     int page = 0;
     const int LAST_PAGE = 2;
     Text price1Text, price2Text, price3Text;
-    public int price1, price2, price3;
 
     public static bool[,,] researched;
     public ResearchCostManager rcm;
 
-    void Start()
+    void Awake()
     {
         leftBtn = GameObject.Find("Canvas/ResearchStation/InnerEl/Row1/Btn1");
         rightBtn = GameObject.Find("Canvas/ResearchStation/InnerEl/Row1/Btn4");
@@ -40,13 +39,6 @@ public class ResearchStation : MonoBehaviour
         b2[0] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row2/1b");
         b2[1] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row3/1b");
         b2[2] = GameObject.Find("Canvas/ResearchStation/InnerEl/Row4/1b");
-        price1Text = GameObject.Find("Canvas/ResearchStation/InnerEl/Row2/Cost").GetComponent<Text>();
-        price2Text = GameObject.Find("Canvas/ResearchStation/InnerEl/Row3/Cost").GetComponent<Text>();
-        price3Text = GameObject.Find("Canvas/ResearchStation/InnerEl/Row4/Cost").GetComponent<Text>();
-
-        price1Text.text = price1.ToString("0");
-        price2Text.text = price2.ToString("0");
-        price3Text.text = price3.ToString("0");
 
         researched = new bool[LAST_PAGE + 1, 2, 3];//page,branch,upgrades
         for (int i = 0; i < LAST_PAGE + 1; i++)
@@ -66,11 +58,21 @@ public class ResearchStation : MonoBehaviour
             b2[i].gameObject.transform.position = b2[i].gameObject.transform.position
                 + new Vector3(-200, 0, 0);
         }
-        UpdatePage(page);
+        //UpdatePage(page);
     }
 
-    void UpdatePage(int page)
+    void Start()
     {
+        price1Text = GameObject.Find("Canvas/ResearchStation/InnerEl/Row2/Cost").GetComponent<Text>();
+        price2Text = GameObject.Find("Canvas/ResearchStation/InnerEl/Row3/Cost").GetComponent<Text>();
+        price3Text = GameObject.Find("Canvas/ResearchStation/InnerEl/Row4/Cost").GetComponent<Text>();
+        UpdatePage(0);
+        Debug.Log("Page updated at start");
+    }
+
+    public void UpdatePage(int page)
+    {
+        this.page = page;
         Text pageName = this.pageName.GetComponent<Text>();
 
         switch (page)
@@ -99,20 +101,27 @@ public class ResearchStation : MonoBehaviour
             else
                 b2Img[i].GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.25f);
         }
+
+        int[,,] researchCost = ResearchCostManager.getResearchCosts();
+        price1Text.text = researchCost[page, 0, 0].ToString("0");
+        price2Text.text = researchCost[page, 0, 1].ToString("0");
+        price3Text.text = researchCost[page, 0, 2].ToString("0");
     }
 
     public void NextPage()
     {
-        if (++page > LAST_PAGE)
-            page = 0;
-        UpdatePage(page);
+        int p = page + 1;
+        if (p > LAST_PAGE)
+            p = 0;
+        UpdatePage(p);
     }
 
     public void PrevPage()
     {
-        if (--page < 0)
-            page = LAST_PAGE;
-        UpdatePage(page);
+        int p = page - 1;
+        if (p < 0)
+            p = LAST_PAGE;
+        UpdatePage(p);
     }
 
     public void UpgradeClicked(int upgradeNo)
