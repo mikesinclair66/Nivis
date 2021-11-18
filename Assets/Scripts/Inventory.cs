@@ -263,9 +263,17 @@ public class Inventory : MonoBehaviour
                     cost = shop.meleeTurret.paths[branchNo].upgrades[0].cost;
                     break;
             }
-            if (drill.currentMoney >= cost)
-                drill.currentMoney -= cost;
-            else
+
+            // if (drill.currentMoney >= cost)
+            // {
+            //     drill.currentMoney -= cost;
+            // }
+            // else
+            // {
+            //     Debug.Log("Your drill doesn't have enough money!");
+            //     return;
+            // }
+            if (drill.currentMoney < cost)
             {
                 Debug.Log("Your drill doesn't have enough money!");
                 return;

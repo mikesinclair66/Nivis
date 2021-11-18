@@ -135,7 +135,7 @@ public class Node : MonoBehaviour
         {
             return;
         }
-        //buildManager.drill.currentMoney -= turretBlueprint.cost;
+        buildManager.drill.currentMoney -= turretBlueprint.cost;
 
         Destroy(turret);
         GameObject _turret = Instantiate(requestedPath.upgrades[tier - 1].prefab, GetBuildPosition(), Quaternion.identity);

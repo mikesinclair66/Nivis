@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/EndScene.unity
     guid: 4aedb299e0b1bbc4fa747d2f54bf8b35
   - enabled: 1
+    path: Assets/Scenes/JackyScene.unity
+    guid: 47c593c44d097ce45806f645ec959f63
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: d8071e06aef5d694390270ab4d7ec40d
   - enabled: 1
