@@ -226,6 +226,7 @@ public class Inventory : MonoBehaviour
 
         UpdateUpgradeSystem();
         actionUI.GetComponent<UIAnimator>().RequestToggle();
+        researchStation.GetComponent<UIAnimator>().RequestToggle();
     }
 
     bool ResearchUnlocked(int branch, int towerLvl)
@@ -373,6 +374,8 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void UpdateUpgradeSystem()
     {
+        researchStationInner.GetComponent<ResearchStation>().UpdatePage(turretType[towerSelected]);
+
         if (upgradeLvl[towerSelected] == 3)
         {
             upgradeBtn.GetComponent<Button>().interactable = false;
