@@ -19,6 +19,13 @@ public class WaveSpawner : MonoBehaviour
 
     public static int waveIndex = 0;
 
+    void Start()
+    {
+        countdown = 5f;
+        waveIndex = 0;
+        EnemiesAlive = 0;
+    }
+
     void Update()
     {
         if (EnemiesAlive > 0) { return; }
