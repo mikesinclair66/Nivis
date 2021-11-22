@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3699331590787877986}
   - component: {fileID: 1259258399047286848}
   - component: {fileID: 1560327111200703031}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MissileNuke
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6832644060636043845}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
