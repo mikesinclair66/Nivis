@@ -101,6 +101,13 @@ public class Node : MonoBehaviour
             buildManager.inventory.SelectTower(-1);
             return;
         }
+        Abilities abilities = GameObject.Find("AttackButtons").GetComponent<Abilities>();
+        if (abilities.reenableTurretIsRequested && turret != null)
+        {
+            abilities.reenableTurret(turret);
+        }
+
+        abilities.reenableTurretIsRequested = false;
         if (turret != null)
         {
             buildManager.SelectNode(this);
@@ -109,6 +116,7 @@ public class Node : MonoBehaviour
         }
         BuildTurret(buildManager.GetTurretToBuild());
         buildManager.inventory.SelectTower(-1);
+        
         // Deselects turret to build in build manager after building a turret
         // buildManager.SelectTurretToBuild(null);
     }

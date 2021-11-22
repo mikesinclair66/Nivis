@@ -28,6 +28,7 @@ public class Abilities : MonoBehaviour
                  tempShieldOnCD = false,
                  stunAreaOnCD = false;
 
+    public bool reenableTurretIsRequested = false;
 
     void Update()
     {
@@ -62,9 +63,13 @@ public class Abilities : MonoBehaviour
         
     }
 
-    public void reenableTurret()
+    public void requestReenableTurret()
     {
-        GameObject turret = buildManager.GetSelectedNode().turret;
+        reenableTurretIsRequested = true;
+    }
+
+    public void reenableTurret(GameObject turret)
+    {
         if (turret != null)
         {
             if (reenableTurretOnCD == false)
@@ -77,6 +82,7 @@ public class Abilities : MonoBehaviour
                         buildManager.drill.currentMoney -= reenableTurretCost;
                         reenableTurretTimeStamp = Time.time + reenableTurretCD;
                         reenableTurretOnCD = true;
+                        Debug.Log("Turret Re-enabled");
                     }
                     else
                     {
