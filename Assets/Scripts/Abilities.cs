@@ -157,7 +157,7 @@ public class Abilities : MonoBehaviour
             GameObject objClone = Instantiate(objToSpawn, hitPos, Quaternion.identity);
             Debug.Log("Spawned Stun");
             Stun(hitPos);
-            Destroy(objClone); //destroys object right after stunning
+            //Destroy(objClone); //destroys object right after stunning
         }
     }
 
