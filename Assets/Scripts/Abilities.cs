@@ -8,8 +8,8 @@ public class Abilities : MonoBehaviour
     public Generator generator;
     public GameObject stunAreaRange;
 
-    public int reenableTurretCost = 100, 
-               tempShieldCost = 200, 
+    public int reenableTurretCost = 100,
+               tempShieldCost = 200,
                stunAreaCost = 250;
 
     public float tempShieldDuration = 10;
@@ -52,8 +52,8 @@ public class Abilities : MonoBehaviour
                 reenableTurretOnCD = false;
             }
         }
-        
-        if (tempShieldOnCD == true) 
+
+        if (tempShieldOnCD == true)
         {
             if (tempShieldTimeStamp <= Time.time)
             {
@@ -73,7 +73,7 @@ public class Abilities : MonoBehaviour
                 stunAreaOnCD = false;
             }
         }
-        
+
     }
 
     public void requestReenableTurret()
@@ -116,8 +116,8 @@ public class Abilities : MonoBehaviour
 
     public void tempShield()
     {
-        if(tempShieldOnCD == false)
-        { 
+        if (tempShieldOnCD == false)
+        {
             if (buildManager.drill.currentMoney >= tempShieldCost)
             {
                 generator.shieldHealth = tempShieldHP;
@@ -156,14 +156,22 @@ public class Abilities : MonoBehaviour
             Vector3 hitPos = new Vector3(hit.point.x, hit.point.y + objToSpawn.transform.position.y, hit.point.z);
             GameObject objClone = Instantiate(objToSpawn, hitPos, Quaternion.identity);
             Debug.Log("Spawned Stun");
-            Stun();
-            //Destroy(objClone); //destroys object right after stunning
+            Stun(hitPos);
+            Destroy(objClone); //destroys object right after stunning
         }
     }
 
-    void Stun()
+    void Stun(Vector3 hitPos)
     {
-        Debug.Log("STUNNED!");
+        Collider[] colliders = Physics.OverlapSphere(hitPos, 8); // Debating for Variable of Range or some other way? Radius is an INT
+        foreach (Collider c in colliders)
+        {
+            if (c.GetComponent<Enemy>())
+            {
+                Debug.Log("STUNNED!");
+                c.GetComponent<Enemy>().activateStun(); // Can add variable to increase length of stun in Enemy.cs
+            }
+        }
         //use colliders with the object spawned in SpawnAoEStun
     }
 
@@ -171,25 +179,25 @@ public class Abilities : MonoBehaviour
     {
         if (reenableTurretOnCD)
         {
-            return (int) (reenableTurretTimeStamp - Time.time);
+            return (int)(reenableTurretTimeStamp - Time.time);
         }
         return 0;
     }
-    
+
     public int getTempShieldCD()
     {
         if (tempShieldOnCD)
         {
-            return (int) (tempShieldTimeStamp - Time.time);
+            return (int)(tempShieldTimeStamp - Time.time);
         }
         return 0;
     }
-    
+
     public int getStunAreaCD()
     {
         if (stunAreaOnCD)
         {
-            return (int) (stunAreaTimeStamp - Time.time);
+            return (int)(stunAreaTimeStamp - Time.time);
         }
         return 0;
     }
