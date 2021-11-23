@@ -2951,6 +2951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildManager: {fileID: 458077342}
   generator: {fileID: 2830543956506485191}
+  stunAreaRange: {fileID: 5193601285125349261, guid: 81cc814f93c22ef4585b990b2db3c4cf, type: 3}
   reenableTurretCost: 50
   tempShieldCost: 75
   stunAreaCost: 125
@@ -2960,6 +2961,7 @@ MonoBehaviour:
   reenableTurretCD: 5
   tempShieldCD: 15
   stunAreaCD: 30
+  reenableTurretIsRequested: 0
 --- !u!1 &428812782
 GameObject:
   m_ObjectHideFlags: 0
