@@ -6,6 +6,7 @@ public class Abilities : MonoBehaviour
 {
     public BuildManager buildManager;
     public Generator generator;
+    public GameObject stunAreaRange;
 
     public int reenableTurretCost = 100, 
                tempShieldCost = 200, 
@@ -28,10 +29,22 @@ public class Abilities : MonoBehaviour
                  tempShieldOnCD = false,
                  stunAreaOnCD = false;
 
+    private bool stunAbilityActive = false;
+
     public bool reenableTurretIsRequested = false;
 
     void Update()
     {
+        if (stunAbilityActive == true)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                SpawnAoEStun(stunAreaRange);
+                stunAbilityActive = false;
+                Debug.Log("Stun Active: " + stunAbilityActive);
+            }
+        }
+
         if (reenableTurretOnCD == true)
         {
             if (reenableTurretTimeStamp <= Time.time)
@@ -123,11 +136,35 @@ public class Abilities : MonoBehaviour
         {
             Debug.Log("Ability on CD!");
         }
-    }        
+    }
 
     public void stunArea()
     {
+        stunAbilityActive = true;
+        Debug.Log("Stun Active: " + stunAbilityActive);
+    }
 
+    void SpawnAoEStun(GameObject objToSpawn)
+    {
+        Vector3 mousePos = Input.mousePosition;
+
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            Vector3 hitPos = new Vector3(hit.point.x, hit.point.y + objToSpawn.transform.position.y, hit.point.z);
+            GameObject objClone = Instantiate(objToSpawn, hitPos, Quaternion.identity);
+            Debug.Log("Spawned Stun");
+            Stun();
+            //Destroy(objClone); //destroys object right after stunning
+        }
+    }
+
+    void Stun()
+    {
+        Debug.Log("STUNNED!");
+        //use colliders with the object spawned in SpawnAoEStun
     }
 
     public int getReenableTurretCD()
