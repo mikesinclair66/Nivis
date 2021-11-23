@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5578210579877190014}
   - component: {fileID: 4117728448519411151}
   - component: {fileID: 6721629119815558786}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Laser2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5578210580573364234}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

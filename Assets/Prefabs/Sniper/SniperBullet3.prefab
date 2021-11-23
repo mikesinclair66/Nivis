@@ -117,3 +117,4 @@ MonoBehaviour:
   burnShot: 0
   burnDamage: 5
   rank3Burn: 0
+  impactEffect: {fileID: 7040492511225032996, guid: 0d08c6c3bcceadb46a7da71e8c3c3f34, type: 3}

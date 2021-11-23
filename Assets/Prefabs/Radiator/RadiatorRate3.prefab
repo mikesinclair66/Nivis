@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3953289172314985879}
   - component: {fileID: 3953289172314985876}
   - component: {fileID: 86574640903343960}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RadiatorRate3
   m_TagString: Melee
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3953289174064563277}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

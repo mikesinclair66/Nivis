@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2537138204881084838}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2537138205400791790}
   - component: {fileID: 2537138205400791791}
   - component: {fileID: 5132143222686459100}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MissileFire
   m_TagString: Turret
   m_Icon: {fileID: 0}
