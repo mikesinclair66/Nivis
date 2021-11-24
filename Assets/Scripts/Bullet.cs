@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -100,6 +101,9 @@ public class Bullet : MonoBehaviour
         if (impactEffect != null)
         {
             GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
+            GameObject radDraw = effectIns.transform.Find("Drawn Radius").gameObject;
+            radDraw.transform.localScale = new Vector3(explosionRadius*2, explosionRadius*2, explosionRadius*2);
+            Destroy(radDraw, 0.05f);
             Destroy(effectIns, 5f);
         }
         

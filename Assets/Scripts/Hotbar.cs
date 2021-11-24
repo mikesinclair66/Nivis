@@ -117,7 +117,7 @@ public class Hotbar : MonoBehaviour
         eventSystem = GameObject.Find("EventSystem");
 
         Shop shop = GameObject.Find("Canvas/Hotbar/TowerButtons").GetComponent<Shop>();
-        attackText[0].GetComponent<Text>().text = "Fire\n\n$" + attacks.GetComponent<Abilities>().reenableTurretCost;
+        attackText[0].GetComponent<Text>().text = "Repair\n\n$" + attacks.GetComponent<Abilities>().reenableTurretCost;
         attackText[1].GetComponent<Text>().text = "Shield\n\n$" + attacks.GetComponent<Abilities>().tempShieldCost;
         attackText[2].GetComponent<Text>().text = "Stun\n\n$" + attacks.GetComponent<Abilities>().stunAreaCost;
         towerText[0].GetComponent<Text>().text = "Normal\nTurret\n$" + shop.standardTurret.cost;
@@ -153,29 +153,29 @@ public class Hotbar : MonoBehaviour
 
         if (attacks.GetComponent<Abilities>().getReenableTurretCD() == 0)
         {
-            attackText[0].GetComponent<Text>().text = "1\n\n$" + attacks.GetComponent<Abilities>().reenableTurretCost;
+            attackText[0].GetComponent<Text>().text = "Repair\n\n$" + attacks.GetComponent<Abilities>().reenableTurretCost;
         }
         else
         {
-            attackText[0].GetComponent<Text>().text = "1\n\n$" + attacks.GetComponent<Abilities>().reenableTurretCost + "\nCD: " + attacks.GetComponent<Abilities>().getReenableTurretCD();
+            attackText[0].GetComponent<Text>().text = "Repair\n\n$" + attacks.GetComponent<Abilities>().reenableTurretCost + "\nCD: " + attacks.GetComponent<Abilities>().getReenableTurretCD();
         }
         
         if (attacks.GetComponent<Abilities>().getTempShieldCD() == 0)
         {
-            attackText[1].GetComponent<Text>().text = "2\n\n$" + attacks.GetComponent<Abilities>().tempShieldCost;
+            attackText[1].GetComponent<Text>().text = "Shield\n\n$" + attacks.GetComponent<Abilities>().tempShieldCost;
         }
         else
         {
-            attackText[1].GetComponent<Text>().text = "2\n\n$" + attacks.GetComponent<Abilities>().tempShieldCost + "\nCD: " + attacks.GetComponent<Abilities>().getTempShieldCD();
+            attackText[1].GetComponent<Text>().text = "Shield\n\n$" + attacks.GetComponent<Abilities>().tempShieldCost + "\nCD: " + attacks.GetComponent<Abilities>().getTempShieldCD();
         }
         
         if (attacks.GetComponent<Abilities>().getStunAreaCD() == 0)
         {
-            attackText[2].GetComponent<Text>().text = "3\n\n$" + attacks.GetComponent<Abilities>().stunAreaCost;
+            attackText[2].GetComponent<Text>().text = "Stun\n\n$" + attacks.GetComponent<Abilities>().stunAreaCost;
         }
         else
         {            
-            attackText[2].GetComponent<Text>().text = "3\n\n$" + attacks.GetComponent<Abilities>().stunAreaCost + "\nCD: " + attacks.GetComponent<Abilities>().getStunAreaCD();
+            attackText[2].GetComponent<Text>().text = "Stun\n\n$" + attacks.GetComponent<Abilities>().stunAreaCost + "\nCD: " + attacks.GetComponent<Abilities>().getStunAreaCD();
         }
     }
 
