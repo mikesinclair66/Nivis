@@ -13,7 +13,6 @@ public class Turret : MonoBehaviour
     public float fireRate = 2f;
     private float fireCountdown = 0f;
 
-    // TODO: create fire point when adding model (e5)
     public Transform partToRotate;
     public float turnSpeed = 10f;
     
@@ -27,7 +26,6 @@ public class Turret : MonoBehaviour
     [Header("Unity Setup Fields")]
 
     public string enemyTag = "Enemy";
-    // TODO: logic to rotate the turret when it sees an enemy (e4)
     void Start()
     {
         InvokeRepeating("UpdateClosestTarget", 0f, 0.5f);

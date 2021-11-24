@@ -9,12 +9,13 @@ public class Sniper : MonoBehaviour
     private Transform target;
 
     [Header("Attributes")]
-
     public float range = 15f;
     public float fireRate = 2f;
     private float fireCountdown = 0f;
+    
+    public Transform partToRotate;
+    public float turnSpeed = 10f;
 
-    // TODO: add bullet prefab and create fire point (e5)
     public GameObject bulletPrefab;
     public Transform firePoint;
 
@@ -25,10 +26,8 @@ public class Sniper : MonoBehaviour
 
     [Header("Unity Setup Fields")]
 
-    // TODO: set enemy prefab with the enemy tag
     public string enemyTag = "Enemy";
 
-    // TODO: logic to rotate the turret when it sees an enemy (e4)
     void Start()
     {
         InvokeRepeating("UpdateClosestTarget", 0f, 0.5f);
@@ -53,6 +52,15 @@ public class Sniper : MonoBehaviour
 
         if (disabled != true)
         {
+            // Target lock on
+            if (partToRotate != null)
+            {
+                Vector3 dir = target.position - transform.position;
+                Quaternion lookRotation = Quaternion.LookRotation(dir);
+                Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+                partToRotate.rotation = Quaternion.Euler (0f, rotation.y, 0f);
+            }
+            
             if (fireCountdown <= 0)
             {
                 Shoot();
@@ -99,11 +107,7 @@ public class Sniper : MonoBehaviour
 
 
         }
-
-
-
-
-
+        
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;

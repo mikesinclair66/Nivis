@@ -402,13 +402,13 @@ MonoBehaviour:
     prefab: {fileID: 1000012174300454, guid: 9d7a1ede862cc1f4890c8f82490a0e30, type: 3}
     paths:
     - upgrades:
-      - prefab: {fileID: 1039803665995866692, guid: 41070f1c3e073ef4eb2cfbfe16042abf, type: 3}
+      - prefab: {fileID: 1267933996077318, guid: 112ba87d586778541a9dfdf55c316132, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 6070619213695660182, guid: 9c8fce0b5a72ac54a9a98d3f221c0fae, type: 3}
+      - prefab: {fileID: 1267933996077318, guid: f516c0a8017098b4895afeb9bce779ec, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 5915943776112704666, guid: 0a55b96d405c8024f8ed6a6be04822b1, type: 3}
+      - prefab: {fileID: 1267933996077318, guid: 203cf3007987b71498a155cbb41c1652, type: 3}
         cost: 200
         sellValue: 100
     - upgrades:
@@ -2951,7 +2951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildManager: {fileID: 458077342}
   generator: {fileID: 2830543956506485191}
-  stunAreaRange: {fileID: 0}
+  stunAreaRange: {fileID: 5193601285125349261, guid: 81cc814f93c22ef4585b990b2db3c4cf, type: 3}
   reenableTurretCost: 50
   tempShieldCost: 75
   stunAreaCost: 125
@@ -10039,7 +10039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
       propertyPath: currentMoney
-      value: 500
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
       propertyPath: drillSelector
@@ -11732,7 +11732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2265cdb45dd2344a730984d877703c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killCount: 100
+  killCount: 10000
 --- !u!1001 &1520789289
 PrefabInstance:
   m_ObjectHideFlags: 0
