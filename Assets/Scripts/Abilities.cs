@@ -33,16 +33,30 @@ public class Abilities : MonoBehaviour
 
     public bool reenableTurretIsRequested = false;
 
+    private GameObject obj;
+    private Ray ray;
+    private RaycastHit hit;
+
     void Update()
     {
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
         if (stunAbilityActive == true)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Physics.Raycast(ray, out hit))
             {
-                SpawnAoEStun(stunAreaRange);
-                stunAbilityActive = false;
-                Debug.Log("Stun Active: " + stunAbilityActive);
-            }
+                Debug.Log(hit.point);
+                obj.transform.position = hit.point;
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    float colliderRadius = obj.GetComponent<SphereCollider>().radius;
+                    Stun(obj.transform.position, colliderRadius);
+                    Destroy(obj);
+                    stunAbilityActive = false;
+                    Debug.Log("Stun Active: " + stunAbilityActive);
+                }
+            } 
         }
 
         if (reenableTurretOnCD == true)
@@ -73,7 +87,6 @@ public class Abilities : MonoBehaviour
                 stunAreaOnCD = false;
             }
         }
-
     }
 
     public void requestReenableTurret()
@@ -140,30 +153,14 @@ public class Abilities : MonoBehaviour
 
     public void stunArea()
     {
+        obj = Instantiate(stunAreaRange, hit.point, Quaternion.identity);
         stunAbilityActive = true;
         Debug.Log("Stun Active: " + stunAbilityActive);
     }
 
-    void SpawnAoEStun(GameObject objToSpawn)
+    void Stun(Vector3 hitPos, float radius)
     {
-        Vector3 mousePos = Input.mousePosition;
-
-        Ray ray = Camera.main.ScreenPointToRay(mousePos);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            Vector3 hitPos = new Vector3(hit.point.x, hit.point.y + objToSpawn.transform.position.y, hit.point.z);
-            GameObject objClone = Instantiate(objToSpawn, hitPos, Quaternion.identity);
-            Debug.Log("Spawned Stun");
-            Stun(hitPos);
-            //Destroy(objClone); //destroys object right after stunning
-        }
-    }
-
-    void Stun(Vector3 hitPos)
-    {
-        Collider[] colliders = Physics.OverlapSphere(hitPos, 8); // Debating for Variable of Range or some other way? Radius is an INT
+        Collider[] colliders = Physics.OverlapSphere(hitPos, radius);
         foreach (Collider c in colliders)
         {
             if (c.GetComponent<Enemy>())
@@ -172,7 +169,6 @@ public class Abilities : MonoBehaviour
                 c.GetComponent<Enemy>().activateStun(); // Can add variable to increase length of stun in Enemy.cs
             }
         }
-        //use colliders with the object spawned in SpawnAoEStun
     }
 
     public int getReenableTurretCD()
