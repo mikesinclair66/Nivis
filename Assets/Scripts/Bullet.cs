@@ -101,9 +101,11 @@ public class Bullet : MonoBehaviour
         if (impactEffect != null)
         {
             GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
-            GameObject radDraw = effectIns.transform.Find("Drawn Radius").gameObject;
-            radDraw.transform.localScale = new Vector3(explosionRadius*2, explosionRadius*2, explosionRadius*2);
-            Destroy(radDraw, 0.05f);
+            if (effectIns.transform.Find("Drawn Radius") != null) {
+                GameObject radDraw = effectIns.transform.Find("Drawn Radius").gameObject;
+                radDraw.transform.localScale = new Vector3(explosionRadius*2, explosionRadius*2, explosionRadius*2);
+                Destroy(radDraw, 0.05f);                
+            }
             Destroy(effectIns, 5f);
         }
         
