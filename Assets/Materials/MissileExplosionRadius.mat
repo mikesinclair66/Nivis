@@ -62,7 +62,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _Distort: 52.7
     - _DstBlend: 0
-    - _Fresnel: 86
+    - _Fresnel: 9.4
     - _FresnelWidth: 0.79
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -82,5 +82,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0.21194375, g: 0.28690472, b: 0.764151, a: 1}
+    - _MainColor: {r: 0.9056604, g: 0.24955787, b: 0.2426486, a: 1}
   m_BuildTextureStacks: []
