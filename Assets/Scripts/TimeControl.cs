@@ -49,16 +49,8 @@ public class TimeControl : MonoBehaviour
     {
         if (autoStart == true)
         {
-            //Time.timeScale = fastForwardOn == true ? 1.0f : 2.0f;
             Debug.Log("fastForwardOn: " + fastForwardOn);
-            if (fastForwardOn == true)
-            {
-                Time.timeScale = 2.0f;
-            }
-            else
-            {
-                Time.timeScale = 1.0f;
-            }
+            Time.timeScale = fastForwardOn == true ? 2.0f : 1.0f;
             Debug.Log("Unpaused");
         }
         Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
