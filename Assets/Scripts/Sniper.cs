@@ -31,7 +31,7 @@ public class Sniper : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateClosestTarget", 0f, 0.5f);
-        defaultColor = mRend.material.color;
+        // defaultColor = mRend.material.color;
     }
 
     void Update()
@@ -122,14 +122,14 @@ public class Sniper : MonoBehaviour
     public void Disable()
     {
         disabled = true;
-        mRend.material.SetColor("_Color", Color.red);
+        // mRend.material.SetColor("_Color", Color.red);
         disableCountdown = 10f;
     }
 
     public void Enable()
     {
         disabled = false;
-        mRend.material.color = defaultColor;
+        // mRend.material.color = defaultColor;
     }
 
     private void OnDrawGizmosSelected()

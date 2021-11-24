@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4439265231336536}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TurretA_GunA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4370406564504172}
   - component: {fileID: 33336099377964066}
   - component: {fileID: 23261987472947098}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TurretA_GunA_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 4302004806198954}
   - component: {fileID: 33487964813917574}
   - component: {fileID: 23244784947163418}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TurretA_GunA_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 4289011342373602}
   - component: {fileID: 33065797882285992}
   - component: {fileID: 23461520538426878}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TurretA_GunA_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 4163497313462406}
   - component: {fileID: 33850366484615166}
   - component: {fileID: 23501864014443354}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TurretA_Base_C_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 4721175198948772}
   - component: {fileID: 33064261517312524}
   - component: {fileID: 23590018075624570}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TurretA_GunA_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 4588262437761088}
   - component: {fileID: 33394659728435644}
   - component: {fileID: 23797526933572628}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TurretA_Base_B_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 95989914295931534}
   - component: {fileID: 376743590237127640}
   - component: {fileID: 7237012220762567792}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SniperModel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 4606901545963774}
   - component: {fileID: 33560156794564834}
   - component: {fileID: 23798451559584674}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TurretA_Base_D_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -768,7 +768,7 @@ GameObject:
   - component: {fileID: 4066285655582182}
   - component: {fileID: 33671735295556844}
   - component: {fileID: 23726456734718862}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TurretA_Base_D_low001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -850,7 +850,7 @@ GameObject:
   - component: {fileID: 4956066702328654}
   - component: {fileID: 33927245851143406}
   - component: {fileID: 23442080187773200}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TurretA_GunA_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 4293390575394958}
   - component: {fileID: 33565656158439058}
   - component: {fileID: 23081847811772024}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TurretA_Base_D_low002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1014,7 +1014,7 @@ GameObject:
   - component: {fileID: 4291306113967404}
   - component: {fileID: 33990324969316196}
   - component: {fileID: 23090070565099808}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TurretA_GunA_E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1094,7 +1094,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6161459422081972422}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PartToRotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1125,7 +1125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 733998732587133625}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
