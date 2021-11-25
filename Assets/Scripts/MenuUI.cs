@@ -12,22 +12,23 @@ public class MenuUI : MonoBehaviour
     float posXDest = 0, posZDest = 0, rotYDest = 0;
     float posXStart = 0, posZStart = -10, rotYStart = 0;
     int cameraAngle = 0;
-    bool cameraTransitioning = false;
+    bool cameraTransitioning = false, ebHovered = false;
     const float SPEED = 0.25f;
-    float elapsedTime = 0;
+    float elapsedTime = 0, ebElapsedTime = 0;
 
-    GameObject sbFilled, ebFilled;
+    GameObject sbFilled, ebFilled, lvl2Filled;
     int textFade = -1;
 
     GameObject panel;
     GameObject c1, c2, c3, c4;
-    GameObject sbText, ebText;
+    GameObject sbText, ebText, lvl2Text;
 
     void Start()
     {
         mainCamera = GameObject.Find("Main Camera");
         sbFilled = GameObject.Find("GUI/Panel/StartButton/ButtonFilled");
         ebFilled = GameObject.Find("GUI/Panel/EndButton/ButtonFilled");
+        lvl2Filled = GameObject.Find("GUI/Panel/Lvl2/ButtonFilled");
         panel = GameObject.Find("GUI/Panel");
         c1 = GameObject.Find("GUI/Frame/C1");
         c2 = GameObject.Find("GUI/Frame/C2");
@@ -38,10 +39,19 @@ public class MenuUI : MonoBehaviour
 
         sbFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         ebFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        lvl2Filled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
     }
 
     void Update()
     {
+        if ((ebHovered && ebElapsedTime < 1.0f) ||
+            (!ebHovered && ebElapsedTime > 0.0f))
+        {
+            ebElapsedTime += Time.deltaTime * ((ebHovered) ? 1 : -1);
+            float ebRatio = ebElapsedTime / SPEED;
+            ebFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, ebRatio);
+        }
+
         if (cameraTransitioning)
         {
             elapsedTime += Time.deltaTime;
@@ -60,22 +70,22 @@ public class MenuUI : MonoBehaviour
                         break;
                     case 2:
                         //eb fade in
-                        ebFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                        lvl2Filled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                         break;
                     case 3:
                         //eb fade out
-                        ebFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                        lvl2Filled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                         break;
                     case 4:
                         //sb fade in, eb fade out
                         sbFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                        ebFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                        lvl2Filled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                         break;
                     case 5:
                     default:
                         //eb fade in, sb fade out
                         sbFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                        ebFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                        lvl2Filled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                         break;
                 }
 
@@ -96,19 +106,19 @@ public class MenuUI : MonoBehaviour
                         sbFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, (1.0f - tRatio));
                         break;
                     case 2:
-                        ebFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, tRatio);
+                        lvl2Filled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, tRatio);
                         break;
                     case 3:
-                        ebFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, (1.0f - tRatio));
+                        lvl2Filled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, (1.0f - tRatio));
                         break;
                     case 4:
                         sbFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, tRatio);
-                        ebFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, (1.0f - tRatio));
+                        lvl2Filled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, (1.0f - tRatio));
                         break;
                     case 5:
                     default:
                         sbFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, (1.0f - tRatio));
-                        ebFilled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, tRatio);
+                        lvl2Filled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, tRatio);
                         break;
                 }
                 //Debug.Log("tRatio: " + tRatio + ", 1 - tRatio: " + (1.0f - tRatio));
@@ -127,16 +137,24 @@ public class MenuUI : MonoBehaviour
     {
         if (!cameraTransitioning)
         {
-            if (val.Equals("s"))
+            if (val.Equals("lvl1"))
             {
                 if (cameraAngle != 2)
                     SetCameraAngle(2);
             }
-            else if (val.Equals("e"))
+            else if (val.Equals("lvl2"))
             {
                 if (cameraAngle != 1)
                     SetCameraAngle(1);
             }
+        }
+
+        if (val.Equals("exit"))
+        {
+            ebHovered = true;
+            //ensures that the update animation runs
+            if (ebElapsedTime == 0.0f)
+                ebElapsedTime += 0.002f;
         }
     }
 
@@ -147,11 +165,19 @@ public class MenuUI : MonoBehaviour
             if (cameraAngle != 0)
                 SetCameraAngle(0);
         }
+
+        if (val.Equals("exit"))
+        {
+            ebHovered = false;
+            if (ebElapsedTime == 1.0f)
+                ebElapsedTime -= 0.002f;
+        }
     }
 
-    public void StartGame()
+    public void StartGame(bool lvl1)
     {
-        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+        if(lvl1 || !lvl1)
+            SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
 
     public void ExitGame()
