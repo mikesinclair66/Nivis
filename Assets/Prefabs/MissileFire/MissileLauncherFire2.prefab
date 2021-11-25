@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 5266153721765807689}
   m_Layer: 2
   m_Name: MissileLauncherFire2
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,7 +127,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4700197492638790590, guid: f103f775d4c293b4a9ebb857ffec765e, type: 3}
   firePoint: {fileID: 9127335747297334282}
   disabled: 0
-  mRend: {fileID: 0}
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
   enemyTag: Enemy
 --- !u!1 &8647555579988469956

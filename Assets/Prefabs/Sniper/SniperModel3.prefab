@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: -2661788663160945094}
   m_Layer: 2
   m_Name: SniperModel3
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -673,7 +673,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5498688916343015907, guid: 5941a311ce2c1794db340d0da3f7bb12, type: 3}
   firePoint: {fileID: 733998732587133625}
   disabled: 0
-  mRend: {fileID: 7729463329173775522, guid: 0a55b96d405c8024f8ed6a6be04822b1, type: 3}
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
   enemyTag: Enemy
 --- !u!114 &-2661788663160945094

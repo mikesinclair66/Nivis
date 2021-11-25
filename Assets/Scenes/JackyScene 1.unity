@@ -399,76 +399,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standardTurret:
-    prefab: {fileID: 4560193758139878433, guid: ba31b6d1970f6d64fb27162921f4614a, type: 3}
+    prefab: {fileID: 1000012174300454, guid: 9d7a1ede862cc1f4890c8f82490a0e30, type: 3}
     paths:
     - upgrades:
-      - prefab: {fileID: 1039803665995866692, guid: 41070f1c3e073ef4eb2cfbfe16042abf, type: 3}
+      - prefab: {fileID: 1267933996077318, guid: 112ba87d586778541a9dfdf55c316132, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 6070619213695660182, guid: 9c8fce0b5a72ac54a9a98d3f221c0fae, type: 3}
+      - prefab: {fileID: 1267933996077318, guid: f516c0a8017098b4895afeb9bce779ec, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 5915943776112704666, guid: 0a55b96d405c8024f8ed6a6be04822b1, type: 3}
+      - prefab: {fileID: 1267933996077318, guid: 203cf3007987b71498a155cbb41c1652, type: 3}
         cost: 200
         sellValue: 100
     - upgrades:
-      - prefab: {fileID: 4560193758139878433, guid: 2b9f10c7d9556cd4a9ec135d8d24f19a, type: 3}
+      - prefab: {fileID: 4185460085849628471, guid: 1c6bc9d082719254a8d087ec3b7efec3, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 5578210579877190011, guid: 42d1d10234618bf41b1e455ade597da4, type: 3}
+      - prefab: {fileID: 4185460085849628471, guid: f90a14acaf0c9524e8314ed06e36ccc4, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 621583173586126147, guid: c0f0c4355632fc8438cf023bb781b3a1, type: 3}
+      - prefab: {fileID: 4185460085849628471, guid: 3ffcb37cb3a079e46b50271c73e8434b, type: 3}
         cost: 200
         sellValue: 100
     cost: 200
     sellValue: 100
   missileLauncher:
-    prefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
+    prefab: {fileID: 7968648054684129151, guid: f4c02860d99fc7b45bbfda7d369cd35d, type: 3}
     paths:
     - upgrades:
-      - prefab: {fileID: 3308752272790389, guid: 16731d2ebc54a454f90ffcb006563770, type: 3}
+      - prefab: {fileID: 7968648054684129151, guid: d7d84cf8d359df840994e633216cf53d, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 5180636087819770958, guid: f53c7a433eef92f4295053ce07f6fbbc, type: 3}
+      - prefab: {fileID: 7968648054684129151, guid: ca26fa39d06ffdb468e84eb0e7d09610, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 4146561551815185065, guid: 326839e16827dcf4fbbece5f505ea0c5, type: 3}
+      - prefab: {fileID: 7968648054684129151, guid: 1c3d1bea8bec9d143a74d091736979ab, type: 3}
         cost: 200
         sellValue: 100
     - upgrades:
-      - prefab: {fileID: 2537138205400791784, guid: c6edeef2b01bb404c81aac0ad3ebb1b5, type: 3}
+      - prefab: {fileID: 7968648054684129151, guid: 2d0e89c6c6957a94dbd7cb35781c1fa3, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 2610595375598393852, guid: 13d4d9f6177a3e141827cc20a1d25adb, type: 3}
+      - prefab: {fileID: 7968648054684129151, guid: ee6ef45db54574e41b02414aedc9992a, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 778567980896738922, guid: caf4455bb08d9bd439863b5ac472aff8, type: 3}
+      - prefab: {fileID: 7968648054684129151, guid: 7a5817e3eb3743645a7972f809da90bf, type: 3}
         cost: 200
         sellValue: 100
     cost: 300
     sellValue: 100
   meleeTurret:
-    prefab: {fileID: 2451574595403351592, guid: 7be9c5a22ca3f3c49aae09e60e4a030e, type: 3}
+    prefab: {fileID: 8286855263532688045, guid: 64839d51bbbb3bd4b8a41d4e0e5d48b0, type: 3}
     paths:
     - upgrades:
-      - prefab: {fileID: 3953289172314985877, guid: 438f632b6a332494e90f1b9f03af3436, type: 3}
+      - prefab: {fileID: 8286855263532688045, guid: 71a7eadfa4ee00d409c7261fcece4b12, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 3953289172314985877, guid: 93ec00e36bbbfa94bbf5e34aa84fb20b, type: 3}
+      - prefab: {fileID: 8286855263532688045, guid: d6cdec6ad54ed854bae9b5fde33ad680, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 3953289172314985877, guid: 4614a5effbd63cc4789016631678195b, type: 3}
+      - prefab: {fileID: 8286855263532688045, guid: 8be0693bdd5e08645b8565c5aa0f8162, type: 3}
         cost: 200
         sellValue: 100
     - upgrades:
-      - prefab: {fileID: 8734508182211731901, guid: ed47f29fb6b758340b515a4e3a15a74e, type: 3}
+      - prefab: {fileID: 8286855263532688045, guid: e9194d00731908242ba3e59061c959c2, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 7709503451794483392, guid: b9219bf8f92b5c44d82c0a1564207293, type: 3}
+      - prefab: {fileID: 8286855263532688045, guid: 34467c972eb56cc4c8bf39636f4f4866, type: 3}
         cost: 200
         sellValue: 100
-      - prefab: {fileID: 336723985512325643, guid: 858fb7c06eece3b4f8ab3e5c0a4d4f38, type: 3}
+      - prefab: {fileID: 8286855263532688045, guid: 597945cecefd4ab458510336d0e9db3f, type: 3}
         cost: 200
         sellValue: 100
     cost: 300
