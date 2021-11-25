@@ -21,7 +21,7 @@ public class Turret : MonoBehaviour
     public Transform firePoint;
 
     public bool disabled = false;
-    public MeshRenderer mRend;
+    //public MeshRenderer mRend;
     public Color defaultColor;
     private float disableCountdown = 10f;
     [Header("Unity Setup Fields")]
