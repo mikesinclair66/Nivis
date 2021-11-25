@@ -8,13 +8,15 @@ public class Turret : MonoBehaviour
 
     private Transform target;
 
-    
     [Header("Attributes")]
     public float range = 15f;
     public float fireRate = 2f;
     private float fireCountdown = 0f;
 
     // TODO: create fire point when adding model (e5)
+    public Transform partToRotate;
+    public float turnSpeed = 10f;
+    
     public GameObject bulletPrefab;
     public Transform firePoint;
 
@@ -29,7 +31,7 @@ public class Turret : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateClosestTarget", 0f, 0.5f);
-        defaultColor = mRend.material.color;
+        // defaultColor = mRend.material.color;
     }
 
     void Update()
@@ -50,6 +52,15 @@ public class Turret : MonoBehaviour
 
         if (disabled != true)
         {
+            // Target lock on
+            if (partToRotate != null)
+            {
+                Vector3 dir = target.position - transform.position;
+                Quaternion lookRotation = Quaternion.LookRotation(dir);
+                Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+                partToRotate.rotation = Quaternion.Euler (0f, rotation.y, 0f);
+            }
+
             if (fireCountdown <= 0)
             {
                 Shoot();
@@ -97,14 +108,14 @@ public class Turret : MonoBehaviour
     public void Disable()
     {
         disabled = true;
-        mRend.material.SetColor("_Color", Color.red);
+        // mRend.material.SetColor("_Color", Color.red);
         disableCountdown = 10f;
     }
 
     public void Enable()
     {
         disabled = false;
-        mRend.material.color = defaultColor;
+        // mRend.material.color = defaultColor;
     }
 
     private void OnDrawGizmosSelected()

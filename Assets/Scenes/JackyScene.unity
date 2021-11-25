@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standardTurret:
-    prefab: {fileID: 4560193758139878433, guid: ba31b6d1970f6d64fb27162921f4614a, type: 3}
+    prefab: {fileID: 1000012174300454, guid: 9d7a1ede862cc1f4890c8f82490a0e30, type: 3}
     paths:
     - upgrades:
       - prefab: {fileID: 1039803665995866692, guid: 41070f1c3e073ef4eb2cfbfe16042abf, type: 3}
@@ -2951,6 +2951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildManager: {fileID: 458077342}
   generator: {fileID: 2830543956506485191}
+  stunAreaRange: {fileID: 0}
   reenableTurretCost: 50
   tempShieldCost: 75
   stunAreaCost: 125
@@ -3799,6 +3800,7 @@ MonoBehaviour:
       rate: 2
   spawnPoint: {fileID: 1253571385734008}
   enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+  timeBtn: {fileID: 0}
   timeBetweenWaves: 5
   waveCountdownText: {fileID: 1818590648}
   waveIndexText: {fileID: 1221591831}
@@ -3830,7 +3832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 1766955761}
   turretToBuildType: 0
-  standardTurretPrefab: {fileID: 4560193758139878433, guid: ba31b6d1970f6d64fb27162921f4614a, type: 3}
+  standardTurretPrefab: {fileID: 1000012174300454, guid: 9d7a1ede862cc1f4890c8f82490a0e30, type: 3}
   missileLauncherPrefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
   radiatorTurret: {fileID: 2451574595403351592, guid: 7be9c5a22ca3f3c49aae09e60e4a030e, type: 3}
   drill: {fileID: 482290806}
