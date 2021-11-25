@@ -197,13 +197,12 @@ GameObject:
   - component: {fileID: 494698}
   - component: {fileID: 9500310}
   - component: {fileID: 14365428}
-  - component: {fileID: 11432326}
   - component: {fileID: -2256088458993313075}
   - component: {fileID: -7876788728691667741}
   - component: {fileID: -159133662166000327}
   m_Layer: 0
   m_Name: Agosteras_Speed
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,7 +233,7 @@ Animator:
   m_GameObject: {fileID: 111292}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 1c345d5c2a9b820439fe3bd81aa11b09, type: 3}
-  m_Controller: {fileID: 9100000, guid: 73656d61198e95244887bfb747b30016, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7c677a2b0216791478b154500e490e37, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -261,22 +260,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.1, z: 0}
---- !u!114 &11432326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111292}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e2744403d2cbfb4f867bb5e724215a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1.1
-  runSpeed: 3
-  turnSpeed: 65
-  gravity: 20
 --- !u!114 &-2256088458993313075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,9 +284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5df155ebabca4488421da4d0535f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
   damageValue: 10
-  totalHealth: 0
+  totalHealth: 50
   radPercentage: 0
   radTimer: 3
   radDuration: 0
@@ -313,7 +296,7 @@ MonoBehaviour:
   slowAmount: 2
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
   isTank: 0
-  isSpeed: 0
+  isSpeed: 1
   meleeSlowedUnit: 0
   meleeSlowTimer: 0.5
   burning: 0

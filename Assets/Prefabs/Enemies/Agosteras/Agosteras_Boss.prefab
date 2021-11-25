@@ -4025,13 +4025,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5794526363542072584}
   - component: {fileID: 5850578553012415794}
-  - component: {fileID: 5905256939213861738}
   - component: {fileID: -8280437320741001863}
   - component: {fileID: -8912035814630002281}
   - component: {fileID: -7612466081446843819}
   m_Layer: 0
   m_Name: Agosteras_Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4072,19 +4071,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5905256939213861738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5792744366562842766}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd59c5d72a7b3fb46b2aa65394d9294d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 5850578553012415794}
 --- !u!114 &-8280437320741001863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4109,9 +4095,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5df155ebabca4488421da4d0535f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  damageValue: 10
-  totalHealth: 0
+  speed: 5
+  damageValue: 1000
+  totalHealth: 100000
   radPercentage: 0
   radTimer: 3
   radDuration: 0
@@ -4135,7 +4121,7 @@ MonoBehaviour:
   meltDamage: 300
   inRangeofRank2Melee: 0
   rcm: {fileID: 0}
-  killCountValue: 3
+  killCountValue: 1000
   speedKillCountValue: 1
   tankKillCountValue: 10
 --- !u!114 &-7612466081446843819

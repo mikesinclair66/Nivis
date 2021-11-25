@@ -8,9 +8,9 @@ public class Abilities : MonoBehaviour
     public Generator generator;
     public GameObject stunAreaRange;
 
-    public int reenableTurretCost = 100,
-               tempShieldCost = 200,
-               stunAreaCost = 250;
+    public int reenableTurretCost = 50,
+               tempShieldCost = 75,
+               stunAreaCost = 125;
 
     public float tempShieldDuration = 10;
     public float tempShieldDurationTimeStamp;
@@ -18,8 +18,8 @@ public class Abilities : MonoBehaviour
 
     //CD are in seconds
     public float reenableTurretCD = 10,
-                 tempShieldCD = 100,
-                 stunAreaCD = 100;
+                 tempShieldCD = 30,
+                 stunAreaCD = 30;
 
     private float reenableTurretTimeStamp,
                   tempShieldTimeStamp,
@@ -136,6 +136,7 @@ public class Abilities : MonoBehaviour
                 generator.shieldHealth = tempShieldHP;
                 Debug.Log("HP: " + generator.totalHealth + " Shield: " + generator.shieldHealth);
                 buildManager.drill.currentMoney -= tempShieldCost;
+
                 tempShieldDurationTimeStamp = Time.time + tempShieldDuration;
                 tempShieldTimeStamp = Time.time + tempShieldCD;
                 tempShieldOnCD = true;
@@ -154,8 +155,22 @@ public class Abilities : MonoBehaviour
     public void stunArea()
     {
         obj = Instantiate(stunAreaRange, hit.point, Quaternion.identity);
-        stunAbilityActive = true;
-        Debug.Log("Stun Active: " + stunAbilityActive);
+        if (stunAreaOnCD == false)
+        {
+            if (buildManager.drill.currentMoney >= stunAreaCost)
+            {
+                stunAbilityActive = true;
+                Debug.Log("Stun Active: " + stunAbilityActive);
+            }
+            else
+            {
+                Debug.Log("you poor");
+            }
+        }
+        else
+        {
+            Debug.Log("Ability on CD!");
+        }
     }
 
     void Stun(Vector3 hitPos, float radius)
@@ -169,6 +184,11 @@ public class Abilities : MonoBehaviour
                 c.GetComponent<Enemy>().activateStun(); // Can add variable to increase length of stun in Enemy.cs
             }
         }
+
+        buildManager.drill.currentMoney -= stunAreaCost;
+
+        stunAreaTimeStamp = Time.time + stunAreaCD;
+        stunAreaOnCD = true;
     }
 
     public int getReenableTurretCD()

@@ -8,6 +8,6 @@ public class SpeedAnim : MonoBehaviour
     {
         Animator anim = GetComponent<Animator>();
         anim.enabled = true;
-        anim.Play("Arach_armature|run");
+        anim.Play("Run");
     }
 }

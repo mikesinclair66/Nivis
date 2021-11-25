@@ -1440,7 +1440,7 @@ GameObject:
   - component: {fileID: -4998937774234219671}
   m_Layer: 0
   m_Name: Agosteras_Normal
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1509,10 +1509,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damageValue: 10
-  totalHealth: 0
-  radPercentage: 0
+  totalHealth: 100
+  radPercentage: 10
   radTimer: 3
-  radDuration: 0
+  radDuration: 2
   radiation: 0
   stunDuration: 0
   stunnedUnit: 0

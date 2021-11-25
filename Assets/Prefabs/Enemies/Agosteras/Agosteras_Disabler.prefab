@@ -531,13 +531,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7122654101855557399}
   - component: {fileID: 7122654101862791351}
-  - component: {fileID: 7244921836971337943}
   - component: {fileID: -3235826249655832642}
   - component: {fileID: 6680334133794356626}
+  - component: {fileID: 5376977053672862544}
   - component: {fileID: -5562226226972258871}
   m_Layer: 0
   m_Name: Agosteras_Disabler
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,6 +555,7 @@ Transform:
   m_Children:
   - {fileID: 7122654101855557397}
   - {fileID: 7122654101855557405}
+  - {fileID: 272113611315498825}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -568,7 +569,7 @@ Animator:
   m_GameObject: {fileID: 7122654101855521591}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 17f2f54fedc2dd246828d6a328855293, type: 3}
-  m_Controller: {fileID: 9100000, guid: 0c7deb298d1917b46abb20e3da49a6c5, type: 2}
+  m_Controller: {fileID: 9100000, guid: c2092e222631fc44cb92cffd41bdc832, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -577,20 +578,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7244921836971337943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7122654101855521591}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dd9df7738dbbf34db5463f053d28d24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 7122654101862791351}
-  _animateWhenRun: 1
 --- !u!114 &-3235826249655832642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,7 +604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damageValue: 10
-  totalHealth: 0
+  totalHealth: 100
   radPercentage: 0
   radTimer: 3
   radDuration: 0
@@ -644,6 +631,27 @@ MonoBehaviour:
   killCountValue: 3
   speedKillCountValue: 1
   tankKillCountValue: 10
+--- !u!114 &5376977053672862544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122654101855521591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e9badd0f2e06254daec5e5189082df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  damageValue: 10
+  totalHealth: 100
+  healthScaling: 5
+  bulletPrefab: {fileID: 339889784731166791, guid: 13afc05daa937e94d8ce0c83e2869903, type: 3}
+  range: 15
+  firePoint: {fileID: 272113611315498825}
+  turretTag: Turret
+  disablerKillCountValue: 3
 --- !u!114 &-5562226226972258871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1272,4 +1280,34 @@ Transform:
   - {fileID: 7122654101855557447}
   m_Father: {fileID: 7122654101855557461}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7868932255760475876
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 272113611315498825}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &272113611315498825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7868932255760475876}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7122654101855557399}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
