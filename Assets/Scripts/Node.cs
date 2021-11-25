@@ -93,9 +93,8 @@ public class Node : MonoBehaviour
 
     void OnMouseDown()
     {
-        //if (EventSystem.current.IsPointerOverGameObject())
-        //    return;
-        Debug.Log("Clicked on Node.");
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         if (!buildManager.isTurretSelected && turret == null)
         {
             buildManager.inventory.SelectTower(-1);
@@ -122,8 +121,8 @@ public class Node : MonoBehaviour
     }
     void OnMouseEnter()
     {
-        //if (EventSystem.current.IsPointerOverGameObject())
-        //    return;
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         if (!buildManager.isTurretSelected && turret == null)
             return;
         mRend.enabled = true;
@@ -131,8 +130,6 @@ public class Node : MonoBehaviour
 
     void OnMouseExit()
     {
-        //if (EventSystem.current.IsPointerOverGameObject())
-        //    return;
         mRend.enabled = false;
     }
 

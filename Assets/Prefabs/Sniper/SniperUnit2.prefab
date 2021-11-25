@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2965017924204602883}
   - component: {fileID: 7881891391277852846}
   - component: {fileID: 7815426520786378134}
-  - component: {fileID: 183446992388072528}
+  - component: {fileID: 8263680318507503318}
   m_Layer: 2
   m_Name: SniperUnit2
   m_TagString: Turret
@@ -129,7 +129,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &183446992388072528
+--- !u!114 &8263680318507503318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,9 +143,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 300000
   fireRate: 0.25
-  bulletPrefab: {fileID: 6700399589954572924, guid: 3e6cba64ef1f33e46b8b9cf0fb698078, type: 3}
-  firePoint: {fileID: 940075511795001281}
+  partToRotate: {fileID: 0}
+  turnSpeed: 10
+  bulletPrefab: {fileID: 8782891259442944730, guid: e2d321f238c62574991a6855abb057f3, type: 3}
+  firePoint: {fileID: 6294592315239249171, guid: 41070f1c3e073ef4eb2cfbfe16042abf, type: 3}
   disabled: 0
-  mRend: {fileID: 7881891391277852846}
+  mRend: {fileID: 3977568645394725500, guid: 41070f1c3e073ef4eb2cfbfe16042abf, type: 3}
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
   enemyTag: Enemy

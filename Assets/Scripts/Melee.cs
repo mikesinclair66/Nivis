@@ -43,7 +43,7 @@ public class Melee : MonoBehaviour
     void Start()
     {
         InvokeRepeating("MeleeCheckForEnemies", 0f, PulseCD);
-        defaultColor = mRend.material.color;
+        // defaultColor = mRend.material.color;
     }
 
     void Update()
