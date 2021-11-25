@@ -2960,7 +2960,7 @@ MonoBehaviour:
   tempShieldHP: 30
   reenableTurretCD: 5
   tempShieldCD: 15
-  stunAreaCD: 30
+  stunAreaCD: 0
   reenableTurretIsRequested: 0
 --- !u!1 &428812782
 GameObject:

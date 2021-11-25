@@ -45,7 +45,6 @@ public class Abilities : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log(hit.point);
                 obj.transform.position = hit.point;
 
                 if (Input.GetMouseButtonDown(0))
