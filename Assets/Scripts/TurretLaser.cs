@@ -63,10 +63,7 @@ public class TurretLaser : MonoBehaviour
             // Target lock on
             if (partToRotate != null)
             {
-                Vector3 dir = target.position - transform.position;
-                Quaternion lookRotation = Quaternion.LookRotation(dir);
-                Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-                partToRotate.rotation = Quaternion.Euler (0f, rotation.y, 0f);
+                partToRotate.LookAt(new Vector3(target.position.x, partToRotate.position.y, target.position.z));
             }
             
             Laser();
