@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 172140526632779240}
   - component: {fileID: 172140526633778984}
   - component: {fileID: 172140526639223336}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RadiatorModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 5486383065936078902}
   - component: {fileID: 5730663409228013384}
   - component: {fileID: 5253471356562308931}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RadiatorRate1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
