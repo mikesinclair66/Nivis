@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     public bool stunnedUnit;
     public int slowAmount = 2;
     //public SkinnedMeshRenderer mRend;
-    public MeshRenderer mRend;
+    //public MeshRenderer mRend;
     public Color defaultColor;
     public bool isTank;
     public bool isSpeed;
@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        defaultColor = mRend.material.color;
+        //defaultColor = mRend.material.color;
         defaultSpeed = speed;
         defaultHealth = totalHealth;
         rcm = GameObject.Find("ResearchStation").GetComponent<ResearchCostManager>();
@@ -121,7 +121,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("Enemy Found");
         TakeDamage(radiatorDamage);
         meleeActivateSlow();
-        mRend.material.SetColor("_Color", Color.red);
+        //mRend.material.SetColor("_Color", Color.red);
 
     }
 
@@ -137,7 +137,7 @@ public class Enemy : MonoBehaviour
     {
         meleeSlowedUnit = false;
         inRangeofRank2Melee = false;
-        mRend.material.color = defaultColor; 
+        //mRend.material.color = defaultColor; 
         //Debug.Log("DEFAULT SPEED: " + defaultSpeed);
         speed = defaultSpeed;
 
@@ -152,14 +152,14 @@ public class Enemy : MonoBehaviour
     public void activateRad()
     {
         radiation = true;
-        mRend.material.SetColor("_Color", Color.green);
+        //mRend.material.SetColor("_Color", Color.green);
         radTimer = 3f;
     }
 
     public void radOff()
     {
         radiation = false;
-        mRend.material.color = defaultColor; 
+        //mRend.material.color = defaultColor; 
     }
 
     public void activateBurn(float burnDmg, bool rank3Burn)
@@ -209,7 +209,7 @@ public class Enemy : MonoBehaviour
         stunnedUnit = true;
         speed = 0f;
         stunDuration = 1.5f;
-        mRend.material.SetColor("_Color", Color.blue);
+        //mRend.material.SetColor("_Color", Color.blue);
 
     }
 
@@ -217,7 +217,7 @@ public class Enemy : MonoBehaviour
     {
         stunnedUnit = false;
         speed = defaultSpeed;
-        mRend.material.color = defaultColor; 
+        //mRend.material.color = defaultColor; 
 
     }
 

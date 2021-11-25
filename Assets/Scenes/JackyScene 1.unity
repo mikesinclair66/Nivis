@@ -3480,10 +3480,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveEnemies:
-    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
+    - enemy: {fileID: 100066, guid: b503ed691f556f642935f4e18d6a1864, type: 3}
       count: 5
       rate: 2
-    - enemy: {fileID: 3149694144095646197, guid: e5d1a758432c8014bb8ad99ecc802132, type: 3}
+    - enemy: {fileID: 111292, guid: 800ba4d665301cc4ea1994d5d86bded3, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 7122654101855521591, guid: 91d4749f098c66442b36767a17342765, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 8415560677743472776, guid: 972a0269d29eec444bfc26075fab6791, type: 3}
+      count: 3
+      rate: 2
+    - enemy: {fileID: 5792744366562842766, guid: 9a523f7804c7d7f48bb47e84b8beaaa2, type: 3}
       count: 3
       rate: 2
   - waveEnemies:
