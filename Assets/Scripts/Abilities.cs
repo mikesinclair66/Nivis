@@ -34,9 +34,6 @@ public class Abilities : MonoBehaviour
 
     public bool reenableTurretIsRequested = false;
 
-    public GameObject shieldIcon;
-    public GameObject shieldMod;
-
     private GameObject obj;
     private Ray ray;
     private RaycastHit hit;
