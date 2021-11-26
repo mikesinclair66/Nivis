@@ -40,7 +40,7 @@ public class Shop : MonoBehaviour
         else
             btn3.GetComponent<Button>().interactable = true;
 
-        if(awaitButtonHover != -1
+        if (awaitButtonHover != -1
             && awaitButtonHover != 100 && Input.mousePosition.y <= 55)
         {
             ButtonHovered(awaitButtonHover);

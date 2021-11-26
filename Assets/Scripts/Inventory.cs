@@ -84,7 +84,6 @@ public class NodeUI
         target.SellTurret();
         BuildManager.instance.DeselectNode();
     }
-
 }
 
 /// <summary>
@@ -134,8 +133,6 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         upgradeBtn.SetActive(false);
-        /*upgradeCostText.text = "-$" + upgradeCost.ToString("0");
-        sellValueText.text = "Sell +$" + sellValue.ToString("0");*/
     }
 
     public void Add(GameObject turret, int type, int nodeKey)
@@ -476,7 +473,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(upgradePrimary[towerSelected] == -1)
+        if (upgradePrimary[towerSelected] == -1)
         {
             switch (turretType[towerSelected])
             {

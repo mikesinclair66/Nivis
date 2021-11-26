@@ -56,7 +56,7 @@ public class MenuUI : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float tRatio = ((elapsedTime > SPEED) ? 1 : elapsedTime / SPEED);
-            if(tRatio == 1)
+            if (tRatio == 1)
             {
                 switch (textFade)
                 {
@@ -178,9 +178,8 @@ public class MenuUI : MonoBehaviour
     {
         SceneManager.LoadScene("JackyScene", LoadSceneMode.Single);
 
-        if(lvl1 || !lvl1)
-            SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
-
+        if (lvl1 || !lvl1)
+            SceneManager.LoadScene("JackyScene 1", LoadSceneMode.Single);
     }
 
     public void ExitGame()
