@@ -85,7 +85,7 @@ public class Melee : MonoBehaviour
                     c.GetComponent<Enemy>().percentHealthTaken(percentHealthDmg);
 
                 }
-                if (instakillPulsor == true && c.GetComponent<Enemy>().isTank == false)
+                if (instakillPulsor == true && c.GetComponent<Enemy>().enemyType == "tank")
                 {
                     float pulsorRandomNumber = UnityEngine.Random.Range(0f, 100f);
                     if (pulsorRandomNumber >= (100 - pulsorRNGPercentage))
