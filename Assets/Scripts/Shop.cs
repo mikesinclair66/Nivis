@@ -11,7 +11,7 @@ public class Shop : MonoBehaviour
     public OptionDescriptor optionDescriptor;
     public TurretBlueprint standardTurret;
     public TurretBlueprint missileLauncher;
-    public TurretBlueprint meleeTurret;
+    public TurretBlueprint pulsorTurret;
 
     BuildManager buildManager;
     // Start is called before the first frame update
@@ -35,7 +35,7 @@ public class Shop : MonoBehaviour
         else
             btn2.GetComponent<Button>().interactable = true;
 
-        if (drill.currentMoney < meleeTurret.cost)
+        if (drill.currentMoney < pulsorTurret.cost)
             btn3.GetComponent<Button>().interactable = false;
         else
             btn3.GetComponent<Button>().interactable = true;
@@ -60,10 +60,10 @@ public class Shop : MonoBehaviour
         buildManager.SelectTurretToBuild(missileLauncher, 1);
     }
 
-    public void SelectMeleeTurret()
+    public void SelectPulsorTurret()
     {
-        Debug.Log("Melee Turret Selected");
-        buildManager.SelectTurretToBuild(meleeTurret, 2);
+        Debug.Log("Pulsor Turret Selected");
+        buildManager.SelectTurretToBuild(pulsorTurret, 2);
     }
 
     public void ButtonHovered(int btn)
@@ -86,7 +86,7 @@ public class Shop : MonoBehaviour
                 case 2:
                 default:
                     nPos = nPos + new Vector3(btn3.gameObject.transform.position.x, 0, 0);
-                    name = "radiator\ntower";
+                    name = "pulsor\ntower";
                     break;
             }
 

@@ -453,28 +453,28 @@ MonoBehaviour:
         sellValue: 100
     cost: 300
     sellValue: 100
-  meleeTurret:
+  pulsorTurret:
     prefab: {fileID: 8286855263532688045, guid: 64839d51bbbb3bd4b8a41d4e0e5d48b0, type: 3}
     paths:
     - upgrades:
       - prefab: {fileID: 8286855263532688045, guid: 71a7eadfa4ee00d409c7261fcece4b12, type: 3}
-        cost: 200
+        cost: 300
         sellValue: 100
       - prefab: {fileID: 8286855263532688045, guid: d6cdec6ad54ed854bae9b5fde33ad680, type: 3}
-        cost: 200
+        cost: 300
         sellValue: 100
       - prefab: {fileID: 8286855263532688045, guid: 8be0693bdd5e08645b8565c5aa0f8162, type: 3}
-        cost: 200
+        cost: 300
         sellValue: 100
     - upgrades:
       - prefab: {fileID: 8286855263532688045, guid: e9194d00731908242ba3e59061c959c2, type: 3}
-        cost: 200
+        cost: 300
         sellValue: 100
       - prefab: {fileID: 8286855263532688045, guid: 34467c972eb56cc4c8bf39636f4f4866, type: 3}
-        cost: 200
+        cost: 300
         sellValue: 100
       - prefab: {fileID: 8286855263532688045, guid: 597945cecefd4ab458510336d0e9db3f, type: 3}
-        cost: 200
+        cost: 300
         sellValue: 100
     cost: 300
     sellValue: 100
@@ -3461,30 +3461,16 @@ MonoBehaviour:
     - enemy: {fileID: 100066, guid: b503ed691f556f642935f4e18d6a1864, type: 3}
       count: 5
       rate: 2
-    - enemy: {fileID: 111292, guid: 800ba4d665301cc4ea1994d5d86bded3, type: 3}
+    - enemy: {fileID: 7122654101855521591, guid: 91d4749f098c66442b36767a17342765, type: 3}
       count: 3
       rate: 2
-    - enemy: {fileID: 7122654101855521591, guid: 91d4749f098c66442b36767a17342765, type: 3}
+    - enemy: {fileID: 111292, guid: 800ba4d665301cc4ea1994d5d86bded3, type: 3}
       count: 3
       rate: 2
     - enemy: {fileID: 8415560677743472776, guid: 972a0269d29eec444bfc26075fab6791, type: 3}
       count: 3
       rate: 2
     - enemy: {fileID: 5792744366562842766, guid: 9a523f7804c7d7f48bb47e84b8beaaa2, type: 3}
-      count: 3
-      rate: 2
-  - waveEnemies:
-    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
-      count: 5
-      rate: 2
-    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
-      count: 3
-      rate: 2
-  - waveEnemies:
-    - enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
-      count: 5
-      rate: 2
-    - enemy: {fileID: 3149694144095646197, guid: 21913cf2dfa55494fa29c3ee3e1c0b9e, type: 3}
       count: 3
       rate: 2
   spawnPoint: {fileID: 1253571385734008}
@@ -3521,9 +3507,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 1766955761}
   turretToBuildType: 0
-  standardTurretPrefab: {fileID: 4560193758139878433, guid: ba31b6d1970f6d64fb27162921f4614a, type: 3}
-  missileLauncherPrefab: {fileID: 7897825072458640988, guid: ffcb027314e7dbf4ba510a9ba7f5a7c5, type: 3}
-  radiatorTurret: {fileID: 2451574595403351592, guid: 7be9c5a22ca3f3c49aae09e60e4a030e, type: 3}
   drill: {fileID: 728275365}
 --- !u!1 &466912427
 GameObject:
@@ -14491,7 +14474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2311b724d3659d44c800466f0d4a2287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drill: {fileID: 0}
+  drill: {fileID: 728275365}
   shop: {fileID: 62729417}
 --- !u!1001 &1775665094
 PrefabInstance:
