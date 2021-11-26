@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 172140526631838184}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 5486383065936078902}
   m_RootOrder: 0
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 5730663409228013384}
   - component: {fileID: 5253471356562308931}
   m_Layer: 2
-  m_Name: RadiatorRange3
+  m_Name: PulsorRange2
   m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,16 +292,16 @@ MonoBehaviour:
   firePoint: {fileID: 2198826888945603087}
   mRend: {fileID: 0}
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  MeleeTurret: 1
-  MeleeRange: 15
-  meleeDamage: 10
+  pulsorTurret: 0
+  pulsorRange: 0
+  pulsorDamage: 0
   PulseCD: 2
-  drill: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
+  drill: {fileID: -1586529396932922300, guid: a3626b57e1474834d996fd7a71b279fd, type: 3}
   moneyEarned: 50
   rngPercentage: 10
-  rank3Melee: 1
-  percentHealthDmg: 5
-  rank2Melee: 0
-  instakillMelee: 0
-  meleeRNGPercentage: 10
+  rank3Pulsor: 0
+  percentHealthDmg: 0
+  rank2Pulsor: 0
+  instakillPulsor: 0
+  pulsorRNGPercentage: 10
   enemyTag: Enemy

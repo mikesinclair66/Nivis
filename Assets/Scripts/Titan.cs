@@ -22,8 +22,8 @@ public class Titan : MonoBehaviour
     //public Color defaultColor;
     public bool isTank;
     public bool isSpeed;
-    public bool meleeSlowedUnit;
-    public float meleeSlowTimer = 0.5f;
+    public bool pulsorSlowedUnit;
+    public float pulsorSlowTimer = 0.5f;
     public bool burning;
     public float burnTimer = 5f;
     public float TickDamageTimer = 0.5f;
@@ -37,7 +37,7 @@ public class Titan : MonoBehaviour
     public bool frozen;
     public float freezeTimer = 1.5f;
     public float meltDamage = 300f;
-    public bool inRangeofRank2Melee;
+    public bool inRangeofRank2Pulsor;
 
 
     public ResearchCostManager rcm;
@@ -72,13 +72,13 @@ public class Titan : MonoBehaviour
                 stunOff();
             }
         }
-        if (meleeSlowedUnit == true)
+        if (pulsorSlowedUnit == true)
         {
             //Debug.Log("Unit Slowed");
-            meleeSlowTimer -= Time.deltaTime;
-            if (meleeSlowTimer <= 0)
+            pulsorSlowTimer -= Time.deltaTime;
+            if (pulsorSlowTimer <= 0)
             {
-                meleeSlowOff();
+                pulsorSlowOff();
             }
         }
         if (burning == true)
@@ -117,27 +117,27 @@ public class Titan : MonoBehaviour
         else if (totalHealth <= 0) { Die(); }
     }
 
-    public void meleeDamage(int radiatorDamage)
+    public void pulsorDamage(int radiatorDamage)
     {
         Debug.Log("Enemy Found");
         TakeDamage(radiatorDamage);
-        meleeActivateSlow();
+        pulsorActivateSlow();
         //mRend.material.SetColor("_Color", Color.red);
 
     }
 
-    public void meleeActivateSlow()
+    public void pulsorActivateSlow()
     {
-        meleeSlowedUnit = true;
+        pulsorSlowedUnit = true;
         speed = defaultSpeed / slowAmount;
-        meleeSlowTimer = 0.5f;
-        //meleeSlowOff();
+        pulsorSlowTimer = 0.5f;
+        //pulsorSlowOff();
     }
 
-    public void meleeSlowOff()
+    public void pulsorSlowOff()
     {
-        meleeSlowedUnit = false;
-        inRangeofRank2Melee = false;
+        pulsorSlowedUnit = false;
+        inRangeofRank2Pulsor = false;
         //mRend.material.color = defaultColor; 
         //Debug.Log("DEFAULT SPEED: " + defaultSpeed);
         speed = defaultSpeed;
@@ -236,9 +236,9 @@ public class Titan : MonoBehaviour
         else if (totalHealth <= 0) { Die(); }
     }
 
-    public void inRangeofMelee()
+    public void inRangeofPulsor()
     {
-        inRangeofRank2Melee = true;
+        inRangeofRank2Pulsor = true;
     }
 
 
@@ -304,7 +304,7 @@ public class Titan : MonoBehaviour
         }
         Destroy(gameObject);
         Debug.Log("Kill Count: " + rcm.killCount);
-        if (inRangeofRank2Melee == true)
+        if (inRangeofRank2Pulsor == true)
         {
             rcm.killCount += getKillCountValue() * 2;
         }

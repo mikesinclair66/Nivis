@@ -122,7 +122,7 @@ public class Hotbar : MonoBehaviour
         attackText[2].GetComponent<Text>().text = "Stun\n\n$" + attacks.GetComponent<Abilities>().stunAreaCost;
         towerText[0].GetComponent<Text>().text = "Normal\nTurret\n$" + shop.standardTurret.cost;
         towerText[1].GetComponent<Text>().text = "Missile\nTurret\n$" + shop.missileLauncher.cost;
-        towerText[2].GetComponent<Text>().text = "Radiator\nTower\n$" + shop.meleeTurret.cost;
+        towerText[2].GetComponent<Text>().text = "Pulsor\nTower\n$" + shop.pulsorTurret.cost;
 
         researchChecker = new HoverChecker(
             researchBtn,

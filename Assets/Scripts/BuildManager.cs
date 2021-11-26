@@ -11,10 +11,10 @@ public class BuildManager : MonoBehaviour
     public int turretToBuildType;
     private Node selectedNode;
 
-    // TODO: add turret prefab
-    public GameObject standardTurretPrefab;
-    public GameObject missileLauncherPrefab;
-    public GameObject radiatorTurret;
+    // // TODO: add turret prefab
+    // public GameObject standardTurretPrefab;
+    // public GameObject missileLauncherPrefab;
+    // public GameObject pulsorTurret;
 
     public Drill drill;
     //public NodeUI nodeUI;

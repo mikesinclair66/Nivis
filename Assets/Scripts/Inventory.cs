@@ -184,7 +184,7 @@ public class Inventory : MonoBehaviour
                 break;
             case 2:
             default:
-                turretName.text = "Melee Unit";
+                turretName.text = "Pulsor Unit";
                 break;
         }
 
@@ -229,7 +229,7 @@ public class Inventory : MonoBehaviour
                     break;
                 case 2:
                 default:
-                    cost = shop.meleeTurret.paths[branchNo].upgrades[0].cost;
+                    cost = shop.pulsorTurret.paths[branchNo].upgrades[0].cost;
                     break;
             }
 
@@ -266,7 +266,7 @@ public class Inventory : MonoBehaviour
                     break;
                 case 2:
                 default:
-                    drill.currentMoney -= shop.meleeTurret.paths[branchNo].upgrades[0].cost;
+                    drill.currentMoney -= shop.pulsorTurret.paths[branchNo].upgrades[0].cost;
                     break;
             }
             */
@@ -304,7 +304,7 @@ public class Inventory : MonoBehaviour
                         break;
                     case 2:
                     default:
-                        cost = shop.meleeTurret
+                        cost = shop.pulsorTurret
                             .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
                         break;
                 }
@@ -333,7 +333,7 @@ public class Inventory : MonoBehaviour
                         break;
                     case 2:
                     default:
-                        drill.currentMoney -= shop.meleeTurret
+                        drill.currentMoney -= shop.pulsorTurret
                             .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
                         break;
                 }
@@ -381,8 +381,8 @@ public class Inventory : MonoBehaviour
                     break;
                 case 2:
                 default:
-                    upgradeText1.text = "+Fire\nrate\n$" + shop.meleeTurret.paths[0].upgrades[0].cost;
-                    upgradeText2.text = "+Range\n$" + shop.meleeTurret.paths[1].upgrades[0].cost;
+                    upgradeText1.text = "+Fire\nrate\n$" + shop.pulsorTurret.paths[0].upgrades[0].cost;
+                    upgradeText2.text = "+Range\n$" + shop.pulsorTurret.paths[1].upgrades[0].cost;
                     break;
             }
         }
@@ -457,7 +457,7 @@ public class Inventory : MonoBehaviour
                             if (upgradeLvl[towerSelected] == 2)
                                 descriptor = "+Damage";
                         }
-                        upgradeText.text = descriptor + "\n$" + shop.meleeTurret.paths[upgradePrimary[towerSelected]]
+                        upgradeText.text = descriptor + "\n$" + shop.pulsorTurret.paths[upgradePrimary[towerSelected]]
                             .upgrades[upgradeLvl[towerSelected]].cost;
                         break;
                 }
@@ -501,11 +501,11 @@ public class Inventory : MonoBehaviour
                     break;
                 case 2:
                 default:
-                    if (drill.currentMoney < shop.meleeTurret.paths[0].upgrades[0].cost)
+                    if (drill.currentMoney < shop.pulsorTurret.paths[0].upgrades[0].cost)
                         upgradeBtn1.GetComponent<Button>().interactable = false;
                     else
                         upgradeBtn1.GetComponent<Button>().interactable = true;
-                    if (drill.currentMoney < shop.meleeTurret.paths[1].upgrades[0].cost)
+                    if (drill.currentMoney < shop.pulsorTurret.paths[1].upgrades[0].cost)
                         upgradeBtn2.GetComponent<Button>().interactable = false;
                     else
                         upgradeBtn2.GetComponent<Button>().interactable = true;

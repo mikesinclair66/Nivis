@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f1c801d8fc46b9f4495a8df93311f486, type: 2}
+  - {fileID: 2100000, guid: 37c1985af469c2949ba9495c2dcbe7e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,7 +120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1351482943417343425
 Transform:
   m_ObjectHideFlags: 0
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 5730663409228013384}
   - component: {fileID: 5253471356562308931}
   m_Layer: 2
-  m_Name: Radiator
+  m_Name: PulsorRange1
   m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -293,10 +293,10 @@ MonoBehaviour:
   mRend: {fileID: 0}
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
   pulsorTurret: 0
-  pulsorRange: 10
-  pulsorDamage: 20
+  pulsorRange: 0
+  pulsorDamage: 0
   PulseCD: 2
-  drill: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
+  drill: {fileID: -1586529396932922300, guid: a3626b57e1474834d996fd7a71b279fd, type: 3}
   moneyEarned: 0
   rngPercentage: 0
   rank3Pulsor: 0

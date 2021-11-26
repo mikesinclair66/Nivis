@@ -32,7 +32,7 @@ public class Debuff : MonoBehaviour
     public bool slowed;
     public float slowTimer = 0.5f;
     public int slowAmount = 2;
-    public bool inRangeofRank2Melee;
+    public bool inRangeofRank2Pulsor;
 
     [Header("Freeze")]
     public float freezeChance = 0.25f;
@@ -98,7 +98,7 @@ public class Debuff : MonoBehaviour
                 slowed = false;                
                 activeDebuffs.Remove("slowed");
                 enemy.speed = enemy.defaultSpeed;
-                inRangeofRank2Melee = false;
+                inRangeofRank2Pulsor = false;
             }
         }
 

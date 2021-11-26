@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Melee : MonoBehaviour
+ 
+public class Pulsor : MonoBehaviour
 {
 
     private Transform target;
@@ -101,18 +101,7 @@ public class Melee : MonoBehaviour
             }
         }
     }
-    // public void Disable()
-    // {
-    //     disabled = true;
-    //     mRend.material.SetColor("_Color", Color.red);
-    //     disableCountdown = 10f;
-    // }
-
-    // public void Enable()
-    // {
-    //     disabled = false;
-    //     mRend.material.color = defaultColor;
-    // }
+   
 
     private void OnDrawGizmosSelected()
     {
