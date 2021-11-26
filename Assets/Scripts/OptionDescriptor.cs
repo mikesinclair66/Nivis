@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// The option descriptor describes an element which
+/// can be selected by the user to give better context
+/// on what the element does.
+/// </summary>
 public class OptionDescriptor : MonoBehaviour
 {
     public GameObject descriptor, arrowUp, arrowDown;
@@ -32,6 +37,11 @@ public class OptionDescriptor : MonoBehaviour
         descriptor.SetActive(true);
     }
 
+    /// <summary>
+    /// The option descriptor that either points up or down. This function
+    /// sets the direction for it to point.
+    /// </summary>
+    /// <param name="directionUp"></param>
     private void SetDirection(bool directionUp)
     {
         if(directionUp != this.directionUp)

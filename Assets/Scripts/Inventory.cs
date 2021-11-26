@@ -199,7 +199,9 @@ public class Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Tower upgrade when selecting branches.
+    /// Tower upgrade when selecting the initial two branches.
+    /// Once an upgrade branch is selected for a tower, a single
+    /// button will be used thereafter and is processed through Upgrade().
     /// </summary>
     /// <param name="primaryBranch"></param>
     public void SelectBranch(bool primaryBranch)
@@ -237,6 +239,9 @@ public class Inventory : MonoBehaviour
         UpdateUpgradeSystem();
     }
 
+    /// <summary>
+    /// Sells a tower and removes information from the lists.
+    /// </summary>
     public void Sell()
     {
         nodeUI.Sell();
@@ -245,6 +250,9 @@ public class Inventory : MonoBehaviour
         drill.currentMoney += nodeUI.curSellValue;
     }
 
+    /// <summary>
+    /// Upgrades the previously selected branch for each tower.
+    /// </summary>
     public void Upgrade()
     {
         if (upgradeLvl[towerSelected] == 3)

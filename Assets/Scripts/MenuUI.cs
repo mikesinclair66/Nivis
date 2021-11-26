@@ -42,6 +42,10 @@ public class MenuUI : MonoBehaviour
         lvl2Filled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
     }
 
+    /// <summary>
+    /// Provides the onhover animations for the buttons as well as the
+    /// camera transitions.
+    /// </summary>
     void Update()
     {
         if ((ebHovered && ebElapsedTime < 1.0f) ||
@@ -121,7 +125,6 @@ public class MenuUI : MonoBehaviour
                         lvl2Filled.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, tRatio);
                         break;
                 }
-                //Debug.Log("tRatio: " + tRatio + ", 1 - tRatio: " + (1.0f - tRatio));
 
                 posX = posXStart + tRatio * ((posXStart <= posXDest) ? 1 : -1) * Math.Abs(posXDest - posXStart);
                 posZ = posZStart + tRatio * ((posZStart <= posZDest) ? 1 : -1) * Math.Abs(posZDest - posZStart);
@@ -174,18 +177,30 @@ public class MenuUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The onclick for the level buttons.
+    /// </summary>
+    /// <param name="lvl1"></param>
     public void StartGame(bool lvl1)
     {
         if (lvl1 || !lvl1)
             SceneManager.LoadScene("JackyScene 1", LoadSceneMode.Single);
     }
 
+    /// <summary>
+    /// The onclick for the exit button.
+    /// </summary>
     public void ExitGame()
     {
         Debug.Log("exit game");
         Application.Quit();
     }
 
+    /// <summary>
+    /// Initializes the start and end points in order
+    /// for the camera to transition.
+    /// </summary>
+    /// <param name="cameraAngle"></param>
     void SetCameraAngle(int cameraAngle)
     {
         switch (this.cameraAngle)

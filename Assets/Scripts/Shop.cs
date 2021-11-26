@@ -66,6 +66,11 @@ public class Shop : MonoBehaviour
         buildManager.SelectTurretToBuild(meleeTurret, 2);
     }
 
+    /// <summary>
+    /// Activates the option descriptor to describe the
+    /// different tower buttons.
+    /// </summary>
+    /// <param name="btn"></param>
     public void ButtonHovered(int btn)
     {
         if (Input.mousePosition.y <= 55)

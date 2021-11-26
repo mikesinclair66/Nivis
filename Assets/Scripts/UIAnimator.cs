@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A popup menu used for the upgrade UI and research station.
+/// </summary>
 public class UIAnimator : MonoBehaviour
 {
     public string innerElName;
@@ -11,7 +14,10 @@ public class UIAnimator : MonoBehaviour
     bool toggled = false, animating = false, secondTransition = false, firstToggle = false;
     float elapsedTime, tRatio;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Tracks the end-goal dimensions for when the menu
+    /// is done transitioning.
+    /// </summary>
     void Start()
     {
         initScale = gameObject.transform.localScale;
@@ -20,7 +26,10 @@ public class UIAnimator : MonoBehaviour
         innerEl.SetActive(false);
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Transitions the popup to open or close
+    /// once it's trigger is activated.
+    /// </summary>
     void Update()
     {
         if (animating)
@@ -72,6 +81,10 @@ public class UIAnimator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Triggers the popup animation. Only animates/transitions to open the first time it's activated,
+    /// but animates every time it is closed.
+    /// </summary>
     public void Toggle()
     {
         toggled = !toggled;
@@ -92,12 +105,19 @@ public class UIAnimator : MonoBehaviour
             animating = true;
     }
 
+    /// <summary>
+    /// Only toggles if currently closed. Called by turrets.
+    /// </summary>
     public void RequestToggle()
     {
         if (!toggled)
             Toggle();
     }
 
+    /// <summary>
+    /// Only toggles if currently opened. Called when clicking
+    /// on empty space.
+    /// </summary>
     public void CloseUI()
     {
         if (toggled)
