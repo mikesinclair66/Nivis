@@ -21,18 +21,18 @@ public class Melee : MonoBehaviour
     public MeshRenderer mRend;
     public Color defaultColor;
     //private float disableCountdown = 10f;
-    public bool MeleeTurret;
-    public float MeleeRange;
-    public int meleeDamage;
+    public bool pulsorTurret;
+    public float pulsorRange;
+    public float pulsorDamage;
     public float PulseCD;
     public Drill drill;
     public int moneyEarned = 5;
     public int rngPercentage;
-    public bool rank3Melee;
+    public bool rank3Pulsor;
     public float percentHealthDmg;
-    public bool rank2Melee;
-    public bool instakillMelee;
-    public float meleeRNGPercentage = 10f;
+    public bool rank2Pulsor;
+    public bool instakillPulsor;
+    public float pulsorRNGPercentage = 10f;
 
     [Header("Unity Setup Fields")]
 
@@ -42,7 +42,7 @@ public class Melee : MonoBehaviour
     // TODO: logic to rotate the turret when it sees an enemy (e4)
     void Start()
     {
-        InvokeRepeating("MeleeCheckForEnemies", 0f, PulseCD);
+        InvokeRepeating("pulsorCheckForEnemies", 0f, PulseCD);
         // defaultColor = mRend.material.color;
     }
 
@@ -55,39 +55,40 @@ public class Melee : MonoBehaviour
     }
 
 
-    public void MeleeCheckForEnemies()
+    public void pulsorCheckForEnemies()
     {
 
-        Collider[] colliders = Physics.OverlapSphere(transform.position, MeleeRange);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, pulsorRange);
         foreach (Collider c in colliders)
         {
 
 
             if (c.GetComponent<Enemy>())
             {
-                c.GetComponent<Enemy>().meleeDamage(meleeDamage);
-                if (rank2Melee == true)
+                c.GetComponent<Enemy>().TakeDamage(pulsorDamage);
+                c.GetComponent<Debuff>().activateSlow();
+                if (rank2Pulsor == true)
                 {
-                    c.GetComponent<Enemy>().inRangeofMelee();
+                    c.GetComponent<Enemy>().inRangeofRank2Pulsor = true;
                 }
                 float randomNumber = UnityEngine.Random.Range(0f, 100f);
-                Debug.Log("RANDOM VALUE: " + randomNumber);
-                Debug.Log("Rng Percent: " + (100 - rngPercentage));
+                //Debug.Log("RANDOM VALUE: " + randomNumber);
+                //Debug.Log("Rng Percent: " + (100 - rngPercentage));
                 if (randomNumber >= (100 - rngPercentage))
                 {
                     Debug.Log("Gave Currency");
                     drill.currentMoney += moneyEarned;
 
                 }
-                if (rank3Melee == true)
+                if (rank3Pulsor == true)
                 {
                     c.GetComponent<Enemy>().percentHealthTaken(percentHealthDmg);
 
                 }
-                if (instakillMelee == true && c.GetComponent<Enemy>().isTank == false)
+                if (instakillPulsor == true && c.GetComponent<Enemy>().isTank == false)
                 {
-                    float MeleeRandomNumber = UnityEngine.Random.Range(0f, 100f);
-                    if (MeleeRandomNumber >= (100 - meleeRNGPercentage))
+                    float pulsorRandomNumber = UnityEngine.Random.Range(0f, 100f);
+                    if (pulsorRandomNumber >= (100 - pulsorRNGPercentage))
                     {
                         Debug.Log("Instakill Active");
                         float instakillDamage = c.GetComponent<Enemy>().totalHealth;
@@ -116,6 +117,6 @@ public class Melee : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, MeleeRange);
+        Gizmos.DrawWireSphere(transform.position, pulsorRange);
     }
 }

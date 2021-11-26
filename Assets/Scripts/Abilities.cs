@@ -201,7 +201,7 @@ public class Abilities : MonoBehaviour
             if (c.GetComponent<Enemy>())
             {
                 Debug.Log("STUNNED!");
-                c.GetComponent<Enemy>().activateStun(); // Can add variable to increase length of stun in Enemy.cs
+                c.GetComponent<Debuff>().activateStun(); // Can add variable to increase length of stun in Enemy.cs
             }
         }
 

@@ -99,7 +99,7 @@ public class Sniper : MonoBehaviour
                 nearestEnemy = enemy;
 
             }
-            if (enemy.GetComponent<Enemy>().isTank == true)
+            if (enemy.GetComponent<Enemy>().enemyType == "tank")
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;

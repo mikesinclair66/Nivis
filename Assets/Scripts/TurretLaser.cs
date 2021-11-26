@@ -84,7 +84,7 @@ public class TurretLaser : MonoBehaviour
 
         if (LaserRank3 == true){
 
-            target.GetComponent<Enemy>().ChanceToFreeze();
+            target.GetComponent<Debuff>().ChanceToFreeze();
         }
 
         if (!lineRenderer.enabled)

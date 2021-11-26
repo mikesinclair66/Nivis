@@ -4027,6 +4027,7 @@ GameObject:
   - component: {fileID: 5850578553012415794}
   - component: {fileID: -8280437320741001863}
   - component: {fileID: -8912035814630002281}
+  - component: {fileID: 3867142842415539236}
   - component: {fileID: -7612466081446843819}
   - component: {fileID: -3235860528740097925}
   m_Layer: 0
@@ -4096,35 +4097,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5df155ebabca4488421da4d0535f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: boss
+  totalHealth: 100000
   speed: 5
   damageValue: 1000
-  totalHealth: 100000
-  radPercentage: 0
+  debuff: {fileID: 3867142842415539236}
+  rcm: {fileID: 0}
+  researchPointValue: 3
+  isTank: 0
+  defaultSpeed: 0
+  inRangeofRank2Pulsor: 0
+--- !u!114 &3867142842415539236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5792744366562842766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cc13e4fc3094c4295efa1e4e7c384a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: -8912035814630002281}
+  burning: 0
+  rank3Burn: 0
+  burnRadius: 15
+  burnTimer: 5
+  radiation: 0
+  radPercentage: 25
   radTimer: 3
   radDuration: 0
-  radiation: 0
   stunDuration: 0
-  stunnedUnit: 0
+  stunned: 0
+  slowed: 0
+  slowTimer: 0.5
   slowAmount: 2
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  isTank: 0
-  isSpeed: 0
-  meleeSlowedUnit: 0
-  meleeSlowTimer: 0.5
-  burning: 0
-  burnTimer: 5
-  TickDamageTimer: 0.5
-  aoeBurn: 0
-  burnRadius: 15
+  inRangeofRank2Melee: 0
+  freezeChance: 0.25
   freezeDuration: 1.5
   frozen: 0
   freezeTimer: 1.5
   meltDamage: 300
-  inRangeofRank2Melee: 0
-  rcm: {fileID: 0}
-  killCountValue: 1000
-  speedKillCountValue: 1
-  tankKillCountValue: 10
 --- !u!114 &-7612466081446843819
 MonoBehaviour:
   m_ObjectHideFlags: 0

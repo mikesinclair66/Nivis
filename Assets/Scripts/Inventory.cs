@@ -203,6 +203,7 @@ public class Inventory : MonoBehaviour
         }
         catch (NullReferenceException e)
         {
+            Debug.Log(e);
             Debug.Log("You must purchase the achievement to upgrade through the research station.");
             return false;
         }
@@ -462,6 +463,7 @@ public class Inventory : MonoBehaviour
                 }
             } catch(ArgumentOutOfRangeException e)
             {
+                Debug.Log(e);
                 upgradeBtn.GetComponent<Button>().interactable = false;
                 upgradeText.text = "DONE";
             }
@@ -542,6 +544,7 @@ public class Inventory : MonoBehaviour
             }
             catch (ArgumentOutOfRangeException e)
             {
+                Debug.Log(e);
                 upgradeBtn.GetComponent<Button>().interactable = false;
                 upgradeText.text = "DONE";
             }

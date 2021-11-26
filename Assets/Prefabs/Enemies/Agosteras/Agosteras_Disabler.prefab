@@ -536,6 +536,7 @@ GameObject:
   - component: {fileID: 5376977053672862544}
   - component: {fileID: -5562226226972258871}
   - component: {fileID: 1854141990149959018}
+  - component: {fileID: 6286211098215928794}
   m_Layer: 0
   m_Name: Agosteras_Disabler
   m_TagString: Enemy
@@ -603,35 +604,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5df155ebabca4488421da4d0535f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: disabler
+  totalHealth: 100
   speed: 10
   damageValue: 10
-  totalHealth: 100
-  radPercentage: 0
-  radTimer: 3
-  radDuration: 0
-  radiation: 0
-  stunDuration: 0
-  stunnedUnit: 0
-  slowAmount: 2
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  isTank: 0
-  isSpeed: 0
-  meleeSlowedUnit: 0
-  meleeSlowTimer: 0.5
-  burning: 0
-  burnTimer: 5
-  TickDamageTimer: 0.5
-  aoeBurn: 0
-  burnRadius: 15
-  freezeDuration: 1.5
-  frozen: 0
-  freezeTimer: 1.5
-  meltDamage: 300
-  inRangeofRank2Melee: 0
+  debuff: {fileID: 6286211098215928794}
   rcm: {fileID: 0}
-  killCountValue: 3
-  speedKillCountValue: 1
-  tankKillCountValue: 10
+  researchPointValue: 3
+  isTank: 0
+  defaultSpeed: 0
+  inRangeofRank2Pulsor: 0
 --- !u!114 &5376977053672862544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,6 +660,38 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6286211098215928794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122654101855521591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cc13e4fc3094c4295efa1e4e7c384a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 6680334133794356626}
+  burning: 0
+  rank3Burn: 0
+  burnRadius: 15
+  burnTimer: 5
+  radiation: 0
+  radPercentage: 25
+  radTimer: 3
+  radDuration: 0
+  stunDuration: 0
+  stunned: 0
+  slowed: 0
+  slowTimer: 0.5
+  slowAmount: 2
+  inRangeofRank2Melee: 0
+  freezeChance: 0.25
+  freezeDuration: 1.5
+  frozen: 0
+  freezeTimer: 1.5
+  meltDamage: 300
 --- !u!1 &7122654101855521597
 GameObject:
   m_ObjectHideFlags: 0

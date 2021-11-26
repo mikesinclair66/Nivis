@@ -110,6 +110,7 @@ public class Bullet : MonoBehaviour
         }
         
         Enemy e = enemy.GetComponent<Enemy>();
+        Debuff debuff = enemy.GetComponent<Debuff>();
 
         if (e != null)
         {
@@ -117,21 +118,20 @@ public class Bullet : MonoBehaviour
             //Debug.Log("Reach here");
             if (radiation == true)
             {
-                e.activateRad();
+                debuff.activateRad();
             }
             if (stunShot == true)
             {
-                e.activateStun();
+                debuff.activateStun();
                 //Debug.Log("Activate Stun: " + e.stunnedUnit );
             }
             if (burnShot == true){
-                if(e.frozen == true) {
+                if(debuff.frozen == true) {
                     Debug.Log("Melt Damage Reached");
-                    e.freezeOff();
+                    debuff.freezeOff();
                     e.TakeDamage(damage * 2);
                 }
-                e.activateBurn(burnDamage, rank3Burn);
-                Debug.Log("Activate Burn" + e.burning);
+                debuff.activateBurn(burnDamage, rank3Burn);
             }
         }
         

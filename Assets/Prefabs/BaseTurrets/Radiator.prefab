@@ -292,16 +292,16 @@ MonoBehaviour:
   firePoint: {fileID: 2198826888945603087}
   mRend: {fileID: 0}
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  MeleeTurret: 1
-  MeleeRange: 10
-  meleeDamage: 10
+  pulsorTurret: 0
+  pulsorRange: 10
+  pulsorDamage: 20
   PulseCD: 2
   drill: {fileID: 4619690727213847591, guid: b7f672e8e40ef5d42a51544298db5b4c, type: 3}
   moneyEarned: 0
   rngPercentage: 0
-  rank3Melee: 0
+  rank3Pulsor: 0
   percentHealthDmg: 0
-  rank2Melee: 0
-  instakillMelee: 0
-  meleeRNGPercentage: 10
+  rank2Pulsor: 0
+  instakillPulsor: 0
+  pulsorRNGPercentage: 10
   enemyTag: Enemy
