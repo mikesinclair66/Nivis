@@ -111,7 +111,7 @@ public class Debuff : MonoBehaviour
                 freezeOff();
             }
         }
-    }
+    }//end of Update
 
     /** returns arraylist of all active debuffs **/
     public ArrayList returnActiveDebuffs()
