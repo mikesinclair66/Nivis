@@ -33,9 +33,18 @@ public class Abilities : MonoBehaviour
 
     public bool reenableTurretIsRequested = false;
 
+    public GameObject shieldIcon;
+    public GameObject shieldMod;
+
     private GameObject obj;
     private Ray ray;
     private RaycastHit hit;
+
+    void Start()
+    {
+        shieldIcon.SetActive(false);
+        shieldMod.SetActive(false);
+    }
 
     void Update()
     {
@@ -71,11 +80,15 @@ public class Abilities : MonoBehaviour
             if (tempShieldTimeStamp <= Time.time)
             {
                 tempShieldOnCD = false;
+                shieldIcon.SetActive(false);
+                shieldMod.SetActive(false);
             }
 
             if (tempShieldDurationTimeStamp <= Time.time)
             {
                 generator.shieldHealth = 0;
+                shieldIcon.SetActive(false);
+                shieldMod.SetActive(false);
             }
         }
 
@@ -139,6 +152,8 @@ public class Abilities : MonoBehaviour
                 tempShieldDurationTimeStamp = Time.time + tempShieldDuration;
                 tempShieldTimeStamp = Time.time + tempShieldCD;
                 tempShieldOnCD = true;
+                shieldIcon.SetActive(true);
+                shieldMod.SetActive(true);
             }
             else
             {

@@ -17,6 +17,7 @@ public class ResearchStation : MonoBehaviour
 
     public static bool[,,] researched;
     public ResearchCostManager rcm;
+    public OptionDescriptor optionDescriptor;
 
     void Awake()
     {
@@ -183,5 +184,67 @@ public class ResearchStation : MonoBehaviour
         }
 
         UpdatePage(page);
+    }
+
+    public void AbilityHovered(int ability)
+    {
+        if (ability <= 2)
+            optionDescriptor.SetPosition(b1Img[ability].transform.position.x, b1Img[ability].transform.position.y - 100);
+        else
+            optionDescriptor.SetPosition(b2Img[ability - 3].transform.position.x, b2Img[ability - 3].transform.position.y - 100);
+        string power = "NULL";
+        switch (page)
+        {
+            case 0:
+                if (ability == 0)
+                    power = "sniper";
+                else if (ability == 1)
+                    power = "+damage";
+                else if (ability == 2)
+                    power = "stun";
+                else if (ability == 3)
+                    power = "laser";
+                else if (ability == 4)
+                    power = "+fire rate";
+                else
+                    power = "freeze chance";
+                break;
+            case 1:
+                if (ability == 0)
+                    power = "nuke";
+                else if (ability == 1)
+                    power = "+fire rate";
+                else if (ability == 2)
+                    power = "radiation";
+                else if (ability == 3)
+                    power = "fire";
+                else if (ability == 4)
+                    power = "+damage";
+                else
+                    power = "fire spread";
+                break;
+            case 2:
+            default:
+                if (ability == 0)
+                    power = "fire rate";
+                else if (ability == 1)
+                    power = "2x kill counts";
+                else if (ability == 2)
+                    power = "instant kill%";
+                else if (ability == 3)
+                    power = "range";
+                else if (ability == 4)
+                    power = "loot collecting";
+                else
+                    power = "+damage";
+                break;
+        }
+
+        optionDescriptor.SetText("Purchase the\n" + power + "\nupgrade");
+    }
+
+    public void AbilityExited()
+    {
+        optionDescriptor.Disable();
     }
 }
