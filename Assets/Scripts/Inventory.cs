@@ -222,15 +222,6 @@ public class Inventory : MonoBehaviour
                     break;
             }
 
-            // if (drill.currentMoney >= cost)
-            // {
-            //     drill.currentMoney -= cost;
-            // }
-            // else
-            // {
-            //     Debug.Log("Your drill doesn't have enough money!");
-            //     return;
-            // }
             if (drill.currentMoney < cost)
             {
                 Debug.Log("Your drill doesn't have enough money!");
@@ -239,26 +230,9 @@ public class Inventory : MonoBehaviour
             upgradePrimary[towerSelected] = branchNo;
             upgradeLvl[towerSelected] = 1;
             Debug.Log("Research unlocked. primaryBranch=" + branchNo + ". UpgradeLvl=" + upgradeLvl[towerSelected]);
-            //nodeUI.Upgrade(branchNo + 1);
             nodeUI.Upgrade(branchNo + 1);
-            actionUI.GetComponent<UIAnimator>().CloseUI();
-            researchStation.GetComponent<UIAnimator>().CloseUI();
-            //drill.currentMoney -= nodeUI.curPathCost;
-            /*
-            switch (turretType[towerSelected])
-            {
-                case 0:
-                    drill.currentMoney -= shop.standardTurret.paths[branchNo].upgrades[0].cost;
-                    break;
-                case 1:
-                    drill.currentMoney -= shop.missileLauncher.paths[branchNo].upgrades[0].cost;
-                    break;
-                case 2:
-                default:
-                    drill.currentMoney -= shop.meleeTurret.paths[branchNo].upgrades[0].cost;
-                    break;
-            }
-            */
+            //actionUI.GetComponent<UIAnimator>().CloseUI();
+            //researchStation.GetComponent<UIAnimator>().CloseUI();
         }
         UpdateUpgradeSystem();
     }
@@ -306,27 +280,8 @@ public class Inventory : MonoBehaviour
                 }
                 Debug.Log("Research unlocked. primaryBranch=" + upgradePrimary[towerSelected] + ". UpgradeLvl=" + upgradeLvl[towerSelected]);
                 nodeUI.Upgrade(upgradePrimary[towerSelected] + 1);
-                actionUI.GetComponent<UIAnimator>().CloseUI();
-                researchStation.GetComponent<UIAnimator>().CloseUI();
-                //drill.currentMoney -= nodeUI.curPathCost;
-                /*
-                switch (turretType[towerSelected])
-                {
-                    case 0:
-                        drill.currentMoney -= shop.standardTurret
-                            .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
-                        break;
-                    case 1:
-                        drill.currentMoney -= shop.missileLauncher
-                            .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
-                        break;
-                    case 2:
-                    default:
-                        drill.currentMoney -= shop.meleeTurret
-                            .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
-                        break;
-                }
-                */
+                //actionUI.GetComponent<UIAnimator>().CloseUI();
+                //researchStation.GetComponent<UIAnimator>().CloseUI();
                 upgradeLvl[towerSelected]++;
             }
         }
