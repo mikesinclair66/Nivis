@@ -4,11 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// A container for the unlocked upgrades of:
+/// -standard turret
+/// -missile launcher
+/// -radiator tower
+/// </summary>
 public class ResearchStation : MonoBehaviour
 {
     GameObject leftBtn, rightBtn, btn2, btn3;
     GameObject pageName;
-    //GameObject b1u1, b1u2, b1u3, b2u1, b2u2, b2u3;
     GameObject[] b1Img, b2Img;
     GameObject[] b1, b2;
     int page = 0;
@@ -16,7 +21,7 @@ public class ResearchStation : MonoBehaviour
     Text price1Text, price2Text, price3Text;
 
     public static bool[,,] researched;
-    public ResearchCostManager rcm;
+    public ResearchCostManager rcm;//manager for the cost of each upgrade
     public OptionDescriptor optionDescriptor;
 
     void Awake()
@@ -53,13 +58,11 @@ public class ResearchStation : MonoBehaviour
 
         for(int i = 0; i < 3; i++)
         {
-            //change to button objects
             b1[i].gameObject.transform.position = b1[i].gameObject.transform.position
                 + new Vector3(-1000, 0, 0);
             b2[i].gameObject.transform.position = b2[i].gameObject.transform.position
                 + new Vector3(-200, 0, 0);
         }
-        //UpdatePage(page);
     }
 
     void Start()
@@ -68,9 +71,12 @@ public class ResearchStation : MonoBehaviour
         price2Text = GameObject.Find("Canvas/ResearchStation/InnerEl/Row3/Cost").GetComponent<Text>();
         price3Text = GameObject.Find("Canvas/ResearchStation/InnerEl/Row4/Cost").GetComponent<Text>();
         UpdatePage(0);
-        Debug.Log("Page updated at start");
     }
 
+    /// <summary>
+    /// Updates page and upgrades when a page is selected.
+    /// </summary>
+    /// <param name="page"></param>
     public void UpdatePage(int page)
     {
         this.page = page;
@@ -125,6 +131,10 @@ public class ResearchStation : MonoBehaviour
         UpdatePage(p);
     }
 
+    /// <summary>
+    /// Onclick for unlocking an upgrade.
+    /// </summary>
+    /// <param name="upgradeNo"></param>
     public void UpgradeClicked(int upgradeNo)
     {
         int i;
@@ -186,6 +196,10 @@ public class ResearchStation : MonoBehaviour
         UpdatePage(page);
     }
 
+    /// <summary>
+    /// Activates the option descriptor to describe the upgrade type.
+    /// </summary>
+    /// <param name="ability"></param>
     public void AbilityHovered(int ability)
     {
         if (ability <= 2)
@@ -243,6 +257,9 @@ public class ResearchStation : MonoBehaviour
         optionDescriptor.SetText("Purchase the\n" + power + "\nupgrade");
     }
 
+    /// <summary>
+    /// Disables the option descriptor.
+    /// </summary>
     public void AbilityExited()
     {
         optionDescriptor.Disable();

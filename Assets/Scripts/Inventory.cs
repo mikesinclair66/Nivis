@@ -210,7 +210,9 @@ public class Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Tower upgrade when selecting branches.
+    /// Tower upgrade when selecting the initial two branches.
+    /// Once an upgrade branch is selected for a tower, a single
+    /// button will be used thereafter and is processed through Upgrade().
     /// </summary>
     /// <param name="primaryBranch"></param>
     public void SelectBranch(bool primaryBranch)
@@ -233,15 +235,6 @@ public class Inventory : MonoBehaviour
                     break;
             }
 
-            // if (drill.currentMoney >= cost)
-            // {
-            //     drill.currentMoney -= cost;
-            // }
-            // else
-            // {
-            //     Debug.Log("Your drill doesn't have enough money!");
-            //     return;
-            // }
             if (drill.currentMoney < cost)
             {
                 Debug.Log("Your drill doesn't have enough money!");
@@ -250,30 +243,16 @@ public class Inventory : MonoBehaviour
             upgradePrimary[towerSelected] = branchNo;
             upgradeLvl[towerSelected] = 1;
             Debug.Log("Research unlocked. primaryBranch=" + branchNo + ". UpgradeLvl=" + upgradeLvl[towerSelected]);
-            //nodeUI.Upgrade(branchNo + 1);
             nodeUI.Upgrade(branchNo + 1);
-            actionUI.GetComponent<UIAnimator>().CloseUI();
-            researchStation.GetComponent<UIAnimator>().CloseUI();
-            //drill.currentMoney -= nodeUI.curPathCost;
-            /*
-            switch (turretType[towerSelected])
-            {
-                case 0:
-                    drill.currentMoney -= shop.standardTurret.paths[branchNo].upgrades[0].cost;
-                    break;
-                case 1:
-                    drill.currentMoney -= shop.missileLauncher.paths[branchNo].upgrades[0].cost;
-                    break;
-                case 2:
-                default:
-                    drill.currentMoney -= shop.pulsorTurret.paths[branchNo].upgrades[0].cost;
-                    break;
-            }
-            */
+            //actionUI.GetComponent<UIAnimator>().CloseUI();
+            //researchStation.GetComponent<UIAnimator>().CloseUI();
         }
         UpdateUpgradeSystem();
     }
 
+    /// <summary>
+    /// Sells a tower and removes information from the lists.
+    /// </summary>
     public void Sell()
     {
         nodeUI.Sell();
@@ -282,6 +261,9 @@ public class Inventory : MonoBehaviour
         drill.currentMoney += nodeUI.curSellValue;
     }
 
+    /// <summary>
+    /// Upgrades the previously selected branch for each tower.
+    /// </summary>
     public void Upgrade()
     {
         if (upgradeLvl[towerSelected] == 3)
@@ -317,27 +299,8 @@ public class Inventory : MonoBehaviour
                 }
                 Debug.Log("Research unlocked. primaryBranch=" + upgradePrimary[towerSelected] + ". UpgradeLvl=" + upgradeLvl[towerSelected]);
                 nodeUI.Upgrade(upgradePrimary[towerSelected] + 1);
-                actionUI.GetComponent<UIAnimator>().CloseUI();
-                researchStation.GetComponent<UIAnimator>().CloseUI();
-                //drill.currentMoney -= nodeUI.curPathCost;
-                /*
-                switch (turretType[towerSelected])
-                {
-                    case 0:
-                        drill.currentMoney -= shop.standardTurret
-                            .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
-                        break;
-                    case 1:
-                        drill.currentMoney -= shop.missileLauncher
-                            .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
-                        break;
-                    case 2:
-                    default:
-                        drill.currentMoney -= shop.pulsorTurret
-                            .paths[upgradePrimary[towerSelected]].upgrades[upgradeLvl[towerSelected]].cost;
-                        break;
-                }
-                */
+                //actionUI.GetComponent<UIAnimator>().CloseUI();
+                //researchStation.GetComponent<UIAnimator>().CloseUI();
                 upgradeLvl[towerSelected]++;
             }
         }
