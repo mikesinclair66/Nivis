@@ -177,7 +177,7 @@ public class MenuUI : MonoBehaviour
     public void StartGame(bool lvl1)
     {
         if (lvl1 || !lvl1)
-            SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+            SceneManager.LoadScene("JackyScene 1", LoadSceneMode.Single);
     }
 
     public void ExitGame()
