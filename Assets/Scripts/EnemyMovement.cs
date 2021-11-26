@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Awake()
     {
-        generator = GameObject.Find("END").GetComponent<Generator>();
+        generator = GameObject.Find("Generator").GetComponent<Generator>();
     }
 
     void Start()
