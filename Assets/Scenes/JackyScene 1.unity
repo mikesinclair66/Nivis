@@ -8594,7 +8594,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 62729417}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: SelectMeleeTurret
+        m_MethodName: SelectPulsorTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
