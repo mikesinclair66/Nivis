@@ -2928,6 +2928,10 @@ MonoBehaviour:
   buildManager: {fileID: 458077342}
   generator: {fileID: 2830543956506485191}
   stunAreaRange: {fileID: 5193601285125349261, guid: 81cc814f93c22ef4585b990b2db3c4cf, type: 3}
+  drill: {fileID: 482290806}
+  btn1: {fileID: 1982632855}
+  btn2: {fileID: 2001208764}
+  btn3: {fileID: 1053166510}
   reenableTurretCost: 50
   tempShieldCost: 75
   stunAreaCost: 125

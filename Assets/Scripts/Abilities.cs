@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Abilities : MonoBehaviour
 {
     public BuildManager buildManager;
     public Generator generator;
     public GameObject stunAreaRange;
+    public Drill drill;
+    public GameObject btn1, btn2, btn3;
 
     public int reenableTurretCost = 50,
                tempShieldCost = 75,
@@ -48,6 +51,22 @@ public class Abilities : MonoBehaviour
 
     void Update()
     {
+        //updates discernibility of the abilities
+        if (drill.currentMoney < reenableTurretCost)
+            btn1.GetComponent<Button>().interactable = false;
+        else
+            btn1.GetComponent<Button>().interactable = true;
+
+        if (drill.currentMoney < tempShieldCost)
+            btn2.GetComponent<Button>().interactable = false;
+        else
+            btn2.GetComponent<Button>().interactable = true;
+
+        if (drill.currentMoney < stunAreaCost)
+            btn3.GetComponent<Button>().interactable = false;
+        else
+            btn3.GetComponent<Button>().interactable = true;
+
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (stunAbilityActive == true)
