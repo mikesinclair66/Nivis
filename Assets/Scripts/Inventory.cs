@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class NodeUI
 {
-
     // TODO: hook up public variables with game objects in editor
     /*public GameObject ui;
     public Text upgradeCostPath1;
@@ -23,14 +22,9 @@ public class NodeUI
     {
         target = _target;
 
-        //transform.position = target.GetBuildPosition();
-
         applyUpgradeText();
 
-        //sellAmount.text = "$" + target.turretBlueprint.sellValue;
         curSellValue = target.turretBlueprint.sellValue;
-
-        //ui.SetActive(true);
     }
 
     public Node GetTarget()
@@ -47,64 +41,37 @@ public class NodeUI
         List<int> maxUpgradeTier = target.getMaxUpgradeTier();
 
         int upgradeCode1 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[0], upgradePath, upgradePath != 1);
-        setButton(/*upgradeButton1, upgradeCostPath1,*/ upgradeCode1, path1, upgradeTier);
+        setButton(upgradeCode1, path1, upgradeTier);
 
         int upgradeCode2 = getCanUpgradeForPath(upgradeTier, maxUpgradeTier[1], upgradePath, upgradePath != 2);
-        setButton(/*upgradeButton2, upgradeCostPath2,*/ upgradeCode2, path2, upgradeTier);
+        setButton(upgradeCode2, path2, upgradeTier);
     }
 
     private int getCanUpgradeForPath(int tier, int maxTier, int currentUpgradePath, bool isOtherPathUpgraded)
     {
-        // upgrade path is 0 or the other path was chosen and current path is not 0
+        int code = 1;
+
         if (maxTier == 0 || (isOtherPathUpgraded && currentUpgradePath != 0))
-        {
-            return -1;
-        }
+            code = -1;
+        else if (tier == maxTier)
+            code = 0;
 
-        // upgrade path is maxed out
-        if (tier == maxTier)
-        {
-            return 0;
-        }
-
-        // can upgrade
-        return 1;
+        return code;
     }
 
-    private void setButton(/*Button button, Text text,*/ int code, UpgradePath path, int tier)
+    private void setButton(int code, UpgradePath path, int tier)
     {
-        // Button should not show and not be clickable
-        if (code == -1)
-        {
-            //text.text = "UNAVAILABLE";
-            //button.interactable = false;
+        if (code == 0 || code == -1)
             return;
-        }
-
-        // Upgrade path is finished
-        if (code == 0)
-        {
-            //text.text = "DONE";
-            //button.interactable = false;
-            return;
-        }
 
         // Able to upgrade. Apply upgrade stuff
         if (code == 1)
         {
             int pathcost = path.upgrades[tier].cost;
-            //button.interactable = true;
-            //text.text = "$" + pathcost;
             curPathCost = pathcost;
         }
     }
 
-    /*public void Hide()
-    {
-        ui.SetActive(false);
-    }*/
-
-    // TODO: hook upgrade button in turret UI to this upgrade function
     public void Upgrade(int path)
     {
         int tier = target.getCurrentUpgradeTier() + 1;
@@ -120,6 +87,9 @@ public class NodeUI
 
 }
 
+/// <summary>
+/// Holds turret information as well as the upgrade UI.
+/// </summary>
 public class Inventory : MonoBehaviour
 {
     List<GameObject> turrets;
@@ -390,7 +360,9 @@ public class Inventory : MonoBehaviour
             return;
         }
         else
+        {
             upgradeBtn.GetComponent<Button>().interactable = true;
+        }
 
         if (upgradePrimary[towerSelected] == -1)
         {
@@ -466,7 +438,7 @@ public class Inventory : MonoBehaviour
                             if (upgradeLvl[towerSelected] == 1)
                                 descriptor = "+Damage";
                             if (upgradeLvl[towerSelected] == 2)
-                                descriptor = "+Fire\nSpread";
+                                descriptor = "Fire\nSpread";
                         }
                         upgradeText.text = descriptor + "\n$" + shop.missileLauncher.paths[upgradePrimary[towerSelected]]
                             .upgrades[upgradeLvl[towerSelected]].cost;
@@ -492,6 +464,86 @@ public class Inventory : MonoBehaviour
                         break;
                 }
             } catch(ArgumentOutOfRangeException e)
+            {
+                upgradeBtn.GetComponent<Button>().interactable = false;
+                upgradeText.text = "DONE";
+            }
+        }
+    }
+
+    /// <summary>
+    /// Updates the discernibility of the buttons.
+    /// </summary>
+    void Update()
+    {
+        if(upgradePrimary[towerSelected] == -1)
+        {
+            switch (turretType[towerSelected])
+            {
+                case 0:
+                    if (drill.currentMoney < shop.standardTurret.paths[0].upgrades[0].cost)
+                        upgradeBtn1.GetComponent<Button>().interactable = false;
+                    else
+                        upgradeBtn1.GetComponent<Button>().interactable = true;
+                    if (drill.currentMoney < shop.standardTurret.paths[1].upgrades[0].cost)
+                        upgradeBtn2.GetComponent<Button>().interactable = false;
+                    else
+                        upgradeBtn2.GetComponent<Button>().interactable = true;
+                    break;
+                case 1:
+                    if (drill.currentMoney < shop.missileLauncher.paths[0].upgrades[0].cost)
+                        upgradeBtn1.GetComponent<Button>().interactable = false;
+                    else
+                        upgradeBtn1.GetComponent<Button>().interactable = true;
+                    if (drill.currentMoney < shop.missileLauncher.paths[1].upgrades[0].cost)
+                        upgradeBtn2.GetComponent<Button>().interactable = false;
+                    else
+                        upgradeBtn2.GetComponent<Button>().interactable = true;
+                    break;
+                case 2:
+                default:
+                    if (drill.currentMoney < shop.meleeTurret.paths[0].upgrades[0].cost)
+                        upgradeBtn1.GetComponent<Button>().interactable = false;
+                    else
+                        upgradeBtn1.GetComponent<Button>().interactable = true;
+                    if (drill.currentMoney < shop.meleeTurret.paths[1].upgrades[0].cost)
+                        upgradeBtn2.GetComponent<Button>().interactable = false;
+                    else
+                        upgradeBtn2.GetComponent<Button>().interactable = true;
+                    break;
+            }
+        }
+        else
+        {
+            try
+            {
+                switch (turretType[towerSelected])
+                {
+                    case 0:
+                        if (drill.currentMoney < shop.standardTurret.paths[upgradePrimary[towerSelected]]
+                                .upgrades[upgradeLvl[towerSelected]].cost)
+                            upgradeBtn.GetComponent<Button>().interactable = false;
+                        else
+                            upgradeBtn.GetComponent<Button>().interactable = true;
+                        break;
+                    case 1:
+                        if (drill.currentMoney < shop.missileLauncher.paths[upgradePrimary[towerSelected]]
+                                .upgrades[upgradeLvl[towerSelected]].cost)
+                            upgradeBtn.GetComponent<Button>().interactable = false;
+                        else
+                            upgradeBtn.GetComponent<Button>().interactable = true;
+                        break;
+                    case 2:
+                    default:
+                        if (drill.currentMoney < shop.missileLauncher.paths[upgradePrimary[towerSelected]]
+                                .upgrades[upgradeLvl[towerSelected]].cost)
+                            upgradeBtn.GetComponent<Button>().interactable = false;
+                        else
+                            upgradeBtn.GetComponent<Button>().interactable = true;
+                        break;
+                }
+            }
+            catch (ArgumentOutOfRangeException e)
             {
                 upgradeBtn.GetComponent<Button>().interactable = false;
                 upgradeText.text = "DONE";

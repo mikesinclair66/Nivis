@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Abilities : MonoBehaviour
 {
@@ -37,6 +38,15 @@ public class Abilities : MonoBehaviour
     private Ray ray;
     private RaycastHit hit;
 
+    public GameObject shieldIcon;
+    public GameObject shieldMod;
+
+    void Start()
+    {
+        shieldIcon.SetActive(false);
+        shieldMod.SetActive(false);
+    }
+
     void Update()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -71,12 +81,20 @@ public class Abilities : MonoBehaviour
             if (tempShieldTimeStamp <= Time.time)
             {
                 tempShieldOnCD = false;
+                shieldIcon.SetActive(false);
+                shieldMod.SetActive(false);
             }
 
-            if (tempShieldDurationTimeStamp <= Time.time)
+            int shieldModVal = (int)((float)generator.shieldHealth
+                / (float)tempShieldHP * 100.0f);
+            if (shieldModVal <= 0 || tempShieldDurationTimeStamp <= Time.time)
             {
                 generator.shieldHealth = 0;
+                shieldIcon.SetActive(false);
+                shieldMod.SetActive(false);
             }
+
+            shieldMod.GetComponent<Text>().text = "+" + shieldModVal + "%";
         }
 
         if (stunAreaOnCD == true)
@@ -139,6 +157,9 @@ public class Abilities : MonoBehaviour
                 tempShieldDurationTimeStamp = Time.time + tempShieldDuration;
                 tempShieldTimeStamp = Time.time + tempShieldCD;
                 tempShieldOnCD = true;
+
+                shieldIcon.SetActive(true);
+                shieldMod.SetActive(true);
             }
             else
             {
