@@ -28,7 +28,7 @@ public class EnemyDisabler : MonoBehaviour
             return;
         }
 
-        else if (target.GetComponent<Turret>().disabled == false ) 
+        else if (target.GetComponent<Turret>().checkIfDebuffActive("disabled") == false ) 
         {
             Shoot();
         }

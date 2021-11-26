@@ -6,116 +6,52 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
 
-    private Transform target;
+    public Transform target;
 
     [Header("Attributes")]
+    public string turretName = "turret";
     public float range = 15f;
     public float fireRate = 2f;
-    private float fireCountdown = 0f;
+    public float fireCountdown = 0f;
 
     public Transform partToRotate;
-    public float turnSpeed = 10f;
-    
+
     public GameObject bulletPrefab;
     public Transform firePoint;
 
-    public bool disabled = false;
-    //public MeshRenderer mRend;
-    public Color defaultColor;
-    private float disableCountdown = 10f;
+    public ArrayList activeDebuffs = new ArrayList();
+    public TurretDebuff turretDebuff;
     [Header("Unity Setup Fields")]
 
     public string enemyTag = "Enemy";
     void Start()
     {
-        InvokeRepeating("UpdateClosestTarget", 0f, 0.5f);
-        // defaultColor = mRend.material.color;
+        turretDebuff = GetComponent<TurretDebuff>();
     }
 
     void Update()
     {
-        if (disabled == true)
-        {
-            disableCountdown -= Time.deltaTime;
-            if (disableCountdown <= 0)
-            {
-                Enable();
-            }
-        }
-
-        if (target == null)
-        {
-            return;
-        }
-
-        if (disabled != true)
-        {
-            // Target lock on
-            if (partToRotate != null)
-            {
-                partToRotate.LookAt(new Vector3(target.position.x, partToRotate.position.y, target.position.z));
-            }
-
-            if (fireCountdown <= 0)
-            {
-                Shoot();
-                fireCountdown = 1f / fireRate;
-            }
-
-            fireCountdown -= Time.deltaTime;
-        }
+        activeDebuffs = turretDebuff.returnActiveDebuffs();
     }
 
-    void Shoot()
+    public bool checkIfDebuffActive(string debuff)
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
-        if (bullet != null)
-            bullet.Seek(target);
-    }
-
-    void UpdateClosestTarget()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-        float shortestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
-        foreach (GameObject enemy in enemies)
+        if (activeDebuffs.Count > 0)
         {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < shortestDistance)
+            foreach (string i in activeDebuffs)
             {
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
+                if (i == debuff)
+                {
+                    return true;
+                }
             }
-
         }
-
-        if (nearestEnemy != null && shortestDistance <= range)
-        {
-            target = nearestEnemy.transform;
-        }
-        else
-        {
-            target = null;
-        }
-    }
-
-    public void Disable()
-    {
-        disabled = true;
-        // mRend.material.SetColor("_Color", Color.red);
-        disableCountdown = 10f;
-    }
-
-    public void Enable()
-    {
-        disabled = false;
-        // mRend.material.color = defaultColor;
+        return false;
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, range);
     }
 }

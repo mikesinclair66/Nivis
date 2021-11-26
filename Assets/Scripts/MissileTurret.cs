@@ -1,19 +1,20 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sniper : MonoBehaviour
+public class MissileTurret : MonoBehaviour
 {
     public Turret turret;
-    public int sniperTier;
-    void Start()
+    public int missileFireTier; 
+    public int missileNukeTier;
+
+    private void Start()
     {
-        turret = GetComponent<Turret>();
         InvokeRepeating("UpdateClosestTarget", 0f, 0.5f);
+        turret = GetComponent<Turret>();
     }
 
-    void Update()
+    private void Update()
     {
         if (turret.target == null)
         {
@@ -27,7 +28,7 @@ public class Sniper : MonoBehaviour
             {
                 turret.partToRotate.LookAt(new Vector3(turret.target.position.x, turret.partToRotate.position.y, turret.target.position.z));
             }
-            
+
             if (turret.fireCountdown <= 0)
             {
                 Shoot();
@@ -51,44 +52,24 @@ public class Sniper : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(turret.enemyTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
-
-
         foreach (GameObject enemy in enemies)
         {
-            //Debug.Log("ENEMY:", enemy.GetComponent<Enemy>());
-            //Debug.Log(enemy.GetComponent<Enemy>().isTank);
-        
-
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             if (distanceToEnemy < shortestDistance)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
-
             }
-            if (enemy.GetComponent<Enemy>().enemyType == "tank")
-            {
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
-            }
-
 
         }
-        
+
         if (nearestEnemy != null && shortestDistance <= turret.range)
         {
             turret.target = nearestEnemy.transform;
-
         }
         else
         {
             turret.target = null;
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, turret.range);
     }
 }

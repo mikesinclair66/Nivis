@@ -544,8 +544,9 @@ GameObject:
   - component: {fileID: 23643670696018882}
   - component: {fileID: 95989914295931534}
   - component: {fileID: 376743590237127640}
-  - component: {fileID: -6045859296448047194}
   - component: {fileID: -2661788663160945094}
+  - component: {fileID: -8138374023788638319}
+  - component: {fileID: -1388500537939974752}
   m_Layer: 2
   m_Name: SniperModel3
   m_TagString: Turret
@@ -654,27 +655,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-6045859296448047194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1267933996077318}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fdaf74b8f629ba47b3f725d3278fcbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 3000
-  fireRate: 0.1
-  partToRotate: {fileID: 6161459422081972422}
-  turnSpeed: 10
-  bulletPrefab: {fileID: 5498688916343015907, guid: 5941a311ce2c1794db340d0da3f7bb12, type: 3}
-  firePoint: {fileID: 733998732587133625}
-  disabled: 0
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  enemyTag: Enemy
 --- !u!114 &-2661788663160945094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,16 +667,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc6f50a16a949246b18121553e5213f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turret: {fileID: -8138374023788638319}
+  sniperTier: 3
+--- !u!114 &-8138374023788638319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267933996077318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fdaf74b8f629ba47b3f725d3278fcbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  turretName: sniper
   range: 300000
   fireRate: 0.5
+  fireCountdown: 0
   partToRotate: {fileID: 6161459422081972422}
-  turnSpeed: 10
   bulletPrefab: {fileID: 5498688916343015907, guid: 5941a311ce2c1794db340d0da3f7bb12, type: 3}
   firePoint: {fileID: 733998732587133625}
-  disabled: 0
-  mRend: {fileID: 0}
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  turretDebuff: {fileID: -1388500537939974752}
   enemyTag: Enemy
+--- !u!114 &-1388500537939974752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267933996077318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d80b1303c14ed1499aa61d577eaaf75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
 --- !u!1 &1421629663667978
 GameObject:
   m_ObjectHideFlags: 0

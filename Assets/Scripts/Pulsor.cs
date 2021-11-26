@@ -9,6 +9,7 @@ public class Pulsor : MonoBehaviour
     private Transform target;
 
     [Header("Attributes")]
+    public string name = "pulsor";
 
     //public float range = 15f;
     //private float fireCountdown = 0f;
@@ -18,8 +19,6 @@ public class Pulsor : MonoBehaviour
     public Transform firePoint;
 
     //public bool disabled = false;
-    public MeshRenderer mRend;
-    public Color defaultColor;
     //private float disableCountdown = 10f;
     public bool pulsorTurret;
     public float pulsorRange;
@@ -43,7 +42,6 @@ public class Pulsor : MonoBehaviour
     void Start()
     {
         InvokeRepeating("pulsorCheckForEnemies", 0f, PulseCD);
-        // defaultColor = mRend.material.color;
     }
 
     void Update()

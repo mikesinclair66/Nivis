@@ -135,11 +135,11 @@ public class Abilities : MonoBehaviour
         {
             if (reenableTurretOnCD == false)
             {
-                if (turret.GetComponent<Turret>().disabled == true)
+                if (turret.GetComponent<Turret>().checkIfDebuffActive("disabled") == true)
                 {
                     if (buildManager.drill.currentMoney >= reenableTurretCost)
                     {
-                        turret.GetComponent<Turret>().Enable();
+                        turret.GetComponent<TurretDebuff>().Enable();
                         buildManager.drill.currentMoney -= reenableTurretCost;
                         reenableTurretTimeStamp = Time.time + reenableTurretCD;
                         reenableTurretOnCD = true;
