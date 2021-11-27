@@ -12,7 +12,6 @@ public class Bullet : MonoBehaviour
     public float speed = 70f;
     public int damage = 50;
     public float explosionRadius = 0f;
-    //public int dotDamage = 0;
 
     public GameObject impactEffect;
     public Enemy targetEnemy;
@@ -54,17 +53,14 @@ public class Bullet : MonoBehaviour
     // TODO: find which video this code is relevant, might remove before alpha build
     void HitTarget()
     {
-
         if (explosionRadius > 0f)
         {
             Explode();
         }
-
         else
         {
             Damage(target);
         }
-
         Destroy(gameObject);
     }
 
@@ -76,7 +72,6 @@ public class Bullet : MonoBehaviour
             if (collider.tag == "Enemy")
             {
                 Damage(collider.transform);
-                
             }
         }
     }
@@ -101,7 +96,8 @@ public class Bullet : MonoBehaviour
         if (impactEffect != null)
         {
             GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
-            if (effectIns.transform.Find("Drawn Radius") != null) {
+            if (effectIns.transform.Find("Drawn Radius") != null) 
+            {
                 GameObject radDraw = effectIns.transform.Find("Drawn Radius").gameObject;
                 radDraw.transform.localScale = new Vector3(explosionRadius*2, explosionRadius*2, explosionRadius*2);
                 Destroy(radDraw, 0.05f);                
@@ -109,13 +105,10 @@ public class Bullet : MonoBehaviour
             Destroy(effectIns, 5f);
         }
         targetEnemy = enemy.GetComponent<Enemy>();
-
         if (targetEnemy != null)
         {
             targetEnemy.TakeDamage(damage);
-            //Debug.Log("Reach here");
             bulletStatusEffect.statusEffectActive();
         }
-        
     }
 }

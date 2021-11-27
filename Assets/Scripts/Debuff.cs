@@ -41,6 +41,9 @@ public class Debuff : MonoBehaviour
     public float freezeTimer = 1.5f;
     public float meltDamage = 300f;
 
+    [Header("Double Resource Points")]
+    public bool doubleRSPoints;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -227,6 +230,12 @@ public class Debuff : MonoBehaviour
         activeDebuffs.Remove("frozen");
         enemy.speed = enemy.defaultSpeed;
         frozen = false;
+    }
+
+    public void activateDoubleRSPoints()
+    {
+        doubleRSPoints = true;
+        activeDebuffs.Add("doubleRSPoints");
     }
 }
 

@@ -8,7 +8,7 @@ public class BulletStatusEffect : MonoBehaviour
     public bool stunShot;
     public bool burnShot;
     public float burnDamage = 5f;
-    public bool rank3Burn;
+    public bool deathBurn;
 
     public ArrayList activeStatusEffects = new ArrayList();
     public Bullet bullet;
@@ -28,15 +28,16 @@ public class BulletStatusEffect : MonoBehaviour
         if (stunShot == true)
         {
             debuff.activateStun();
-            //Debug.Log("Activate Stun: " + e.stunnedUnit );
         }
-        if (burnShot == true){
-            if(debuff.frozen == true) {
+        if (burnShot == true)
+        {
+            if(debuff.frozen == true) 
+            {
                 Debug.Log("Melt Damage Reached");
                 debuff.freezeOff();
                 bullet.targetEnemy.TakeDamage(bullet.damage * 2);
             }
-            debuff.activateBurn(burnDamage, rank3Burn);
+            debuff.activateBurn(burnDamage, deathBurn);
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public string enemyType = null;
-     public float totalHealth;
+    public float totalHealth;
     public float speed = 10f;
     public int damageValue = 10;
 
@@ -83,17 +83,14 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         WaveSpawner.EnemiesAlive--;
+        Destroy(gameObject);
 
         if (checkIfDebuffActive("burning") == true)
         {
             debuff.aoeBurnOnDeath();
         }
 
-        Destroy(gameObject);
-        //Debug.Log("Kill Count: " + rcm.killCount);
-
-        //turret stuff
-        if (inRangeofRank2Pulsor == true)
+        if (checkIfDebuffActive("doubleRSPoints") == true)
         {
             rcm.killCount += getKillCountValue() * 2;
         }

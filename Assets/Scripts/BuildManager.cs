@@ -11,11 +11,6 @@ public class BuildManager : MonoBehaviour
     public int turretToBuildType;
     private Node selectedNode;
 
-    // // TODO: add turret prefab
-    // public GameObject standardTurretPrefab;
-    // public GameObject missileLauncherPrefab;
-    // public GameObject pulsorTurret;
-
     public Drill drill;
     public GameObject turretGhost;
     public GameObject obj;
@@ -23,7 +18,6 @@ public class BuildManager : MonoBehaviour
     public bool isBuildingTurret;
     private Ray ray;
     private RaycastHit hit;
-    //public NodeUI nodeUI;
 
     // TODO: add select/deselect code for the turret UI, optional depending on how we plan to implement this
     void Awake()
@@ -82,33 +76,11 @@ public class BuildManager : MonoBehaviour
         {
             obj = Instantiate(turretGhost, hit.point, Quaternion.identity);
             Debug.Log("Obj Instantiate");
+            obj.GetComponent<RangeIndicator>().ghostRangeIndicator(obj, turretToBuildType);
         }
         turretToBuild = turret;
-        if (turretToBuildType == 0)
-        {
-            float currentScale = turretToBuild.prefab.GetComponent<Turret>().range;
-            forcefieldRange = GameObject.Find("FieldRange");
-            forcefieldRange.transform.localScale = new Vector3(currentScale, 1f, currentScale);
-
-        }
-        if (turretToBuildType == 1)
-        {
-            float currentScale = turretToBuild.prefab.GetComponent<Turret>().range;
-            forcefieldRange = GameObject.Find("FieldRange");
-            forcefieldRange.transform.localScale = new Vector3(currentScale, 1f, currentScale);
-
-        }
-        if (turretToBuildType == 2)
-        {
-            float currentScale = turretToBuild.prefab.GetComponent<Pulsor>().pulsorRange;
-            forcefieldRange = GameObject.Find("FieldRange");
-            forcefieldRange.transform.localScale = new Vector3(currentScale, 1f, currentScale);
-
-        }
-
         this.turretToBuildType = turretToBuildType;
         DeselectNode();
-
     }
 
     public TurretBlueprint GetTurretToBuild()

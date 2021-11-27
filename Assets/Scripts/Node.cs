@@ -131,12 +131,11 @@ public class Node : MonoBehaviour
             return;
         if (!buildManager.isTurretSelected && turret == null)
             return;
-        mRend.enabled = true;
         if (turret != null)
         {
             turret.GetComponent<RangeIndicator>().activateRangeIndicator();
         }
-
+        mRend.enabled = true;
     }
 
     void OnMouseExit()
@@ -146,7 +145,6 @@ public class Node : MonoBehaviour
             turret.GetComponent<RangeIndicator>().deactivateRangeIndicator();
         }
         mRend.enabled = false;
-
     }
 
     public void UpgradeTurret(int path, int tier)

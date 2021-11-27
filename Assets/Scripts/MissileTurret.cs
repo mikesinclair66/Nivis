@@ -5,7 +5,7 @@ using UnityEngine;
 public class MissileTurret : MonoBehaviour
 {
     public Turret turret;
-    public int missileFireTier; 
+    public int missileFireTier;
     public int missileNukeTier;
 
     private void Start()
@@ -60,7 +60,6 @@ public class MissileTurret : MonoBehaviour
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
             }
-
         }
 
         if (nearestEnemy != null && shortestDistance <= turret.range)

@@ -120,7 +120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1351482943417343425
 Transform:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ Transform:
   m_GameObject: {fileID: 493323805173825000}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 20, y: 0.1, z: 20}
   m_Children: []
   m_Father: {fileID: 5486383065936078902}
   m_RootOrder: 2
@@ -289,12 +289,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173e42f74281bce48a461a78ace4a701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretName: pulsor
   firePoint: {fileID: 2198826888945603087}
-  mRend: {fileID: 0}
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
   pulsorTurret: 0
-  pulsorRange: 0
-  pulsorDamage: 0
+  pulsorRange: 15
+  pulsorDamage: 20
   PulseCD: 2
   drill: {fileID: -1586529396932922300, guid: a3626b57e1474834d996fd7a71b279fd, type: 3}
   moneyEarned: 50

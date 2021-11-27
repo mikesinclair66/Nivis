@@ -5,43 +5,33 @@ using UnityEngine;
  
 public class Pulsor : MonoBehaviour
 {
-
     private Transform target;
 
     [Header("Attributes")]
     public string turretName = "pulsor";
-
-    //public float range = 15f;
-    //private float fireCountdown = 0f;
-
-    // TODO: add bullet prefab and create fire point (e5)
-    //public GameObject bulletPrefab;
+    public float range;
+    public float damage;
+    public float pulseCD;
     public Transform firePoint;
 
-    //public bool disabled = false;
-    //private float disableCountdown = 10f;
-    public bool pulsorTurret;
-    public float pulsorRange;
-    public float pulsorDamage;
-    public float PulseCD;
+    public int pulsorRangeTier;
+    public int pulsorRateTier;
+
+    [Header("Range Upgrade Attributes")]
     public Drill drill;
     public int moneyEarned = 5;
-    public int rngPercentage;
-    public bool rank3Pulsor;
+    public int moneyRNGPercentage;
     public float percentHealthDmg;
-    public bool rank2Pulsor;
-    public bool instakillPulsor;
-    public float pulsorRNGPercentage = 10f;
+
+    [Header("Rate Upgrade Attributes")]
+    public float instakillRNGPercentage = 10f;
 
     [Header("Unity Setup Fields")]
-
-    // TODO: set enemy prefab with the enemy tag
     public string enemyTag = "Enemy";
 
-    // TODO: logic to rotate the turret when it sees an enemy (e4)
     void Start()
     {
-        InvokeRepeating("pulsorCheckForEnemies", 0f, PulseCD);
+        InvokeRepeating("pulsorCheckForEnemies", 0f, pulseCD);
     }
 
     void Update()
@@ -52,58 +42,53 @@ public class Pulsor : MonoBehaviour
         }
     }
 
-
     public void pulsorCheckForEnemies()
     {
-
-        Collider[] colliders = Physics.OverlapSphere(transform.position, pulsorRange);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, range);
         foreach (Collider c in colliders)
         {
-
-
             if (c.GetComponent<Enemy>())
             {
-                c.GetComponent<Enemy>().TakeDamage(pulsorDamage);
+                c.GetComponent<Enemy>().TakeDamage(damage);
                 c.GetComponent<Debuff>().activateSlow();
-                if (rank2Pulsor == true)
+             
+                //pulsorRange upgrades
+                if (pulsorRangeTier >= 2)
                 {
-                    c.GetComponent<Enemy>().inRangeofRank2Pulsor = true;
+                    float randomNumber = UnityEngine.Random.Range(0f, 100f);
+                    if (randomNumber >= (100 - moneyRNGPercentage))
+                    {
+                        Debug.Log("Gave Currency");
+                        drill.currentMoney += moneyEarned;
+                    }
                 }
-                float randomNumber = UnityEngine.Random.Range(0f, 100f);
-                //Debug.Log("RANDOM VALUE: " + randomNumber);
-                //Debug.Log("Rng Percent: " + (100 - rngPercentage));
-                if (randomNumber >= (100 - rngPercentage))
-                {
-                    Debug.Log("Gave Currency");
-                    drill.currentMoney += moneyEarned;
-
-                }
-                if (rank3Pulsor == true)
+                if (pulsorRangeTier >= 3)
                 {
                     c.GetComponent<Enemy>().percentHealthTaken(percentHealthDmg);
-
                 }
-                if (instakillPulsor == true && c.GetComponent<Enemy>().enemyType == "tank")
+
+                //pulsorRate upgrades
+                if (pulsorRateTier >= 2)
+                {
+                    c.GetComponent<Debuff>().activateDoubleRSPoints();
+                }
+                if (pulsorRateTier >= 3 && c.GetComponent<Enemy>().enemyType != "tank")
                 {
                     float pulsorRandomNumber = UnityEngine.Random.Range(0f, 100f);
-                    if (pulsorRandomNumber >= (100 - pulsorRNGPercentage))
+                    if (pulsorRandomNumber >= (100 - instakillRNGPercentage))
                     {
                         Debug.Log("Instakill Active");
                         float instakillDamage = c.GetComponent<Enemy>().totalHealth;
                         c.GetComponent<Enemy>().TakeDamage(instakillDamage * 2);
                     }
-
                 }
-
-
             }
         }
     }
    
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, pulsorRange);
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 }
