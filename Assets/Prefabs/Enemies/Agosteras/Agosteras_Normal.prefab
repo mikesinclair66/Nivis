@@ -1440,6 +1440,7 @@ GameObject:
   - component: {fileID: -4998937774234219671}
   - component: {fileID: 6165695093261393892}
   - component: {fileID: -8521353929827648063}
+  - component: {fileID: -4287926858793241759}
   m_Layer: 0
   m_Name: Agosteras_Normal
   m_TagString: Enemy
@@ -1516,7 +1517,6 @@ MonoBehaviour:
   debuff: {fileID: -8521353929827648063}
   rcm: {fileID: 0}
   researchPointValue: 3
-  isTank: 0
   defaultSpeed: 0
   inRangeofRank2Pulsor: 0
 --- !u!114 &-4998937774234219671
@@ -1570,9 +1570,23 @@ MonoBehaviour:
   slowed: 0
   slowTimer: 0.5
   slowAmount: 2
-  inRangeofRank2Melee: 0
+  inRangeofRank2Pulsor: 0
   freezeChance: 0.25
   freezeDuration: 1.5
   frozen: 0
   freezeTimer: 1.5
   meltDamage: 300
+--- !u!114 &-4287926858793241759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 899725d9e5b572b4f877abac614052b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: -4066243976812760921}
+  debuff: {fileID: -8521353929827648063}
