@@ -19,6 +19,7 @@ public class Node : MonoBehaviour
     public int key;
     static int keyLength;
 
+
     void Start()
     {
         buildManager = BuildManager.instance;
@@ -51,6 +52,10 @@ public class Node : MonoBehaviour
 
     void BuildTurret(TurretBlueprint blueprint)
     {
+        Destroy(buildManager.obj);
+        Debug.Log("Object Destroyed");
+        buildManager.isBuildingTurret = false;
+
         if (blueprint != null)
         {
             Debug.Log("drill money: " + buildManager.drill.currentMoney);
@@ -74,6 +79,7 @@ public class Node : MonoBehaviour
                 Debug.Log("Turret build! Money left: " + buildManager.drill.currentMoney);
                 currentUpgradeTier = 0;
             }
+
         }
     }
 
@@ -115,7 +121,7 @@ public class Node : MonoBehaviour
         }
         BuildTurret(buildManager.GetTurretToBuild());
         buildManager.inventory.SelectTower(-1);
-        
+
         // Deselects turret to build in build manager after building a turret
         // buildManager.SelectTurretToBuild(null);
     }
@@ -126,11 +132,21 @@ public class Node : MonoBehaviour
         if (!buildManager.isTurretSelected && turret == null)
             return;
         mRend.enabled = true;
+        if (turret != null)
+        {
+            turret.GetComponent<RangeIndicator>().activateRangeIndicator();
+        }
+
     }
 
     void OnMouseExit()
     {
+        if (turret != null)
+        {
+            turret.GetComponent<RangeIndicator>().deactivateRangeIndicator();
+        }
         mRend.enabled = false;
+
     }
 
     public void UpgradeTurret(int path, int tier)
@@ -140,7 +156,7 @@ public class Node : MonoBehaviour
         {
             return;
         }
-        buildManager.drill.currentMoney -= requestedPath.upgrades[tier-1].cost;
+        buildManager.drill.currentMoney -= requestedPath.upgrades[tier - 1].cost;
 
         Destroy(turret);
         GameObject _turret = Instantiate(requestedPath.upgrades[tier - 1].prefab, GetBuildPosition(), Quaternion.identity);

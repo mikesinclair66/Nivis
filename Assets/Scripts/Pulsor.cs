@@ -9,7 +9,7 @@ public class Pulsor : MonoBehaviour
     private Transform target;
 
     [Header("Attributes")]
-    public string name = "pulsor";
+    public string turretName = "pulsor";
 
     //public float range = 15f;
     //private float fireCountdown = 0f;

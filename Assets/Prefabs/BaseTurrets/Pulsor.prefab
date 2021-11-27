@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 5486383065936078902}
   - component: {fileID: 5730663409228013384}
   - component: {fileID: 5253471356562308931}
+  - component: {fileID: 8473541005998438833}
   m_Layer: 2
   m_Name: Pulsor
   m_TagString: Melee
@@ -289,9 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173e42f74281bce48a461a78ace4a701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretName: pulsor
   firePoint: {fileID: 2198826888945603087}
-  mRend: {fileID: 0}
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
   pulsorTurret: 0
   pulsorRange: 10
   pulsorDamage: 20
@@ -305,3 +305,19 @@ MonoBehaviour:
   instakillPulsor: 0
   pulsorRNGPercentage: 10
   enemyTag: Enemy
+--- !u!114 &8473541005998438833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8286855263532688045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281994a427ccd694895e868779ae2f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mRend: {fileID: 8325609575849363128}
+  turret: {fileID: 0}
+  pulsor: {fileID: 5253471356562308931}
+  forcefieldRange: {fileID: 493323805173825000}
