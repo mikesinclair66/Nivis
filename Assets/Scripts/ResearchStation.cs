@@ -92,7 +92,7 @@ public class ResearchStation : MonoBehaviour
                 break;
             case 2:
             default:
-                pageName.text = "Radiator\nUpgrades";
+                pageName.text = "Pulsor\nUpgrades";
                 break;
         }
 

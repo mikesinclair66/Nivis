@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 6855068293986676199}
   - component: {fileID: -1404532016906325750}
   - component: {fileID: 2038412994108327013}
+  - component: {fileID: 6946040832864731709}
   m_Layer: 0
   m_Name: Agosteras_Tank
   m_TagString: Enemy
@@ -216,7 +217,6 @@ MonoBehaviour:
   debuff: {fileID: 2038412994108327013}
   rcm: {fileID: 0}
   researchPointValue: 3
-  isTank: 1
   defaultSpeed: 0
   inRangeofRank2Pulsor: 0
 --- !u!114 &-1100332597820257652
@@ -243,8 +243,8 @@ MonoBehaviour:
   slowAmount: 2
   isTank: 0
   isSpeed: 0
-  meleeSlowedUnit: 0
-  meleeSlowTimer: 0.5
+  pulsorSlowedUnit: 0
+  pulsorSlowTimer: 0.5
   burning: 0
   burnTimer: 5
   TickDamageTimer: 0.5
@@ -254,7 +254,7 @@ MonoBehaviour:
   frozen: 0
   freezeTimer: 1.5
   meltDamage: 300
-  inRangeofRank2Melee: 0
+  inRangeofRank2Pulsor: 0
   rcm: {fileID: 0}
   killCountValue: 10
   speedKillCountValue: 1
@@ -310,12 +310,26 @@ MonoBehaviour:
   slowed: 0
   slowTimer: 0.5
   slowAmount: 2
-  inRangeofRank2Melee: 0
+  inRangeofRank2Pulsor: 0
   freezeChance: 0.25
   freezeDuration: 1.5
   frozen: 0
   freezeTimer: 1.5
   meltDamage: 300
+--- !u!114 &6946040832864731709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415560677743472776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 899725d9e5b572b4f877abac614052b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 245581701675755698}
+  debuff: {fileID: 2038412994108327013}
 --- !u!1 &8415560677743472778
 GameObject:
   m_ObjectHideFlags: 0

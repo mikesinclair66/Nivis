@@ -4030,6 +4030,7 @@ GameObject:
   - component: {fileID: 3867142842415539236}
   - component: {fileID: -7612466081446843819}
   - component: {fileID: -3235860528740097925}
+  - component: {fileID: 2327503003073537852}
   m_Layer: 0
   m_Name: Agosteras_Boss
   m_TagString: Enemy
@@ -4104,7 +4105,6 @@ MonoBehaviour:
   debuff: {fileID: 3867142842415539236}
   rcm: {fileID: 0}
   researchPointValue: 3
-  isTank: 0
   defaultSpeed: 0
   inRangeofRank2Pulsor: 0
 --- !u!114 &3867142842415539236
@@ -4133,7 +4133,7 @@ MonoBehaviour:
   slowed: 0
   slowTimer: 0.5
   slowAmount: 2
-  inRangeofRank2Melee: 0
+  inRangeofRank2Pulsor: 0
   freezeChance: 0.25
   freezeDuration: 1.5
   frozen: 0
@@ -4164,6 +4164,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2327503003073537852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5792744366562842766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 899725d9e5b572b4f877abac614052b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: -8912035814630002281}
+  debuff: {fileID: 3867142842415539236}
 --- !u!1 &5792748071347383548
 GameObject:
   m_ObjectHideFlags: 0
