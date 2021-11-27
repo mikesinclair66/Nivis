@@ -123,15 +123,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  name: turret
+  turretName: missile
   range: 15
   fireRate: 0.5
   fireCountdown: 0
   partToRotate: {fileID: 1653315284166483473}
-  turnSpeed: 10
   bulletPrefab: {fileID: 4996553150205118966, guid: 47c66f8abda8e754399f33a383dec31d, type: 3}
   firePoint: {fileID: 9127335747297334282}
-  turretDebuff: {fileID: 0}
+  turretDebuff: {fileID: 77777306721162486}
   enemyTag: Enemy
 --- !u!114 &77777306721162486
 MonoBehaviour:

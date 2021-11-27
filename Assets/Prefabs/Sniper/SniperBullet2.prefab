@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4140571722254629119}
   - component: {fileID: 6912598303658184682}
   - component: {fileID: 8939843558709419651}
+  - component: {fileID: 3542289969795442413}
   m_Layer: 0
   m_Name: SniperBullet2
   m_TagString: Untagged
@@ -112,9 +113,24 @@ MonoBehaviour:
   speed: 90
   damage: 250
   explosionRadius: 0
+  impactEffect: {fileID: 7040492511225032996, guid: 0d08c6c3bcceadb46a7da71e8c3c3f34, type: 3}
+  targetEnemy: {fileID: 0}
+  bulletStatusEffect: {fileID: 3542289969795442413}
+--- !u!114 &3542289969795442413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782891259442944730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b983996a11ce4bb4b91981ee7117e1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   radiation: 0
   stunShot: 0
   burnShot: 0
-  burnDamage: 5
+  burnDamage: 0
   rank3Burn: 0
-  impactEffect: {fileID: 7040492511225032996, guid: 0d08c6c3bcceadb46a7da71e8c3c3f34, type: 3}
+  bullet: {fileID: 8939843558709419651}
