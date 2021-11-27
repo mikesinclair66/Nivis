@@ -507,7 +507,6 @@ public class Inventory : MonoBehaviour
             }
             catch (ArgumentOutOfRangeException e)
             {
-                Debug.Log(e);
                 upgradeBtn.GetComponent<Button>().interactable = false;
                 upgradeText.text = "DONE";
             }

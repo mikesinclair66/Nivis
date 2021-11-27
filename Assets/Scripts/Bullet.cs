@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -12,14 +13,17 @@ public class Bullet : MonoBehaviour
     public int damage = 50;
     public float explosionRadius = 0f;
     //public int dotDamage = 0;
-    public bool radiation;
-    public bool stunShot;
-    public bool burnShot;
-    public float burnDamage = 5f;
-    public bool rank3Burn;
 
     public GameObject impactEffect;
-    // TODO: add particle effect (e5)
+    public Enemy targetEnemy;
+    
+    public ArrayList activeStatusEffects = new ArrayList();
+    public BulletStatusEffect bulletStatusEffect;
+
+    private void Start()
+    {
+        bulletStatusEffect = GetComponent<BulletStatusEffect>();
+    }
 
     public void Seek(Transform _target)
     {
@@ -50,17 +54,12 @@ public class Bullet : MonoBehaviour
     // TODO: find which video this code is relevant, might remove before alpha build
     void HitTarget()
     {
-        //GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-        //Destroy(effectIns, 5f);
 
         if (explosionRadius > 0f)
         {
             Explode();
         }
-        // else if (stunShot == true && sniperUnit == true)
-        // {
-        //     Sniper();
-        // }
+
         else
         {
             Damage(target);
@@ -81,21 +80,22 @@ public class Bullet : MonoBehaviour
             }
         }
     }
-
-    // void Sniper()
-    // {
-    //     if (isTank == true)
-    //     {
-    //         Damage();
-    //     }
-    //     else {
-    //         Damage(target);
-    //     }
-    // }
-
     
+    public bool checkIfStatusEffectActive(string statusEffect)
+    {
+        if (activeStatusEffects.Count > 0)
+        {
+            foreach (string i in activeStatusEffects)
+            {
+                if (i == statusEffect)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-    // TODO: connect with enemy code
     void Damage(Transform enemy)
     {
         if (impactEffect != null)
@@ -108,31 +108,13 @@ public class Bullet : MonoBehaviour
             }
             Destroy(effectIns, 5f);
         }
-        
-        Enemy e = enemy.GetComponent<Enemy>();
-        Debuff debuff = enemy.GetComponent<Debuff>();
+        targetEnemy = enemy.GetComponent<Enemy>();
 
-        if (e != null)
+        if (targetEnemy != null)
         {
-            e.TakeDamage(damage);
+            targetEnemy.TakeDamage(damage);
             //Debug.Log("Reach here");
-            if (radiation == true)
-            {
-                debuff.activateRad();
-            }
-            if (stunShot == true)
-            {
-                debuff.activateStun();
-                //Debug.Log("Activate Stun: " + e.stunnedUnit );
-            }
-            if (burnShot == true){
-                if(debuff.frozen == true) {
-                    Debug.Log("Melt Damage Reached");
-                    debuff.freezeOff();
-                    e.TakeDamage(damage * 2);
-                }
-                debuff.activateBurn(burnDamage, rank3Burn);
-            }
+            bulletStatusEffect.statusEffectActive();
         }
         
     }

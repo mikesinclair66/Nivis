@@ -40,10 +40,10 @@ public class Projectile : MonoBehaviour
         disableTarget();
         Destroy(gameObject);
     }
-
+    
     void disableTarget()
     {
-        Turret t = target.GetComponent<Turret>();
+        TurretDebuff t = target.GetComponent<TurretDebuff>();
         t.Disable();
     }
 }

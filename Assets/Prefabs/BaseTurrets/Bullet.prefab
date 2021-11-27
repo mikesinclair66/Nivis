@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4879569632385234681}
   - component: {fileID: 3487977422319259943}
   - component: {fileID: -8235819881758489263}
+  - component: {fileID: 5068335715545301520}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -112,9 +113,24 @@ MonoBehaviour:
   speed: 70
   damage: 50
   explosionRadius: 0
+  impactEffect: {fileID: 7040492511225032996, guid: 0d08c6c3bcceadb46a7da71e8c3c3f34, type: 3}
+  targetEnemy: {fileID: 0}
+  bulletStatusEffect: {fileID: 5068335715545301520}
+--- !u!114 &5068335715545301520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4717915890182366568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b983996a11ce4bb4b91981ee7117e1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   radiation: 0
   stunShot: 0
   burnShot: 0
-  burnDamage: 5
+  burnDamage: 0
   rank3Burn: 0
-  impactEffect: {fileID: 7040492511225032996, guid: 0d08c6c3bcceadb46a7da71e8c3c3f34, type: 3}
+  bullet: {fileID: -8235819881758489263}
