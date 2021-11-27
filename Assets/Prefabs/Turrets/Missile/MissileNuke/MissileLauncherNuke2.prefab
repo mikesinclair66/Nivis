@@ -168,8 +168,8 @@ GameObject:
   - component: {fileID: 3330962859309984341}
   - component: {fileID: 1552465999270967306}
   - component: {fileID: 5254718407211431660}
-  - component: {fileID: 6268945704135698002}
   - component: {fileID: 376722061542935548}
+  - component: {fileID: 6268945704135698002}
   - component: {fileID: 7532034459070798888}
   m_Layer: 2
   m_Name: MissileLauncherNuke2
@@ -230,19 +230,6 @@ MonoBehaviour:
   firePoint: {fileID: 9127335747297334282}
   turretDebuff: {fileID: 6268945704135698002}
   enemyTag: Enemy
---- !u!114 &6268945704135698002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7968648054684129151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d80b1303c14ed1499aa61d577eaaf75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disabled: 0
 --- !u!114 &376722061542935548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +245,19 @@ MonoBehaviour:
   turret: {fileID: 5254718407211431660}
   missileFireTier: 0
   missileNukeTier: 2
+--- !u!114 &6268945704135698002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7968648054684129151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d80b1303c14ed1499aa61d577eaaf75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 0
 --- !u!114 &7532034459070798888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +402,7 @@ Transform:
   m_GameObject: {fileID: 8647555580598562913}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.0115, y: 0.0115, z: 0.0115}
   m_Children:
   - {fileID: 1653315284166483473}
   - {fileID: 8647555580598266955}

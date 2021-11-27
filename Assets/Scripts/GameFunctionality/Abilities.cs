@@ -108,6 +108,7 @@ public class Abilities : MonoBehaviour
             if (shieldModVal <= 0 || tempShieldDurationTimeStamp <= Time.time)
             {
                 generator.shieldHealth = 0;
+                generator.mRend.enabled = false;
                 shieldIcon.SetActive(false);
                 shieldMod.SetActive(false);
             }
@@ -169,6 +170,7 @@ public class Abilities : MonoBehaviour
             if (buildManager.drill.currentMoney >= tempShieldCost)
             {
                 generator.shieldHealth = tempShieldHP;
+                generator.mRend.enabled = true;
                 Debug.Log("HP: " + generator.totalHealth + " Shield: " + generator.shieldHealth);
                 buildManager.drill.currentMoney -= tempShieldCost;
 

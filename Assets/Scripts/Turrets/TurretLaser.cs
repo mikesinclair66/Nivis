@@ -43,7 +43,6 @@ public class TurretLaser : MonoBehaviour
             {
                 turret.partToRotate.LookAt(new Vector3(turret.target.position.x, turret.partToRotate.position.y, turret.target.position.z));
             }
-            
             Laser();
         }
     }
@@ -52,8 +51,6 @@ public class TurretLaser : MonoBehaviour
     {
         Vector3 dir = turret.target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
-        //Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime);
-        //partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
     void Laser()

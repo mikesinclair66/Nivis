@@ -30,17 +30,23 @@ public class RangeIndicator : MonoBehaviour
     {
         if (turret != null)
         {
-            if (turret.turretName == "turret")
+            switch (turret.turretName)
             {
-                forcefieldRange.transform.localScale = new Vector3(turret.range * 2, 0.1f, turret.range * 2);
-            }
-            if (turret.turretName == "missile")
-            {
-                forcefieldRange.transform.localScale = new Vector3(turret.range * 2, 0.1f, turret.range * 2);
-            }
-            if (turret.turretName == "sniper")
-            {
-                forcefieldRange.transform.localScale = new Vector3(0, 0, 0);
+                case "turret":
+                    forcefieldRange.transform.localScale = new Vector3(turret.range * 2, 0.1f, turret.range * 2);
+                    break;
+                case "laser":
+                    forcefieldRange.transform.localScale = new Vector3(turret.range * 2, 0.1f, turret.range * 2);
+                    break;
+                case "sniper":
+                    forcefieldRange.transform.localScale = new Vector3(0, 0, 0);
+                    break;
+                case "missile":
+                    forcefieldRange.transform.localScale = new Vector3(turret.range * 2, 0.1f, turret.range * 2);
+                    break;
+                default:
+                    forcefieldRange.transform.localScale = new Vector3(0, 0, 0);
+                    break;
             }
         }
         if (pulsor != null)

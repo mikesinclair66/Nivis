@@ -10,7 +10,7 @@ public class Generator : MonoBehaviour
     public int shieldHealth = 0;
     public Text genHealth;
     public GameObject canvas;
-
+    public MeshRenderer mRend;
 
     void Start()
     {
@@ -33,6 +33,7 @@ public class Generator : MonoBehaviour
                 Debug.Log("Shield: " + shieldHealth);
                 if (shieldHealth < 0)
                 {
+                    mRend.enabled = false;
                     exceedingDamage = shieldHealth * -1;
                     shieldHealth = 0;
                 }

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 172140526631838184}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_Children: []
   m_Father: {fileID: 5486383065936078902}
   m_RootOrder: 0
@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 5486383065936078902}
   - component: {fileID: 5730663409228013384}
   - component: {fileID: 5253471356562308931}
+  - component: {fileID: -4337041439631775613}
   m_Layer: 2
   m_Name: PulsorRange3
   m_TagString: Melee
@@ -302,3 +303,19 @@ MonoBehaviour:
   percentHealthDmg: 5
   instakillRNGPercentage: 0
   enemyTag: Enemy
+--- !u!114 &-4337041439631775613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8286855263532688045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281994a427ccd694895e868779ae2f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mRend: {fileID: 8325609575849363128}
+  turret: {fileID: 0}
+  pulsor: {fileID: 5253471356562308931}
+  forcefieldRange: {fileID: 493323805173825000}

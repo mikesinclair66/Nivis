@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 69ca2e6b7eb5e274ebbefe5c93b98f41, type: 2}
+  - {fileID: 2100000, guid: 135230e1988582b4e8b5b7ca9f1f4b37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,5 +132,5 @@ MonoBehaviour:
   stunShot: 0
   burnShot: 0
   burnDamage: 0
-  rank3Burn: 0
+  deathBurn: 0
   bullet: {fileID: 1511437057877850567}
