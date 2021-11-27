@@ -13,6 +13,8 @@ public class Shop : MonoBehaviour
     public TurretBlueprint missileLauncher;
     public TurretBlueprint pulsorTurret;
 
+   
+
     BuildManager buildManager;
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,8 @@ public class Shop : MonoBehaviour
             ButtonHovered(awaitButtonHover);
             awaitButtonHover = 100;
         }
+
+        
     }
 
     public void SelectStandardTurret()
