@@ -3009,7 +3009,7 @@ MonoBehaviour:
   buildManager: {fileID: 458077342}
   generator: {fileID: 2139171091}
   stunAreaRange: {fileID: 5193601285125349261, guid: 81cc814f93c22ef4585b990b2db3c4cf, type: 3}
-  drill: {fileID: 482290806}
+  drill: {fileID: 0}
   btn1: {fileID: 1982632855}
   btn2: {fileID: 2001208764}
   btn3: {fileID: 1053166510}
@@ -3593,6 +3593,10 @@ MonoBehaviour:
   inventory: {fileID: 1766955761}
   turretToBuildType: 0
   drill: {fileID: 728275365}
+  turretGhost: {fileID: 0}
+  obj: {fileID: 0}
+  forcefieldRange: {fileID: 0}
+  isBuildingTurret: 0
 --- !u!1 &466912427
 GameObject:
   m_ObjectHideFlags: 0
@@ -18527,6 +18531,10 @@ PrefabInstance:
     - target: {fileID: 4160625248379708722, guid: 1471b12f3286ab246aa5f0adf3a35652, type: 3}
       propertyPath: m_Name
       value: START
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160625248379708732, guid: 1471b12f3286ab246aa5f0adf3a35652, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4160625248379708734, guid: 1471b12f3286ab246aa5f0adf3a35652, type: 3}
       propertyPath: m_RootOrder
