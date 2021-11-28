@@ -4,7 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public string enemyType = null;
-     public float totalHealth;
+    public float totalHealth;
     public float speed = 10f;
     public int damageValue = 10;
 
@@ -15,6 +15,11 @@ public class Enemy : MonoBehaviour
     public float defaultSpeed;
     private float defaultHealth;
     public bool inRangeofRank2Pulsor;
+
+    void Awake()
+    {
+        
+    }
     
     void Start()
     {
@@ -101,5 +106,10 @@ public class Enemy : MonoBehaviour
         {
             rcm.killCount += getKillCountValue();
         }
+    }
+
+    public float GetDefaultHealth()
+    {
+        return defaultHealth;
     }
 }
