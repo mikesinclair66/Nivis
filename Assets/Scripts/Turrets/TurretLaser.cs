@@ -27,7 +27,10 @@ public class TurretLaser : MonoBehaviour
     {
         if (turret.target == null)
         {
-            turret.shootSound.Stop();
+            if (turret.shootSound != null)
+            {
+                turret.shootSound.Stop();
+            }
             if (lineRenderer.enabled)
             {
                 lineRenderer.enabled = false;
@@ -61,7 +64,7 @@ public class TurretLaser : MonoBehaviour
 
     void Laser()
     {
-        if (!turret.shootSound.isPlaying)
+        if (turret.shootSound != null && !turret.shootSound.isPlaying)
         {
             turret.shootSound.Play();
         }

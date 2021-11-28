@@ -64,7 +64,10 @@ public class Bullet : MonoBehaviour
             Damage(target);
         }
 
-        impactSound.Play();
+        if (impactSound != null)
+        {
+            AudioSource.PlayClipAtPoint(impactSound.clip, GameObject.Find("Main Camera").transform.position, impactSound.volume);
+        }
         Destroy(gameObject);
     }
 

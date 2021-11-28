@@ -45,7 +45,10 @@ public class MissileTurret : MonoBehaviour
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
         {
-            turret.shootSound.Play();
+            if (turret.shootSound != null)
+            {
+                turret.shootSound.Play();
+            }
             bullet.Seek(turret.target);
         }
     }

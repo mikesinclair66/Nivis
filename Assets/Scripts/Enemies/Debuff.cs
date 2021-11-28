@@ -240,7 +240,10 @@ public class Debuff : MonoBehaviour
     public void activateFreeze()
     {
         frozen = true;
-        freezeSound.Play();
+        if (freezeSound != null)
+        {
+            freezeSound.Play();
+        }
         if (!hasDebuff("frozen"))
         {
             activeDebuffs.Add("frozen");

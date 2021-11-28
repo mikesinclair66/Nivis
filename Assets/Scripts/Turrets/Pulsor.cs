@@ -46,12 +46,14 @@ public class Pulsor : MonoBehaviour
 
     public void pulsorCheckForEnemies()
     {
-        pulseSound.Play();
+        bool enemiesNear = false;
         Collider[] colliders = Physics.OverlapSphere(transform.position, range);
+        
         foreach (Collider c in colliders)
         {
             if (c.GetComponent<Enemy>())
             {
+                enemiesNear = true;
                 c.GetComponent<Enemy>().TakeDamage(damage);
                 c.GetComponent<Debuff>().activateSlow();
              
@@ -86,6 +88,10 @@ public class Pulsor : MonoBehaviour
                     }
                 }
             }
+        }
+        if (pulseSound != null && enemiesNear)
+        {
+            pulseSound.Play();    
         }
     }
    
