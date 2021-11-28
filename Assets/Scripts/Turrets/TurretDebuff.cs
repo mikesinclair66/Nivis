@@ -35,7 +35,10 @@ public class TurretDebuff : MonoBehaviour
     public void Disable()
     {
         disabled = true;
-        activeDebuffs.Add("disabled");
+        if (!activeDebuffs.Contains("disabled"))
+        {
+            activeDebuffs.Add("disabled");
+        }
         disableCountdown = 10f;
     }
 

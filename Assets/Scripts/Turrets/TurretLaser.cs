@@ -27,6 +27,7 @@ public class TurretLaser : MonoBehaviour
     {
         if (turret.target == null)
         {
+            turret.shootSound.Stop();
             if (lineRenderer.enabled)
             {
                 lineRenderer.enabled = false;
@@ -45,6 +46,11 @@ public class TurretLaser : MonoBehaviour
             }
             Laser();
         }
+        else
+        {
+            turret.shootSound.Stop();
+            lineRenderer.enabled = false;
+        }
     }
 
     void LockOnTarget()
@@ -55,6 +61,10 @@ public class TurretLaser : MonoBehaviour
 
     void Laser()
     {
+        if (!turret.shootSound.isPlaying)
+        {
+            turret.shootSound.Play();
+        }
         turret.target.GetComponent<Enemy>().TakeDamage(damageOverTime * Time.deltaTime * turret.fireRate);
 
         if (LaserTier == 3){

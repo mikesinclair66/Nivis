@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-
+    [HideInInspector]
     public Transform target;
 
     [Header("Attributes")]
     public string turretName = "turret";
     public float range = 15f;
     public float fireRate = 2f;
+    [HideInInspector]
     public float fireCountdown = 0f;
 
     public Transform partToRotate;
@@ -19,6 +20,8 @@ public class Turret : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
 
+    public AudioSource shootSound;
+    
     public ArrayList activeDebuffs = new ArrayList();
     public TurretDebuff turretDebuff;
     [Header("Unity Setup Fields")]

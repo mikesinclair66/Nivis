@@ -43,7 +43,10 @@ public class StandardTurret : MonoBehaviour
         GameObject bulletGO = (GameObject)Instantiate(turret.bulletPrefab, turret.firePoint.position, turret.firePoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
+        {
+            turret.shootSound.Play();
             bullet.Seek(turret.target);
+        }
     }
 
     void UpdateClosestTarget()

@@ -14,6 +14,8 @@ public class Bullet : MonoBehaviour
     public float explosionRadius = 0f;
 
     public GameObject impactEffect;
+    public AudioSource impactSound;
+    [HideInInspector]
     public Enemy targetEnemy;
     
     public ArrayList activeStatusEffects = new ArrayList();
@@ -61,6 +63,8 @@ public class Bullet : MonoBehaviour
         {
             Damage(target);
         }
+
+        impactSound.Play();
         Destroy(gameObject);
     }
 

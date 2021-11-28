@@ -40,6 +40,7 @@ public class Debuff : MonoBehaviour
     public bool frozen;
     public float freezeTimer = 1.5f;
     public float meltDamage = 300f;
+    public AudioSource freezeSound;
 
     [Header("Double Resource Points")]
     public bool doubleRSPoints;
@@ -134,6 +135,11 @@ public class Debuff : MonoBehaviour
     {
         return activeDebuffs;
     }
+    
+    public bool hasDebuff(string debuff)
+    {
+        return activeDebuffs.Contains(debuff);
+    }
 
     /*********************** Burn *************************/
     /** Activates the Burn Damage Debuff **/
@@ -141,7 +147,10 @@ public class Debuff : MonoBehaviour
     {
         //Debug.Log("Burn Activated");
         burning = true;
-        activeDebuffs.Add("burning");
+        if (!hasDebuff("burning"))
+        {
+            activeDebuffs.Add("burning");
+        }
         if (rank3Burn == true)
         {
             //Debug.Log("RANK 3 BURN ON");
@@ -184,7 +193,10 @@ public class Debuff : MonoBehaviour
     {
         //Debug.Log("Radiation Active");
         radiation = true;
-        activeDebuffs.Add("radiated");
+        if (!hasDebuff("radiated"))
+        {
+            activeDebuffs.Add("radiated");
+        }
         radTimer = 3f;
     }
 
@@ -194,7 +206,10 @@ public class Debuff : MonoBehaviour
     {
         //Debug.Log("Unit Stunned");
         stunned = true;
-        activeDebuffs.Add("stunned");
+        if (!hasDebuff("stunned"))
+        {
+            activeDebuffs.Add("stunned");
+        }
         enemy.speed = 0f;
         stunDuration = 1.5f;
     }
@@ -204,7 +219,10 @@ public class Debuff : MonoBehaviour
     public void activateSlow()
     {
         slowed = true;
-        activeDebuffs.Add("slowed");
+        if (!hasDebuff("slowed"))
+        {
+            activeDebuffs.Add("slowed");
+        }
         enemy.speed = enemy.defaultSpeed / slowAmount;
         slowTimer = 0.5f;
     }
@@ -224,7 +242,11 @@ public class Debuff : MonoBehaviour
     public void activateFreeze()
     {
         frozen = true;
-        activeDebuffs.Add("frozen");
+        freezeSound.Play();
+        if (!hasDebuff("frozen"))
+        {
+            activeDebuffs.Add("frozen");
+        }
         enemy.speed = 0f;
         freezeTimer = 1.5f;
     }
@@ -243,7 +265,10 @@ public class Debuff : MonoBehaviour
     public void activateDoubleRSPoints()
     {
         doubleRSPoints = true;
-        activeDebuffs.Add("doubleRSPoints");
+        if (!hasDebuff("doubleRSPoints"))
+        {
+            activeDebuffs.Add("doubleRSPoints");    
+        }
     }
 }
 

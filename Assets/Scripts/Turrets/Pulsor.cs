@@ -17,6 +17,8 @@ public class Pulsor : MonoBehaviour
     public int pulsorRangeTier;
     public int pulsorRateTier;
 
+    public AudioSource pulseSound;
+
     [Header("Range Upgrade Attributes")]
     public Drill drill;
     public int moneyEarned = 5;
@@ -44,6 +46,7 @@ public class Pulsor : MonoBehaviour
 
     public void pulsorCheckForEnemies()
     {
+        pulseSound.Play();
         Collider[] colliders = Physics.OverlapSphere(transform.position, range);
         foreach (Collider c in colliders)
         {
