@@ -3947,8 +3947,9 @@ MonoBehaviour:
     - enemy: {fileID: 8415560677743472776, guid: 972a0269d29eec444bfc26075fab6791, type: 3}
       count: 3
       rate: 2
+  - waveEnemies:
     - enemy: {fileID: 5792744366562842766, guid: 9a523f7804c7d7f48bb47e84b8beaaa2, type: 3}
-      count: 3
+      count: 1
       rate: 2
   spawnPoint: {fileID: 1253571385734008}
   enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
