@@ -84,7 +84,6 @@ public class TurretLaser : MonoBehaviour
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
             }
-
         }
 
         if (nearestEnemy != null && shortestDistance <= turret.range)
