@@ -32,6 +32,9 @@ public class TimeControl : MonoBehaviour
         Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
     }
 
+    /// <summary>
+    /// Stops the time scale.
+    /// </summary>
     public void Pause()
     {
         if (autoStart == false)
@@ -41,6 +44,9 @@ public class TimeControl : MonoBehaviour
         Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
     }
 
+    /// <summary>
+    /// Sets the time scale based on whether time is fast-forwarded.
+    /// </summary>
     public void Unpause()
     {
         Time.timeScale = fastForwardOn == true ? 2.0f : 1.0f;

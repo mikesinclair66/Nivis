@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// HoverChecker is a custom button component for the Attack1 and ResearchStation
+/// buttons which were finnicky within the UI.
+/// </summary>
 class HoverChecker
 {
     public GameObject obj;
@@ -61,6 +65,10 @@ class HoverChecker
         return centerY - sizeY / 2;
     }
 
+    /// <summary>
+    /// The onhover condition.
+    /// </summary>
+    /// <returns>hovered</returns>
     public bool CanClick()
     {
         return Input.mousePosition.x >= GetStartX() && Input.mousePosition.x <= GetEndX()
@@ -72,6 +80,10 @@ class HoverChecker
         obj.GetComponent<Button>().onClick.Invoke();
     }
 
+    /// <summary>
+    /// Tests if the mouse is in position of the button.
+    /// </summary>
+    /// <returns></returns>
     public override string ToString()
     {
         return "mousePos: " + Input.mousePosition.x + ", " + Input.mousePosition.y +
@@ -81,21 +93,17 @@ class HoverChecker
 
 public class Hotbar : MonoBehaviour
 {
-    GameObject canvas;
     GameObject panel;
     GameObject damageMod;
     GameObject researchBtn;
     GameObject researchStation;
     GameObject attacks, a1;
-    GameObject[] attackText, towerText;//button cost
-    GameObject u1, u2, uMain, uContainer;
-    GameObject eventSystem;
+    GameObject[] attackText, towerText;
 
     HoverChecker researchChecker, a1Checker;
 
     void Start()
     {
-        canvas = GameObject.Find("Canvas");
         panel = GameObject.Find("Canvas/Hotbar");
         damageMod = GameObject.Find("Canvas/Hotbar/Health/HealthMod");
         researchBtn = GameObject.Find("Canvas/Hotbar/ResearchButton");
@@ -110,11 +118,6 @@ public class Hotbar : MonoBehaviour
         towerText[0] = GameObject.Find("Canvas/Hotbar/TowerButtons/Button/Text");
         towerText[1] = GameObject.Find("Canvas/Hotbar/TowerButtons/Button2/Text");
         towerText[2] = GameObject.Find("Canvas/Hotbar/TowerButtons/Button3/Text");
-        u1 = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeContainer/Btn1");
-        u2 = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeContainer/Btn2");
-        uMain = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeBtn");
-        uContainer = GameObject.Find("Canvas/ActionUI/InnerEl/UpgradeContainer");
-        eventSystem = GameObject.Find("EventSystem");
 
         Shop shop = GameObject.Find("Canvas/Hotbar/TowerButtons").GetComponent<Shop>();
         attackText[0].GetComponent<Text>().text = "Repair\n\n$" + attacks.GetComponent<Abilities>().reenableTurretCost;
@@ -145,11 +148,13 @@ public class Hotbar : MonoBehaviour
         a1Checker.centerY += a1Checker.sizeY / 2;
     }
 
+    /// <summary>
+    /// implements the cooldown text effect on the ability buttons.
+    /// </summary>
     void Update()
     {
         researchChecker.Update();
         a1Checker.Update();
-        //Debug.Log(upgrade1.ToString());
 
         if (attacks.GetComponent<Abilities>().getReenableTurretCD() == 0)
         {
@@ -184,6 +189,9 @@ public class Hotbar : MonoBehaviour
         damageMod.gameObject.transform.localScale = new Vector3((float)totalHealth / 100.0f, 1, 1);
     }
 
+    /// <summary>
+    /// Checks the hotbar's hover-checkers when clicked.
+    /// </summary>
     public void RequestClick()
     {
         if (researchChecker.CanClick())

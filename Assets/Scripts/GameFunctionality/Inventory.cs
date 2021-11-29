@@ -145,7 +145,8 @@ public class Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// The onclick for turrets.
+    /// The onclick for turrets. Updates the upgrade gui based
+    /// on turret type and upgrade choices.
     /// </summary>
     /// <param name="nodeKey"></param>
     public void SelectTower(int nodeKey)

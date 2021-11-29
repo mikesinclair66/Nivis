@@ -29,6 +29,10 @@ public class UIAnimator : MonoBehaviour
     /// <summary>
     /// Transitions the popup to open or close
     /// once it's trigger is activated.
+    /// On the open animation:
+    /// Transitions to specified width, then proceeds to transition height
+    /// On the close animation:
+    /// Transitions to specified height, then transitions to width ending at (0, 0)
     /// </summary>
     void Update()
     {

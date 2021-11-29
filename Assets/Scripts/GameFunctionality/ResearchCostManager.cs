@@ -13,6 +13,9 @@ public class ResearchCostManager : MonoBehaviour
         researchCost = getResearchCosts();//page,branch,upgrades
     }
     
+    /// <summary>
+    /// Updates the kill count on the gui.
+    /// </summary>
     void Update()
     {
         Text killCountText = GameObject.Find("KillCount").GetComponent<Text>();
@@ -40,6 +43,14 @@ public class ResearchCostManager : MonoBehaviour
             },
         };
     }
+
+    /// <summary>
+    /// Checks if the user has the research kills to purchase a research tier.
+    /// </summary>
+    /// <param name="turret"></param>
+    /// <param name="path"></param>
+    /// <param name="tier"></param>
+    /// <returns></returns>
     public bool checkIfCanResearch(int turret, int path, int tier)
     {
         if (researchCost[turret, path, tier] > killCount)

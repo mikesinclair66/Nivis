@@ -24,12 +24,24 @@ public class OptionDescriptor : MonoBehaviour
         Disable();
     }
 
+    /// <summary>
+    /// Sets the text description of the
+    /// button to be highlighted.
+    /// </summary>
+    /// <param name="val"></param>
     public void SetText(string val)
     {
         this.val = val;
         innerText.text = val;
     }
 
+    /// <summary>
+    /// Sets the position of the option descriptor and whether its
+    /// arrow points up or down.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="directionUp"></param>
     public void SetPosition(float x, float y, bool directionUp=true)
     {
         SetDirection(directionUp);

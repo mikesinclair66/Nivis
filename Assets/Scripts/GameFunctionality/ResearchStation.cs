@@ -115,6 +115,9 @@ public class ResearchStation : MonoBehaviour
         price3Text.text = "Kills: " + researchCost[page, 0, 2].ToString("0");
     }
 
+    /// <summary>
+    /// Switches between research station pages.
+    /// </summary>
     public void NextPage()
     {
         int p = page + 1;
@@ -123,6 +126,9 @@ public class ResearchStation : MonoBehaviour
         UpdatePage(p);
     }
 
+    /// <summary>
+    /// Switches between research station pages.
+    /// </summary>
     public void PrevPage()
     {
         int p = page - 1;

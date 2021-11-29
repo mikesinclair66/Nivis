@@ -136,6 +136,11 @@ public class MenuUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The on hover for the buttons and triggers
+    /// the camera to transition.
+    /// </summary>
+    /// <param name="val"></param>
     public void MouseOver(string val)
     {
         if (!cameraTransitioning)
@@ -161,6 +166,11 @@ public class MenuUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The on exit for the buttons and triggers
+    /// the camera to transition.
+    /// </summary>
+    /// <param name="val"></param>
     public void MouseOut(string val)
     {
         if (!cameraTransitioning)

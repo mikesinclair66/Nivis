@@ -41,6 +41,9 @@ public class EnemyUI : MonoBehaviour
         totalHealth = enemy.totalHealth;
     }
 
+    /// <summary>
+    /// Updates the health bar and checks active debuffs.
+    /// </summary>
     void Update()
     {
         activeDebuffs = debuff.returnActiveDebuffs();
@@ -72,6 +75,9 @@ public class EnemyUI : MonoBehaviour
         return visible;
     }
 
+    /// <summary>
+    /// Checks which debuffs are active and updates the GUI.
+    /// </summary>
     public void checkDebuffs()
     {
         foreach (string debuffType in allDebuffs)
