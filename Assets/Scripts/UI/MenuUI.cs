@@ -140,12 +140,12 @@ public class MenuUI : MonoBehaviour
     {
         if (!cameraTransitioning)
         {
-            if (val.Equals("lvl1"))
+            if (val.Equals("NivisLevelOne"))
             {
                 if (cameraAngle != 2)
                     SetCameraAngle(2);
             }
-            else if (val.Equals("lvl2"))
+            else if (val.Equals("NivisLevelTwo"))
             {
                 if (cameraAngle != 1)
                     SetCameraAngle(1);
@@ -181,12 +181,10 @@ public class MenuUI : MonoBehaviour
     /// The onclick for the level buttons.
     /// </summary>
     /// <param name="lvl1"></param>
-    public void StartGame(bool lvl1)
-    {
-        SceneManager.LoadScene("JackyScene", LoadSceneMode.Single);
 
-        if (lvl1 || !lvl1)
-            SceneManager.LoadScene("JackyScene 1", LoadSceneMode.Single);
+    public void LoadLevel(string levelName)
+    {
+        SceneManager.LoadScene(levelName, LoadSceneMode.Single);
     }
 
     /// <summary>

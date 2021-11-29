@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657892, g: 0.49641502, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657856, g: 0.49641478, b: 0.5748162, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -191,7 +191,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: lvl2
+            m_StringArgument: NivisLevelTwo
             m_BoolArgument: 0
           m_CallState: 2
   - eventID: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: lvl2
+            m_StringArgument: NivisLevelTwo
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!114 &89913095
@@ -256,14 +256,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1400426085}
         m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
-        m_MethodName: StartGame
-        m_Mode: 6
+        m_MethodName: LoadLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: NivisLevelTwo
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &89913096
@@ -1077,14 +1077,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1400426085}
         m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
-        m_MethodName: StartGame
-        m_Mode: 6
+        m_MethodName: LoadLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: NivisLevelOne
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &597334620
@@ -1151,7 +1151,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: lvl1
+            m_StringArgument: NivisLevelOne
             m_BoolArgument: 0
           m_CallState: 2
   - eventID: 1
@@ -1167,7 +1167,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: lvl1
+            m_StringArgument: NivisLevelOne
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &603882407
