@@ -8,13 +8,8 @@ public class TurretDebuff : MonoBehaviour
     private float disableCountdown = 10f;
 
     public ArrayList activeDebuffs = new ArrayList();
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject debuffIcon;
 
-    // Update is called once per frame
     void Update()
     {
         if (disabled == true)
@@ -40,11 +35,13 @@ public class TurretDebuff : MonoBehaviour
             activeDebuffs.Add("disabled");
         }
         disableCountdown = 10f;
+        debuffIcon.SetActive(true);
     }
 
     public void Enable()
     {
         disabled = false;
         activeDebuffs.Remove("disabled");
+        debuffIcon.SetActive(false);
     }
 }

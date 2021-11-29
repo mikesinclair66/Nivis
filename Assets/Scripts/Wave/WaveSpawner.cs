@@ -10,7 +10,8 @@ public class WaveSpawner : MonoBehaviour
     public Wave[] waves;
     public Transform spawnPoint;
     public GameObject enemy;
-    public GameObject timeBtn;
+    public GameObject timeController;
+    public GameObject timePauseButton;
 
     public float timeBetweenWaves = 5f;
     private float countdown = 5f;
@@ -33,16 +34,19 @@ public class WaveSpawner : MonoBehaviour
 
         if (TimeControl.autoStart == false)
         {
-            timeBtn.GetComponent<TimeControl>().Pause();
+            timeController.GetComponent<TimeControl>().Pause();
         }
         else
         {
             if (countdown <= 0f)
             {
+                timePauseButton.GetComponent<Button>().interactable = false;
                 StartCoroutine(SpawnWave());
                 countdown = timeBetweenWaves;
                 return;
             }
+            else
+                timePauseButton.GetComponent<Button>().interactable = true;
         }
         
         countdown -= Time.deltaTime;

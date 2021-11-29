@@ -23,15 +23,11 @@ public class TimeControl : MonoBehaviour
         {
             Time.timeScale = 2.0f;
             fastForwardOn = true;
-            Debug.Log("if fastForwardOn: " + fastForwardOn);
-            fastForwardText.text = ">>";
         }
         else
         {
             Time.timeScale = 1.0f;
             fastForwardOn = false;
-            Debug.Log("else fastForwardOn: " + fastForwardOn);
-            fastForwardText.text = ">";
         }
         Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
     }
@@ -47,27 +43,14 @@ public class TimeControl : MonoBehaviour
 
     public void Unpause()
     {
-        if (autoStart == true)
-        {
-            Debug.Log("fastForwardOn: " + fastForwardOn);
-            Time.timeScale = fastForwardOn == true ? 2.0f : 1.0f;
-            Debug.Log("Unpaused");
-        }
+        Time.timeScale = fastForwardOn == true ? 2.0f : 1.0f;
         Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
     }
 
     public void ToggleAutoStart()
     {
-        if (autoStart == false)
-        {
-            autoStart = true;
+        autoStart = !autoStart;
+        if (autoStart)
             Unpause();
-            autoStartText.text = "Pause on Wave Start On";
-        }
-        else
-        {
-            autoStart = false;
-            autoStartText.text = "Pause on Wave Start Off";
-        }
     }
 }

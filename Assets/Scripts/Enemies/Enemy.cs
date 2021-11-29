@@ -15,6 +15,11 @@ public class Enemy : MonoBehaviour
     public float defaultSpeed;
     private float defaultHealth;
     public bool inRangeofRank2Pulsor;
+
+    void Awake()
+    {
+        
+    }
     
     void Start()
     {
@@ -98,5 +103,10 @@ public class Enemy : MonoBehaviour
         {
             rcm.killCount += getKillCountValue();
         }
+    }
+
+    public float GetDefaultHealth()
+    {
+        return defaultHealth;
     }
 }
