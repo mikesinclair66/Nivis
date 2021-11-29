@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
         if (totalHealth > 0)
         {
             totalHealth -= damageAmount;
-            if (checkIfDebuffActive("radiated") == true)
+            if (checkIfDebuffActive(debuff.debuffRadiated) == true)
             {
                 Debug.Log("Radiation Damage Taken");
                 totalHealth -= (damageAmount / debuff.radPercentage);
@@ -90,12 +90,12 @@ public class Enemy : MonoBehaviour
         WaveSpawner.EnemiesAlive--;
         Destroy(gameObject);
 
-        if (checkIfDebuffActive("burning") == true)
+        if (checkIfDebuffActive(debuff.debuffBurning) == true)
         {
             debuff.aoeBurnOnDeath();
-        }
+        } 
 
-        if (checkIfDebuffActive("doubleRSPoints") == true)
+        if (checkIfDebuffActive(debuff.debuffDoubleRSPoints) == true)
         {
             rcm.killCount += getKillCountValue() * 2;
         }

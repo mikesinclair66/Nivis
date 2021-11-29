@@ -5,8 +5,16 @@ using UnityEngine;
 
 public class EnemyUI : MonoBehaviour
 {
-    GameObject icons, burn, radiation, stun, slow, freeze;
-    GameObject healthMod;
+    private GameObject icons, burn, radiation, stun, slow, freeze;
+    private GameObject healthMod;
+
+    public Enemy enemy;
+    public Debuff debuff;
+
+    private ArrayList activeDebuffs = new ArrayList();
+    private ArrayList allDebuffs = new ArrayList();
+
+    private float defaultHealth, totalHealth;
 
     bool visible = true;
 
@@ -22,19 +30,35 @@ public class EnemyUI : MonoBehaviour
         healthMod = transform.GetChild(1).GetChild(0).gameObject;
     }
 
+    void Start()
+    {
+        activeDebuffs = debuff.returnActiveDebuffs();
+        allDebuffs = debuff.returnAllDebuffs();
+
+        DeactivateAllDebuffs();
+
+        defaultHealth = enemy.GetDefaultHealth();
+        totalHealth = enemy.totalHealth;
+    }
+
     void Update()
     {
+        activeDebuffs = debuff.returnActiveDebuffs();
+        checkDebuffs();
+        
+        if (enemy.totalHealth != totalHealth)
+        {
+            totalHealth = enemy.totalHealth;
+            if (!IsVisible())
+                SetVisible(true);
+            SetHealth(totalHealth, defaultHealth);
+        }
         transform.rotation = Quaternion.LookRotation(new Vector3(90 * (float)Math.PI / 180, 180 * (float)Math.PI / 180, 0));
     }
 
     public void SetHealth(float curHealth, float defHealth)
     {
         healthMod.transform.localScale = new Vector3(curHealth / defHealth, 1, 1);
-    }
-
-    public void SetHealth(float scale)
-    {
-        healthMod.transform.localScale = new Vector3(scale, 1, 1);
     }
 
     public void SetVisible(bool visible)
@@ -48,6 +72,14 @@ public class EnemyUI : MonoBehaviour
         return visible;
     }
 
+    public void checkDebuffs()
+    {
+        foreach (string debuffType in allDebuffs)
+        {
+            SetDebuffActive(debuffType, activeDebuffs.Contains(debuffType));
+        }
+    }
+
     /// <summary>
     /// Sets activeness of icon in the order:
     /// -burn
@@ -56,26 +88,48 @@ public class EnemyUI : MonoBehaviour
     /// -slow
     /// -freeze
     /// </summary>
-    public void SetDebuffActive(string debuff, bool active)
+    public void SetDebuffActive(string debuffType, bool isActive)
     {
-        switch (debuff)
+        // switch (debuffType)
+        // {
+        //     case debuff.debuffBurning:
+        //         burn.SetActive(isActive);
+        //         break;
+        //     case debuff.debuffRadiated:
+        //         radiation.SetActive(isActive);
+        //         break;
+        //     case debuff.debuffStunned:
+        //         stun.SetActive(isActive);
+        //         break;
+        //     case debuff.debuffSlowed:
+        //         slow.SetActive(isActive);
+        //         break;
+        //     case debuff.debuffFrozen:
+        //         freeze.SetActive(isActive);
+        //         break;
+        //     default:
+        //         break;
+        // }
+
+        if (debuffType == debuff.debuffBurning)
         {
-            case "burning":
-                burn.SetActive(active);
-                break;
-            case "radiated":
-                radiation.SetActive(active);
-                break;
-            case "stunned":
-                stun.SetActive(active);
-                break;
-            case "slowed":
-                slow.SetActive(active);
-                break;
-            case "frozen":
-            default:
-                freeze.SetActive(active);
-                break;
+            burn.SetActive(isActive);
+        }
+        if (debuffType == debuff.debuffRadiated)
+        {
+            radiation.SetActive(isActive);
+        }
+        if (debuffType == debuff.debuffStunned)
+        {
+            stun.SetActive(isActive);
+        }
+        if (debuffType == debuff.debuffSlowed)
+        {
+            slow.SetActive(isActive);
+        }
+        if (debuffType == debuff.debuffFrozen)
+        {
+            freeze.SetActive(isActive);
         }
     }
 

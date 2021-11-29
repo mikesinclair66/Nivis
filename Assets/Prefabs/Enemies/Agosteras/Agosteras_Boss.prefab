@@ -296,6 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e68eb4f7e6579b4aa599fb1b30c4747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: -8912035814630002281}
+  debuff: {fileID: 0}
 --- !u!1 &1841995886658224473
 GameObject:
   m_ObjectHideFlags: 0
@@ -4736,6 +4738,9 @@ MonoBehaviour:
   frozen: 0
   freezeTimer: 1.5
   meltDamage: 300
+  freezeSound: {fileID: 0}
+  doubleRSPoints: 0
+  doubleRSPTimer: 0.5
 --- !u!114 &-7612466081446843819
 MonoBehaviour:
   m_ObjectHideFlags: 0

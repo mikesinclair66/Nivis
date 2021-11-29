@@ -220,7 +220,7 @@ public class Abilities : MonoBehaviour
         {
             if (c.GetComponent<Enemy>())
             {
-                Debug.Log("STUNNED!");
+                Debug.Log("stunned!");
                 c.GetComponent<Debuff>().activateStun(); // Can add variable to increase length of stun in Enemy.cs
             }
         }

@@ -32,21 +32,20 @@ public class EnemyDebuffer : MonoBehaviour
                 enemyUI.SetVisible(true);
             enemyUI.SetHealth(totalHealth, defaultHealth);
         }
-
         activeDebuffs = debuff.returnActiveDebuffs();
         CheckDebuffQueue();
     }
 
     private void CheckDebuffQueue()
     {
-        foreach(string prevDebuff in debuffQueue)
-        {
-            if (!activeDebuffs.Contains(prevDebuff))
-            {
-                debuffQueue.Remove(prevDebuff);
-                enemyUI.SetDebuffActive(prevDebuff, false);
-            }
-        }
+        // foreach(string prevDebuff in debuffQueue)
+        // {
+        //     if (!activeDebuffs.Contains(prevDebuff))
+        //     {
+        //         //debuffQueue.Remove(prevDebuff);
+        //         enemyUI.SetDebuffActive(prevDebuff, false);
+        //     }
+        // }
 
         foreach(string debuff in activeDebuffs)
         {
@@ -56,5 +55,7 @@ public class EnemyDebuffer : MonoBehaviour
                 enemyUI.SetDebuffActive(debuff, true);
             }
         }
+
+
     }
 }

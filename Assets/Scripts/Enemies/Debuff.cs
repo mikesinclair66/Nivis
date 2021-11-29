@@ -6,6 +6,15 @@ public class Debuff : MonoBehaviour
 {
     public Enemy enemy;
     private ArrayList activeDebuffs = new ArrayList();
+    private ArrayList allDebuffs = new ArrayList();
+
+    //Constants
+    public string debuffBurning = "burning",
+                    debuffRadiated = "radiated",
+                    debuffStunned = "stunned",
+                    debuffSlowed = "slowed",
+                    debuffFrozen = "frozen",
+                    debuffDoubleRSPoints = "doubleRSPoints";
 
     [Header("Burn")]
 
@@ -48,6 +57,7 @@ public class Debuff : MonoBehaviour
     void Start()
     {
         enemy = GetComponent<Enemy>();
+        instantiateAllDebuffs();
     }
 
     // Update is called once per frame
@@ -61,7 +71,7 @@ public class Debuff : MonoBehaviour
             if (burnTimer <= 0)
             {
                 burning = false;
-                activeDebuffs.Remove("burning");
+                activeDebuffs.Remove(debuffBurning);
             }
         }
 
@@ -72,7 +82,7 @@ public class Debuff : MonoBehaviour
             if (radTimer <= 0)
             {
                 radiation = false;
-                activeDebuffs.Remove("radiated");
+                activeDebuffs.Remove(debuffRadiated);
             }
         }
 
@@ -85,7 +95,7 @@ public class Debuff : MonoBehaviour
             {
                 stunned = false;
                 Debug.Log("Stun Removed");
-                activeDebuffs.Remove("stunned");
+                activeDebuffs.Remove(debuffStunned);
                 enemy.speed = enemy.defaultSpeed;
             }
         }
@@ -98,8 +108,8 @@ public class Debuff : MonoBehaviour
             if (slowTimer <= 0)
             {
                 //Debug.Log("Deactivate Slow");
-                slowed = false;                
-                activeDebuffs.Remove("slowed");
+                slowed = false;
+                activeDebuffs.Remove(debuffSlowed);
                 enemy.speed = enemy.defaultSpeed;
                 inRangeofRank2Pulsor = false;
             }
@@ -123,17 +133,35 @@ public class Debuff : MonoBehaviour
             if (doubleRSPTimer <= 0)
             {
                 doubleRSPoints = false;
+                activeDebuffs.Remove(debuffDoubleRSPoints);
             }
         }
 
     }//end of Update
+
+    /** Adds all available debuffs **/
+    public void instantiateAllDebuffs()
+    {
+        allDebuffs.Add(debuffBurning);
+        allDebuffs.Add(debuffRadiated);
+        allDebuffs.Add(debuffStunned);
+        allDebuffs.Add(debuffSlowed);
+        allDebuffs.Add(debuffFrozen);
+        allDebuffs.Add(debuffDoubleRSPoints);
+    }
+
+    /** returns arraylist of all debuffs **/
+    public ArrayList returnAllDebuffs()
+    {
+        return allDebuffs;
+    }
 
     /** returns arraylist of all active debuffs **/
     public ArrayList returnActiveDebuffs()
     {
         return activeDebuffs;
     }
-    
+
     public bool hasDebuff(string debuff)
     {
         return activeDebuffs.Contains(debuff);
@@ -145,9 +173,9 @@ public class Debuff : MonoBehaviour
     {
         //Debug.Log("Burn Activated");
         burning = true;
-        if (!hasDebuff("burning"))
+        if (!hasDebuff(debuffBurning))
         {
-            activeDebuffs.Add("burning");
+            activeDebuffs.Add(debuffBurning);
         }
         if (rank3Burn == true)
         {
@@ -191,9 +219,9 @@ public class Debuff : MonoBehaviour
     {
         //Debug.Log("Radiation Active");
         radiation = true;
-        if (!hasDebuff("radiated"))
+        if (!hasDebuff(debuffRadiated))
         {
-            activeDebuffs.Add("radiated");
+            activeDebuffs.Add(debuffRadiated);
         }
         radTimer = 3f;
     }
@@ -204,9 +232,9 @@ public class Debuff : MonoBehaviour
     {
         //Debug.Log("Unit Stunned");
         stunned = true;
-        if (!hasDebuff("stunned"))
+        if (!hasDebuff(debuffStunned))
         {
-            activeDebuffs.Add("stunned");
+            activeDebuffs.Add(debuffStunned);
         }
         enemy.speed = 0f;
         stunDuration = 1.5f;
@@ -217,9 +245,9 @@ public class Debuff : MonoBehaviour
     public void activateSlow()
     {
         slowed = true;
-        if (!hasDebuff("slowed"))
+        if (!hasDebuff(debuffSlowed))
         {
-            activeDebuffs.Add("slowed");
+            activeDebuffs.Add(debuffSlowed);
         }
         enemy.speed = enemy.defaultSpeed / slowAmount;
         slowTimer = 0.5f;
@@ -244,9 +272,9 @@ public class Debuff : MonoBehaviour
         {
             freezeSound.Play();
         }
-        if (!hasDebuff("frozen"))
+        if (!hasDebuff(debuffFrozen))
         {
-            activeDebuffs.Add("frozen");
+            activeDebuffs.Add(debuffFrozen);
         }
         enemy.speed = 0f;
         freezeTimer = 1.5f;
@@ -256,7 +284,7 @@ public class Debuff : MonoBehaviour
     public void freezeOff()
     {
         freezeTimer = 0f;
-        activeDebuffs.Remove("frozen");
+        activeDebuffs.Remove(frozen);
         enemy.speed = enemy.defaultSpeed;
         frozen = false;
     }
@@ -266,9 +294,9 @@ public class Debuff : MonoBehaviour
     public void activateDoubleRSPoints()
     {
         doubleRSPoints = true;
-        if (!hasDebuff("doubleRSPoints"))
+        if (!hasDebuff(debuffDoubleRSPoints))
         {
-            activeDebuffs.Add("doubleRSPoints");    
+            activeDebuffs.Add(debuffDoubleRSPoints);
         }
     }
 }
