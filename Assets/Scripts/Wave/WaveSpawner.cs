@@ -71,7 +71,6 @@ public class WaveSpawner : MonoBehaviour
                 }
             }
             waveIndex++;
-            EnemiesAlive = 0;
         }
         else
         {

@@ -14,7 +14,8 @@ public class Debuff : MonoBehaviour
                     debuffStunned = "stunned",
                     debuffSlowed = "slowed",
                     debuffFrozen = "frozen",
-                    debuffDoubleRSPoints = "doubleRSPoints";
+                    debuffDoubleRSPoints = "doubleRSPoints",
+                    debuffPercentHP = "percentHP";
 
     [Header("Burn")]
 
@@ -52,6 +53,10 @@ public class Debuff : MonoBehaviour
     [Header("Double Resource Points")]
     public bool doubleRSPoints;
     public float doubleRSPTimer = 0.5f;
+
+    [Header("Percent Health Damage")]
+    public bool percentHP;
+    public float percentHPTimer = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -121,7 +126,6 @@ public class Debuff : MonoBehaviour
             freezeTimer -= Time.deltaTime;
             if (freezeTimer <= 0)
             {
-                Debug.Log("Timer hit 0" + freezeTimer);
                 freezeOff();
             }
         }
@@ -134,6 +138,20 @@ public class Debuff : MonoBehaviour
             {
                 doubleRSPoints = false;
                 activeDebuffs.Remove(debuffDoubleRSPoints);
+                doubleRSPTimer = 0f;
+            }
+        }
+
+        //check percentHP timer
+        if (percentHP == true)
+        {
+            percentHPTimer -= Time.deltaTime;
+            if (percentHPTimer <= 0)
+            {
+                Debug.Log("Timer hit 0 " + percentHPTimer);
+                percentHP = false;
+                activeDebuffs.Remove(debuffPercentHP);
+                percentHPTimer = 0f;
             }
         }
 
@@ -296,7 +314,20 @@ public class Debuff : MonoBehaviour
         doubleRSPoints = true;
         if (!hasDebuff(debuffDoubleRSPoints))
         {
+            doubleRSPTimer = 0.5f;
             activeDebuffs.Add(debuffDoubleRSPoints);
+        }
+    }
+
+    /*********************** Percent Health Damage *************************/
+    /** Activate Percent Health Damage Effect on Enemy **/
+    public void activatePercentHP()
+    {
+        percentHP = true;
+        if (!hasDebuff(debuffPercentHP))
+        {
+            percentHPTimer = 0.5f;
+            activeDebuffs.Add(debuffPercentHP);
         }
     }
 }

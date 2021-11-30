@@ -16,10 +16,7 @@ public class Enemy : MonoBehaviour
     private float defaultHealth;
     public bool inRangeofRank2Pulsor;
 
-    void Awake()
-    {
-        
-    }
+    void Awake() { }
     
     void Start()
     {
@@ -47,18 +44,10 @@ public class Enemy : MonoBehaviour
                 Debug.Log("Radiation Damage Taken");
                 totalHealth -= (damageAmount / debuff.radPercentage);
             }
-            if (totalHealth <= 0) { Die(); }
-        }
-        else if (totalHealth <= 0) { Die(); }
-    }
-
-    //turret stuff
-    public void percentHealthTaken(float damageAmount)
-    {
-        Debug.Log("Percent Damage Taken: " + (damageAmount / 100));
-        if (totalHealth > 0)
-        {
-            totalHealth -= defaultHealth * (damageAmount / 100);
+            if (checkIfDebuffActive(debuff.debuffPercentHP) == true)
+            {
+                Debug.Log("activated percentHP" + defaultHealth * (2.5f / 100f));
+            }
             if (totalHealth <= 0) { Die(); }
         }
         else if (totalHealth <= 0) { Die(); }
@@ -85,10 +74,10 @@ public class Enemy : MonoBehaviour
         return false;
     }
 
-    void Die()
+    public void Die()
     {
-        WaveSpawner.EnemiesAlive--;
         Destroy(gameObject);
+        WaveSpawner.EnemiesAlive--;
 
         if (checkIfDebuffActive(debuff.debuffBurning) == true)
         {
