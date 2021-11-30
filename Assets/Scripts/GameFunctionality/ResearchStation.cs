@@ -110,9 +110,9 @@ public class ResearchStation : MonoBehaviour
         }
 
         int[,,] researchCost = ResearchCostManager.getResearchCosts();
-        price1Text.text = "Kills: " + researchCost[page, 0, 0].ToString("0");
-        price2Text.text = "Kills: " + researchCost[page, 0, 1].ToString("0");
-        price3Text.text = "Kills: " + researchCost[page, 0, 2].ToString("0");
+        price1Text.text = "Research Points: " + researchCost[page, 0, 0].ToString("0");
+        price2Text.text = "Research Points: " + researchCost[page, 0, 1].ToString("0");
+        price3Text.text = "Research Points: " + researchCost[page, 0, 2].ToString("0");
     }
 
     /// <summary>
@@ -169,7 +169,7 @@ public class ResearchStation : MonoBehaviour
                 for (int n = i - 1; n > -1; n--)
                     if (!researched[page, 0, n])
                     {
-                        Debug.Log("You must upgrade from the start of the tree before upgrading further.");
+                        //Debug.Log("You must upgrade from the start of the tree before upgrading further.");
                         return;
                     }
 
@@ -187,7 +187,7 @@ public class ResearchStation : MonoBehaviour
                 for (int n = i - 1; n > -1; n--)
                     if (!researched[page, 1, n])
                     {
-                        Debug.Log("You must upgrade from the start of the tree before upgrading further.");
+                        //Debug.Log("You must upgrade from the start of the tree before upgrading further.");
                         return;
                     }
 
@@ -212,55 +212,52 @@ public class ResearchStation : MonoBehaviour
             optionDescriptor.SetPosition(b1Img[ability].transform.position.x, b1Img[ability].transform.position.y - 100);
         else
             optionDescriptor.SetPosition(b2Img[ability - 3].transform.position.x, b2Img[ability - 3].transform.position.y - 100);
-        string power = "NULL";
         switch (page)
         {
             case 0:
                 if (ability == 0)
-                    power = "sniper";
+                    optionDescriptor.SetText("Sniper Turret Upgrade\nHit targets at any range\nPrioritizes Tanks");
                 else if (ability == 1)
-                    power = "+damage";
+                    optionDescriptor.SetText("Greatly increase\ndamage");
                 else if (ability == 2)
-                    power = "stun";
+                    optionDescriptor.SetText("Can now Stun\nTanks");
                 else if (ability == 3)
-                    power = "laser";
+                    optionDescriptor.SetText("Laser Turret Upgrade\nBeams nearby targets");
                 else if (ability == 4)
-                    power = "+fire rate";
+                    optionDescriptor.SetText("Increase Fire Rate");
                 else
-                    power = "freeze chance";
+                    optionDescriptor.SetText("Chance to Freeze\nenemies");
                 break;
             case 1:
                 if (ability == 0)
-                    power = "nuke";
+                    optionDescriptor.SetText("Nuke Missile Upgrade\nIncreased AoE");
                 else if (ability == 1)
-                    power = "+fire rate";
+                    optionDescriptor.SetText("Increase Fire Rate");
                 else if (ability == 2)
-                    power = "radiation";
+                    optionDescriptor.SetText("Now causes Radiation\n(Enemies take\nincreased damage\nfrom all sources)");
                 else if (ability == 3)
-                    power = "fire";
+                    optionDescriptor.SetText("Fire Missile Upgrade\nCauses Burning\n(DoT damage)");
                 else if (ability == 4)
-                    power = "+damage";
+                    optionDescriptor.SetText("Increase damage");
                 else
-                    power = "fire spread";
+                    optionDescriptor.SetText("Enemies now spread\nfire on death\nto nearby targets\n(Refreshes DoT)");
                 break;
             case 2:
             default:
                 if (ability == 0)
-                    power = "fire rate";
+                    optionDescriptor.SetText("Increase Fire Rate");
                 else if (ability == 1)
-                    power = "2x kill counts";
+                    optionDescriptor.SetText("Enemies that die\nwithin range gives\n2X Research Points");
                 else if (ability == 2)
-                    power = "instant kill%";
+                    optionDescriptor.SetText("Chance to Instantly Kill\nsmall enemies");
                 else if (ability == 3)
-                    power = "range";
+                    optionDescriptor.SetText("Increase Range");
                 else if (ability == 4)
-                    power = "loot collecting";
+                    optionDescriptor.SetText("Chance to siphon\nMoney from enemies\nwithin range");
                 else
-                    power = "+damage";
+                    optionDescriptor.SetText("Deal a Percent of\nthe enemies health\nas bonus damage");
                 break;
         }
-
-        optionDescriptor.SetText("Purchase the\n" + power + "\nupgrade");
     }
 
     /// <summary>

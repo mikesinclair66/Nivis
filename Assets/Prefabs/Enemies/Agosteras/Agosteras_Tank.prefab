@@ -737,7 +737,6 @@ GameObject:
   - component: {fileID: 8415560677736071962}
   - component: {fileID: 4069724292796446324}
   - component: {fileID: 245581701675755698}
-  - component: {fileID: -1100332597820257652}
   - component: {fileID: 6855068293986676199}
   - component: {fileID: -1404532016906325750}
   - component: {fileID: 2038412994108327013}
@@ -819,46 +818,6 @@ MonoBehaviour:
   researchPointValue: 3
   defaultSpeed: 0
   inRangeofRank2Pulsor: 0
---- !u!114 &-1100332597820257652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8415560677743472776}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcd1dec068298aa4c8334b24ee3c6980, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  damageValue: 100
-  totalHealth: 1000
-  radPercentage: 0
-  radTimer: 3
-  radDuration: 0
-  radiation: 0
-  stunDuration: 0
-  stunnedUnit: 0
-  slowAmount: 2
-  isTank: 0
-  isSpeed: 0
-  pulsorSlowedUnit: 0
-  pulsorSlowTimer: 0.5
-  burning: 0
-  burnTimer: 5
-  TickDamageTimer: 0.5
-  aoeBurn: 0
-  burnRadius: 15
-  freezeDuration: 1.5
-  frozen: 0
-  freezeTimer: 1.5
-  meltDamage: 300
-  inRangeofRank2Pulsor: 0
-  rcm: {fileID: 0}
-  killCountValue: 10
-  speedKillCountValue: 1
-  tankKillCountValue: 10
 --- !u!114 &6855068293986676199
 MonoBehaviour:
   m_ObjectHideFlags: 0
