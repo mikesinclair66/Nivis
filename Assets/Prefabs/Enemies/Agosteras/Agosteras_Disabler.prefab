@@ -939,11 +939,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7122654101855557399}
   - component: {fileID: 7122654101862791351}
+  - component: {fileID: 1854141990149959018}
   - component: {fileID: -3235826249655832642}
   - component: {fileID: 6680334133794356626}
   - component: {fileID: 5376977053672862544}
   - component: {fileID: -5562226226972258871}
-  - component: {fileID: 1854141990149959018}
   - component: {fileID: 6286211098215928794}
   - component: {fileID: 7761743221661679429}
   m_Layer: 0
@@ -990,6 +990,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &1854141990149959018
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122654101855521591}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-3235826249655832642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1035,15 +1048,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e9badd0f2e06254daec5e5189082df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  damageValue: 10
-  totalHealth: 100
-  healthScaling: 5
   bulletPrefab: {fileID: 339889784731166791, guid: d34936cc686897f4dbad5a74150c4d1a, type: 3}
   range: 15
   firePoint: {fileID: 272113611315498825}
   turretTag: Turret
-  disablerKillCountValue: 3
+  enemy: {fileID: 6680334133794356626}
 --- !u!114 &-5562226226972258871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,19 +1065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1a153574446c648b35ed50463839db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &1854141990149959018
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7122654101855521591}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6286211098215928794
 MonoBehaviour:
   m_ObjectHideFlags: 0

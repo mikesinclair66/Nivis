@@ -16,10 +16,7 @@ public class Enemy : MonoBehaviour
     private float defaultHealth;
     public bool inRangeofRank2Pulsor;
 
-    void Awake()
-    {
-        
-    }
+    void Awake() { }
     
     void Start()
     {
@@ -85,7 +82,7 @@ public class Enemy : MonoBehaviour
         return false;
     }
 
-    void Die()
+    public void Die()
     {
         WaveSpawner.EnemiesAlive--;
         Destroy(gameObject);

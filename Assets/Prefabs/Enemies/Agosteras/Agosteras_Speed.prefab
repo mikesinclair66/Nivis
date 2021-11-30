@@ -196,11 +196,10 @@ GameObject:
   m_Component:
   - component: {fileID: 494698}
   - component: {fileID: 9500310}
-  - component: {fileID: 14365428}
+  - component: {fileID: 3859888454675932631}
   - component: {fileID: -2256088458993313075}
   - component: {fileID: -7876788728691667741}
   - component: {fileID: -159133662166000327}
-  - component: {fileID: 3859888454675932631}
   - component: {fileID: -1447395478612602949}
   - component: {fileID: -6328032097256009077}
   m_Layer: 0
@@ -246,8 +245,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!143 &14365428
-CharacterController:
+--- !u!135 &3859888454675932631
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -255,15 +254,10 @@ CharacterController:
   m_GameObject: {fileID: 111292}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.17
-  m_Radius: 0.81
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.1, z: 0}
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-2256088458993313075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,19 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1a153574446c648b35ed50463839db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &3859888454675932631
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111292}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-1447395478612602949
 MonoBehaviour:
   m_ObjectHideFlags: 0

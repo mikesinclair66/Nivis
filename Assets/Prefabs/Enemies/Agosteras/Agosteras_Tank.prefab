@@ -735,10 +735,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8415560677743307944}
   - component: {fileID: 8415560677736071962}
+  - component: {fileID: -1404532016906325750}
   - component: {fileID: 4069724292796446324}
   - component: {fileID: 245581701675755698}
   - component: {fileID: 6855068293986676199}
-  - component: {fileID: -1404532016906325750}
   - component: {fileID: 2038412994108327013}
   - component: {fileID: -5814764219014972398}
   m_Layer: 0
@@ -785,6 +785,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &-1404532016906325750
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415560677743472776}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4069724292796446324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,19 +843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1a153574446c648b35ed50463839db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &-1404532016906325750
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8415560677743472776}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2038412994108327013
 MonoBehaviour:
   m_ObjectHideFlags: 0
