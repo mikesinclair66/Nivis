@@ -8,12 +8,18 @@ public class MissileTurret : MonoBehaviour
     public int missileFireTier;
     public int missileNukeTier;
 
+    /**
+     * Constantly check for closest target
+     */
     private void Start()
     {
         InvokeRepeating("UpdateClosestTarget", 0f, 0.5f);
         turret = GetComponent<Turret>();
     }
 
+    /**
+     * Constantly look around for an enemy and shoot at it if the turret isn't disabled.
+     */
     private void Update()
     {
         if (turret.target == null)
@@ -39,6 +45,9 @@ public class MissileTurret : MonoBehaviour
         }
     }
 
+    /**
+     * Instantiate a bullet and play shot sound.
+     */
     void Shoot()
     {
         GameObject bulletGO = (GameObject)Instantiate(turret.bulletPrefab, turret.firePoint.position, turret.firePoint.rotation);
@@ -53,6 +62,9 @@ public class MissileTurret : MonoBehaviour
         }
     }
 
+    /**
+     * Find the closest target.
+     */
     void UpdateClosestTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(turret.enemyTag);

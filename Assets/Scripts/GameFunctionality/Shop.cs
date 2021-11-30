@@ -12,9 +12,7 @@ public class Shop : MonoBehaviour
     public TurretBlueprint standardTurret;
     public TurretBlueprint missileLauncher;
     public TurretBlueprint pulsorTurret;
-
-   
-
+    
     BuildManager buildManager;
     // Start is called before the first frame update
     void Start()
@@ -52,6 +50,9 @@ public class Shop : MonoBehaviour
         
     }
 
+    /**
+     * Functions to select the requested turret.
+     */
     public void SelectStandardTurret()
     {
         Debug.Log("Standard Turret Selected");

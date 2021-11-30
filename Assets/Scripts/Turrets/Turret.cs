@@ -27,6 +27,10 @@ public class Turret : MonoBehaviour
     [Header("Unity Setup Fields")]
 
     public string enemyTag = "Enemy";
+    
+    /**
+     * Handle checking debuffs.
+     */
     void Start()
     {
         turretDebuff = GetComponent<TurretDebuff>();
@@ -52,6 +56,9 @@ public class Turret : MonoBehaviour
         return false;
     }
 
+    /**
+     * Event function to draw range while in scene. Used for debugging.
+     */
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;

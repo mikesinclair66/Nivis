@@ -19,7 +19,9 @@ public class Node : MonoBehaviour
     public int key;
     static int keyLength;
 
-
+    /**
+     * Get access to BuildManager
+     */
     void Start()
     {
         buildManager = BuildManager.instance;
@@ -39,6 +41,9 @@ public class Node : MonoBehaviour
     {
         return currentUpgradeTier;
     }
+    /**
+     * Get max upgrade tier for *all* paths.
+     */
     public List<int> getMaxUpgradeTier()
     {
         List<int> maxUpgrades = new List<int>();
@@ -50,6 +55,9 @@ public class Node : MonoBehaviour
         return maxUpgrades;
     }
 
+    /**
+     * Build a turret in this current node.
+     */
     void BuildTurret(TurretBlueprint blueprint)
     {
         Destroy(buildManager.obj);
@@ -83,6 +91,9 @@ public class Node : MonoBehaviour
         }
     }
 
+    /**
+     * Sell turret.
+     */
     public void SellTurret()
     {
         if (turret != null)
@@ -97,6 +108,9 @@ public class Node : MonoBehaviour
         }
     }
 
+    /**
+     * Event function that calls when node is clicked. Used for building turret, accessing turret UI for upgrade/sell, or re-enabling turret.
+     */
     void OnMouseDown()
     {
         if (EventSystem.current.IsPointerOverGameObject())
@@ -125,6 +139,10 @@ public class Node : MonoBehaviour
         // Deselects turret to build in build manager after building a turret
         // buildManager.SelectTurretToBuild(null);
     }
+    
+    /**
+     * Event function that calls when node is hovered. Used to highlight the hovered node.
+     */
     void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject())
@@ -138,6 +156,9 @@ public class Node : MonoBehaviour
         mRend.enabled = true;
     }
 
+    /**
+     * Event function that calls when mouse leaves node. Disable the highlight.
+     */
     void OnMouseExit()
     {
         if (turret != null)
@@ -147,6 +168,9 @@ public class Node : MonoBehaviour
         mRend.enabled = false;
     }
 
+    /**
+     * Upgrade the current turret. Requires the path and tier of the upgrade as ints.
+     */
     public void UpgradeTurret(int path, int tier)
     {
         UpgradePath requestedPath = getUpgradePath(path);
@@ -169,6 +193,9 @@ public class Node : MonoBehaviour
         }
     }
 
+    /**
+     * Check if the turret can be upgraded to the requested upgrade.
+     */
     public bool canUpgrade(int path, int tier)
     {
         UpgradePath requestedPath = getUpgradePath(path);
@@ -199,6 +226,9 @@ public class Node : MonoBehaviour
         return true;
     }
 
+    /**
+     * Get the requested upgrade path given an int
+     */
     private UpgradePath getUpgradePath(int path)
     {
         UpgradePath requestedPath = turretBlueprint.paths[path - 1];
@@ -210,6 +240,9 @@ public class Node : MonoBehaviour
         return requestedPath;
     }
 
+    /**
+     * Check if the requested upgrade path is valid
+     */
     private bool validateRequestedPath(int path)
     {
         if (upgradePath == null)
@@ -222,6 +255,9 @@ public class Node : MonoBehaviour
         }
     }
 
+    /**
+     * Check if the requested upgrade tier of path is valid
+     */
     private bool validateRequestedTier(UpgradePath path, int tier)
     {
         if (tier > path.upgrades.Count)

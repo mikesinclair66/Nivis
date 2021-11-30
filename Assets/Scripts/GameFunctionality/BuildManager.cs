@@ -19,7 +19,9 @@ public class BuildManager : MonoBehaviour
     private Ray ray;
     private RaycastHit hit;
 
-    // TODO: add select/deselect code for the turret UI, optional depending on how we plan to implement this
+    /**
+     * Instantiate the BuildManager upon starting the game
+     */
     void Awake()
     {
         if (instance != null)
@@ -45,6 +47,9 @@ public class BuildManager : MonoBehaviour
 
     public bool isTurretSelected { get { return turretToBuild != null; } }
 
+    /**
+     * BuildManager handles checking what node is selected. Used for upgrading and selling a turret.
+     */
     public void SelectNode(Node node)
     {
         if (selectedNode == node)
@@ -65,10 +70,12 @@ public class BuildManager : MonoBehaviour
 
     public Node GetSelectedNode()
     {
-
         return selectedNode;
     }
 
+    /**
+     * BuildManager handles checking what turret is selected to build. Called by Shop.cs
+     */
     public void SelectTurretToBuild(TurretBlueprint turret, int turretToBuildType)
     {
         isBuildingTurret = true;

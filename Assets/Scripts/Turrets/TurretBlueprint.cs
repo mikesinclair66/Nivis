@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Serializing a TurretBlueprint for Shop.cs to use. TurretBlueprint should be base turret only.
+ */
 [System.Serializable]
 public class TurretBlueprint
 {

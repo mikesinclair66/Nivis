@@ -30,6 +30,10 @@ public class Bullet : MonoBehaviour
     {
         target = _target;
     }
+    
+    /**
+     * Bullet constantly seeks target enemy. Once enemy is found, apply hit.
+     */
     void Update()
     {
         if (target == null)
@@ -52,7 +56,9 @@ public class Bullet : MonoBehaviour
 
     }
 
-    // TODO: find which video this code is relevant, might remove before alpha build
+    /**
+     * Checks what type of bullet it is (standard or missile), then applies correct hit function.
+     */
     void HitTarget()
     {
         if (explosionRadius > 0f)
@@ -71,6 +77,9 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+    /**
+     * Explode and damage multiple enemies.
+     */
     void Explode()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
@@ -98,6 +107,9 @@ public class Bullet : MonoBehaviour
         return false;
     }
 
+    /**
+     * Damage function. Will also apply status effects.
+     */
     void Damage(Transform enemy)
     {
         if (impactEffect != null)

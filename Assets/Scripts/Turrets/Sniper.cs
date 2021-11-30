@@ -7,12 +7,19 @@ public class Sniper : MonoBehaviour
 {
     public Turret turret;
     public int sniperTier;
+    
+    /**
+     * Constantly check for closest target
+     */
     void Start()
     {
         turret = GetComponent<Turret>();
         InvokeRepeating("UpdateClosestTarget", 0f, 0.5f);
     }
 
+    /**
+     * Constantly look around for an enemy and shoot at it if the turret isn't disabled.
+     */
     void Update()
     {
         if (turret.target == null)
@@ -38,6 +45,9 @@ public class Sniper : MonoBehaviour
         }
     }
 
+    /**
+     * Instantiate a bullet and play shot sound.
+     */
     void Shoot()
     {
         GameObject bulletGO = (GameObject)Instantiate(turret.bulletPrefab, turret.firePoint.position, turret.firePoint.rotation);
@@ -52,6 +62,9 @@ public class Sniper : MonoBehaviour
         }
     }
 
+    /**
+     * Find the closest target. Prioritize tanks first.
+     */
     void UpdateClosestTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(turret.enemyTag);

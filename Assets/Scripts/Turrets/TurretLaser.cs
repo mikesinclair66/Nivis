@@ -17,12 +17,18 @@ public class TurretLaser : MonoBehaviour
 
     public string enemyTag = "Enemy";
 
+    /**
+     * Constantly check for closest target
+     */
     void Start()
     {
         turret = GetComponent<Turret>();
         InvokeRepeating("UpdateClosestTarget", 0f, 0.5f);
     }
 
+    /**
+     * Constantly look around for an enemy and shoot at it if the turret isn't disabled.
+     */
     void Update()
     {
         if (turret.target == null)
@@ -37,8 +43,6 @@ public class TurretLaser : MonoBehaviour
             }
             return;
         }
-
-        LockOnTarget();
 
         if (turret.checkIfDebuffActive("disabled") != true)
         {
@@ -56,12 +60,9 @@ public class TurretLaser : MonoBehaviour
         }
     }
 
-    void LockOnTarget()
-    {
-        Vector3 dir = turret.target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-    }
-
+    /**
+     * Instantiate a line renderer and point at target enemy.
+     */
     void Laser()
     {
         if (turret.shootSound != null && !turret.shootSound.isPlaying)
@@ -84,6 +85,9 @@ public class TurretLaser : MonoBehaviour
         lineRenderer.SetPosition(1, turret.target.position);
     }
 
+    /**
+     * Find the closest target.
+     */
     void UpdateClosestTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
