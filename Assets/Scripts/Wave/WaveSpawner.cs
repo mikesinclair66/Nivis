@@ -12,6 +12,7 @@ public class WaveSpawner : MonoBehaviour
     public GameObject enemy;
     public GameObject timeController;
     public GameObject timePauseButton;
+    public Generator generator;
 
     public float timeBetweenWaves = 5f;
     private float countdown = 5f;
@@ -80,7 +81,8 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy(GameObject enemy)
     {
-        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        var spawnedEnemy = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        spawnedEnemy.GetComponent<EnemyMovement>().generator = generator;
         EnemiesAlive++;
     }
 }

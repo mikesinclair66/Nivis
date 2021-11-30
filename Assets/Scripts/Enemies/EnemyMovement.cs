@@ -10,12 +10,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Enemy enemy;
 
-    Generator generator;
-
-    void Awake()
-    {
-        generator = GameObject.Find("Generator").GetComponent<Generator>();
-    }
+    public Generator generator;
 
     void Start()
     {
@@ -26,9 +21,10 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
+        transform.position += dir.normalized * enemy.speed * Time.deltaTime;
+        //transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
 
-        if (Vector3.Distance(transform.position, target.position) <= 0.4f)
+        if (Vector3.Distance(transform.position, target.position) <= 1f)
         {
             GetNextWaypoint();
         }

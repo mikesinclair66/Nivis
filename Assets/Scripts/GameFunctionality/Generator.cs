@@ -51,7 +51,6 @@ public class Generator : MonoBehaviour
                 totalHealth -= damageAmount;
                 canvas.GetComponent<Hotbar>().TakeDamage(totalHealth);
 
-                Debug.Log("HP2: " + totalHealth + " Shield2: " + shieldHealth);
                 if (totalHealth <= 0)
                 {
                     SceneManager.LoadScene("EndScene");

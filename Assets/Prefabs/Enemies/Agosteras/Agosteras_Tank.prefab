@@ -823,7 +823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: tank
-  totalHealth: 1000
+  totalHealth: 2000
   speed: 5
   damageValue: 100
   debuff: {fileID: 2038412994108327013}
@@ -843,6 +843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1a153574446c648b35ed50463839db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generator: {fileID: 0}
 --- !u!114 &2038412994108327013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -862,6 +863,7 @@ MonoBehaviour:
   debuffSlowed: slowed
   debuffFrozen: frozen
   debuffDoubleRSPoints: doubleRSPoints
+  debuffPercentHP: percentHP
   burning: 0
   rank3Burn: 0
   burnRadius: 15
@@ -884,6 +886,8 @@ MonoBehaviour:
   freezeSound: {fileID: 8042753951694548750, guid: b503ed691f556f642935f4e18d6a1864, type: 3}
   doubleRSPoints: 0
   doubleRSPTimer: 0.5
+  percentHP: 0
+  percentHPTimer: 0.5
 --- !u!82 &-5814764219014972398
 AudioSource:
   m_ObjectHideFlags: 0
