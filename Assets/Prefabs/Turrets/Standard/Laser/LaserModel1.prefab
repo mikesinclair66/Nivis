@@ -391,7 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 747140475499037376}
   lineRenderer: {fileID: 2936947962937879127}
-  damageOverTime: 30
+  damageOverTime: 35
   LaserTier: 1
   enemyTag: Enemy
 --- !u!114 &1821323456553049570

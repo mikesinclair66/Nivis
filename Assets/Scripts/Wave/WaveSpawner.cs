@@ -30,6 +30,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Enemies alive: " + EnemiesAlive);
         if (EnemiesAlive > 0) { return; }
 
         if (TimeControl.autoStart == false)
@@ -59,12 +60,8 @@ public class WaveSpawner : MonoBehaviour
         if (waveIndex < waves.Length)
         {
             Wave wave = waves[waveIndex];
-
-            //enemy.GetComponent<Enemy>().ScaleHP();
-
-            waveIndexText.text = "Wave: " + waveIndex.ToString();
-            waveIndexText.text = "R" + waveIndex.ToString();
-
+            int waveIndexPlusOne = waveIndex + 1;
+            waveIndexText.text = "Wave: " + waveIndexPlusOne.ToString() + "/" + waves.Length.ToString();
             foreach (WaveEnemy i in wave.waveEnemies)
             {
                 for (int j = 0; j < i.count; j++)
@@ -73,8 +70,8 @@ public class WaveSpawner : MonoBehaviour
                     yield return new WaitForSeconds(1f / i.rate);
                 }
             }
-
             waveIndex++;
+            EnemiesAlive = 0;
         }
         else
         {

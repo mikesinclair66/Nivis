@@ -345,8 +345,8 @@ public class Inventory : MonoBehaviour
                     break;
                 case 2:
                 default:
-                    upgradeText1.text = "+Fire\nrate\n$" + shop.pulsorTurret.paths[0].upgrades[0].cost;
-                    upgradeText2.text = "+Range\n$" + shop.pulsorTurret.paths[1].upgrades[0].cost;
+                    upgradeText1.text = "+ Fire\nRate\n$" + shop.pulsorTurret.paths[0].upgrades[0].cost;
+                    upgradeText2.text = "+ Range\n$" + shop.pulsorTurret.paths[1].upgrades[0].cost;
                     break;
             }
         }
@@ -373,16 +373,16 @@ public class Inventory : MonoBehaviour
                         if (upgradePrimary[towerSelected] == 0)
                         {
                             if (upgradeLvl[towerSelected] == 1)
-                                descriptor = "+Damage";
+                                descriptor = "Greatly increase\ndamage";
                             if (upgradeLvl[towerSelected] == 2)
-                                descriptor = "+Stun";
+                                descriptor = "Can now Stun\nTanks";
                         }
                         else if(upgradePrimary[towerSelected] == 1)
                         {
                             if (upgradeLvl[towerSelected] == 1)
-                                descriptor = "+Fire\nRate";
+                                descriptor = "Increase Fire Rate";
                             if (upgradeLvl[towerSelected] == 2)
-                                descriptor = "+Freeze %";
+                                descriptor = "Chance to Freeze\nenemies";
                         }
                         upgradeText.text = descriptor + "\n$" + shop.standardTurret.paths[upgradePrimary[towerSelected]]
                             .upgrades[upgradeLvl[towerSelected]].cost;
@@ -391,16 +391,16 @@ public class Inventory : MonoBehaviour
                         if (upgradePrimary[towerSelected] == 0)
                         {
                             if (upgradeLvl[towerSelected] == 1)
-                                descriptor = "+Fire\nRate";
+                                descriptor = "Increase Fire Rate";
                             if (upgradeLvl[towerSelected] == 2)
-                                descriptor = "Radiation";
+                                descriptor = "Now causes Radiation\n(Enemies take\nincreased damage\nfrom all sources)";
                         }
                         else if(upgradePrimary[towerSelected] == 1)
                         {
                             if (upgradeLvl[towerSelected] == 1)
-                                descriptor = "+Damage";
+                                descriptor = "Increase damage";
                             if (upgradeLvl[towerSelected] == 2)
-                                descriptor = "Fire\nSpread";
+                                descriptor = "Enemies now spread\nfire on death\nto nearby targets\n(Refreshes DoT)";
                         }
                         upgradeText.text = descriptor + "\n$" + shop.missileLauncher.paths[upgradePrimary[towerSelected]]
                             .upgrades[upgradeLvl[towerSelected]].cost;
@@ -410,16 +410,16 @@ public class Inventory : MonoBehaviour
                         if (upgradePrimary[towerSelected] == 0)
                         {
                             if (upgradeLvl[towerSelected] == 1)
-                                descriptor = "2x Kill\nCounts";
+                                descriptor = "Enemies that die\nwithin range gives\n2X Research Points";
                             if (upgradeLvl[towerSelected] == 2)
-                                descriptor = "+Instant\nKill %";
+                                descriptor = "Chance to Instantly Kill\nsmall enemies";
                         }
                         else if(upgradePrimary[towerSelected] == 1)
                         {
                             if (upgradeLvl[towerSelected] == 1)
-                                descriptor = "Collect\nEnemy $";
+                                descriptor = "Chance to siphon\nMoney from enemies\nwithin range";
                             if (upgradeLvl[towerSelected] == 2)
-                                descriptor = "+Damage";
+                                descriptor = "Deal a Percent of\nthe enemies health\nas bonus damage";
                         }
                         upgradeText.text = descriptor + "\n$" + shop.pulsorTurret.paths[upgradePrimary[towerSelected]]
                             .upgrades[upgradeLvl[towerSelected]].cost;
