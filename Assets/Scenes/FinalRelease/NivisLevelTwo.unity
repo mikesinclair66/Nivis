@@ -6297,21 +6297,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveEnemies:
-    - enemy: {fileID: 100066, guid: a1d65ba4cbf897a4c807b5833a635c58, type: 3}
-      count: 5
-      rate: 2
-    - enemy: {fileID: 7122654101855521591, guid: 7a65064d8a9f5044f967040e5bccc3b8, type: 3}
-      count: 5
-      rate: 2
-    - enemy: {fileID: 111292, guid: ac4570d2527bba9409d05d847d665024, type: 3}
-      count: 5
-      rate: 2
-    - enemy: {fileID: 8415560677743472776, guid: 7adcc9f627e08e44a8227f4ecb3533ce, type: 3}
-      count: 5
-      rate: 2
     - enemy: {fileID: 5792744366562842766, guid: 2d703a053d9738d43a842641d019328a, type: 3}
-      count: 5
-      rate: 2
+      count: 1
+      rate: 3
   spawnPoint: {fileID: 1253571385734008}
   enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
   timeController: {fileID: 109078949}

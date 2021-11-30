@@ -69,7 +69,7 @@ public class Pulsor : MonoBehaviour
                 }
                 if (pulsorRangeTier >= 3)
                 {
-                    c.GetComponent<Enemy>().percentHealthTaken(percentHealthDmg);
+                    c.GetComponent<Debuff>().activatePercentHP();
                 }
 
                 //pulsorRate upgrades
