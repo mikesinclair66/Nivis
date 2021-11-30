@@ -18,7 +18,6 @@ public class Debuff : MonoBehaviour
                     debuffPercentHP = "percentHP";
 
     [Header("Burn")]
-
     public bool burning;
     public bool rank3Burn;
     public float burnRadius = 15f;
@@ -26,7 +25,6 @@ public class Debuff : MonoBehaviour
     private float burnDamage;
 
     [Header("Radiation")]
-
     public bool radiation;
     public int radPercentage = 25;
     public float radTimer = 3f;
@@ -35,6 +33,7 @@ public class Debuff : MonoBehaviour
     [Header("Stun")]
     public float stunDuration;
     public bool stunned;
+    public float stunChance = 20f;
 
     [Header("Slow")]
     public bool slowed;
@@ -72,7 +71,10 @@ public class Debuff : MonoBehaviour
         if (burning == true)
         {
             burnTimer -= Time.deltaTime;
-            enemy.TakeDamage(burnDamage * Time.deltaTime);
+            if (enemy.totalHealth > 0)
+            {
+                enemy.TakeDamage(burnDamage * Time.deltaTime);
+            } 
             if (burnTimer <= 0)
             {
                 burning = false;
@@ -256,6 +258,15 @@ public class Debuff : MonoBehaviour
         }
         enemy.speed = 0f;
         stunDuration = 1.5f;
+    }
+
+    public void ChanceToStun()
+    {
+        float randomNumber = UnityEngine.Random.Range(0f, 100f);
+        if (randomNumber >= (100 - stunChance))
+        {
+            activateStun();
+        }
     }
 
     /*********************** Slow *************************/

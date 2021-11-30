@@ -126,7 +126,10 @@ public class Bullet : MonoBehaviour
         targetEnemy = enemy.GetComponent<Enemy>();
         if (targetEnemy != null)
         {
-            targetEnemy.TakeDamage(damage);
+            if (targetEnemy.totalHealth > 0)
+            {
+                targetEnemy.TakeDamage(damage);
+            }
             bulletStatusEffect.statusEffectActive();
         }
     }

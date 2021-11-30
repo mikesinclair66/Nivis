@@ -507,7 +507,7 @@ MonoBehaviour:
       - prefab: {fileID: 4185460085849628471, guid: e5044a6835738fd49834b3b909fd1bb2, type: 3}
         cost: 200
         sellValue: 100
-    cost: 200
+    cost: 300
     sellValue: 100
   missileLauncher:
     prefab: {fileID: 7968648054684129151, guid: 417408713b7fadd41ab7e724a18a52bd, type: 3}
@@ -6270,8 +6270,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2139171090}
     - target: {fileID: -1586529396932922300, guid: a3626b57e1474834d996fd7a71b279fd, type: 3}
+      propertyPath: moneyRate
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -1586529396932922300, guid: a3626b57e1474834d996fd7a71b279fd, type: 3}
       propertyPath: currentMoney
-      value: 300
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: -1586529396932922300, guid: a3626b57e1474834d996fd7a71b279fd, type: 3}
       propertyPath: totalMoneyText

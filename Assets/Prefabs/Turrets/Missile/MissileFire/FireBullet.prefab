@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  damage: 30
+  damage: 35
   explosionRadius: 15
   impactEffect: {fileID: 499177375113723896, guid: 68e536f006d56a44ba1fa1a2102f0c10, type: 3}
   impactSound: {fileID: 5558823152840005539}
@@ -133,7 +133,7 @@ MonoBehaviour:
   radiation: 0
   stunShot: 0
   burnShot: 1
-  burnDamage: 5
+  burnDamage: 15
   deathBurn: 0
   bullet: {fileID: 3605019997754467570}
 --- !u!82 &5558823152840005539

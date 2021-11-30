@@ -69,8 +69,10 @@ public class TurretLaser : MonoBehaviour
         {
             turret.shootSound.Play();
         }
-        turret.target.GetComponent<Enemy>().TakeDamage(damageOverTime * Time.deltaTime * turret.fireRate);
-
+        if (turret.target.GetComponent<Enemy>().totalHealth > 0)
+        {
+            turret.target.GetComponent<Enemy>().TakeDamage(damageOverTime * Time.deltaTime * turret.fireRate);
+        }
         if (LaserTier == 3){
 
             turret.target.GetComponent<Debuff>().ChanceToFreeze();
