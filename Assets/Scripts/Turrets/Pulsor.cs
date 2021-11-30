@@ -54,7 +54,10 @@ public class Pulsor : MonoBehaviour
             if (c.GetComponent<Enemy>())
             {
                 enemiesNear = true;
-                c.GetComponent<Enemy>().TakeDamage(damage);
+                if (c.GetComponent<Enemy>().totalHealth > 0)
+                {
+                    c.GetComponent<Enemy>().TakeDamage(damage);
+                }
                 c.GetComponent<Debuff>().activateSlow();
              
                 //pulsorRange upgrades
@@ -69,7 +72,10 @@ public class Pulsor : MonoBehaviour
                 }
                 if (pulsorRangeTier >= 3)
                 {
-                    c.GetComponent<Debuff>().activatePercentHP();
+                    if (c.GetComponent<Enemy>().totalHealth > 0)
+                    {
+                        c.GetComponent<Debuff>().activatePercentHP();
+                    }
                 }
 
                 //pulsorRate upgrades
@@ -84,7 +90,10 @@ public class Pulsor : MonoBehaviour
                     {
                         Debug.Log("Instakill Active");
                         float instakillDamage = c.GetComponent<Enemy>().totalHealth;
-                        c.GetComponent<Enemy>().TakeDamage(instakillDamage * 2);
+                        if (c.GetComponent<Enemy>().totalHealth > 0)
+                        {
+                            c.GetComponent<Enemy>().TakeDamage(instakillDamage * 2);
+                        }   
                     }
                 }
             }

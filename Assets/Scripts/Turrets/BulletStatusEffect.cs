@@ -27,7 +27,8 @@ public class BulletStatusEffect : MonoBehaviour
         }
         if (stunShot == true)
         {
-            debuff.activateStun();
+
+            debuff.ChanceToStun();
         }
         if (burnShot == true)
         {
@@ -35,7 +36,10 @@ public class BulletStatusEffect : MonoBehaviour
             {
                 Debug.Log("Melt Damage Reached");
                 debuff.freezeOff();
-                bullet.targetEnemy.TakeDamage(bullet.damage * 2);
+                if (bullet.targetEnemy.totalHealth > 0)
+                {
+                    bullet.targetEnemy.TakeDamage(bullet.damage * 2);
+                }   
             }
             debuff.activateBurn(burnDamage, deathBurn);
         }

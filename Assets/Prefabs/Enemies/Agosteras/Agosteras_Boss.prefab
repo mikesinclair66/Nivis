@@ -4699,8 +4699,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: boss
-  totalHealth: 100000
-  speed: 5
+  totalHealth: 50000
+  speed: 3
   damageValue: 1000
   debuff: {fileID: 3867142842415539236}
   rcm: {fileID: 0}
@@ -4726,6 +4726,7 @@ MonoBehaviour:
   debuffSlowed: slowed
   debuffFrozen: frozen
   debuffDoubleRSPoints: doubleRSPoints
+  debuffPercentHP: percentHP
   burning: 0
   rank3Burn: 0
   burnRadius: 15
@@ -4736,6 +4737,7 @@ MonoBehaviour:
   radDuration: 0
   stunDuration: 0
   stunned: 0
+  stunChance: 20
   slowed: 0
   slowTimer: 0.5
   slowAmount: 2
@@ -4748,6 +4750,8 @@ MonoBehaviour:
   freezeSound: {fileID: 8042753951694548750, guid: b503ed691f556f642935f4e18d6a1864, type: 3}
   doubleRSPoints: 0
   doubleRSPTimer: 0.5
+  percentHP: 0
+  percentHPTimer: 0.5
 --- !u!114 &-7612466081446843819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4760,6 +4764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1a153574446c648b35ed50463839db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generator: {fileID: 0}
 --- !u!135 &-3235860528740097925
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -58,33 +58,24 @@ public class Sniper : MonoBehaviour
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
 
-
         foreach (GameObject enemy in enemies)
         {
-            //Debug.Log("ENEMY:", enemy.GetComponent<Enemy>());
-            //Debug.Log(enemy.GetComponent<Enemy>().isTank);
-        
-
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             if (distanceToEnemy < shortestDistance)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
-
             }
             if (enemy.GetComponent<Enemy>().enemyType == "tank")
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
             }
-
-
         }
         
         if (nearestEnemy != null && shortestDistance <= turret.range)
         {
             turret.target = nearestEnemy.transform;
-
         }
         else
         {
