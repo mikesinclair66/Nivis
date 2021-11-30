@@ -316,7 +316,7 @@ MonoBehaviour:
   target: {fileID: 0}
   turretName: turret
   range: 15
-  fireRate: 1.5
+  fireRate: 1
   fireCountdown: 0
   partToRotate: {fileID: 9204004095901245921}
   bulletPrefab: {fileID: 4717915890182366568, guid: 78d168f2424613342a188992f67ee98b, type: 3}

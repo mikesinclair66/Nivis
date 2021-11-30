@@ -6304,6 +6304,7 @@ MonoBehaviour:
   enemy: {fileID: 3149694144095646197, guid: 7dd26072350018242be6324963dc001b, type: 3}
   timeController: {fileID: 109078949}
   timePauseButton: {fileID: 423591459}
+  generator: {fileID: 2139171091}
   timeBetweenWaves: 5
   waveCountdownText: {fileID: 1818590648}
   waveIndexText: {fileID: 123381007}
