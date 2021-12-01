@@ -4704,7 +4704,7 @@ MonoBehaviour:
   damageValue: 1000
   debuff: {fileID: 3867142842415539236}
   rcm: {fileID: 0}
-  researchPointValue: 3
+  researchPointValue: 1000
   defaultSpeed: 0
   inRangeofRank2Pulsor: 0
 --- !u!114 &3867142842415539236

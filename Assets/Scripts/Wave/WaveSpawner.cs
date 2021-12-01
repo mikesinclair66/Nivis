@@ -31,7 +31,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Enemies alive: " + EnemiesAlive);
+        //Debug.Log("Enemies alive: " + EnemiesAlive);
         if (EnemiesAlive > 0) { return; }
 
         if (TimeControl.autoStart == false)
