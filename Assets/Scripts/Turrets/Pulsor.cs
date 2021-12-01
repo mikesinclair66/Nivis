@@ -83,7 +83,8 @@ public class Pulsor : MonoBehaviour
                 {
                     c.GetComponent<Debuff>().activateDoubleRSPoints();
                 }
-                if (pulsorRateTier >= 3 && c.GetComponent<Enemy>().enemyType != "tank")
+                if (pulsorRateTier >= 3 && 
+                    (c.GetComponent<Enemy>().enemyType != "tank" && c.GetComponent<Enemy>().enemyType != "boss"))
                 {
                     float pulsorRandomNumber = UnityEngine.Random.Range(0f, 100f);
                     if (pulsorRandomNumber >= (100 - instakillRNGPercentage))

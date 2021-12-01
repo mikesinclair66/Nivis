@@ -375,7 +375,7 @@ public class Inventory : MonoBehaviour
                             if (upgradeLvl[towerSelected] == 1)
                                 descriptor = "Greatly increase\ndamage";
                             if (upgradeLvl[towerSelected] == 2)
-                                descriptor = "Can now Stun\nTanks";
+                                descriptor = "Chance to Stun\nTanks";
                         }
                         else if(upgradePrimary[towerSelected] == 1)
                         {
