@@ -823,7 +823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: tank
-  totalHealth: 1500
+  totalHealth: 5000
   speed: 5
   damageValue: 100
   debuff: {fileID: 2038412994108327013}

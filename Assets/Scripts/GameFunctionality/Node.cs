@@ -79,7 +79,6 @@ public class Node : MonoBehaviour
                 Debug.Log("Turret build! Money left: " + buildManager.drill.currentMoney);
                 currentUpgradeTier = 0;
             }
-
         }
     }
 

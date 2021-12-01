@@ -44,7 +44,7 @@ public class Drill : MonoBehaviour
             {
                 if (gen.totalHealth > 30)
                 {
-                    gen.TakeDamage(30);
+                    gen.totalHealth -= 30;
                     currentMoney -= upgradeCost;
                     drillLvl++;
                     upgradeCost = drillLvl * upgradeCost * 2f;
