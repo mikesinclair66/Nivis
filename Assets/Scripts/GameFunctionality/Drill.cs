@@ -13,6 +13,7 @@ public class Drill : MonoBehaviour
     bool hovered = false;
     GameObject dsBorder;
     public Text totalMoneyText, upgradeCostText/*, upgradeCostText*/;
+    public GameObject alert;
     public GameObject generator;
     Generator gen;
 
@@ -39,16 +40,26 @@ public class Drill : MonoBehaviour
     {
         if (drillLvl < 4)
         {
-            if (currentMoney > upgradeCost &&
-                gen.totalHealth > 30)
+            if (currentMoney > upgradeCost)
             {
-                gen.TakeDamage(30);
-                currentMoney -= upgradeCost;
-                drillLvl++;
-                upgradeCost = drillLvl * upgradeCost * 2f;
-                moneyRate = drillLvl * moneyRate;
-                totalMoneyText.text = "$" + currentMoney.ToString("0") + "/Lvl: " + drillLvl.ToString();//sector 3 digits by ,
-                upgradeCostText.text = "$" + upgradeCost.ToString();
+                if (gen.totalHealth > 30)
+                {
+                    gen.totalHealth -= 30;
+                    currentMoney -= upgradeCost;
+                    drillLvl++;
+                    upgradeCost = drillLvl * upgradeCost * 2f;
+                    moneyRate = drillLvl * moneyRate;
+                    totalMoneyText.text = "$" + currentMoney.ToString("0") + "/Lvl: " + drillLvl.ToString();//sector 3 digits by ,
+                    upgradeCostText.text = "$" + upgradeCost.ToString();
+                }
+                else
+                {
+                    alert.GetComponent<AlertHandler>().setAlertText("Not Enough Health", 1.0f);
+                }
+            }
+            else
+            {
+                alert.GetComponent<AlertHandler>().setAlertText("Cannot Afford Upgrade", 1.0f);
             }
         }
     }

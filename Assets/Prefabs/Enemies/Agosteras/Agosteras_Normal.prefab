@@ -1530,7 +1530,7 @@ MonoBehaviour:
   damageValue: 10
   debuff: {fileID: -8521353929827648063}
   rcm: {fileID: 0}
-  researchPointValue: 3
+  researchPointValue: 5
   defaultSpeed: 0
   inRangeofRank2Pulsor: 0
 --- !u!114 &-4998937774234219671
@@ -1545,6 +1545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1a153574446c648b35ed50463839db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generator: {fileID: 0}
 --- !u!114 &-8521353929827648063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1564,6 +1565,7 @@ MonoBehaviour:
   debuffSlowed: slowed
   debuffFrozen: frozen
   debuffDoubleRSPoints: doubleRSPoints
+  debuffPercentHP: percentHP
   burning: 0
   rank3Burn: 0
   burnRadius: 15
@@ -1574,6 +1576,7 @@ MonoBehaviour:
   radDuration: 0
   stunDuration: 0
   stunned: 0
+  stunChance: 20
   slowed: 0
   slowTimer: 0.5
   slowAmount: 2
@@ -1586,6 +1589,8 @@ MonoBehaviour:
   freezeSound: {fileID: 8042753951694548750}
   doubleRSPoints: 0
   doubleRSPTimer: 0.5
+  percentHP: 0
+  percentHPTimer: 0.5
 --- !u!82 &8042753951694548750
 AudioSource:
   m_ObjectHideFlags: 0

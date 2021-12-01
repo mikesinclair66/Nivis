@@ -18,6 +18,7 @@ public class BuildManager : MonoBehaviour
     public bool isBuildingTurret;
     private Ray ray;
     private RaycastHit hit;
+    private GameObject tempObj;
 
     /**
      * Instantiate the BuildManager upon starting the game
@@ -40,7 +41,17 @@ public class BuildManager : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit))
             {
-                obj.transform.position = hit.point;
+                if (obj != null)
+                    obj.transform.position = hit.point;
+            }
+        }
+
+        if (obj != null)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Destroy(tempObj);
+                isBuildingTurret = false;
             }
         }
     }
@@ -82,8 +93,9 @@ public class BuildManager : MonoBehaviour
         if (isBuildingTurret == true)
         {
             obj = Instantiate(turretGhost, hit.point, Quaternion.identity);
+            tempObj = obj;
             Debug.Log("Obj Instantiate");
-            obj.GetComponent<RangeIndicator>().ghostRangeIndicator(obj, turretToBuildType);
+            tempObj.GetComponent<RangeIndicator>().ghostRangeIndicator(tempObj, turretToBuildType);
         }
         turretToBuild = turret;
         this.turretToBuildType = turretToBuildType;

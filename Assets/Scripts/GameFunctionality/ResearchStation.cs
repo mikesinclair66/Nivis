@@ -220,7 +220,7 @@ public class ResearchStation : MonoBehaviour
                 else if (ability == 1)
                     optionDescriptor.SetText("Greatly increase\ndamage");
                 else if (ability == 2)
-                    optionDescriptor.SetText("Can now Stun\nTanks");
+                    optionDescriptor.SetText("Chance to Stun\nTanks");
                 else if (ability == 3)
                     optionDescriptor.SetText("Laser Turret Upgrade\nBeams nearby targets");
                 else if (ability == 4)

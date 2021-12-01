@@ -8,6 +8,8 @@ public class ResearchCostManager : MonoBehaviour
 {
     public int killCount = 100;
     public int[,,] researchCost;
+    public GameObject alert;
+
     private void Start()
     {
         researchCost = getResearchCosts();//page,branch,upgrades
@@ -55,7 +57,7 @@ public class ResearchCostManager : MonoBehaviour
     {
         if (researchCost[turret, path, tier] > killCount)
         {
-            Debug.Log("Not enough kills to research tech");
+            alert.GetComponent<AlertHandler>().setAlertText("Not Enough Research Points", 2.0f);
             return false;
         }
         else

@@ -10,6 +10,7 @@ public class Abilities : MonoBehaviour
     public GameObject stunAreaRange;
     public Drill drill;
     public GameObject btn1, btn2, btn3;
+    public GameObject alert;
 
     public int reenableTurretCost = 50,
                tempShieldCost = 75,
@@ -148,17 +149,17 @@ public class Abilities : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("you poor");
+                        alert.GetComponent<AlertHandler>().setAlertText("Cannot Afford Ability", 1.0f);
                     }
                 }
                 else
                 {
-                    Debug.Log("Turret not disabled!");
+                    alert.GetComponent<AlertHandler>().setAlertText("Turret Not Disabled", 1.0f);
                 }
             }
             else
             {
-                Debug.Log("Ability on CD!");
+                alert.GetComponent<AlertHandler>().setAlertText("Ability On Cool Down", 1.0f);
             }
         }
     }
@@ -183,12 +184,12 @@ public class Abilities : MonoBehaviour
             }
             else
             {
-                Debug.Log("you poor");
+                alert.GetComponent<AlertHandler>().setAlertText("Cannot Afford Ability", 1.0f);
             }
         }
         else
         {
-            Debug.Log("Ability on CD!");
+            alert.GetComponent<AlertHandler>().setAlertText("Ability On Cool Down", 1.0f);
         }
     }
 
@@ -204,12 +205,12 @@ public class Abilities : MonoBehaviour
             }
             else
             {
-                Debug.Log("you poor");
+                alert.GetComponent<AlertHandler>().setAlertText("Cannot Afford Ability", 1.0f);
             }
         }
         else
         {
-            Debug.Log("Ability on CD!");
+            alert.GetComponent<AlertHandler>().setAlertText("Ability On Cool Down", 1.0f);
         }
     }
 

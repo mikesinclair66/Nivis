@@ -69,6 +69,8 @@ public class NodeUI
         {
             int pathcost = path.upgrades[tier].cost;
             curPathCost = pathcost;
+            int pathSellValue = path.upgrades[tier].sellValue;
+            curSellValue = pathSellValue;
         }
     }
 
@@ -101,6 +103,7 @@ public class Inventory : MonoBehaviour
     Text sellValueText, upgradeText, upgradeText1, upgradeText2;
     public Drill drill;
     public Shop shop;
+    public GameObject alert;
 
     void Awake()
     {
@@ -188,9 +191,7 @@ public class Inventory : MonoBehaviour
                 turretName.text = "Pulsor Unit";
                 break;
         }
-
-        sellValueText.text = "Sell +$" + nodeUI.curSellValue.ToString("0");
-
+        sellValueText.text = "Sell +$" + nodeUI.curSellValue.ToString();
         UpdateUpgradeSystem();
         actionUI.GetComponent<UIAnimator>().RequestToggle();
         researchStation.GetComponent<UIAnimator>().RequestToggle();
@@ -205,7 +206,7 @@ public class Inventory : MonoBehaviour
         catch (NullReferenceException e)
         {
             Debug.Log(e);
-            Debug.Log("You must purchase the achievement to upgrade through the research station.");
+            alert.GetComponent<AlertHandler>().setAlertText("Have Not Unlocked Research", 1.0f);
             return false;
         }
     }
@@ -238,7 +239,7 @@ public class Inventory : MonoBehaviour
 
             if (drill.currentMoney < cost)
             {
-                Debug.Log("Your drill doesn't have enough money!");
+                alert.GetComponent<AlertHandler>().setAlertText("Cannot Afford", 1.0f);
                 return;
             }
             upgradePrimary[towerSelected] = branchNo;
@@ -295,7 +296,7 @@ public class Inventory : MonoBehaviour
                     drill.currentMoney -= cost;
                 else
                 {
-                    Debug.Log("Your drill doesn't have enough money!");
+                    alert.GetComponent<AlertHandler>().setAlertText("Cannot Afford Upgrade", 1.0f);
                     return;
                 }
                 Debug.Log("Research unlocked. primaryBranch=" + upgradePrimary[towerSelected] + ". UpgradeLvl=" + upgradeLvl[towerSelected]);
@@ -375,7 +376,7 @@ public class Inventory : MonoBehaviour
                             if (upgradeLvl[towerSelected] == 1)
                                 descriptor = "Greatly increase\ndamage";
                             if (upgradeLvl[towerSelected] == 2)
-                                descriptor = "Can now Stun\nTanks";
+                                descriptor = "Chance to Stun\nTanks";
                         }
                         else if(upgradePrimary[towerSelected] == 1)
                         {

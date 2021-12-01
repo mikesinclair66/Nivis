@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalRelease/Menu.unity
     guid: d8071e06aef5d694390270ab4d7ec40d
   - enabled: 1
-    path: Assets/Scenes/FinalRelease/NivisLevelOne.unity
+    path: Assets/Scenes/FinalRelease/NivisLevelTwo.unity
     guid: 2a983392953818a43b71ab9d81119b32
   - enabled: 1
-    path: Assets/Scenes/FinalRelease/NivisLevelTwo.unity
+    path: Assets/Scenes/FinalRelease/NivisLevelOne.unity
     guid: 3288c41488da70843b629184b3ffd922
   - enabled: 1
     path: Assets/Scenes/FinalRelease/EndScene.unity
