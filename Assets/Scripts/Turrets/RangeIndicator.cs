@@ -14,6 +14,7 @@ public class RangeIndicator : MonoBehaviour
         turret = GetComponent<Turret>();
     }
 
+    // Activates the indicator of the range of the turret in a ghost for the player to see before placing
     public void ghostRangeIndicator(GameObject obj, int turretToBuildType)
     {
         if (turretToBuildType == 0 && turretToBuildType == 1)
@@ -26,6 +27,7 @@ public class RangeIndicator : MonoBehaviour
         }
     }
 
+    // Activates the range indicator based on range of turret chosen
     public void activateRangeIndicator()
     {
         if (turret != null)
@@ -58,6 +60,8 @@ public class RangeIndicator : MonoBehaviour
         }
         mRend.enabled = true;
     }
+
+        // Deactivate the range indicator
     public void deactivateRangeIndicator()
     {
         mRend.enabled = false;

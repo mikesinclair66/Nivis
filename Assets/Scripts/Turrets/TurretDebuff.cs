@@ -10,6 +10,7 @@ public class TurretDebuff : MonoBehaviour
     public ArrayList activeDebuffs = new ArrayList();
     public GameObject debuffIcon;
 
+    // Activates countdown for the disabled turret and reenables it when the timer hits 0.
     void Update()
     {
         if (disabled == true)
@@ -22,11 +23,13 @@ public class TurretDebuff : MonoBehaviour
         }
     }
     
+    // Checks the debuffs active
     public ArrayList returnActiveDebuffs()
     {
         return activeDebuffs;
     }
     
+    // Disables the turret
     public void Disable()
     {
         disabled = true;
@@ -37,7 +40,8 @@ public class TurretDebuff : MonoBehaviour
         disableCountdown = 10f;
         debuffIcon.SetActive(true);
     }
-
+    
+    // Enables the turret
     public void Enable()
     {
         disabled = false;

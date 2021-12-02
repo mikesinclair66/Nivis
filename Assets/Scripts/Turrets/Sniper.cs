@@ -96,6 +96,9 @@ public class Sniper : MonoBehaviour
         }
     }
 
+    /**
+     * Event function to draw range while in scene. Used for debugging.
+     */
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

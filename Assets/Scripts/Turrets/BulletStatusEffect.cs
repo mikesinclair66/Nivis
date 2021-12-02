@@ -12,12 +12,14 @@ public class BulletStatusEffect : MonoBehaviour
 
     public ArrayList activeStatusEffects = new ArrayList();
     public Bullet bullet;
-    // Start is called before the first frame update
+
+    // Finds the bullet used
     void Start()
     {
         bullet = GetComponent<Bullet>();
     }
 
+    // Checks which status effects the bullet will give to the enemy
     public void statusEffectActive()
     {
         Debuff debuff = bullet.targetEnemy.GetComponent<Debuff>();
@@ -45,6 +47,7 @@ public class BulletStatusEffect : MonoBehaviour
         }
     }
 
+    // Return a list of status effects
     public ArrayList returnActiveStatusEffects()
     {
         return activeStatusEffects;
