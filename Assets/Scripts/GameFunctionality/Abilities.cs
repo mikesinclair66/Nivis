@@ -68,6 +68,7 @@ public class Abilities : MonoBehaviour
         else
             btn3.GetComponent<Button>().interactable = true;
 
+        //Raycasting for Stun Ability to show area of effect on mouse pointer
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (stunAbilityActive == true)
@@ -87,6 +88,7 @@ public class Abilities : MonoBehaviour
             } 
         }
 
+        //checks reenable turret ability CD
         if (reenableTurretOnCD == true)
         {
             if (reenableTurretTimeStamp <= Time.time)
@@ -95,6 +97,7 @@ public class Abilities : MonoBehaviour
             }
         }
 
+        //checks temp shield ability CD
         if (tempShieldOnCD == true)
         {
             if (tempShieldTimeStamp <= Time.time)
@@ -117,6 +120,7 @@ public class Abilities : MonoBehaviour
             shieldMod.GetComponent<Text>().text = "+" + shieldModVal + "%";
         }
 
+        //checks stun ability CD
         if (stunAreaOnCD == true)
         {
             if (stunAreaTimeStamp <= Time.time)
@@ -131,6 +135,7 @@ public class Abilities : MonoBehaviour
         reenableTurretIsRequested = true;
     }
 
+    //reenable turret ability logic
     public void reenableTurret(GameObject turret)
     {
         if (turret != null)
@@ -164,6 +169,7 @@ public class Abilities : MonoBehaviour
         }
     }
 
+    //temp shield ability logic
     public void tempShield()
     {
         if (tempShieldOnCD == false)
@@ -193,6 +199,7 @@ public class Abilities : MonoBehaviour
         }
     }
 
+    //ability cd and cost checks for stun area 
     public void stunArea()
     {
         obj = Instantiate(stunAreaRange, hit.point, Quaternion.identity);
@@ -214,6 +221,7 @@ public class Abilities : MonoBehaviour
         }
     }
 
+    //stun area ability logic
     void Stun(Vector3 hitPos, float radius)
     {
         Collider[] colliders = Physics.OverlapSphere(hitPos, radius);
